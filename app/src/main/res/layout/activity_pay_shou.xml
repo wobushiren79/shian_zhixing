@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/dimen_30dp" >
+
+        <TextView
+            android:layout_width="@dimen/dimen_280dp"
+            android:layout_height="@dimen/dimen_70dp"
+            android:layout_gravity="bottom"
+            android:background="@drawable/ic_home_reg"
+            android:gravity="center"
+            android:text="订单详情"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_40dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="wrap_content"
+                android:text="总体服务满意度"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_30dp" />
+
+            <Spinner
+                android:id="@+id/sp_pay_00"
+                android:layout_width="@dimen/dimen_220dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:text="礼仪服务"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_30dp" />
+
+            <Spinner
+                android:id="@+id/sp_pay_01"
+                android:layout_width="@dimen/dimen_220dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="wrap_content"
+                android:text="总体服务满意度"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_30dp" />
+
+            <Spinner
+                android:id="@+id/sp_pay_10"
+                android:layout_width="@dimen/dimen_220dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:text="礼仪服务"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_30dp" />
+
+            <Spinner
+                android:id="@+id/sp_pay_11"
+                android:layout_width="@dimen/dimen_220dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="wrap_content"
+                android:text="总体服务满意度"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_30dp" />
+
+            <Spinner
+                android:id="@+id/sp_pay_20"
+                android:layout_width="@dimen/dimen_220dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="@dimen/dimen_120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:text="礼仪服务"
+                android:textColor="@color/black"
+                android:textSize="@dimen/dimen_30dp" />
+
+            <Spinner
+                android:id="@+id/sp_pay_21"
+                android:layout_width="@dimen/dimen_220dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="您的宝贵意见:"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_40dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dimen_100dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="定金:"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/dimen_30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="当前总金额:"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/dimen_30dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:text="剩余应支付:"
+            android:textColor="@color/gray"
+            android:textSize="@dimen/dimen_30dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_300dp"
+            android:background="@drawable/shape_et_order_bg"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:text="请确认上述费用无误后，在下面空白处签字:"
+                android:textColor="@color/red"
+                android:textSize="@dimen/dimen_30dp" />
+
+            <com.shian.shianlifezx.common.view.finger.DrawView
+                android:id="@+id/dv_pay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
+        <LinearLayout android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:layout_width="@dimen/dimen_300dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/ic_home_reg"
+                android:gravity="center"
+                android:text="重新签字"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_40dp" />
+
+            <TextView
+                android:id="@+id/tv_pay_sure"
+                android:layout_width="@dimen/dimen_300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_40dp"
+                android:layout_weight="1"
+                android:background="@drawable/ic_home_reg"
+                android:gravity="center"
+                android:text="确认支付"
+                android:textColor="@color/white"
+                android:textSize="@dimen/dimen_40dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

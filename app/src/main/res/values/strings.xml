@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">圆满人生商家</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="net_work_off">网络未连接</string>
+    <string name="neterror">网络未连接</string>
+    <string name="servererror">服务器异常</string>
+    <string name="seesionerror">访问已失效，请重新打开应用</string>
+
+    <string name="orderid">订单编号：</string>
+
+    <string-array name="ywlx">
+        <item>紧急</item>
+        <item>不紧急</item>
+    </string-array>
+</resources>

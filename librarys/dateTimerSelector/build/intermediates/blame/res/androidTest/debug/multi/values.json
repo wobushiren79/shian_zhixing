@@ -1,0 +1,1886 @@
+[
+    {
+        "outputFile": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\incremental\\mergeDebugAndroidTestResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 18,
+                    "endColumn": 17,
+                    "endOffset": 595
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 18,
+                        "endColumn": 17,
+                        "endOffset": 595
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 600,
+                    "endLine": 21,
+                    "endColumn": 17,
+                    "endOffset": 691
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 600,
+                        "endLine": 21,
+                        "endColumn": 17,
+                        "endOffset": 691
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 696,
+                    "endLine": 41,
+                    "endColumn": 17,
+                    "endOffset": 1354
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 696,
+                        "endLine": 41,
+                        "endColumn": 17,
+                        "endOffset": 1354
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 42,
+                    "startColumn": 4,
+                    "startOffset": 1359,
+                    "endLine": 79,
+                    "endColumn": 17,
+                    "endOffset": 2611
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 1359,
+                        "endLine": 79,
+                        "endColumn": 17,
+                        "endOffset": 2611
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 80,
+                    "startColumn": 4,
+                    "startOffset": 2616,
+                    "endLine": 95,
+                    "endColumn": 17,
+                    "endOffset": 3124
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 80,
+                        "startColumn": 4,
+                        "startOffset": 2616,
+                        "endLine": 95,
+                        "endColumn": 17,
+                        "endOffset": 3124
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 3129,
+                    "endLine": 104,
+                    "endColumn": 17,
+                    "endOffset": 3412
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 96,
+                        "startColumn": 4,
+                        "startOffset": 3129,
+                        "endLine": 104,
+                        "endColumn": 17,
+                        "endOffset": 3412
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 105,
+                    "startColumn": 4,
+                    "startOffset": 3417,
+                    "endLine": 127,
+                    "endColumn": 17,
+                    "endOffset": 4152
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 105,
+                        "startColumn": 4,
+                        "startOffset": 3417,
+                        "endLine": 127,
+                        "endColumn": 17,
+                        "endOffset": 4152
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 128,
+                    "startColumn": 4,
+                    "startOffset": 4157,
+                    "endLine": 143,
+                    "endColumn": 17,
+                    "endOffset": 4667
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 128,
+                        "startColumn": 4,
+                        "startOffset": 4157,
+                        "endLine": 143,
+                        "endColumn": 17,
+                        "endOffset": 4667
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 144,
+                    "startColumn": 4,
+                    "startOffset": 4672,
+                    "endLine": 151,
+                    "endColumn": 17,
+                    "endOffset": 4926
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 144,
+                        "startColumn": 4,
+                        "startOffset": 4672,
+                        "endLine": 151,
+                        "endColumn": 17,
+                        "endOffset": 4926
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 152,
+                    "startColumn": 4,
+                    "startOffset": 4931,
+                    "endLine": 155,
+                    "endColumn": 17,
+                    "endOffset": 5055
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 152,
+                        "startColumn": 4,
+                        "startOffset": 4931,
+                        "endLine": 155,
+                        "endColumn": 17,
+                        "endOffset": 5055
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 156,
+                    "startColumn": 4,
+                    "startOffset": 5060,
+                    "endLine": 168,
+                    "endColumn": 17,
+                    "endOffset": 5475
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 156,
+                        "startColumn": 4,
+                        "startOffset": 5060,
+                        "endLine": 168,
+                        "endColumn": 17,
+                        "endOffset": 5475
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 169,
+                    "startColumn": 4,
+                    "startOffset": 5480,
+                    "endLine": 182,
+                    "endColumn": 17,
+                    "endOffset": 5937
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 169,
+                        "startColumn": 4,
+                        "startOffset": 5480,
+                        "endLine": 182,
+                        "endColumn": 17,
+                        "endOffset": 5937
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 183,
+                    "startColumn": 4,
+                    "startOffset": 5942,
+                    "endLine": 201,
+                    "endColumn": 17,
+                    "endOffset": 6548
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 183,
+                        "startColumn": 4,
+                        "startOffset": 5942,
+                        "endLine": 201,
+                        "endColumn": 17,
+                        "endOffset": 6548
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 202,
+                    "startColumn": 4,
+                    "startOffset": 6553,
+                    "endLine": 204,
+                    "endColumn": 17,
+                    "endOffset": 6647
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 202,
+                        "startColumn": 4,
+                        "startOffset": 6553,
+                        "endLine": 204,
+                        "endColumn": 17,
+                        "endOffset": 6647
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 205,
+                    "startColumn": 4,
+                    "startOffset": 6652,
+                    "endLine": 220,
+                    "endColumn": 17,
+                    "endOffset": 7159
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 205,
+                        "startColumn": 4,
+                        "startOffset": 6652,
+                        "endLine": 220,
+                        "endColumn": 17,
+                        "endOffset": 7159
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 221,
+                    "startColumn": 4,
+                    "startOffset": 7164,
+                    "endLine": 235,
+                    "endColumn": 17,
+                    "endOffset": 7640
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 221,
+                        "startColumn": 4,
+                        "startOffset": 7164,
+                        "endLine": 235,
+                        "endColumn": 17,
+                        "endOffset": 7640
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 236,
+                    "startColumn": 4,
+                    "startOffset": 7645,
+                    "endLine": 258,
+                    "endColumn": 17,
+                    "endOffset": 8380
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 236,
+                        "startColumn": 4,
+                        "startOffset": 7645,
+                        "endLine": 258,
+                        "endColumn": 17,
+                        "endOffset": 8380
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 259,
+                    "startColumn": 4,
+                    "startOffset": 8385,
+                    "endLine": 271,
+                    "endColumn": 17,
+                    "endOffset": 8799
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 259,
+                        "startColumn": 4,
+                        "startOffset": 8385,
+                        "endLine": 271,
+                        "endColumn": 17,
+                        "endOffset": 8799
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 272,
+                    "startColumn": 4,
+                    "startOffset": 8804,
+                    "endLine": 283,
+                    "endColumn": 17,
+                    "endOffset": 9183
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 272,
+                        "startColumn": 4,
+                        "startOffset": 8804,
+                        "endLine": 283,
+                        "endColumn": 17,
+                        "endOffset": 9183
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 284,
+                    "startColumn": 4,
+                    "startOffset": 9188,
+                    "endLine": 299,
+                    "endColumn": 17,
+                    "endOffset": 9699
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 284,
+                        "startColumn": 4,
+                        "startOffset": 9188,
+                        "endLine": 299,
+                        "endColumn": 17,
+                        "endOffset": 9699
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 300,
+                    "startColumn": 4,
+                    "startOffset": 9704,
+                    "endLine": 313,
+                    "endColumn": 17,
+                    "endOffset": 10170
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 300,
+                        "startColumn": 4,
+                        "startOffset": 9704,
+                        "endLine": 313,
+                        "endColumn": 17,
+                        "endOffset": 10170
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 314,
+                    "startColumn": 4,
+                    "startOffset": 10175,
+                    "endLine": 320,
+                    "endColumn": 17,
+                    "endOffset": 10397
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 314,
+                        "startColumn": 4,
+                        "startOffset": 10175,
+                        "endLine": 320,
+                        "endColumn": 17,
+                        "endOffset": 10397
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 321,
+                    "startColumn": 4,
+                    "startOffset": 10402,
+                    "endLine": 356,
+                    "endColumn": 17,
+                    "endOffset": 11545
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 321,
+                        "startColumn": 4,
+                        "startOffset": 10402,
+                        "endLine": 356,
+                        "endColumn": 17,
+                        "endOffset": 11545
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 357,
+                    "startColumn": 4,
+                    "startOffset": 11550,
+                    "endLine": 365,
+                    "endColumn": 17,
+                    "endOffset": 11872
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 357,
+                        "startColumn": 4,
+                        "startOffset": 11550,
+                        "endLine": 365,
+                        "endColumn": 17,
+                        "endOffset": 11872
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 366,
+                    "startColumn": 4,
+                    "startOffset": 11877,
+                    "endLine": 385,
+                    "endColumn": 17,
+                    "endOffset": 12515
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 366,
+                        "startColumn": 4,
+                        "startOffset": 11877,
+                        "endLine": 385,
+                        "endColumn": 17,
+                        "endOffset": 12515
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 386,
+                    "startColumn": 4,
+                    "startOffset": 12520,
+                    "endLine": 405,
+                    "endColumn": 17,
+                    "endOffset": 13177
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 386,
+                        "startColumn": 4,
+                        "startOffset": 12520,
+                        "endLine": 405,
+                        "endColumn": 17,
+                        "endOffset": 13177
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 406,
+                    "startColumn": 4,
+                    "startOffset": 13182,
+                    "endLine": 418,
+                    "endColumn": 17,
+                    "endOffset": 13595
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 406,
+                        "startColumn": 4,
+                        "startOffset": 13182,
+                        "endLine": 418,
+                        "endColumn": 17,
+                        "endOffset": 13595
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 419,
+                    "startColumn": 4,
+                    "startOffset": 13600,
+                    "endLine": 430,
+                    "endColumn": 17,
+                    "endOffset": 13981
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 419,
+                        "startColumn": 4,
+                        "startOffset": 13600,
+                        "endLine": 430,
+                        "endColumn": 17,
+                        "endOffset": 13981
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 431,
+                    "startColumn": 4,
+                    "startOffset": 13986,
+                    "endLine": 453,
+                    "endColumn": 17,
+                    "endOffset": 14740
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 431,
+                        "startColumn": 4,
+                        "startOffset": 13986,
+                        "endLine": 453,
+                        "endColumn": 17,
+                        "endOffset": 14740
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 454,
+                    "startColumn": 4,
+                    "startOffset": 14745,
+                    "endLine": 459,
+                    "endColumn": 17,
+                    "endOffset": 14933
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 454,
+                        "startColumn": 4,
+                        "startOffset": 14745,
+                        "endLine": 459,
+                        "endColumn": 17,
+                        "endOffset": 14933
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 460,
+                    "startColumn": 4,
+                    "startOffset": 14938,
+                    "endLine": 475,
+                    "endColumn": 17,
+                    "endOffset": 15460
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 460,
+                        "startColumn": 4,
+                        "startOffset": 14938,
+                        "endLine": 475,
+                        "endColumn": 17,
+                        "endOffset": 15460
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 476,
+                    "startColumn": 4,
+                    "startOffset": 15465,
+                    "endLine": 495,
+                    "endColumn": 17,
+                    "endOffset": 16154
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 476,
+                        "startColumn": 4,
+                        "startOffset": 15465,
+                        "endLine": 495,
+                        "endColumn": 17,
+                        "endOffset": 16154
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 496,
+                    "startColumn": 4,
+                    "startOffset": 16159,
+                    "endLine": 504,
+                    "endColumn": 17,
+                    "endOffset": 16460
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 496,
+                        "startColumn": 4,
+                        "startOffset": 16159,
+                        "endLine": 504,
+                        "endColumn": 17,
+                        "endOffset": 16460
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 505,
+                    "startColumn": 4,
+                    "startOffset": 16465,
+                    "endLine": 522,
+                    "endColumn": 17,
+                    "endOffset": 17039
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 505,
+                        "startColumn": 4,
+                        "startOffset": 16465,
+                        "endLine": 522,
+                        "endColumn": 17,
+                        "endOffset": 17039
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 523,
+                    "startColumn": 4,
+                    "startOffset": 17044,
+                    "endLine": 548,
+                    "endColumn": 17,
+                    "endOffset": 17874
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 523,
+                        "startColumn": 4,
+                        "startOffset": 17044,
+                        "endLine": 548,
+                        "endColumn": 17,
+                        "endOffset": 17874
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 549,
+                    "startColumn": 4,
+                    "startOffset": 17879,
+                    "endColumn": 41,
+                    "endOffset": 17916
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 549,
+                        "startColumn": 4,
+                        "startOffset": 17879,
+                        "endColumn": 41,
+                        "endOffset": 17916
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 550,
+                    "startColumn": 4,
+                    "startOffset": 17921,
+                    "endColumn": 51,
+                    "endOffset": 17968
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 550,
+                        "startColumn": 4,
+                        "startOffset": 17921,
+                        "endColumn": 51,
+                        "endOffset": 17968
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 551,
+                    "startColumn": 4,
+                    "startOffset": 17973,
+                    "endColumn": 51,
+                    "endOffset": 18020
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 551,
+                        "startColumn": 4,
+                        "startOffset": 17973,
+                        "endColumn": 51,
+                        "endOffset": 18020
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 552,
+                    "startColumn": 4,
+                    "startOffset": 18025,
+                    "endColumn": 53,
+                    "endOffset": 18074
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 552,
+                        "startColumn": 4,
+                        "startOffset": 18025,
+                        "endColumn": 53,
+                        "endOffset": 18074
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 553,
+                    "startColumn": 4,
+                    "startOffset": 18079,
+                    "endColumn": 53,
+                    "endOffset": 18128
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 553,
+                        "startColumn": 4,
+                        "startOffset": 18079,
+                        "endColumn": 53,
+                        "endOffset": 18128
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 554,
+                    "startColumn": 4,
+                    "startOffset": 18133,
+                    "endColumn": 45,
+                    "endOffset": 18174
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 554,
+                        "startColumn": 4,
+                        "startOffset": 18133,
+                        "endColumn": 45,
+                        "endOffset": 18174
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 555,
+                    "startColumn": 4,
+                    "startOffset": 18179,
+                    "endColumn": 57,
+                    "endOffset": 18232
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 555,
+                        "startColumn": 4,
+                        "startOffset": 18179,
+                        "endColumn": 57,
+                        "endOffset": 18232
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 556,
+                    "startColumn": 4,
+                    "startOffset": 18237,
+                    "endColumn": 59,
+                    "endOffset": 18292
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 556,
+                        "startColumn": 4,
+                        "startOffset": 18237,
+                        "endColumn": 59,
+                        "endOffset": 18292
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 557,
+                    "startColumn": 4,
+                    "startOffset": 18297,
+                    "endColumn": 49,
+                    "endOffset": 18342
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 557,
+                        "startColumn": 4,
+                        "startOffset": 18297,
+                        "endColumn": 49,
+                        "endOffset": 18342
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 558,
+                    "startColumn": 4,
+                    "startOffset": 18347,
+                    "endColumn": 52,
+                    "endOffset": 18395
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 558,
+                        "startColumn": 4,
+                        "startOffset": 18347,
+                        "endColumn": 52,
+                        "endOffset": 18395
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 559,
+                    "startColumn": 4,
+                    "startOffset": 18400,
+                    "endColumn": 55,
+                    "endOffset": 18451
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 559,
+                        "startColumn": 4,
+                        "startOffset": 18400,
+                        "endColumn": 55,
+                        "endOffset": 18451
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 560,
+                    "startColumn": 4,
+                    "startOffset": 18456,
+                    "endColumn": 64,
+                    "endOffset": 18516
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 560,
+                        "startColumn": 4,
+                        "startOffset": 18456,
+                        "endColumn": 64,
+                        "endOffset": 18516
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 561,
+                    "startColumn": 4,
+                    "startOffset": 18521,
+                    "endColumn": 70,
+                    "endOffset": 18587
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 561,
+                        "startColumn": 4,
+                        "startOffset": 18521,
+                        "endColumn": 70,
+                        "endOffset": 18587
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 562,
+                    "startColumn": 4,
+                    "startOffset": 18592,
+                    "endColumn": 55,
+                    "endOffset": 18643
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 562,
+                        "startColumn": 4,
+                        "startOffset": 18592,
+                        "endColumn": 55,
+                        "endOffset": 18643
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 563,
+                    "startColumn": 4,
+                    "startOffset": 18648,
+                    "endColumn": 61,
+                    "endOffset": 18705
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 563,
+                        "startColumn": 4,
+                        "startOffset": 18648,
+                        "endColumn": 61,
+                        "endOffset": 18705
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 564,
+                    "startColumn": 4,
+                    "startOffset": 18710,
+                    "endColumn": 52,
+                    "endOffset": 18758
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 564,
+                        "startColumn": 4,
+                        "startOffset": 18710,
+                        "endColumn": 52,
+                        "endOffset": 18758
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 565,
+                    "startColumn": 4,
+                    "startOffset": 18763,
+                    "endColumn": 49,
+                    "endOffset": 18808
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 565,
+                        "startColumn": 4,
+                        "startOffset": 18763,
+                        "endColumn": 49,
+                        "endOffset": 18808
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 566,
+                    "startColumn": 4,
+                    "startOffset": 18813,
+                    "endColumn": 44,
+                    "endOffset": 18853
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 566,
+                        "startColumn": 4,
+                        "startOffset": 18813,
+                        "endColumn": 44,
+                        "endOffset": 18853
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 567,
+                    "startColumn": 4,
+                    "startOffset": 18858,
+                    "endColumn": 45,
+                    "endOffset": 18899
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 567,
+                        "startColumn": 4,
+                        "startOffset": 18858,
+                        "endColumn": 45,
+                        "endOffset": 18899
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 568,
+                    "startColumn": 4,
+                    "startOffset": 18904,
+                    "endColumn": 52,
+                    "endOffset": 18952
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 568,
+                        "startColumn": 4,
+                        "startOffset": 18904,
+                        "endColumn": 52,
+                        "endOffset": 18952
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 569,
+                    "startColumn": 4,
+                    "startOffset": 18957,
+                    "endColumn": 46,
+                    "endOffset": 18999
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 569,
+                        "startColumn": 4,
+                        "startOffset": 18957,
+                        "endColumn": 46,
+                        "endOffset": 18999
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 570,
+                    "startColumn": 4,
+                    "startOffset": 19004,
+                    "endColumn": 44,
+                    "endOffset": 19044
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 570,
+                        "startColumn": 4,
+                        "startOffset": 19004,
+                        "endColumn": 44,
+                        "endOffset": 19044
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 571,
+                    "startColumn": 4,
+                    "startOffset": 19049,
+                    "endColumn": 49,
+                    "endOffset": 19094
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 571,
+                        "startColumn": 4,
+                        "startOffset": 19049,
+                        "endColumn": 49,
+                        "endOffset": 19094
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 572,
+                    "startColumn": 4,
+                    "startOffset": 19099,
+                    "endColumn": 49,
+                    "endOffset": 19144
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 572,
+                        "startColumn": 4,
+                        "startOffset": 19099,
+                        "endColumn": 49,
+                        "endOffset": 19144
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 573,
+                    "startColumn": 4,
+                    "startOffset": 19149,
+                    "endColumn": 54,
+                    "endOffset": 19199
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 573,
+                        "startColumn": 4,
+                        "startOffset": 19149,
+                        "endColumn": 54,
+                        "endOffset": 19199
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 574,
+                    "startColumn": 4,
+                    "startOffset": 19204,
+                    "endColumn": 47,
+                    "endOffset": 19247
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 574,
+                        "startColumn": 4,
+                        "startOffset": 19204,
+                        "endColumn": 47,
+                        "endOffset": 19247
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 575,
+                    "startColumn": 4,
+                    "startOffset": 19252,
+                    "endColumn": 59,
+                    "endOffset": 19307
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 575,
+                        "startColumn": 4,
+                        "startOffset": 19252,
+                        "endColumn": 59,
+                        "endOffset": 19307
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 576,
+                    "startColumn": 4,
+                    "startOffset": 19312,
+                    "endColumn": 61,
+                    "endOffset": 19369
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 576,
+                        "startColumn": 4,
+                        "startOffset": 19312,
+                        "endColumn": 61,
+                        "endOffset": 19369
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 577,
+                    "startColumn": 4,
+                    "startOffset": 19374,
+                    "endColumn": 57,
+                    "endOffset": 19427
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 577,
+                        "startColumn": 4,
+                        "startOffset": 19374,
+                        "endColumn": 57,
+                        "endOffset": 19427
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 578,
+                    "startColumn": 4,
+                    "startOffset": 19432,
+                    "endColumn": 55,
+                    "endOffset": 19483
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 578,
+                        "startColumn": 4,
+                        "startOffset": 19432,
+                        "endColumn": 55,
+                        "endOffset": 19483
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 579,
+                    "startColumn": 4,
+                    "startOffset": 19488,
+                    "endColumn": 52,
+                    "endOffset": 19536
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 579,
+                        "startColumn": 4,
+                        "startOffset": 19488,
+                        "endColumn": 52,
+                        "endOffset": 19536
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 580,
+                    "startColumn": 4,
+                    "startOffset": 19541,
+                    "endColumn": 49,
+                    "endOffset": 19586
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 580,
+                        "startColumn": 4,
+                        "startOffset": 19541,
+                        "endColumn": 49,
+                        "endOffset": 19586
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 581,
+                    "startColumn": 4,
+                    "startOffset": 19591,
+                    "endColumn": 52,
+                    "endOffset": 19639
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 581,
+                        "startColumn": 4,
+                        "startOffset": 19591,
+                        "endColumn": 52,
+                        "endOffset": 19639
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 582,
+                    "startColumn": 4,
+                    "startOffset": 19644,
+                    "endColumn": 42,
+                    "endOffset": 19682
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 582,
+                        "startColumn": 4,
+                        "startOffset": 19644,
+                        "endColumn": 42,
+                        "endOffset": 19682
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 583,
+                    "startColumn": 4,
+                    "startOffset": 19687,
+                    "endColumn": 44,
+                    "endOffset": 19727
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 583,
+                        "startColumn": 4,
+                        "startOffset": 19687,
+                        "endColumn": 44,
+                        "endOffset": 19727
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 584,
+                    "startColumn": 4,
+                    "startOffset": 19732,
+                    "endColumn": 61,
+                    "endOffset": 19789
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 584,
+                        "startColumn": 4,
+                        "startOffset": 19732,
+                        "endColumn": 61,
+                        "endOffset": 19789
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 585,
+                    "startColumn": 4,
+                    "startOffset": 19794,
+                    "endColumn": 50,
+                    "endOffset": 19840
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 585,
+                        "startColumn": 4,
+                        "startOffset": 19794,
+                        "endColumn": 50,
+                        "endOffset": 19840
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 586,
+                    "startColumn": 4,
+                    "startOffset": 19845,
+                    "endLine": 589,
+                    "endColumn": 12,
+                    "endOffset": 20004
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 586,
+                        "startColumn": 4,
+                        "startOffset": 19845,
+                        "endLine": 589,
+                        "endColumn": 12,
+                        "endOffset": 20004
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 590,
+                    "startColumn": 4,
+                    "startOffset": 20009,
+                    "endLine": 594,
+                    "endColumn": 12,
+                    "endOffset": 20271
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 590,
+                        "startColumn": 4,
+                        "startOffset": 20009,
+                        "endLine": 594,
+                        "endColumn": 12,
+                        "endOffset": 20271
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 595,
+                    "startColumn": 4,
+                    "startOffset": 20276,
+                    "endLine": 599,
+                    "endColumn": 12,
+                    "endOffset": 20540
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 595,
+                        "startColumn": 4,
+                        "startOffset": 20276,
+                        "endLine": 599,
+                        "endColumn": 12,
+                        "endOffset": 20540
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 600,
+                    "startColumn": 4,
+                    "startOffset": 20545,
+                    "endLine": 604,
+                    "endColumn": 12,
+                    "endOffset": 20810
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 600,
+                        "startColumn": 4,
+                        "startOffset": 20545,
+                        "endLine": 604,
+                        "endColumn": 12,
+                        "endOffset": 20810
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 605,
+                    "startColumn": 4,
+                    "startOffset": 20815,
+                    "endLine": 609,
+                    "endColumn": 12,
+                    "endOffset": 21073
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 605,
+                        "startColumn": 4,
+                        "startOffset": 20815,
+                        "endLine": 609,
+                        "endColumn": 12,
+                        "endOffset": 21073
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 610,
+                    "startColumn": 4,
+                    "startOffset": 21078,
+                    "endLine": 614,
+                    "endColumn": 12,
+                    "endOffset": 21338
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 610,
+                        "startColumn": 4,
+                        "startOffset": 21078,
+                        "endLine": 614,
+                        "endColumn": 12,
+                        "endOffset": 21338
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 615,
+                    "startColumn": 4,
+                    "startOffset": 21343,
+                    "endLine": 619,
+                    "endColumn": 12,
+                    "endOffset": 21604
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 615,
+                        "startColumn": 4,
+                        "startOffset": 21343,
+                        "endLine": 619,
+                        "endColumn": 12,
+                        "endOffset": 21604
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 620,
+                    "startColumn": 4,
+                    "startOffset": 21609,
+                    "endLine": 624,
+                    "endColumn": 12,
+                    "endOffset": 21875
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 620,
+                        "startColumn": 4,
+                        "startOffset": 21609,
+                        "endLine": 624,
+                        "endColumn": 12,
+                        "endOffset": 21875
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 625,
+                    "startColumn": 4,
+                    "startOffset": 21880,
+                    "endLine": 629,
+                    "endColumn": 12,
+                    "endOffset": 22149
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 625,
+                        "startColumn": 4,
+                        "startOffset": 21880,
+                        "endLine": 629,
+                        "endColumn": 12,
+                        "endOffset": 22149
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 630,
+                    "startColumn": 4,
+                    "startOffset": 22154,
+                    "endLine": 634,
+                    "endColumn": 12,
+                    "endOffset": 22422
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 630,
+                        "startColumn": 4,
+                        "startOffset": 22154,
+                        "endLine": 634,
+                        "endColumn": 12,
+                        "endOffset": 22422
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 635,
+                    "startColumn": 4,
+                    "startOffset": 22427,
+                    "endLine": 639,
+                    "endColumn": 9,
+                    "endOffset": 22679
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 635,
+                        "startColumn": 4,
+                        "startOffset": 22427,
+                        "endLine": 639,
+                        "endColumn": 9,
+                        "endOffset": 22679
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 640,
+                    "startColumn": 4,
+                    "startOffset": 22684,
+                    "endLine": 644,
+                    "endColumn": 9,
+                    "endOffset": 22948
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 640,
+                        "startColumn": 4,
+                        "startOffset": 22684,
+                        "endLine": 644,
+                        "endColumn": 9,
+                        "endOffset": 22948
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 645,
+                    "startColumn": 4,
+                    "startOffset": 22953,
+                    "endLine": 649,
+                    "endColumn": 9,
+                    "endOffset": 23216
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 645,
+                        "startColumn": 4,
+                        "startOffset": 22953,
+                        "endLine": 649,
+                        "endColumn": 9,
+                        "endOffset": 23216
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 650,
+                    "startColumn": 4,
+                    "startOffset": 23221,
+                    "endLine": 654,
+                    "endColumn": 9,
+                    "endOffset": 23490
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 650,
+                        "startColumn": 4,
+                        "startOffset": 23221,
+                        "endLine": 654,
+                        "endColumn": 9,
+                        "endOffset": 23490
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 655,
+                    "startColumn": 4,
+                    "startOffset": 23495,
+                    "endLine": 659,
+                    "endColumn": 12,
+                    "endOffset": 23755
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 655,
+                        "startColumn": 4,
+                        "startOffset": 23495,
+                        "endLine": 659,
+                        "endColumn": 12,
+                        "endOffset": 23755
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 660,
+                    "startColumn": 4,
+                    "startOffset": 23760,
+                    "endLine": 664,
+                    "endColumn": 9,
+                    "endOffset": 24008
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 660,
+                        "startColumn": 4,
+                        "startOffset": 23760,
+                        "endLine": 664,
+                        "endColumn": 9,
+                        "endOffset": 24008
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 665,
+                    "startColumn": 4,
+                    "startOffset": 24013,
+                    "endLine": 669,
+                    "endColumn": 12,
+                    "endOffset": 24281
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 665,
+                        "startColumn": 4,
+                        "startOffset": 24013,
+                        "endLine": 669,
+                        "endColumn": 12,
+                        "endOffset": 24281
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 670,
+                    "startColumn": 4,
+                    "startOffset": 24286,
+                    "endLine": 679,
+                    "endColumn": 12,
+                    "endOffset": 24779
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 670,
+                        "startColumn": 4,
+                        "startOffset": 24286,
+                        "endLine": 679,
+                        "endColumn": 12,
+                        "endOffset": 24779
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 680,
+                    "startColumn": 4,
+                    "startOffset": 24784,
+                    "endLine": 689,
+                    "endColumn": 12,
+                    "endOffset": 25353
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 680,
+                        "startColumn": 4,
+                        "startOffset": 24784,
+                        "endLine": 689,
+                        "endColumn": 12,
+                        "endOffset": 25353
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 690,
+                    "startColumn": 4,
+                    "startOffset": 25358,
+                    "endLine": 692,
+                    "endColumn": 12,
+                    "endOffset": 25482
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 690,
+                        "startColumn": 4,
+                        "startOffset": 25358,
+                        "endLine": 692,
+                        "endColumn": 12,
+                        "endOffset": 25482
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 693,
+                    "startColumn": 4,
+                    "startOffset": 25487,
+                    "endLine": 706,
+                    "endColumn": 12,
+                    "endOffset": 26006
+                },
+                "from": {
+                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 693,
+                        "startColumn": 4,
+                        "startOffset": 25487,
+                        "endLine": 706,
+                        "endColumn": 12,
+                        "endOffset": 26006
+                    }
+                }
+            }
+        ]
+    }
+]

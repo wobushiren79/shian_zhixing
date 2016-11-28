@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:focusableInTouchMode="false"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="100dip"
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:id="@+id/province_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/city_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </Spinner>
+
+        <Spinner 
+            android:id="@+id/county_spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" >
+        </Spinner>
+    </LinearLayout>
+
+    <EditText android:visibility="gone"
+        android:id="@+id/display_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="false"
+        android:hint="输出结果"
+        android:paddingTop="10px" >
+    </EditText>
+
+</LinearLayout>

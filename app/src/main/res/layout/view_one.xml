@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" android:orientation="vertical">
+
+    <Spinner
+        android:id="@+id/sp_one"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginBottom="@dimen/dimen_10dp"
+        android:layout_marginTop="@dimen/dimen_10dp"
+        android:background="@color/gray_common" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/tv_one_dj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center_vertical"
+            android:text="单价:0000"
+            android:textColor="@color/gray" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/tv_one_sl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:text="数量:"
+                android:textColor="@color/gray" />
+
+            <Button
+                android:id="@+id/btn_one_j"
+                android:layout_width="@dimen/dimen_80dp"
+                android:layout_height="@dimen/dimen_80dp"
+                android:gravity="center"
+                android:text="-"
+                android:textColor="@color/gray" />
+
+            <Button
+                android:id="@+id/btn_one_count"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dimen_80dp"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="@color/gray" />
+
+            <Button
+                android:id="@+id/btn_one_add"
+                android:layout_width="@dimen/dimen_80dp"
+                android:layout_height="@dimen/dimen_80dp"
+                android:gravity="center"
+                android:text="+"
+                android:textColor="@color/gray" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_one_xj"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="小计:0000"
+            android:textColor="@color/gray" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:background="@color/gray_common" />
+    </RelativeLayout>
+
+</LinearLayout>
