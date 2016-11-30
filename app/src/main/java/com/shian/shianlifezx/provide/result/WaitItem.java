@@ -5,205 +5,215 @@ import java.util.List;
 import com.shian.shianlifezx.provide.params.HpSaveCustomerContract;
 
 public class WaitItem {
-	private long itemApplyTime;
-	private long acceptTime;
-	private String adviserName;
-	private long applyTime;
-	private long assignId;
-	private String ctgName;
-	private String funeralAddress;
-	private int itemStatus;
-	private String note;
-	private int number;
-	private long orderItemId;
-	private long passTime;
-	private long passUnTime;
-	private boolean showAcceptOrRejectFlag;
-	private boolean showStartServiceFlag;
-	private String skuName;
-	private String skuUnit;
-	private long startTime;
-	private long endTime;
-	private String adviserMobile;
-	String specification;
-	private List<HpSaveCustomerContract.AddAddition> itemAdditions;
+    private long itemApplyTime;
+    private long acceptTime;
+    private String adviserName;
+    private long applyTime;
+    private long assignId;
+    private String ctgName;
+    private String funeralAddress;
+    private int itemStatus;
+    private String note;
+    private int number;
+    private long orderItemId;
+    private long passTime;
+    private long passUnTime;
+    private boolean showAcceptOrRejectFlag;
+    private boolean showStartServiceFlag;
+    private String skuName;
+    private String skuUnit;
+    private long startTime;
+    private long endTime;
+    private String adviserMobile;
+    String specification;
+    private String orderNum;
 
-	
-	public String getSpecification() {
-		return specification;
-	}
+    public String getOrderNum() {
+        return orderNum;
+    }
 
-	public void setSpecification(String specification) {
-		this.specification = specification;
-	}
+    public void setOrderNum(String orderNum) {
+        this.orderNum = orderNum;
+    }
 
-	public String getAdviserMobile() {
-		return adviserMobile;
-	}
+    private List<HpSaveCustomerContract.AddAddition> itemAdditions;
 
-	public void setAdviserMobile(String adviserMobile) {
-		this.adviserMobile = adviserMobile;
-	}
 
-	public List<HpSaveCustomerContract.AddAddition> getItemAdditions() {
-		return itemAdditions;
-	}
+    public String getSpecification() {
+        return specification;
+    }
 
-	public long getEndTime() {
-		return endTime;
-	}
+    public void setSpecification(String specification) {
+        this.specification = specification;
+    }
 
-	public void setEndTime(long endTime) {
-		this.endTime = endTime;
-	}
+    public String getAdviserMobile() {
+        return adviserMobile;
+    }
 
-	public void setItemAdditions(List<HpSaveCustomerContract.AddAddition> itemAdditions) {
-		this.itemAdditions = itemAdditions;
-	}
+    public void setAdviserMobile(String adviserMobile) {
+        this.adviserMobile = adviserMobile;
+    }
 
-	public long getItemApplyTime() {
-		return itemApplyTime;
-	}
+    public List<HpSaveCustomerContract.AddAddition> getItemAdditions() {
+        return itemAdditions;
+    }
 
-	public void setItemApplyTime(long itemApplyTime) {
-		this.itemApplyTime = itemApplyTime;
-	}
+    public long getEndTime() {
+        return endTime;
+    }
 
-	public long getAcceptTime() {
-		return this.acceptTime;
-	}
+    public void setEndTime(long endTime) {
+        this.endTime = endTime;
+    }
 
-	public String getAdviserName() {
-		return this.adviserName;
-	}
+    public void setItemAdditions(List<HpSaveCustomerContract.AddAddition> itemAdditions) {
+        this.itemAdditions = itemAdditions;
+    }
 
-	public long getApplyTime() {
-		return this.applyTime;
-	}
+    public long getItemApplyTime() {
+        return itemApplyTime;
+    }
 
-	public long getAssignId() {
-		return this.assignId;
-	}
+    public void setItemApplyTime(long itemApplyTime) {
+        this.itemApplyTime = itemApplyTime;
+    }
 
-	public String getCtgName() {
-		return this.ctgName;
-	}
+    public long getAcceptTime() {
+        return this.acceptTime;
+    }
 
-	public String getFuneralAddress() {
-		return this.funeralAddress;
-	}
+    public String getAdviserName() {
+        return this.adviserName;
+    }
 
-	public int getItemStatus() {
-		return this.itemStatus;
-	}
+    public long getApplyTime() {
+        return this.applyTime;
+    }
 
-	public String getNote() {
-		return this.note;
-	}
+    public long getAssignId() {
+        return this.assignId;
+    }
 
-	public int getNumber() {
-		return this.number;
-	}
+    public String getCtgName() {
+        return this.ctgName;
+    }
 
-	public long getOrderItemId() {
-		return this.orderItemId;
-	}
+    public String getFuneralAddress() {
+        return this.funeralAddress;
+    }
 
-	public long getPassTime() {
-		return this.passTime;
-	}
+    public int getItemStatus() {
+        return this.itemStatus;
+    }
 
-	public long getPassUnTime() {
-		return this.passUnTime;
-	}
+    public String getNote() {
+        return this.note;
+    }
 
-	public String getSkuName() {
-		return this.skuName;
-	}
+    public int getNumber() {
+        return this.number;
+    }
 
-	public String getSkuUnit() {
-		return this.skuUnit;
-	}
+    public long getOrderItemId() {
+        return this.orderItemId;
+    }
 
-	public long getStartTime() {
-		return this.startTime;
-	}
+    public long getPassTime() {
+        return this.passTime;
+    }
 
-	public boolean isShowAcceptOrRejectFlag() {
-		return this.showAcceptOrRejectFlag;
-	}
+    public long getPassUnTime() {
+        return this.passUnTime;
+    }
 
-	public boolean isShowStartServiceFlag() {
-		return this.showStartServiceFlag;
-	}
+    public String getSkuName() {
+        return this.skuName;
+    }
 
-	public void setAcceptTime(long paramLong) {
-		this.acceptTime = paramLong;
-	}
+    public String getSkuUnit() {
+        return this.skuUnit;
+    }
 
-	public void setAdviserName(String paramString) {
-		this.adviserName = paramString;
-	}
+    public long getStartTime() {
+        return this.startTime;
+    }
 
-	public void setApplyTime(long paramLong) {
-		this.applyTime = paramLong;
-	}
+    public boolean isShowAcceptOrRejectFlag() {
+        return this.showAcceptOrRejectFlag;
+    }
 
-	public void setAssignId(long paramLong) {
-		this.assignId = paramLong;
-	}
+    public boolean isShowStartServiceFlag() {
+        return this.showStartServiceFlag;
+    }
 
-	public void setCtgName(String paramString) {
-		this.ctgName = paramString;
-	}
+    public void setAcceptTime(long paramLong) {
+        this.acceptTime = paramLong;
+    }
 
-	public void setFuneralAddress(String paramString) {
-		this.funeralAddress = paramString;
-	}
+    public void setAdviserName(String paramString) {
+        this.adviserName = paramString;
+    }
 
-	public void setItemStatus(int paramInt) {
-		this.itemStatus = paramInt;
-	}
+    public void setApplyTime(long paramLong) {
+        this.applyTime = paramLong;
+    }
 
-	public void setNote(String paramString) {
-		this.note = paramString;
-	}
+    public void setAssignId(long paramLong) {
+        this.assignId = paramLong;
+    }
 
-	public void setNumber(int paramInt) {
-		this.number = paramInt;
-	}
+    public void setCtgName(String paramString) {
+        this.ctgName = paramString;
+    }
 
-	public void setOrderItemId(long paramLong) {
-		this.orderItemId = paramLong;
-	}
+    public void setFuneralAddress(String paramString) {
+        this.funeralAddress = paramString;
+    }
 
-	public void setPassTime(long paramLong) {
-		this.passTime = paramLong;
-	}
+    public void setItemStatus(int paramInt) {
+        this.itemStatus = paramInt;
+    }
 
-	public void setPassUnTime(long paramLong) {
-		this.passUnTime = paramLong;
-	}
+    public void setNote(String paramString) {
+        this.note = paramString;
+    }
 
-	public void setShowAcceptOrRejectFlag(boolean paramBoolean) {
-		this.showAcceptOrRejectFlag = paramBoolean;
-	}
+    public void setNumber(int paramInt) {
+        this.number = paramInt;
+    }
 
-	public void setShowStartServiceFlag(boolean paramBoolean) {
-		this.showStartServiceFlag = paramBoolean;
-	}
+    public void setOrderItemId(long paramLong) {
+        this.orderItemId = paramLong;
+    }
 
-	public void setSkuName(String paramString) {
-		this.skuName = paramString;
-	}
+    public void setPassTime(long paramLong) {
+        this.passTime = paramLong;
+    }
 
-	public void setSkuUnit(String paramString) {
-		this.skuUnit = paramString;
-	}
+    public void setPassUnTime(long paramLong) {
+        this.passUnTime = paramLong;
+    }
 
-	public void setStartTime(long paramLong) {
-		this.startTime = paramLong;
-	}
+    public void setShowAcceptOrRejectFlag(boolean paramBoolean) {
+        this.showAcceptOrRejectFlag = paramBoolean;
+    }
+
+    public void setShowStartServiceFlag(boolean paramBoolean) {
+        this.showStartServiceFlag = paramBoolean;
+    }
+
+    public void setSkuName(String paramString) {
+        this.skuName = paramString;
+    }
+
+    public void setSkuUnit(String paramString) {
+        this.skuUnit = paramString;
+    }
+
+    public void setStartTime(long paramLong) {
+        this.startTime = paramLong;
+    }
 }
 
 /*

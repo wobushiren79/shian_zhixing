@@ -93,6 +93,8 @@
         </activity>
         <activity android:name="com.shian.shianlifezx.activity.ImagePreviewActivity" >
         </activity>
+        <activity android:name="com.shian.shianlifezx.activity.RoutePlanActivity" >
+        </activity>
         <activity android:name="com.yongchun.library.view.ImageSelectorActivity"/>
         <activity android:name="com.yongchun.library.view.ImagePreviewActivity"/>
         <activity android:name="com.yongchun.library.view.ImageCropActivity"/>

@@ -5,6 +5,7 @@ import com.chanven.lib.cptr.loadmore.SwipeRefreshHelper;
 import com.chanven.lib.cptr.loadmore.SwipeRefreshHelper.OnSwipeRefreshListener;
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.activity.ImagePreviewActivity;
+import com.shian.shianlifezx.activity.RoutePlanActivity;
 import com.shian.shianlifezx.activity.Shenhe1Activity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.JSONUtil;
@@ -35,6 +36,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -133,6 +135,24 @@ public class ListItemView extends BaseOrderView {
                 TextView localTextView12 = (TextView) paramViewGropMap.getView(R.id.accept);
                 TextView localTextView13 = (TextView) paramViewGropMap.getView(R.id.reject);
                 ImageView iv_call = (ImageView) paramViewGropMap.getView(R.id.iv_call);
+                Button btnMap = (Button) paramViewGropMap.getView(R.id.button_map);
+
+                if (paramWaitItem.getFuneralAddress() == null) {
+                    btnMap.setVisibility(GONE);
+                }else if(paramWaitItem.getFuneralAddress().equals("")) {
+                    btnMap.setVisibility(GONE);
+                } else {
+                    btnMap.setVisibility(VISIBLE);
+                    btnMap.setOnClickListener(new OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Intent intent = new Intent(getContext(), RoutePlanActivity.class);
+                            intent.putExtra("RoutePlanLocation", paramWaitItem.getFuneralAddress());
+                            getContext().startActivity(intent);
+
+                        }
+                    });
+                }
 
                 iv_call.setOnClickListener(new OnClickListener() {
 
@@ -189,7 +209,10 @@ public class ListItemView extends BaseOrderView {
                 } else {
                     rlPic.setVisibility(View.GONE);
                 }
-                orderIDTextView.setText(paramWaitItem.getOrderItemId() + "");//改（订单编号）
+                if (paramWaitItem.getOrderNum() != null) {
+                    orderIDTextView.setText(paramWaitItem.getOrderNum() + "");//改（订单编号）
+                }
+
                 switch (mType) {
                     case 0:
                         tlt3.setVisibility(View.GONE);

@@ -10,4 +10,9 @@ public class AppContansts {
     public static String LocalString;
     public static String LOCAL_STREET = "";
     public static String LOCAL_STREETNUM = "";
+
+    public static String LOCAL_ADDRESS = "";
+    public static double LOCAL_latitude =30.6634450000;//纬度;
+    public static double LOCAL_longitude=104.0722210000;//经度;
+
 }

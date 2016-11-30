@@ -97,13 +97,17 @@
     </style>
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
+
     -->
     <style name="AppBaseTheme" parent="Theme.AppCompat.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
+
+
         -->
     </style>
 
@@ -132,5 +136,13 @@
         <item name="android:typeface">monospace</item>
         <item name="android:textColor">@drawable/selector_tabtext</item>
     </style>
+    <style name="Bubble.TextAppearance.Dark" parent="android:TextAppearance.Medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ff7f7f7f</item>
+    </style>
+    -
 
+    <style name="Bubble.TextAppearance.Light" parent="Bubble.TextAppearance.Dark">
+        <item name="android:textColor">#ffeeeeee</item>
+    </style>
 </resources>
