@@ -99,6 +99,7 @@ public class UserCenterFragment extends BaseFragment {
 			@Override
 			public void onStart() {
 
+
 			}
 
 			@Override
