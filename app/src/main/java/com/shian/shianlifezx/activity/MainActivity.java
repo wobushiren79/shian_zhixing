@@ -317,6 +317,9 @@ public class MainActivity extends BaseActivity {
                 AppContansts.LOCAL_COUNTY = location.getAddress().district;
                 AppContansts.LOCAL_STREET = location.getAddress().street;
                 AppContansts.LOCAL_STREETNUM = location.getAddress().streetNumber;
+                AppContansts.LOCAL_ADDRESS= location.getAddress().address;
+                AppContansts.LOCAL_latitude=location.getLatitude();
+                AppContansts.LOCAL_longitude=location.getLongitude();
                 setTitleLocation(AppContansts.LOCAL_STREET + AppContansts.LOCAL_STREETNUM);
             }
         }

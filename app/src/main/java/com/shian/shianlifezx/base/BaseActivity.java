@@ -16,6 +16,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import butterknife.ButterKnife;
@@ -93,9 +94,11 @@ public class BaseActivity extends FragmentActivity {
         TextView tvHeadLeft = (TextView) findViewById(R.id.tv_head_left);
         TextView tvHeadTitle = (TextView) findViewById(R.id.tv_head_title);
         TextView tvHeadLocation = (TextView) findViewById(R.id.title_location);
+        ImageView logo= (ImageView) findViewById(R.id.logo);
         View tvHeadRight = findViewById(R.id.tv_head_right);
         if (!title.equals("title")) {
             tvHeadLocation.setVisibility(View.GONE);
+            logo.setVisibility(View.GONE);
             tvHeadTitle.setText(title);
             tvHeadTitle.setBackgroundColor(getResources().getColor(
                     R.color.transparent));
@@ -110,7 +113,7 @@ public class BaseActivity extends FragmentActivity {
                 }
             });
         } else {
-
+            logo.setVisibility(View.VISIBLE);
         }
         tvHeadRight.setOnClickListener(new OnClickListener() {
 
