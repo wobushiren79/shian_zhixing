@@ -94,25 +94,37 @@ public class BaseActivity extends FragmentActivity {
         TextView tvHeadLeft = (TextView) findViewById(R.id.tv_head_left);
         TextView tvHeadTitle = (TextView) findViewById(R.id.tv_head_title);
         TextView tvHeadLocation = (TextView) findViewById(R.id.title_location);
-        ImageView logo= (ImageView) findViewById(R.id.logo);
+        ImageView logo = (ImageView) findViewById(R.id.logo);
         View tvHeadRight = findViewById(R.id.tv_head_right);
+        TextView back = (TextView) findViewById(R.id.back);
+
         if (!title.equals("title")) {
+            back.setVisibility(View.VISIBLE);
+            tvHeadTitle.setVisibility(View.VISIBLE);
             tvHeadLocation.setVisibility(View.GONE);
             logo.setVisibility(View.GONE);
             tvHeadTitle.setText(title);
             tvHeadTitle.setBackgroundColor(getResources().getColor(
                     R.color.transparent));
-            tvHeadLeft.setText("");
-            tvHeadLeft.setCompoundDrawables(null, null, null, null);
-            tvHeadLeft.setBackgroundResource(R.drawable.ic_back_default);
-            tvHeadLeft.setOnClickListener(new OnClickListener() {
-
+            tvHeadLeft.setVisibility(View.GONE);
+            logo.setVisibility(View.GONE);
+//            tvHeadLeft.setCompoundDrawables(null, null, null, null);
+//            tvHeadLeft.setBackgroundResource(R.drawable.ic_back_default);
+//            tvHeadLeft.setOnClickListener(new OnClickListener() {
+//
+//                @Override
+//                public void onClick(View v) {
+//                    finish();
+//                }
+//            });
+            back.setOnClickListener(new OnClickListener() {
                 @Override
-                public void onClick(View v) {
+                public void onClick(View view) {
                     finish();
                 }
             });
         } else {
+            back.setVisibility(View.GONE);
             logo.setVisibility(View.VISIBLE);
         }
         tvHeadRight.setOnClickListener(new OnClickListener() {

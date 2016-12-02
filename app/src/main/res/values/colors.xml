@@ -34,6 +34,7 @@
     <color name="h_nov_text">#ff9434</color>
     <color name="blackgroundmain">#467837</color>
     <color name="chlickcolor">#f4dc5f</color>
+    <color name="text_color">#7b5237</color>
     <!-- Dialog Color -->
     <color name="version_msg_color">#ff6699ff</color>
     <color name="message_color">#ffccccff</color>
