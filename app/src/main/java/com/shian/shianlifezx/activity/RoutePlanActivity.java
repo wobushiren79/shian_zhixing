@@ -19,9 +19,11 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ZoomControls;
 
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
@@ -140,7 +142,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
         //初始线路
 
         String endStr = getIntent().getStringExtra("RoutePlanLocation");
-        endNodeStr=endStr.replace("-","");
+        endNodeStr = endStr.replace("-", "");
         Log.v("this", "endNode:" + endNodeStr);
         //设定中心点坐标
         LatLng cenpt = new LatLng(mapCenterlatitude, mapCenterlongitude);
@@ -154,6 +156,12 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
         //改变地图状态
         mBaidumap.setMapStatus(mMapStatusUpdate);
         searchButtonProcess(null);
+
+        //去掉百度图标
+        View child = mMapView.getChildAt(1);
+        if (child != null && (child instanceof ImageView || child instanceof ZoomControls)) {
+            child.setVisibility(View.INVISIBLE);
+        }
     }
 
 
