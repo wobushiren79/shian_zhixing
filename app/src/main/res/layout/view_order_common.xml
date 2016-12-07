@@ -13,7 +13,7 @@
             android:id="@+id/lv_swipe_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/white"
+            android:background="@color/main_blackground"
             android:choiceMode="singleChoice"
             android:divider="@null"
             android:dividerHeight="0dp"

@@ -6,19 +6,19 @@ package com.shian.shianlifezx.activity;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.Color;
+import android.database.DataSetObserver;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -60,9 +60,9 @@ import com.baidu.mapapi.search.route.TransitRouteResult;
 import com.baidu.mapapi.search.route.WalkingRouteLine;
 import com.baidu.mapapi.search.route.WalkingRoutePlanOption;
 import com.baidu.mapapi.search.route.WalkingRouteResult;
-
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.common.contanst.AppContansts;
+import com.shian.shianlifezx.mapapi.CustomDialog;
 import com.shian.shianlifezx.mapapi.RouteLineAdapter;
 import com.shian.shianlifezx.mapapi.overlayutil.BikingRouteOverlay;
 import com.shian.shianlifezx.mapapi.overlayutil.DrivingRouteOverlay;
@@ -71,6 +71,8 @@ import com.shian.shianlifezx.mapapi.overlayutil.OverlayManager;
 import com.shian.shianlifezx.mapapi.overlayutil.TransitRouteOverlay;
 import com.shian.shianlifezx.mapapi.overlayutil.WalkingRouteOverlay;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -116,6 +118,14 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
     String endNodeStr = "";
     String routeCity = AppContansts.LOCAL_CITY;
 
+
+    Button mDrive;
+    Button mTransit;
+    Button mWalk;
+    Button mBike;
+    List<Button> listButton = new ArrayList<>();
+    CustomDialog dialog;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -123,6 +133,15 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
         CharSequence titleLable = "路线规划";
         setTitle(titleLable);
         // 初始化地图
+        mDrive = (Button) findViewById(R.id.drive);
+        mTransit = (Button) findViewById(R.id.transit);
+        mWalk = (Button) findViewById(R.id.walk);
+        mBike = (Button) findViewById(R.id.bike);
+        listButton.add(mDrive);
+        listButton.add(mTransit);
+        listButton.add(mWalk);
+        listButton.add(mBike);
+
         mMapView = (MapView) findViewById(R.id.map);
         mBaidumap = mMapView.getMap();
         mBtnPre = (Button) findViewById(R.id.pre);
@@ -130,8 +149,6 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
         mETCity = (EditText) findViewById(R.id.et_city);
         mETstrLocation = (EditText) findViewById(R.id.et_strlocation);
         mETendLocation = (EditText) findViewById(R.id.et_endlocation);
-
-
         mBtnPre.setVisibility(View.INVISIBLE);
         mBtnNext.setVisibility(View.INVISIBLE);
         // 地图点击事件处理
@@ -156,7 +173,6 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
         //改变地图状态
         mBaidumap.setMapStatus(mMapStatusUpdate);
         searchButtonProcess(null);
-
         //去掉百度图标
         View child = mMapView.getChildAt(1);
         if (child != null && (child instanceof ImageView || child instanceof ZoomControls)) {
@@ -164,6 +180,16 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
         }
     }
 
+    private void dialogShow() {
+        dialog = new CustomDialog(RoutePlanActivity.this);
+        dialog.show();
+    }
+
+    private void dialogCancel() {
+        if (dialog != null) {
+            dialog.cancel();
+        }
+    }
 
     /**
      * 发起路线规划搜索示例
@@ -171,11 +197,14 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
      * @param v
      */
     public void searchButtonProcess(View v) {
+
         if (!mETstrLocation.getText().toString().equals("") && !mETstrLocation.getText().toString().equals("") && !mETstrLocation.getText().toString().equals("")) {
             startNodeStr = mETstrLocation.getText().toString();
             endNodeStr = mETendLocation.getText().toString();
             routeCity = mETCity.getText().toString();
         }
+        setTagPagerStyle(v);
+        dialogShow();
         Log.v(LOG_TAG, "城市:" + routeCity + " 起点：" + startNodeStr + " 终点:" + endNodeStr);
         // 重置浏览节点的路线数据
         route = null;
@@ -202,10 +231,10 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
         } else if (v.getId() == R.id.mass) {
             PlanNode stMassNode = PlanNode.withCityNameAndPlaceName("北京", "天安门");
             PlanNode enMassNode = PlanNode.withCityNameAndPlaceName("上海", "东方明珠");
-
             mSearch.masstransitSearch(new MassTransitRoutePlanOption().from(stMassNode).to(enMassNode));
             nowSearchType = 0;
         } else if (v.getId() == R.id.drive) {
+
             mSearch.drivingSearch((new DrivingRoutePlanOption())
                     .from(stNode).to(enNode));
             nowSearchType = 1;
@@ -221,6 +250,24 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
             mSearch.bikingSearch((new BikingRoutePlanOption())
                     .from(stNode).to(enNode));
             nowSearchType = 4;
+        }
+    }
+
+    /**
+     * 设置标题路径方式的样式
+     *
+     * @param v
+     */
+    private void setTagPagerStyle(View v) {
+        if (v == null) return;
+        for (Button button : listButton) {
+            if (button == v) {
+                button.setBackgroundResource(R.drawable.base_tabpager_indicator_selected_2);
+                button.setTextColor(getResources().getColor(R.color.chlickcolor));
+            } else {
+                button.setBackgroundResource(R.drawable.base_tabpager_indicator_default_2);
+                button.setTextColor(getResources().getColor(R.color.white));
+            }
         }
     }
 
@@ -336,6 +383,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
         popupText.setBackgroundResource(R.drawable.popup);
         popupText.setTextColor(0xFF000000);
         popupText.setText(nodeTitle);
+        popupText.setGravity(Gravity.CENTER);
         mBaidumap.showInfoWindow(new InfoWindow(popupText, nodeLocation, 0));
     }
 
@@ -387,124 +435,319 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
     }
 
     private void choicePointDialog(final SuggestAddrInfo suggestAddrInfo) {
+        final Dialog choiceDialog = new Dialog(RoutePlanActivity.this, R.style.CustomDialog);
 
-        final AlertDialog dialog = new AlertDialog.Builder(RoutePlanActivity.this).setTitle("选择地点").setPositiveButton("确认", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                searchButtonProcess(null);
+        View view = LayoutInflater.from(RoutePlanActivity.this).inflate(R.layout.dialog_choicepoint_2, null);
+        final Button cancel = (Button) view.findViewById(R.id.cancel);
+        final Button sure = (Button) view.findViewById(R.id.sure);
+        final ExpandableListView expandableListView = (ExpandableListView) view.findViewById(R.id.expandable_listview);
+
+        String strName;
+        String endName;
+
+        List<PoiInfo> listStartInfo = suggestAddrInfo.getSuggestStartNode();
+        List<PoiInfo> listEndInfo = suggestAddrInfo.getSuggestEndNode();
+
+        List<String> strListData = new ArrayList<>();
+        List<String> endListData = new ArrayList<>();
+
+        final int choiceStartPointNum = 0;
+        int choiceEndPointNum = 0;
+
+        if (listStartInfo == null) {
+            strName = startNodeStr;
+        } else {
+            strName = listStartInfo.get(0).name;
+            for (int i = 0; i < listStartInfo.size(); i++) {
+                strListData.add(listStartInfo.get(i).name);
             }
-        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                finish();
-            }
-        }).create();
-        View view = LayoutInflater.from(RoutePlanActivity.this).inflate(R.layout.dialog_choicepoint, null, false);
+        }
 
-        class ChoicePointDialogAdapter extends BaseAdapter {
-            int type;
-            int choiceStartPointNum = 0;
-            int choiceEndPointNum = 0;
-
-            public ChoicePointDialogAdapter(int type) {
-                this.type = type;
-            }
-
-            @Override
-            public int getCount() {
-
-                if (type == 0) {
-                    if (suggestAddrInfo.getSuggestStartNode() == null) {
-                        return 1;
-                    } else {
-                        return suggestAddrInfo.getSuggestStartNode().size();
-                    }
-                } else if (type == 1) {
-                    if (suggestAddrInfo.getSuggestEndNode() == null) {
-                        return 1;
-                    } else {
-                        return suggestAddrInfo.getSuggestEndNode().size();
-                    }
-                } else {
-                    return 0;
-                }
-            }
-
-            @Override
-            public Object getItem(int i) {
-                return null;
-            }
-
-            @Override
-            public long getItemId(int i) {
-                return 0;
-            }
-
-            @Override
-            public View getView(final int i, View view, ViewGroup viewGroup) {
-                final TextView textView = new TextView(RoutePlanActivity.this);
-                if (type == 0) {
-                    if (suggestAddrInfo.getSuggestStartNode() == null) {
-                        textView.setText(startNodeStr);
-                        textView.setTextColor(Color.RED);
-                    } else {
-                        if (i == choiceStartPointNum) {
-                            textView.setTextColor(Color.RED);
-                        } else {
-                            textView.setTextColor(Color.BLACK);
-                        }
-                        textView.setText(suggestAddrInfo.getSuggestStartNode().get(i).name);
-                    }
-
-                } else if (type == 1) {
-                    if (suggestAddrInfo.getSuggestEndNode() == null) {
-                        textView.setText(endNodeStr);
-                        textView.setTextColor(Color.RED);
-                    } else {
-                        if (i == choiceEndPointNum) {
-                            textView.setTextColor(Color.RED);
-                        } else {
-                            textView.setTextColor(Color.BLACK);
-                        }
-                        textView.setText(suggestAddrInfo.getSuggestEndNode().get(i).name);
-                    }
-                }
-                textView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if (type == 0 && suggestAddrInfo.getSuggestStartNode() != null) {
-                            startNodeStr = suggestAddrInfo.getSuggestStartNode().get(i).name;
-                            choiceStartPointNum = i;
-                        } else if (type == 1 && suggestAddrInfo.getSuggestEndNode() != null) {
-                            endNodeStr = suggestAddrInfo.getSuggestEndNode().get(i).name;
-                            choiceEndPointNum = i;
-                        }
-                        notifyDataSetChanged();
-                    }
-                });
-                return textView;
+        if (listEndInfo == null) {
+            endName = endNodeStr;
+        } else {
+            endName = listEndInfo.get(0).name;
+            for (int i = 0; i < listEndInfo.size(); i++) {
+                endListData.add(listEndInfo.get(i).name);
             }
         }
 
 
-        ListView startListView = (ListView) view.findViewById(R.id.startpoint_list);
-        TextView startText = new TextView(RoutePlanActivity.this);
-        startText.setText("起始点位置");
-        startListView.addHeaderView(startText);
-        startListView.setAdapter(new ChoicePointDialogAdapter(0));
+        final List<String> groupArray = new ArrayList<>();//组列表
+        final List<List<String>> childArray = new ArrayList<>();//子列表
 
-        ListView endListView = (ListView) view.findViewById(R.id.endpoint_list);
-        TextView endText = new TextView(RoutePlanActivity.this);
-        endText.setText("结束点位置");
-        endListView.addHeaderView(endText);
-        endListView.setAdapter(new ChoicePointDialogAdapter(1));
+        groupArray.add(strName);
+        groupArray.add(endName);
+        childArray.add(strListData);
+        childArray.add(endListData);
 
-        dialog.setView(view);
-        dialog.setCancelable(false);
-        dialog.show();
+        View.OnClickListener dialogOnClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (view == cancel) {
+                    Log.v("this", "cancel");
+                    choiceDialog.cancel();
+                    isMapChlick = true;
+                } else if (view == sure) {
+                    Log.v("this", "sure");
+                    choiceDialog.cancel();
+                    searchButtonProcess(null);
+                }
+            }
+        };
+
+        final ExpandableListAdapter expandableListAdapter = new ExpandableListAdapter() {
+
+            @Override
+            public void registerDataSetObserver(DataSetObserver dataSetObserver) {
+
+            }
+
+            @Override
+            public void unregisterDataSetObserver(DataSetObserver dataSetObserver) {
+
+            }
+
+            @Override
+            public int getGroupCount() {
+                return groupArray.size();
+            }
+
+            @Override
+            public int getChildrenCount(int i) {
+                return childArray.get(i).size();
+            }
+
+            @Override
+            public Object getGroup(int i) {
+                return null;
+            }
+
+            @Override
+            public Object getChild(int i, int i1) {
+                return childArray.get(i).get(i1);
+            }
+
+            @Override
+            public long getGroupId(int i) {
+                return groupArray.size();
+            }
+
+            @Override
+            public long getChildId(int i, int i1) {
+                return i1;
+            }
+
+            @Override
+            public boolean hasStableIds() {
+                return false;
+            }
+
+            @Override
+            public View getGroupView(int i, boolean b, View view, ViewGroup viewGroup) {
+                //父列表设置
+                if (view == null) {
+                    view = LayoutInflater.from(RoutePlanActivity.this).inflate(R.layout.view_map_dialog_father, null);
+                }
+                TextView textTitle = (TextView) view.findViewById(R.id.text_title);
+                TextView textLocation = (TextView) view.findViewById(R.id.text_location);
+                if (i == 0) {
+                    //起始点
+                    textTitle.setText("起");
+                } else {
+                    //结束点
+                    textTitle.setText("终");
+                }
+                textLocation.setText(groupArray.get(i));
+                return view;
+            }
+
+            @Override
+            public View getChildView(final int i, final int i1, boolean b, View view, ViewGroup viewGroup) {
+                //子列表设置
+                TextView textView = new TextView(RoutePlanActivity.this);
+                textView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (i == 0) {
+                            groupArray.set(0, childArray.get(i).get(i1));
+                        } else {
+                            groupArray.set(1, childArray.get(i).get(i1));
+                        }
+
+                        expandableListView.collapseGroup(i);
+                    }
+                });
+                textView.setText(childArray.get(i).get(i1));
+                return textView;
+            }
+
+            @Override
+            public boolean isChildSelectable(int i, int i1) {
+                return true;
+            }
+
+            @Override
+            public boolean areAllItemsEnabled() {
+                return false;
+            }
+
+            @Override
+            public boolean isEmpty() {
+                return false;
+            }
+
+            @Override
+            public void onGroupExpanded(int i) {
+
+            }
+
+            @Override
+            public void onGroupCollapsed(int i) {
+
+            }
+
+            @Override
+            public long getCombinedChildId(long l, long l1) {
+                return 0;
+            }
+
+            @Override
+            public long getCombinedGroupId(long l) {
+                return 0;
+            }
+        };
 
 
+        expandableListView.setAdapter(expandableListAdapter);
+        cancel.setOnClickListener(dialogOnClick);
+        sure.setOnClickListener(dialogOnClick);
+
+
+        choiceDialog.setContentView(view);
+        choiceDialog.setCancelable(false);
+        choiceDialog.show();
     }
+//    private void choicePointDialog(final SuggestAddrInfo suggestAddrInfo) {
+//
+//        AlertDialog dialog = new AlertDialog.Builder(RoutePlanActivity.this).setTitle("选择地址").setPositiveButton("确认", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                searchButtonProcess(null);
+//            }
+//        }).setNegativeButton("取消", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialogInterface, int i) {
+//                isMapChlick = true;
+//            }
+//        }).create();
+//
+//        View view = LayoutInflater.from(RoutePlanActivity.this).inflate(R.layout.dialog_choicepoint, null, false);
+//
+//        class ChoicePointDialogAdapter extends BaseAdapter {
+//            int type;
+//            int choiceStartPointNum = 0;
+//            int choiceEndPointNum = 0;
+//
+//            public ChoicePointDialogAdapter(int type) {
+//                this.type = type;
+//            }
+//
+//            @Override
+//            public int getCount() {
+//
+//                if (type == 0) {
+//                    if (suggestAddrInfo.getSuggestStartNode() == null) {
+//                        return 1;
+//                    } else {
+//                        return suggestAddrInfo.getSuggestStartNode().size();
+//                    }
+//                } else if (type == 1) {
+//                    if (suggestAddrInfo.getSuggestEndNode() == null) {
+//                        return 1;
+//                    } else {
+//                        return suggestAddrInfo.getSuggestEndNode().size();
+//                    }
+//                } else {
+//                    return 0;
+//                }
+//            }
+//
+//            @Override
+//            public Object getItem(int i) {
+//                return null;
+//            }
+//
+//            @Override
+//            public long getItemId(int i) {
+//                return 0;
+//            }
+//
+//            @Override
+//            public View getView(final int i, View view, ViewGroup viewGroup) {
+//                final TextView textView = new TextView(RoutePlanActivity.this);
+//                if (type == 0) {
+//                    if (suggestAddrInfo.getSuggestStartNode() == null) {
+//                        textView.setText(startNodeStr);
+//                        textView.setTextColor(Color.RED);
+//                    } else {
+//                        if (i == choiceStartPointNum) {
+//                            textView.setTextColor(Color.RED);
+//                        } else {
+//                            textView.setTextColor(Color.BLACK);
+//                        }
+//                        textView.setText(suggestAddrInfo.getSuggestStartNode().get(i).name);
+//                    }
+//
+//                } else if (type == 1) {
+//                    if (suggestAddrInfo.getSuggestEndNode() == null) {
+//                        textView.setText(endNodeStr);
+//                        textView.setTextColor(Color.RED);
+//                    } else {
+//                        if (i == choiceEndPointNum) {
+//                            textView.setTextColor(Color.RED);
+//                        } else {
+//                            textView.setTextColor(Color.BLACK);
+//                        }
+//                        textView.setText(suggestAddrInfo.getSuggestEndNode().get(i).name);
+//                    }
+//                }
+//                textView.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        if (type == 0 && suggestAddrInfo.getSuggestStartNode() != null) {
+//                            startNodeStr = suggestAddrInfo.getSuggestStartNode().get(i).name;
+//                            choiceStartPointNum = i;
+//                        } else if (type == 1 && suggestAddrInfo.getSuggestEndNode() != null) {
+//                            endNodeStr = suggestAddrInfo.getSuggestEndNode().get(i).name;
+//                            choiceEndPointNum = i;
+//                        }
+//                        notifyDataSetChanged();
+//                    }
+//                });
+//                return textView;
+//            }
+//        }
+//
+//
+//        ListView startListView = (ListView) view.findViewById(R.id.startpoint_list);
+//        TextView startText = new TextView(RoutePlanActivity.this);
+//        startText.setText("起始点位置");
+//        startListView.addHeaderView(startText);
+//        startListView.setAdapter(new ChoicePointDialogAdapter(0));
+//
+//        ListView endListView = (ListView) view.findViewById(R.id.endpoint_list);
+//        TextView endText = new TextView(RoutePlanActivity.this);
+//        endText.setText("结束点位置");
+//        endListView.addHeaderView(endText);
+//        endListView.setAdapter(new ChoicePointDialogAdapter(1));
+//
+//        dialog.setView(view);
+//        dialog.setCancelable(false);
+//        dialog.show();
+//
+//
+//    }
 
     private void noFindPoint() {
         if (isFirstShowText) {
@@ -512,9 +755,9 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
             isFirstShowText = false;
 
         }
-
         isMapChlick = true;
     }
+
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -523,6 +766,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
 
     @Override
     public void onGetWalkingRouteResult(WalkingRouteResult result) {
+        dialogCancel();
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
             noFindPoint();
         }
@@ -580,7 +824,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
 
     @Override
     public void onGetTransitRouteResult(TransitRouteResult result) {
-
+        dialogCancel();
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
             noFindPoint();
         }
@@ -638,6 +882,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
 
     @Override
     public void onGetMassTransitRouteResult(MassTransitRouteResult result) {
+        dialogCancel();
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
             noFindPoint();
         }
@@ -692,6 +937,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
 
     @Override
     public void onGetDrivingRouteResult(DrivingRouteResult result) {
+        dialogCancel();
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
             noFindPoint();
         }
@@ -751,6 +997,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
 
     @Override
     public void onGetBikingRouteResult(BikingRouteResult result) {
+        dialogCancel();
         if (result == null || result.error != SearchResult.ERRORNO.NO_ERROR) {
             noFindPoint();
         }
@@ -931,6 +1178,8 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
     public boolean onMapPoiClick(MapPoi latLng) {
         isUseNumPoint = true;
         if (isMapChlick) {
+            mBtnPre.setVisibility(View.INVISIBLE);
+            mBtnNext.setVisibility(View.INVISIBLE);
             //获取经纬度
             double latitude = latLng.getPosition().latitude;
             double longitude = latLng.getPosition().longitude;
