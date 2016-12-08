@@ -2,18 +2,22 @@ package com.shian.shianlifezx.activity;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.PermissionChecker;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import butterknife.InjectView;
 
@@ -39,7 +43,7 @@ import com.shian.shianlifezx.provide.result.HrCommentResult;
 
 import org.support.v4.annotation.NonNull;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity  {
     @InjectView(R.id.fl_main)
     View flMain;
     @InjectView(R.id.rb_main_1)
@@ -66,25 +70,41 @@ public class MainActivity extends BaseActivity {
 
     @TargetApi(23)
     private void initPermission() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 1002);
-            } else {
-
-            }
-        } else {
-
+        int hasWriteContactsPermission = PermissionChecker.checkSelfPermission(MainActivity.this,Manifest.permission.CALL_PHONE);
+        if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
+            Activity activty = this;
+            ActivityCompat.requestPermissions(activty, new String[]{Manifest.permission.CALL_PHONE,},
+                    1002);
+            return;
         }
+
+//        if (Build.VERSION.SDK_INT >= 23) {
+//            if (ContextCompat.checkSelfPermission(this, Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+//                requestPermissions(new String[]{Manifest.permission.CALL_PHONE}, 1002);
+//            } else {
+//
+//            }
+//        } else {
+//
+//        }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 1002) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
+//            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//
+//            } else {
+//
+//            }
+            if (permissions[0].equals(Manifest.permission.CALL_PHONE) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //用户同意使用write
+                Log.v("this","1");
             } else {
-
+                //用户不同意，自行处理即可
+                finish();
+                Log.v("this","2");
             }
         }
     }
@@ -317,9 +337,9 @@ public class MainActivity extends BaseActivity {
                 AppContansts.LOCAL_COUNTY = location.getAddress().district;
                 AppContansts.LOCAL_STREET = location.getAddress().street;
                 AppContansts.LOCAL_STREETNUM = location.getAddress().streetNumber;
-                AppContansts.LOCAL_ADDRESS= location.getAddress().address;
-                AppContansts.LOCAL_latitude=location.getLatitude();
-                AppContansts.LOCAL_longitude=location.getLongitude();
+                AppContansts.LOCAL_ADDRESS = location.getAddress().address;
+                AppContansts.LOCAL_latitude = location.getLatitude();
+                AppContansts.LOCAL_longitude = location.getLongitude();
                 setTitleLocation(AppContansts.LOCAL_STREET + AppContansts.LOCAL_STREETNUM);
             }
         }
