@@ -29,6 +29,7 @@ import com.shian.shianlifezx.activity.LoginActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.FilePathUtils;
 import com.shian.shianlifezx.common.utils.ObjectMapperFactory;
+import com.shian.shianlifezx.mapapi.CustomDialog;
 
 /**
  * 数据传输底层封装
@@ -54,7 +55,8 @@ public class HttpRequestExecutor {
 
 	}
 
-	ProgressDialog pd = null;
+//	ProgressDialog pd = null;
+	CustomDialog pd=null;
 
 	/**
 	 * Post请求
@@ -84,10 +86,12 @@ public class HttpRequestExecutor {
 				pd = null;
 				getSession(context);
 			} else {
-				pd = new ProgressDialog(context);
-				pd.setMessage("正在载入...");
-				pd.setIndeterminateDrawable(context.getResources().getDrawable(
-						R.drawable.spinner));
+//				pd = new ProgressDialog(context);
+//				pd.setMessage("正在载入...");
+//				pd.setIndeterminateDrawable(context.getResources().getDrawable(
+//						R.drawable.spinner));
+				pd=new CustomDialog(context);
+				pd.setCancelable(false);
 				getSession(context);
 			}
 			Log.e("tag", "methed=" + C_sBaseUrl + "/" + method);
