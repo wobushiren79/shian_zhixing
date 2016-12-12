@@ -143,6 +143,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/dimen_15dp"
                 android:layout_toRightOf="@+id/tv_qt0"
+                android:ems="9"
                 android:gravity="left"
                 android:text="AAAAAAAAAAAAAA"
                 android:textColor="@color/black"
