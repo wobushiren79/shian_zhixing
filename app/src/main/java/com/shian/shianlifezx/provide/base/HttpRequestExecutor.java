@@ -2,6 +2,7 @@ package com.shian.shianlifezx.provide.base;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.sql.Struct;
 
 import org.apache.http.Header;
 import org.apache.http.HttpEntity;
@@ -37,8 +38,10 @@ import com.shian.shianlifezx.mapapi.CustomDialog;
  * @author Paul
  * 
  */
+
 @SuppressWarnings("deprecation")
 public class HttpRequestExecutor {
+
 	private static final String C_sBaseUrl = AppContansts.BaseURL;// "http://120.25.103.60:8080/hzrapi/";
 	private AsyncHttpClient httpClient = new AsyncHttpClient();
 	private Header[] headers;
@@ -46,7 +49,9 @@ public class HttpRequestExecutor {
 	/**
 	 * 初始化请求头
 	 */
+
 	public HttpRequestExecutor() {
+
 		if (headers == null)
 			headers = new Header[3];
 		headers[0] = new BasicHeader("systemType", "2");
@@ -78,6 +83,7 @@ public class HttpRequestExecutor {
 		try {
 			// 判断是否有参数
 			if (params != null) {
+
 				String httpParams = params.getHttpParams();
 				httpEntity = new StringEntity(httpParams, HTTP.UTF_8);
 
