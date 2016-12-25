@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/main_blackground"
     android:layout_height="match_parent" >
 
     <LinearLayout
@@ -16,7 +17,7 @@
             android:background="@drawable/ic_home_reg"
             android:gravity="center"
             android:text="订单详情"
-            android:textColor="@color/white"
+            android:textColor="@color/text_color"
             android:textSize="@dimen/dimen_40dp" />
 
         <LinearLayout
@@ -185,7 +186,7 @@
                 android:background="@drawable/ic_home_reg"
                 android:gravity="center"
                 android:text="重新签字"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color"
                 android:textSize="@dimen/dimen_40dp" />
 
             <TextView
@@ -197,7 +198,7 @@
                 android:background="@drawable/ic_home_reg"
                 android:gravity="center"
                 android:text="确认支付"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color"
                 android:textSize="@dimen/dimen_40dp" />
         </LinearLayout>
     </LinearLayout>
