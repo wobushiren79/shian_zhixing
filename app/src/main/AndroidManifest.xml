@@ -2,18 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shian.shianlifezx"
     android:versionCode="6"
-    android:versionName="1.4" >
+    android:versionName="1.4">
 
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.READ_LOGS" >
-    </uses-permission>
-    <uses-permission android:name="android.permission.CALL_PHONE" >
-    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+    <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <!-- Device POWER 需要系统权限 -->
@@ -37,150 +34,185 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
-    
-<uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.shian.shianlifezx" />
-    <permission 
+
+    <uses-permission android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.shian.shianlifezx" />
+
+    <permission
         android:name="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.shian.shianlifezx"
-        android:protectionLevel="normal">
-    </permission>
+        android:protectionLevel="normal"></permission>
     <application
         android:name="com.shian.shianlifezx.base.SaBaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
             android:name="com.shian.shianlifezx.activity.SplashActivity"
-            android:label="@string/app_name" >
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.shian.shianlifezx.activity.LoginActivity" >
-        </activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.LoginActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.shian.shianlifezx.activity.MainActivity"
+            android:configChanges="orientation|screenSize"
             android:launchMode="singleTask"
-            android:theme="@style/StyledIndicators" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.NewOrderActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.EditOrderActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.PayActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.PayEwmActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.PayFinishActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.PayShouActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.PgzxActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.SettingsActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.ShenheActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.Shenhe1Activity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.WebActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.MessageDetailActviity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.UserInfoActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.ImagePreviewActivity" >
-        </activity>
-        <activity android:name="com.shian.shianlifezx.activity.RoutePlanActivity" >
-        </activity>
-        <activity android:name="com.yongchun.library.view.ImageSelectorActivity"/>
-        <activity android:name="com.yongchun.library.view.ImagePreviewActivity"/>
-        <activity android:name="com.yongchun.library.view.ImageCropActivity"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.NewOrderActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.EditOrderActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.PayActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.PayEwmActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.PayFinishActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.PayShouActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.PgzxActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.SettingsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.ShenheActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.Shenhe1Activity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.WebActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.MessageDetailActviity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.UserInfoActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.ImagePreviewActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.shian.shianlifezx.activity.RoutePlanActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name="com.yongchun.library.view.ImageSelectorActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yongchun.library.view.ImagePreviewActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.yongchun.library.view.ImageCropActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.shian.shianlifezx.activity.CustomerActivity"
-            android:theme="@style/StyledIndicators" >
-        </activity>
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"></activity>
         <activity
             android:name="com.shian.shianlifezx.activity.MessageListActivity"
-            android:theme="@style/StyledIndicators" >
-        </activity>
-         <activity
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators"></activity>
+        <activity
             android:name="com.chosen.kf5sdk.ImageBrowerActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.chosen.kf5sdk.HelpCenterActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.chosen.kf5sdk.FeedBackActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.chosen.kf5sdk.LookFeedBackActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.chosen.kf5sdk.HelpCenterTypeActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.chosen.kf5sdk.HelpCenterTypeChildActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.chosen.kf5sdk.HelpCenterTypeDetailsActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.chosen.kf5sdk.FeedBackDetailsActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
         <activity
             android:name="com.chosen.kf5sdk.LinkUrlActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.chosen.kf5sdk.ImageActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name="com.chosen.kf5sdk.OrderAttributeActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
+
             android:name="com.chosen.kf5sdk.KF5ChatActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustResize" >
-        </activity>
+            android:windowSoftInputMode="stateHidden|adjustResize"></activity>
 
 
         <activity
+
             android:name="com.kf5sdk.image.ImageSelectorActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" >
-        </activity>
+            android:screenOrientation="portrait"></activity>
 
         <service
             android:name="com.kf5chat.service.MessageService"
-            android:enabled="true" >
-        </service>
-       <!-- push应用定义消息receiver声明 -->
-        <receiver android:name="com.shian.shianlifezx.common.push.MyPushMessageReceiver" >
+            android:enabled="true"></service>
+        <!-- push应用定义消息receiver声明 -->
+        <receiver android:name="com.shian.shianlifezx.common.push.MyPushMessageReceiver">
             <intent-filter>
 
                 <!-- 接收push消息 -->
@@ -194,7 +226,7 @@
         <!-- push必须的receviver和service声明 -->
         <receiver
             android:name="com.baidu.android.pushservice.PushServiceReceiver"
-            android:process=":bdservice_v1" >
+            android:process=":bdservice_v1">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -209,7 +241,7 @@
         </receiver>
         <receiver
             android:name="com.baidu.android.pushservice.RegistrationReceiver"
-            android:process=":bdservice_v1" >
+            android:process=":bdservice_v1">
             <intent-filter>
                 <action android:name="com.baidu.android.pushservice.action.METHOD" />
                 <action android:name="com.baidu.android.pushservice.action.BIND_SYNC" />
@@ -220,12 +252,12 @@
                 <data android:scheme="package" />
             </intent-filter>
         </receiver>
-        
+
 
         <service
             android:name="com.baidu.android.pushservice.PushService"
             android:exported="true"
-            android:process=":bdservice_v1" >
+            android:process=":bdservice_v1">
             <intent-filter>
                 <action android:name="com.baidu.android.pushservice.action.PUSH_SERVICE" />
             </intent-filter>
@@ -233,13 +265,13 @@
         <service
             android:name="com.baidu.android.pushservice.CommandService"
             android:exported="true" />
-        
+
         <!-- 适配Android N系统必需的ContentProvider声明，写权限包含应用包名-->
-		<provider
-			android:name="com.baidu.android.pushservice.PushInfoProvider"
-			android:authorities="com.shian.shianlifezx.bdpush"
-			android:writePermission="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.shian.shianlifezx"
-			android:exported="true" />
+        <provider
+            android:name="com.baidu.android.pushservice.PushInfoProvider"
+            android:authorities="com.shian.shianlifezx.bdpush"
+            android:exported="true"
+            android:writePermission="baidu.push.permission.WRITE_PUSHINFOPROVIDER.com.shian.shianlifezx" />
 
 
         <!-- 在百度开发者中心查询应用的API Key -->
@@ -250,10 +282,9 @@
         <service
             android:name="com.baidu.location.f"
             android:enabled="true"
-            android:process=":remote" >
+            android:process=":remote">
             <intent-filter>
-                <action android:name="com.baidu.location.service_v2.2" >
-                </action>
+                <action android:name="com.baidu.location.service_v2.2"></action>
             </intent-filter>
         </service>
 

@@ -26,7 +26,17 @@ public class WaitItem {
     private long endTime;
     private String adviserMobile;
     String specification;
+
     private String orderNum;
+    private String zsLocation;
+
+    public String getZsLocation() {
+        return zsLocation;
+    }
+
+    public void setZsLocation(String zsLocation) {
+        this.zsLocation = zsLocation;
+    }
 
     public String getOrderNum() {
         return orderNum;

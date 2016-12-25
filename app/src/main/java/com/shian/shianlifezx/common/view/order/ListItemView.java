@@ -126,7 +126,7 @@ public class ListItemView extends BaseOrderView {
                 localTextView2.setText(paramWaitItem.getSkuName());
                 localTextView3.setText(paramWaitItem.getNumber() + paramWaitItem.getSkuUnit());
                 localTextView4.setText(paramWaitItem.getAdviserName());
-                localTextView5.setText(paramWaitItem.getFuneralAddress());
+                localTextView5.setText(paramWaitItem.getZsLocation());
                 localTextView6.setText(paramWaitItem.getNote());
                 localTextView7.setText(Utils.getDateUtils(paramWaitItem.getStartTime()));
                 localTextView9.setText(Utils.getDateUtils(paramWaitItem.getAcceptTime()));

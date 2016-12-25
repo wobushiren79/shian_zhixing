@@ -97,7 +97,7 @@ public class HttpRequestExecutor {
 //				pd.setIndeterminateDrawable(context.getResources().getDrawable(
 //						R.drawable.spinner));
 				pd=new CustomDialog(context);
-				pd.setCancelable(false);
+				pd.setCanceledOnTouchOutside(false);
 				getSession(context);
 			}
 			Log.e("tag", "methed=" + C_sBaseUrl + "/" + method);
