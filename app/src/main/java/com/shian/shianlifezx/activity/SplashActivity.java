@@ -26,15 +26,7 @@ import com.shian.shianlifezx.provide.result.HrLoginResult;
 
 public class SplashActivity extends BaseActivity implements OnPushListener {
     RelativeLayout fl;
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 0) {
-                fl.setBackgroundResource(R.drawable.loading);
-            }
-        }
-    };
+
 
     @Override
     protected void onCreate(Bundle arg0) {
@@ -44,7 +36,7 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
 
     private void initView() {
         fl = new RelativeLayout(this);
-        fl.setBackgroundResource(R.drawable.fabuhui);
+        fl.setBackgroundResource(R.drawable.loading);
         final ImageView iv = new ImageView(this);
         LayoutParams lap = new LayoutParams(LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT);
@@ -58,9 +50,8 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(4000);
-                    handler.obtainMessage(0).sendToTarget();
-                    Thread.sleep(1000);
+                    Thread.sleep(2500);
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
