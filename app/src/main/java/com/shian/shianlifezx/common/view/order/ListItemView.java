@@ -137,9 +137,9 @@ public class ListItemView extends BaseOrderView {
                 ImageView iv_call = (ImageView) paramViewGropMap.getView(R.id.iv_call);
                 Button btnMap = (Button) paramViewGropMap.getView(R.id.button_map);
 
-                if (paramWaitItem.getFuneralAddress() == null) {
+                if (paramWaitItem.getZsLocation() == null) {
                     btnMap.setVisibility(GONE);
-                }else if(paramWaitItem.getFuneralAddress().equals("")) {
+                }else if(paramWaitItem.getZsLocation().equals("")) {
                     btnMap.setVisibility(GONE);
                 } else {
                     btnMap.setVisibility(VISIBLE);
@@ -147,7 +147,7 @@ public class ListItemView extends BaseOrderView {
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(getContext(), RoutePlanActivity.class);
-                            intent.putExtra("RoutePlanLocation", paramWaitItem.getFuneralAddress());
+                            intent.putExtra("RoutePlanLocation", paramWaitItem.getZsLocation());
                             getContext().startActivity(intent);
 
                         }

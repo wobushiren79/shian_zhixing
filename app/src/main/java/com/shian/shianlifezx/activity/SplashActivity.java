@@ -5,6 +5,8 @@ import android.animation.Animator.AnimatorListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
@@ -23,6 +25,17 @@ import com.shian.shianlifezx.provide.params.HpLoginParams;
 import com.shian.shianlifezx.provide.result.HrLoginResult;
 
 public class SplashActivity extends BaseActivity implements OnPushListener {
+    RelativeLayout fl;
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (msg.what == 0) {
+                fl.setBackgroundResource(R.drawable.loading);
+            }
+        }
+    };
+
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
@@ -30,8 +43,8 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
     }
 
     private void initView() {
-        RelativeLayout fl = new RelativeLayout(this);
-        fl.setBackgroundResource(R.drawable.loading);
+        fl = new RelativeLayout(this);
+        fl.setBackgroundResource(R.drawable.fabuhui);
         final ImageView iv = new ImageView(this);
         LayoutParams lap = new LayoutParams(LayoutParams.WRAP_CONTENT,
                 LayoutParams.WRAP_CONTENT);
@@ -45,7 +58,9 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2500);
+                    Thread.sleep(4000);
+                    handler.obtainMessage(0).sendToTarget();
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
