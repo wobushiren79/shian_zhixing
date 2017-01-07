@@ -29,6 +29,15 @@ public class WaitItem {
 
     private String orderNum;
     private String zsLocation;
+    private long skuId;
+
+    public long getSkuId() {
+        return skuId;
+    }
+
+    public void setSkuId(long skuId) {
+        this.skuId = skuId;
+    }
 
     public String getZsLocation() {
         return zsLocation;

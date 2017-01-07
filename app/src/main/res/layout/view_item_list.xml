@@ -113,16 +113,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_weight="1"
                 android:text="花艺2"
                 android:textColor="@color/black"
                 android:textSize="@dimen/text_size_detail_list" />
+
+            <ImageView
+                android:id="@+id/iv_data"
+                android:layout_width="@dimen/dimen_40dp"
+                android:scaleType="fitCenter"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_gravity="bottom"
+                android:src="@drawable/moreinfo" />
 
             <TextView
                 android:id="@+id/tv_item_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
+                android:layout_marginLeft="@dimen/dimen_10dp"
                 android:layout_weight="1"
                 android:text="一套"
                 android:textColor="@color/black"

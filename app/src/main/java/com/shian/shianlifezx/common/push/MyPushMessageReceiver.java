@@ -40,6 +40,7 @@ import com.shian.shianlifezx.provide.result.HrMessageList.MessageList;
  */
 
 public class MyPushMessageReceiver extends PushMessageReceiver {
+
     /** TAG to Log */
     public static final String TAG = MyPushMessageReceiver.class
             .getSimpleName();
@@ -116,7 +117,6 @@ public class MyPushMessageReceiver extends PushMessageReceiver {
                 e.printStackTrace();
             }
         }
-
         // Demo更新界面展示代码，应用请在这里加入自己的处理逻辑
         updateContent(context, messageString);
     }

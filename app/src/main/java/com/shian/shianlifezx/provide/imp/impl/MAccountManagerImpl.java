@@ -12,9 +12,11 @@ import com.shian.shianlifezx.provide.params.HpLoginParams;
 import com.shian.shianlifezx.provide.params.HpPageParams;
 import com.shian.shianlifezx.provide.params.HpReadMessage;
 import com.shian.shianlifezx.provide.params.HpRejectParams;
+import com.shian.shianlifezx.provide.params.HpSkuIdParams;
 import com.shian.shianlifezx.provide.params.HpStartServiceParams;
 import com.shian.shianlifezx.provide.params.HpSubmit4AuditParams;
 import com.shian.shianlifezx.provide.result.HrCommentResult;
+import com.shian.shianlifezx.provide.result.HrGetSKUDetails;
 import com.shian.shianlifezx.provide.result.HrLoginResult;
 import com.shian.shianlifezx.provide.result.HrMessageList;
 import com.shian.shianlifezx.provide.result.HrUserInfo;
@@ -153,4 +155,9 @@ public class MAccountManagerImpl implements MAccountManager {
         excutor.requestPost(context, "user/changeCurAddress", Object.class, params,
                 handler);}
 
+	@Override
+	public void getSKUDetails(Context context, HpSkuIdParams params, HttpResponseHandler<HrGetSKUDetails> handler) {
+		excutor.requestPost(context, "order/item/list/get/skudetails", HrGetSKUDetails.class, params,
+				handler);
+	}
 }

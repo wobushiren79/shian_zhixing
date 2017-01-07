@@ -21,7 +21,9 @@ import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpAcceptParams;
 import com.shian.shianlifezx.provide.params.HpPageParams;
 import com.shian.shianlifezx.provide.params.HpRejectParams;
+import com.shian.shianlifezx.provide.params.HpSkuIdParams;
 import com.shian.shianlifezx.provide.params.HpStartServiceParams;
+import com.shian.shianlifezx.provide.result.HrGetSKUDetails;
 import com.shian.shianlifezx.provide.result.HrWaitExecuteList;
 import com.shian.shianlifezx.provide.result.WaitItem;
 
@@ -33,6 +35,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -107,6 +110,7 @@ public class ListItemView extends BaseOrderView {
                 View rlPic = paramViewGropMap.getView(R.id.rl_pic);
                 ImageView ivPic1 = (ImageView) paramViewGropMap.getView(R.id.btn_ht_pic_0);
                 ImageView ivPic2 = (ImageView) paramViewGropMap.getView(R.id.btn_ht_pic_1);
+                ImageView moreInfo= (ImageView) paramViewGropMap.getView(R.id.iv_data);
                 ((TextView) paramViewGropMap.getView(R.id.tv_item_0))
                         .setText("派单时间:" + Utils.getDateUtils(paramWaitItem.getItemApplyTime()));
                 TextView localTextView00 = (TextView) paramViewGropMap.getView(R.id.tv_item_00);
@@ -136,6 +140,43 @@ public class ListItemView extends BaseOrderView {
                 TextView localTextView13 = (TextView) paramViewGropMap.getView(R.id.reject);
                 ImageView iv_call = (ImageView) paramViewGropMap.getView(R.id.iv_call);
                 Button btnMap = (Button) paramViewGropMap.getView(R.id.button_map);
+
+
+                moreInfo.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //获取商品详情
+                        HpSkuIdParams params = new HpSkuIdParams();
+                        params.setSkuId(paramWaitItem.getSkuId());
+                        MHttpManagerFactory.getAccountManager().getSKUDetails(getContext(), params, new HttpResponseHandler<HrGetSKUDetails>() {
+                            @Override
+                            public void onStart() {
+
+                            }
+
+                            @Override
+                            public void onSuccess(HrGetSKUDetails result) {
+
+                                if (result.getDetails() != null && !result.getDetails().equals("")) {
+                                    AlertDialog dialog = new AlertDialog.Builder(getContext())
+                                            .setTitle("商品详情")
+                                            .setMessage(result.getDetails())
+                                            .setPositiveButton("确认", null)
+                                            .create();
+                                    dialog.show();
+                                } else {
+                                    ToastUtils.show(getContext(), "没有商品详情数据");
+                                }
+                            }
+
+                            @Override
+                            public void onError(String message) {
+
+                            }
+                        });
+
+                    }
+                });
 
                 if (paramWaitItem.getZsLocation() == null) {
                     btnMap.setVisibility(GONE);
@@ -217,8 +258,8 @@ public class ListItemView extends BaseOrderView {
                     case 0:
                         tlt3.setVisibility(View.GONE);
                         tlt4.setVisibility(View.GONE);
-                        localTextView7.setVisibility(8);
-                        localTextView9.setVisibility(8);
+                        localTextView7.setVisibility(View.GONE);
+                        localTextView9.setVisibility(View.GONE);
                         localTextView12.setOnClickListener(new OnClickListener() {
 
                             @Override
@@ -248,9 +289,9 @@ public class ListItemView extends BaseOrderView {
                         tlt4.setVisibility(View.GONE);
                         localTextView8.setText("开始时间:");
                         localTextView7.setText(Utils.getDateUtils(paramWaitItem.getStartTime()));
-                        localTextView12.setVisibility(8);
-                        localTextView13.setVisibility(8);
-                        localTextView9.setVisibility(8);
+                        localTextView12.setVisibility(View.GONE);
+                        localTextView13.setVisibility(View.GONE);
+                        localTextView9.setVisibility(View.GONE);
                         localTextView11.setText("提交审核");
                         localTextView11.setOnClickListener(new OnClickListener() {
 
@@ -262,9 +303,9 @@ public class ListItemView extends BaseOrderView {
                         });
                         break;
                     case 2:
-                        localTextView12.setVisibility(8);
-                        localTextView13.setVisibility(8);
-                        localTextView11.setVisibility(8);
+                        localTextView12.setVisibility(View.GONE);
+                        localTextView13.setVisibility(View.GONE);
+                        localTextView11.setVisibility(View.GONE);
                         break;
                     case 3:
                         localTextView8.setText("申请审核时间:");
@@ -272,9 +313,9 @@ public class ListItemView extends BaseOrderView {
                         localTextView10.setVisibility(View.GONE);
                         localTextView7.setText(Utils.getDateUtils(paramWaitItem.getApplyTime()));
                         localTextView9.setText(Utils.getDateUtils(paramWaitItem.getPassTime()));
-                        localTextView12.setVisibility(8);
-                        localTextView13.setVisibility(8);
-                        localTextView9.setVisibility(8);
+                        localTextView12.setVisibility(View.GONE);
+                        localTextView13.setVisibility(View.GONE);
+                        localTextView9.setVisibility(View.GONE);
                         localTextView11.setVisibility(GONE);//改
                         localTextView11.setText("审核已通过");
                         localTextView11.setEnabled(false);
@@ -287,9 +328,9 @@ public class ListItemView extends BaseOrderView {
                         localTextView10.setText("审核未通过时间:");
                         localTextView7.setText(Utils.getDateUtils(paramWaitItem.getApplyTime()));
                         localTextView9.setText(Utils.getDateUtils(paramWaitItem.getPassUnTime()));
-                        localTextView12.setVisibility(8);
-                        localTextView13.setVisibility(8);
-                        localTextView9.setVisibility(8);
+                        localTextView12.setVisibility(View.GONE);
+                        localTextView13.setVisibility(View.GONE);
+                        localTextView9.setVisibility(View.GONE);
                         localTextView11.setText("再次提交审核");
                         localTextView00.setVisibility(View.VISIBLE);
                         localTextView11.setOnClickListener(new OnClickListener() {

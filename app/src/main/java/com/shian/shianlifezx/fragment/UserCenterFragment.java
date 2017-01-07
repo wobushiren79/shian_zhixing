@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -105,7 +106,9 @@ public class UserCenterFragment extends BaseFragment {
 			@Override
 			public void onSuccess(final HrUserInfo result) {
 				mHrUserInfo=result;
+
 				PicassoUD.loadImage(getActivity(),AppContansts.OSSURL+result.getHeadImg(),ivPic);
+				Log.v("this","pic url:"+AppContansts.OSSURL+result.getHeadImg());
 				tvList.get(0).setText(result.getName());
 
 				for(int i=0;i<result.getRoles().size();i++){
@@ -114,7 +117,7 @@ public class UserCenterFragment extends BaseFragment {
 //					}else{
 						tvList.get(2).append("/");
 					}
-					tvList.get(2).setText("角色"+result.getRoles().get(i).getName());
+					tvList.get(2).setText("角色："+result.getRoles().get(i).getName());
 					tvList.get(4).setText(result.getServiceSuccessSum()+"");
 					tvList.get(5).setText(result.getAvgSatis()+"");
 					v.findViewById(R.id.editor).setOnClickListener(new View.OnClickListener() {

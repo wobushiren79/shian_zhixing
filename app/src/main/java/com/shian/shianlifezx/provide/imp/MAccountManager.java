@@ -10,9 +10,11 @@ import com.shian.shianlifezx.provide.params.HpLoginParams;
 import com.shian.shianlifezx.provide.params.HpPageParams;
 import com.shian.shianlifezx.provide.params.HpReadMessage;
 import com.shian.shianlifezx.provide.params.HpRejectParams;
+import com.shian.shianlifezx.provide.params.HpSkuIdParams;
 import com.shian.shianlifezx.provide.params.HpStartServiceParams;
 import com.shian.shianlifezx.provide.params.HpSubmit4AuditParams;
 import com.shian.shianlifezx.provide.result.HrCommentResult;
+import com.shian.shianlifezx.provide.result.HrGetSKUDetails;
 import com.shian.shianlifezx.provide.result.HrLoginResult;
 import com.shian.shianlifezx.provide.result.HrMessageList;
 import com.shian.shianlifezx.provide.result.HrUserInfo;
@@ -81,4 +83,13 @@ public interface MAccountManager extends HttpManager {
 	public void changeCurAddress
     (Context context, HpConsultIdParams params,
      HttpResponseHandler<Object> handler);
+
+
+	/**
+	 * 获取商品详情
+	 * @param context
+	 * @param params
+	 * @param handler
+	 */
+	public void getSKUDetails(Context context, HpSkuIdParams params, HttpResponseHandler<HrGetSKUDetails> handler);
 }
