@@ -90,7 +90,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
     boolean useDefaultIcon = false;
     private TextView popupText = null; // 泡泡view
     boolean isMapChlick = false;
-    boolean isFirstShowText = true;
+//    boolean isFirstShowText = true;
     boolean isUseNumPoint = false;//是否采用经纬定位
     LatLng latLng = new LatLng(mapCenterlatitude, mapCenterlongitude);
 
@@ -446,6 +446,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
     }
 
     private void choicePointDialog(final SuggestAddrInfo suggestAddrInfo) {
+        isUseNumPoint=true;
         final Dialog choiceDialog = new Dialog(RoutePlanActivity.this, R.style.CustomDialog);
 
         View view = LayoutInflater.from(RoutePlanActivity.this).inflate(R.layout.dialog_choicepoint_2, null);
@@ -457,7 +458,7 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
         String endName;
 
         List<PoiInfo> listStartInfo = suggestAddrInfo.getSuggestStartNode();
-        List<PoiInfo> listEndInfo = suggestAddrInfo.getSuggestEndNode();
+        final List<PoiInfo> listEndInfo = suggestAddrInfo.getSuggestEndNode();
 
         List<String> strListData = new ArrayList<>();
         List<String> endListData = new ArrayList<>();
@@ -478,6 +479,8 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
             endName = endNodeStr;
         } else {
             endName = listEndInfo.get(0).name;
+            endNodeStr=listEndInfo.get(0).name;
+            latLng=listEndInfo.get(0).location;
             for (int i = 0; i < listEndInfo.size(); i++) {
                 endListData.add(listEndInfo.get(i).name);
             }
@@ -584,6 +587,8 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
                             groupArray.set(0, childArray.get(i).get(i1));
                         } else {
                             groupArray.set(1, childArray.get(i).get(i1));
+                            endNodeStr= childArray.get(i).get(i1);
+                            latLng=listEndInfo.get(i1).location;
                         }
 
                         expandableListView.collapseGroup(i);
@@ -761,11 +766,11 @@ public class RoutePlanActivity extends Activity implements BaiduMap.OnMapClickLi
 //    }
 
     private void noFindPoint() {
-        if (isFirstShowText) {
+//        if (isFirstShowText) {
             Toast.makeText(RoutePlanActivity.this, "抱歉，未找到终点，请自行在地图上点击设置终点位置", Toast.LENGTH_LONG).show();
-            isFirstShowText = false;
-
-        }
+//            isFirstShowText = false;
+//
+//        }
         isMapChlick = true;
     }
 
