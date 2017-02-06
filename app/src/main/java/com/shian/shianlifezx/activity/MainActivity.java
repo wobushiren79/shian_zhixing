@@ -40,6 +40,7 @@ import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpConsultIdParams;
 import com.shian.shianlifezx.provide.result.HrCommentResult;
+import com.shian.shianlifezx.service.PushService;
 
 import org.support.v4.annotation.NonNull;
 
@@ -66,8 +67,12 @@ public class MainActivity extends BaseActivity  {
         initView();
         initIM();
         initPermission();
+        startPushService();
     }
-
+    private void startPushService() {
+        Intent intent=new Intent(MainActivity.this, PushService.class);
+        startService(intent);
+    }
     @TargetApi(23)
     private void initPermission() {
         int hasWriteContactsPermission = PermissionChecker.checkSelfPermission(MainActivity.this,Manifest.permission.CALL_PHONE);
