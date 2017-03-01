@@ -10,6 +10,7 @@ import android.content.IntentFilter;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -34,7 +35,7 @@ public class BaseActivity extends FragmentActivity {
     FrameLayout flContent;
     protected View v;
     protected Context mContext = this;
-
+    public static DisplayMetrics metrics = new DisplayMetrics();
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
@@ -42,6 +43,7 @@ public class BaseActivity extends FragmentActivity {
         super.setContentView(R.layout.activity_base);
         flContent = (FrameLayout) findViewById(R.id.fl_base);
         ((SaBaseApplication) getApplicationContext()).addActivity(this);
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
     }
 
     @Override

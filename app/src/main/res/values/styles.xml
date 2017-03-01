@@ -164,4 +164,8 @@
         <item name="android:windowFrame">@null</item>
 
     </style>
+    <style name="button_check_1" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorButtonNormal">@color/zhy_text_color_1</item>
+        <item name="colorControlHighlight">#22000000</item>
+    </style>
 </resources>

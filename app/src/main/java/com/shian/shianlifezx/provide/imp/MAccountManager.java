@@ -5,6 +5,7 @@ import android.content.Context;
 import com.shian.shianlifezx.provide.base.HttpManager;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpAcceptParams;
+import com.shian.shianlifezx.provide.params.HpChangeLocation;
 import com.shian.shianlifezx.provide.params.HpConsultIdParams;
 import com.shian.shianlifezx.provide.params.HpLoginParams;
 import com.shian.shianlifezx.provide.params.HpPageParams;
@@ -92,4 +93,9 @@ public interface MAccountManager extends HttpManager {
 	 * @param handler
 	 */
 	public void getSKUDetails(Context context, HpSkuIdParams params, HttpResponseHandler<HrGetSKUDetails> handler);
+
+	/**
+	 * 改变地址
+	 */
+	public void changeLocation(Context context, HpChangeLocation params, HttpResponseHandler<Object> handler);
 }

@@ -5,7 +5,8 @@ import com.chanven.lib.cptr.loadmore.SwipeRefreshHelper;
 import com.chanven.lib.cptr.loadmore.SwipeRefreshHelper.OnSwipeRefreshListener;
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.activity.ImagePreviewActivity;
-import com.shian.shianlifezx.activity.RoutePlanActivity;
+import com.shian.shianlifezx.activity.map.NewRoutePlanActivity;
+import com.shian.shianlifezx.activity.map.RoutePlanActivity;
 import com.shian.shianlifezx.activity.Shenhe1Activity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.JSONUtil;
@@ -187,7 +188,9 @@ public class ListItemView extends BaseOrderView {
                     btnMap.setOnClickListener(new OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            Intent intent = new Intent(getContext(), RoutePlanActivity.class);
+                            Intent intent = new Intent(getContext(), NewRoutePlanActivity.class);
+                            intent.putExtra("LocationType",9);
+                            intent.putExtra("ConsultId",-1);
                             intent.putExtra("RoutePlanLocation", paramWaitItem.getZsLocation());
                             getContext().startActivity(intent);
 

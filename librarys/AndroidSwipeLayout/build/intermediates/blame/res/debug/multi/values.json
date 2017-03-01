@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\AndroidSwipeLayout\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -11,7 +11,7 @@
                     "endOffset": 1072
                 },
                 "from": {
-                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\AndroidSwipeLayout\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.0.1\\res\\values\\values.xml",
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.0.1\\res\\values\\values.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -30,7 +30,7 @@
                     "endOffset": 1138
                 },
                 "from": {
-                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\AndroidSwipeLayout\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.0.1\\res\\values\\values.xml",
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.0.1\\res\\values\\values.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -49,13 +49,13 @@
                     "endOffset": 1194
                 },
                 "from": {
-                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\AndroidSwipeLayout\\res\\values\\strings.xml",
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 17,
+                        "startOffset": 19,
                         "endColumn": 55,
-                        "endOffset": 68
+                        "endOffset": 70
                     }
                 }
             },
@@ -69,14 +69,14 @@
                     "endOffset": 1485
                 },
                 "from": {
-                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\AndroidSwipeLayout\\res\\values\\styles.xml",
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 186,
+                        "startOffset": 192,
                         "endLine": 12,
                         "endColumn": 12,
-                        "endOffset": 472
+                        "endOffset": 484
                     }
                 }
             },
@@ -90,14 +90,14 @@
                     "endOffset": 1645
                 },
                 "from": {
-                    "file": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\AndroidSwipeLayout\\res\\values\\styles.xml",
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 510,
+                        "startOffset": 525,
                         "endLine": 17,
                         "endColumn": 12,
-                        "endOffset": 665
+                        "endOffset": 682
                     }
                 }
             }

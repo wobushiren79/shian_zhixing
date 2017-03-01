@@ -25,7 +25,6 @@ public class OrderFragment extends BaseFragment {
 	@InjectView(R.id.pager)
 	ViewPager viewPager;
 	private View v;
-
 	private String[] titles = { "待执行", "正在执行", "待审核", "成功服务", "未通过" };
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

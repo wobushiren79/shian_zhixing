@@ -7,6 +7,7 @@ import com.shian.shianlifezx.provide.base.HttpRequestExecutor;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.imp.MAccountManager;
 import com.shian.shianlifezx.provide.params.HpAcceptParams;
+import com.shian.shianlifezx.provide.params.HpChangeLocation;
 import com.shian.shianlifezx.provide.params.HpConsultIdParams;
 import com.shian.shianlifezx.provide.params.HpLoginParams;
 import com.shian.shianlifezx.provide.params.HpPageParams;
@@ -158,6 +159,12 @@ public class MAccountManagerImpl implements MAccountManager {
 	@Override
 	public void getSKUDetails(Context context, HpSkuIdParams params, HttpResponseHandler<HrGetSKUDetails> handler) {
 		excutor.requestPost(context, "order/item/list/get/skudetails", HrGetSKUDetails.class, params,
+				handler);
+	}
+
+	@Override
+	public void changeLocation(Context context, HpChangeLocation params, HttpResponseHandler<Object> handler) {
+		excutor.requestPost(context, "customer/address/position/change", Object.class, params,
 				handler);
 	}
 }

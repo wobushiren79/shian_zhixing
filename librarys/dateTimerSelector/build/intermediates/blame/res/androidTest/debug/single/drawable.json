@@ -1,38 +1,38 @@
 [
     {
-        "merged": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\wheel_val.xml",
-        "source": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\wheel_val.xml"
+        "merged": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\top_left_right_coner.xml",
+        "source": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\top_left_right_coner.xml"
     },
     {
-        "merged": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\btn_selector.xml",
-        "source": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_selector.xml"
+        "merged": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\btn_unpress.xml",
+        "source": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_unpress.xml"
     },
     {
-        "merged": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_transparent.xml",
-        "source": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_transparent.xml"
+        "merged": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\edit_dialog_coner.xml",
+        "source": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\edit_dialog_coner.xml"
     },
     {
-        "merged": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\btn_press.xml",
-        "source": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_press.xml"
+        "merged": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\background_transparent.xml",
+        "source": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\background_transparent.xml"
     },
     {
-        "merged": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\edit_dialog_coner.xml",
-        "source": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\edit_dialog_coner.xml"
+        "merged": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\dialog_bg.xml",
+        "source": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\dialog_bg.xml"
     },
     {
-        "merged": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\wheel_bg.xml",
-        "source": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\wheel_bg.xml"
+        "merged": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\btn_press.xml",
+        "source": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_press.xml"
     },
     {
-        "merged": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\top_left_right_coner.xml",
-        "source": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\top_left_right_coner.xml"
+        "merged": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\wheel_val.xml",
+        "source": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\wheel_val.xml"
     },
     {
-        "merged": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\dialog_bg.xml",
-        "source": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\dialog_bg.xml"
+        "merged": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\btn_selector.xml",
+        "source": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_selector.xml"
     },
     {
-        "merged": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\btn_unpress.xml",
-        "source": "D:\\AndroidStudio\\Project\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\btn_unpress.xml"
+        "merged": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\res\\merged\\androidTest\\debug\\drawable\\wheel_bg.xml",
+        "source": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\dateTimerSelector\\build\\intermediates\\bundles\\debug\\res\\drawable\\wheel_bg.xml"
     }
 ]

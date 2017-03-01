@@ -1,7 +1,7 @@
 /*
  * Copyright (C) 2016 Baidu, Inc. All Rights Reserved.
  */
-package com.shian.shianlifezx.activity;
+package com.shian.shianlifezx.activity.map;
 
 import android.app.Activity;
 import android.app.Dialog;
