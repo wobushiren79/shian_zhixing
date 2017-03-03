@@ -67,7 +67,7 @@ public class MapMoreDialog extends Dialog {
     };
 
     private void changeLocation() {
-        if(NewRoutePlanActivity.consultId==-1||NewRoutePlanActivity.locationType==-1){
+        if(NewRoutePlanActivity.orderItemId==-1||NewRoutePlanActivity.locationType==-1){
             ToastUtils.show(getContext(),"不能更改当前地址");
         }else{
             Intent intent = new Intent(getContext(), NewMapChoiceActivity.class);

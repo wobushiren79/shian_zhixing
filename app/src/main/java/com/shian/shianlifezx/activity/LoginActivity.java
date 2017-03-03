@@ -4,8 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
+
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -19,6 +23,7 @@ import com.shian.shianlifezx.provide.base.HttpRequestExecutor;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpLoginParams;
 import com.shian.shianlifezx.provide.result.HrLoginResult;
+import com.shian.shianlifezx.view.customview.LoadingButton;
 
 public class LoginActivity extends BaseActivity {
 	@InjectView(R.id.et_login_username)
@@ -29,14 +34,26 @@ public class LoginActivity extends BaseActivity {
 	CheckBox cbRe;
 	@InjectView(R.id.cb_login_auto)
 	CheckBox cbAuto;
-
+	@InjectView(R.id.btn_login)
+	LoadingButton lbLogin;
+	@InjectView(R.id.rl_content)
+	RelativeLayout rlContent;
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		setContentView(R.layout.activity_login);
 		initView();
+		startAnim();
 	}
-
+	/**
+	 * 动画
+	 */
+	private void startAnim() {
+		TranslateAnimation translateAnimation=new TranslateAnimation(Animation.RELATIVE_TO_SELF,Animation.RELATIVE_TO_SELF,1000,Animation.RELATIVE_TO_SELF);
+		translateAnimation.setDuration(1000);
+		rlContent.setAnimation(translateAnimation);
+		translateAnimation.start();
+	}
 	private void initView() {
 		ShareLogin loginS = SharePerfrenceUtils.getLoginShare(this);
 		etUserName.setText(loginS.getUsername());
@@ -68,6 +85,7 @@ public class LoginActivity extends BaseActivity {
 			ToastUtils.show(this, "消息推送正在初始化，请稍后。。。");
 			return;
 		}
+		lbLogin.setLoading();
 		HpLoginParams params = new HpLoginParams();
 		params.setPassword(etUserPassword.getText().toString());
 		params.setUsername(etUserName.getText().toString());
@@ -77,6 +95,7 @@ public class LoginActivity extends BaseActivity {
 
 			@Override
 			public void onSuccess(HrLoginResult result) {
+				lbLogin.setComplete();
 				cookie=result.getSessionId();
 				HttpRequestExecutor.setSession(cookie, LoginActivity.this);
 				SharePerfrenceUtils.setLoginShare(LoginActivity.this, username, password, cbRe.isChecked(),
@@ -94,7 +113,7 @@ public class LoginActivity extends BaseActivity {
 
 			@Override
 			public void onError(String message) {
-
+				lbLogin.setNormal();
 			}
 		});
 

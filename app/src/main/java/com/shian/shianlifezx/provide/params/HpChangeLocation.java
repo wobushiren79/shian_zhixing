@@ -11,7 +11,15 @@ public class HpChangeLocation extends BaseHttpParams {
     private long consultId;//咨询id
     private String addressDetail;// 详细地址
     private int operationType;//类型，值：1经办人地址、2治丧地址、3往生者地址、4去世地址、5殡仪馆地址、6治丧约见地址、7出殡前地址、8出殡当天地址、9客户当前地址
+    private long orderItemId;//订单详情ID
 
+    public long getOrderItemId() {
+        return orderItemId;
+    }
+
+    public void setOrderItemId(long orderItemId) {
+        this.orderItemId = orderItemId;
+    }
 
     public long getConsultId() {
         return consultId;

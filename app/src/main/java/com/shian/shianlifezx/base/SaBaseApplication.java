@@ -33,6 +33,7 @@ public class SaBaseApplication extends Application{
     private Thread.UncaughtExceptionHandler mDefaultHandler;
     private ArrayList<Activity> list = new ArrayList<Activity>();
     public LocationService locationService;
+
     @Override
     public void onCreate()
     {

@@ -189,8 +189,9 @@ public class ListItemView extends BaseOrderView {
                         @Override
                         public void onClick(View view) {
                             Intent intent = new Intent(getContext(), NewRoutePlanActivity.class);
-                            intent.putExtra("LocationType",9);
+                            intent.putExtra("LocationType",2);
                             intent.putExtra("ConsultId",-1);
+                            intent.putExtra("OrderItemId",paramWaitItem.getOrderItemId());
                             intent.putExtra("RoutePlanLocation", paramWaitItem.getZsLocation());
                             getContext().startActivity(intent);
 

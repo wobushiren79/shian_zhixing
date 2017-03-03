@@ -71,6 +71,7 @@ public class NewRoutePlanActivity extends Activity implements BaiduMap.OnMapClic
     public static SearchResult result;
     public static int locationType = -1;//需要修改的地址类型 1经办人地址、2治丧地址、3往生者地址、4去世地址、5殡仪馆地址、6治丧约见地址、7出殡前地址、8出殡当天地址、9客户当前地址
     public static long consultId = -1;
+    public static long orderItemId=-1;
     CustomDialog dialog;
 
     @Override
@@ -91,6 +92,7 @@ public class NewRoutePlanActivity extends Activity implements BaiduMap.OnMapClic
         endPointStr = getIntent().getStringExtra("RoutePlanLocation");
         locationType = getIntent().getIntExtra("LocationType", -1);
         consultId = getIntent().getLongExtra("ConsultId", -1);
+        orderItemId=getIntent().getLongExtra("OrderItemId",-1);
     }
 
     /**

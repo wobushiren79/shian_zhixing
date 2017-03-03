@@ -63,12 +63,12 @@
         <activity
             android:name=".activity.ShowActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait">
-        </activity>
+            android:screenOrientation="portrait"></activity>
         <activity
             android:name=".activity.LoginActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".activity.MainActivity"
             android:configChanges="orientation|screenSize"
@@ -222,6 +222,7 @@
             android:name=".activity.map.NewMapChoiceActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"></activity>
+
         <service
             android:name="com.kf5chat.service.MessageService"
             android:enabled="true" />
