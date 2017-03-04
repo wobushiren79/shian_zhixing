@@ -3,9 +3,11 @@ package com.shian.shianlifezx.provide;
 import com.shian.shianlifezx.provide.imp.FileManager;
 import com.shian.shianlifezx.provide.imp.MAccountManager;
 import com.shian.shianlifezx.provide.imp.MUserManager;
+import com.shian.shianlifezx.provide.imp.PHPManager;
 import com.shian.shianlifezx.provide.imp.impl.FileManagerImpl;
 import com.shian.shianlifezx.provide.imp.impl.MAccountManagerImpl;
 import com.shian.shianlifezx.provide.imp.impl.MUserManagerImpl;
+import com.shian.shianlifezx.provide.imp.impl.PHPManagerImpl;
 
 /**
  * 接口工厂
@@ -29,5 +31,8 @@ public class MHttpManagerFactory {
 
 	public static FileManager getFileManager() {
 		return FileManagerImpl.getInstance();
+	}
+	public static PHPManager getPHPManager() {
+		return PHPManagerImpl.getInstance();
 	}
 }

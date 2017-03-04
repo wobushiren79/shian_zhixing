@@ -43,6 +43,7 @@ import com.shian.shianlifezx.mapapi.CustomDialog;
 public class HttpRequestExecutor {
 
 	private static final String C_sBaseUrl = AppContansts.BaseURL;// "http://120.25.103.60:8080/hzrapi/";
+	private static final String C_sPhpUrl=AppContansts.PhpURL;
 	private AsyncHttpClient httpClient = new AsyncHttpClient();
 	private Header[] headers;
 
@@ -151,6 +152,66 @@ public class HttpRequestExecutor {
 			onError(response, e1.getMessage(), context);
 		}
 	}
+	/**
+	 * PHPPost请求
+	 *
+	 * @param context
+	 * @param method
+	 * @param c
+	 * @param params
+	 * @param response
+	 */
+	public <T> void requestPHPPost(final Context context, final String method,
+								   final Class<T> c, BaseHttpParams params,
+								   final HttpResponseHandler<T> response) {
+		if (!isNetworkConnected(context)) {
+			onError(response, context.getString(R.string.net_work_off), context);
+			return;
+		}
+		HttpEntity httpEntity = null;
+		try {
+			// 判断是否有参数
+			if (params != null) {
+				String httpParams = params.getHttpParams();
+				httpEntity = new StringEntity(httpParams, HTTP.UTF_8);
+			}
+//            getSession(context);
+			Log.i("tag", "methed=" + C_sPhpUrl + "/" + method);
+			httpClient.post(context, C_sPhpUrl + "/" + method,httpEntity, "application/json",
+					new AsyncHttpResponseHandler() {
+						@Override
+						public void onStart() {
+							super.onStart();
+							if (response != null) {
+								if ( (context instanceof Activity) && !((Activity) context).isFinishing())
+									response.onStart();
+							}
+						}
+
+						@Override
+						public void onSuccess(int arg0, Header[] arg1,
+											  byte[] arg2) {
+							if ((context instanceof Activity)&& !((Activity) context).isFinishing()|| method.contains("doLogout")) {
+								if ( (context instanceof Activity) && !((Activity) context).isFinishing())
+									response(context, method, c, response, arg2);
+							}
+						}
+
+						@Override
+						public void onFailure(int arg0, Header[] arg1,
+											  byte[] arg2, Throwable arg3) {
+							String s = arg3.getMessage();
+							if (s != null) {
+								Log.e("tag", s);
+							}
+							onError(response, s, context);
+						}
+					});
+		} catch (Exception e1) {
+			onError(response, e1.getMessage(), context);
+		} finally {
+		}
+	}
 
 	/**
 	 * 请求答复
@@ -170,7 +231,7 @@ public class HttpRequestExecutor {
 						new String(arg2));
 				String error = node.findValue("code").toString();
 				String errorMsg = node.findValue("message").toString();
-				String validErrors = node.findValue("validErrors").toString();
+//				String validErrors = node.findValue("validErrors").toString();
 				if ("1000".equals(error)) {
 					JsonNode jn = node.findValue("content");
 					if (jn == null)
