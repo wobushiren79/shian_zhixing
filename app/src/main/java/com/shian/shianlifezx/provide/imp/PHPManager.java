@@ -14,9 +14,17 @@ import com.shian.shianlifezx.provide.phpresult.PHPHrGetLoginAdvertisement;
 public interface PHPManager extends HttpManager {
     /**
      * 获取登录页广告
+     *
      * @param context
      * @param handler
      */
     public void loginAdvertisement(Context context, HttpResponseHandler<PHPHrGetLoginAdvertisement> handler);
 
+    /**
+     * 获取首页广告
+     *
+     * @param context
+     * @param handler
+     */
+    public void mainAdvertisement(Context context, HttpResponseHandler<PHPHrGetLoginAdvertisement> handler);
 }

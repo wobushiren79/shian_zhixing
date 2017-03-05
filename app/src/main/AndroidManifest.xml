@@ -62,6 +62,7 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
+            android:launchMode="singleTask"
             android:name=".activity.LoginActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"

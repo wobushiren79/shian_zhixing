@@ -5,6 +5,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
 import com.shian.shianlifezx.base.BaseActivity;
+import com.shian.shianlifezx.common.utils.Utils;
 
 /**
  * Created by asus on 2016/7/30.
