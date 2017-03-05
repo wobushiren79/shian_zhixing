@@ -5,6 +5,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
@@ -33,7 +35,9 @@ import com.shian.shianlifezx.common.LocationService;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils;
 import com.shian.shianlifezx.common.utils.ToastUtils;
+import com.shian.shianlifezx.fragment.FindFragment;
 import com.shian.shianlifezx.fragment.HomeFragment;
+import com.shian.shianlifezx.fragment.NewHomeFragment;
 import com.shian.shianlifezx.fragment.OrderFragment;
 import com.shian.shianlifezx.fragment.UserCenterFragment;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
@@ -44,6 +48,9 @@ import com.shian.shianlifezx.service.PushService;
 
 import org.support.v4.annotation.NonNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends BaseActivity  {
     @InjectView(R.id.fl_main)
     View flMain;
@@ -53,12 +60,17 @@ public class MainActivity extends BaseActivity  {
     RadioButton rbMain2;
     @InjectView(R.id.rb_main_3)
     RadioButton rbMain3;
+    @InjectView(R.id.rb_main_4)
+    RadioButton rbMain4;
     private FragmentManager mFragmentManager;
     private FragmentTransaction transcation;
-    private HomeFragment homeFragment;
+//    private HomeFragment homeFragment;
+    private NewHomeFragment homeFragment;
+    private FindFragment findFragment;
     private OrderFragment orderFragment;
     private UserCenterFragment userFragment;
 
+    List<RadioButton> listRB = new ArrayList<>();
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
@@ -155,6 +167,7 @@ public class MainActivity extends BaseActivity  {
         rbMain1.setOnCheckedChangeListener(new RBCheckListener());
         rbMain2.setOnCheckedChangeListener(new RBCheckListener());
         rbMain3.setOnCheckedChangeListener(new RBCheckListener());
+        rbMain4.setOnCheckedChangeListener(new RBCheckListener());
         showFragment(R.id.rb_main_1);
         MHttpManagerFactory.getAccountManager().getMessageCount(this,
                 new HttpResponseHandler<HrCommentResult>() {
@@ -182,6 +195,25 @@ public class MainActivity extends BaseActivity  {
 
                     }
                 });
+        initRB();
+    }
+
+    /**
+     * 设置rb的大小
+     */
+    private void initRB() {
+        listRB.add(rbMain1);
+        listRB.add(rbMain2);
+        listRB.add(rbMain3);
+        listRB.add(rbMain4);
+        for (RadioButton rb : listRB) {
+            Rect rect = new Rect();
+            rect.set(0, 0, getResources().getDimensionPixelOffset(R.dimen.dimen_48dp), getResources().getDimensionPixelOffset(R.dimen.dimen_48dp)); // 这里分别是 left top right bottom  代表距离父view 的距离   长宽 是  right-left   bottom-top
+            //注意 xml没有设置 drawableTop 的图片话  drawableT 为null 的情况
+            Drawable drawableT = rb.getCompoundDrawables()[1]; // getCompoundDrawables()得到一个数组  0 1 2 3 对应 left top right bottom 方向的drawable
+            drawableT.setBounds(rect);// 大小和位置控制
+            rb.setCompoundDrawables(null, drawableT, null, null); // 设置drawable    对应 left top right bottom 方向的drawable
+        }
     }
 
     private void showFragment(int state) {
@@ -189,7 +221,7 @@ public class MainActivity extends BaseActivity  {
         switch (state) {
             case R.id.rb_main_1:
                 if (homeFragment == null) {
-                    homeFragment = new HomeFragment();
+                    homeFragment = new NewHomeFragment();
                 }
                 transcation.replace(R.id.fl_main, homeFragment);
                 break;
@@ -200,6 +232,12 @@ public class MainActivity extends BaseActivity  {
                 transcation.replace(R.id.fl_main, orderFragment);
                 break;
             case R.id.rb_main_3:
+                if (findFragment == null) {
+                    findFragment = new FindFragment();
+                }
+                transcation.replace(R.id.fl_main, findFragment);
+                break;
+            case R.id.rb_main_4:
                 if (userFragment == null) {
                     userFragment = new UserCenterFragment();
                 }

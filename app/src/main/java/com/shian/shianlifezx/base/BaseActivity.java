@@ -93,10 +93,10 @@ public class BaseActivity extends FragmentActivity {
 
     public void setTitle(String title) {
         findViewById(R.id.rl_head).setVisibility(View.VISIBLE);
-        TextView tvHeadLeft = (TextView) findViewById(R.id.tv_head_left);
+//        TextView tvHeadLeft = (TextView) findViewById(R.id.tv_head_left);
         TextView tvHeadTitle = (TextView) findViewById(R.id.tv_head_title);
         TextView tvHeadLocation = (TextView) findViewById(R.id.title_location);
-        ImageView logo = (ImageView) findViewById(R.id.logo);
+//        ImageView logo = (ImageView) findViewById(R.id.logo);
         View tvHeadRight = findViewById(R.id.tv_head_right);
         TextView back = (TextView) findViewById(R.id.back);
 
@@ -104,12 +104,12 @@ public class BaseActivity extends FragmentActivity {
             back.setVisibility(View.VISIBLE);
             tvHeadTitle.setVisibility(View.VISIBLE);
             tvHeadLocation.setVisibility(View.GONE);
-            logo.setVisibility(View.GONE);
+//            logo.setVisibility(View.GONE);
             tvHeadTitle.setText(title);
             tvHeadTitle.setBackgroundColor(getResources().getColor(
                     R.color.transparent));
-            tvHeadLeft.setVisibility(View.GONE);
-            logo.setVisibility(View.GONE);
+//            tvHeadLeft.setVisibility(View.GONE);
+//            logo.setVisibility(View.GONE);
 //            tvHeadLeft.setCompoundDrawables(null, null, null, null);
 //            tvHeadLeft.setBackgroundResource(R.drawable.ic_back_default);
 //            tvHeadLeft.setOnClickListener(new OnClickListener() {
@@ -127,7 +127,7 @@ public class BaseActivity extends FragmentActivity {
             });
         } else {
             back.setVisibility(View.GONE);
-            logo.setVisibility(View.VISIBLE);
+//            logo.setVisibility(View.VISIBLE);
         }
         tvHeadRight.setOnClickListener(new OnClickListener() {
 

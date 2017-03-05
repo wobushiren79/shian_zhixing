@@ -44,6 +44,7 @@
     <color name="gray_text">#767676</color>
     <color name="zhy_text_color_1">#48cfad</color>
     <color name="zhy_text_color_2">#c4c4c4</color>
+    <color name="zhy_text_color_3">#A4D5C9</color>
     <!-- Dialog Color -->
     <color name="version_msg_color">#ff6699ff</color>
     <color name="message_color">#ffccccff</color>
