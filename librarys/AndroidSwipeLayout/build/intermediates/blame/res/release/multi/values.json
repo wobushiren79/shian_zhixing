@@ -1,0 +1,106 @@
+[
+    {
+        "outputFile": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\build\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 1002,
+                    "endColumn": 74,
+                    "endOffset": 1072
+                },
+                "from": {
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.0.1\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 551,
+                        "endColumn": 74,
+                        "endOffset": 621
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 1077,
+                    "endColumn": 65,
+                    "endOffset": 1138
+                },
+                "from": {
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\build\\intermediates\\exploded-aar\\com.android.support\\recyclerview-v7\\23.0.1\\res\\values\\values.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 847,
+                        "endColumn": 65,
+                        "endOffset": 908
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 1143,
+                    "endColumn": 55,
+                    "endOffset": 1194
+                },
+                "from": {
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 19,
+                        "endColumn": 55,
+                        "endOffset": 70
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 1199,
+                    "endLine": 21,
+                    "endColumn": 12,
+                    "endOffset": 1485
+                },
+                "from": {
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 192,
+                        "endLine": 12,
+                        "endColumn": 12,
+                        "endOffset": 484
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 1490,
+                    "endLine": 24,
+                    "endColumn": 12,
+                    "endOffset": 1645
+                },
+                "from": {
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\AndroidSwipeLayout\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 525,
+                        "endLine": 17,
+                        "endColumn": 12,
+                        "endOffset": 682
+                    }
+                }
+            }
+        ]
+    }
+]
