@@ -29,6 +29,7 @@ import com.shian.shianlifezx.activity.MessageDetailActviity;
 import com.shian.shianlifezx.activity.MessageListActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.FilePathUtils;
+import com.shian.shianlifezx.common.utils.Utils;
 import com.yongchun.library.view.ImageSelectorActivity;
 
 public class BaseActivity extends FragmentActivity {
@@ -44,6 +45,7 @@ public class BaseActivity extends FragmentActivity {
         flContent = (FrameLayout) findViewById(R.id.fl_base);
         ((SaBaseApplication) getApplicationContext()).addActivity(this);
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        Utils.setWindowStatusBarColor(this,R.color.zhy_title_color_1);//设置状态栏颜色
     }
 
     @Override

@@ -2,8 +2,10 @@ package com.shian.shianlifezx.provide.imp;
 
 import android.content.Context;
 
+import com.loopj.android.http.RequestParams;
 import com.shian.shianlifezx.provide.base.HttpManager;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
+import com.shian.shianlifezx.provide.phpresult.PHPHrGetDynamic;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetLoginAdvertisement;
 
 
@@ -27,4 +29,12 @@ public interface PHPManager extends HttpManager {
      * @param handler
      */
     public void mainAdvertisement(Context context, HttpResponseHandler<PHPHrGetLoginAdvertisement> handler);
+
+    /**
+     * 获取重要通知
+     * @param context
+     * @param params
+     * @param handler
+     */
+    public void getDynamicInfo(Context context, RequestParams params, HttpResponseHandler<PHPHrGetDynamic> handler);
 }

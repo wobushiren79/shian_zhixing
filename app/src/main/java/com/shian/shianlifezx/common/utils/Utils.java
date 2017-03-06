@@ -10,9 +10,12 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 
 public class Utils
 {
@@ -75,6 +78,23 @@ public class Utils
 			}
 		}
 		return false;
+	}
+	/**
+	 * 状态栏相关工具类
+	 */
+	public static void setWindowStatusBarColor(Activity activity, int colorResId) {
+		try {
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+				Window window = activity.getWindow();
+				window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+				window.setStatusBarColor(activity.getResources().getColor(colorResId));
+
+				//底部导航栏
+				//window.setNavigationBarColor(activity.getResources().getColor(colorResId));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
 

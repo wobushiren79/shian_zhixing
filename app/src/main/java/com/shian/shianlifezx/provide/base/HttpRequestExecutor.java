@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
+import com.loopj.android.http.RequestParams;
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.activity.LoginActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
@@ -213,6 +214,58 @@ public class HttpRequestExecutor {
 		}
 	}
 
+	/**
+	 * PHPget请求
+	 *
+	 * @param context
+	 * @param method
+	 * @param c
+	 * @param params
+	 * @param response
+	 */
+	public <T> void requestPHPGet(final Context context, final String method,
+								  final Class<T> c, RequestParams params,
+								  final HttpResponseHandler<T> response) {
+		if (!isNetworkConnected(context)) {
+			onError(response, context.getString(R.string.net_work_off), context);
+			return;
+		}
+		try {
+
+			Log.i("tag", "methed=" + C_sPhpUrl + "/" + method);
+			httpClient.get(context, C_sPhpUrl + "/" + method, params, new AsyncHttpResponseHandler() {
+
+				@Override
+				public void onStart() {
+					super.onStart();
+					if (response != null) {
+						if ( (context instanceof Activity) && !((Activity) context).isFinishing())
+							response.onStart();
+					}
+				}
+
+				@Override
+				public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+					if ((context instanceof Activity)&& !((Activity) context).isFinishing()|| method.contains("doLogout")) {
+						if ( (context instanceof Activity) && !((Activity) context).isFinishing())
+							response(context, method, c, response, responseBody);
+					}
+				}
+
+				@Override
+				public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+					String s = error.getMessage();
+					if (s != null) {
+						Log.e("tag", s);
+					}
+					onError(response, s, context);
+				}
+			});
+		} catch (Exception e1) {
+			onError(response, e1.getMessage(), context);
+		} finally {
+		}
+	}
 	/**
 	 * 请求答复
 	 * 

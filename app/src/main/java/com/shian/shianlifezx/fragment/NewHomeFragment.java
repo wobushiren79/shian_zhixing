@@ -11,7 +11,9 @@ import android.view.animation.TranslateAnimation;
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.base.BaseActivity;
 import com.shian.shianlifezx.base.BaseFragment;
+import com.shian.shianlifezx.view.customview.MainAPP;
 import com.shian.shianlifezx.view.customview.MainAdvertisementLayout;
+import com.shian.shianlifezx.view.customview.MainDynamic;
 import com.shian.shianlifezx.view.customview.UserInfoLayout;
 
 
@@ -24,6 +26,8 @@ public class NewHomeFragment extends BaseFragment {
 
     UserInfoLayout mUserInfoLayout;
     MainAdvertisementLayout mMainAdvertisementLayout;
+    MainDynamic mMainDynamicLayout;//重要通知
+    MainAPP mMainAPP;//我的APP
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,8 +47,11 @@ public class NewHomeFragment extends BaseFragment {
     private void initView() {
         mUserInfoLayout = (UserInfoLayout) view.findViewById(R.id.userinfo_layout);
         mMainAdvertisementLayout = (MainAdvertisementLayout) view.findViewById(R.id.mainadvertisement_layout);
+        mMainDynamicLayout = (MainDynamic) view.findViewById(R.id.maindynamic_layout);
+        mMainAPP = (MainAPP) view.findViewById(R.id.mainapp_layout);
 
         mMainAdvertisementLayout.setCallBack(advertisermentlayout);
+        mMainDynamicLayout.setCallBack(mainDynamicCallBack);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -109,5 +116,11 @@ public class NewHomeFragment extends BaseFragment {
             mMainAdvertisementLayout.startAnimation(animation);
         }
     };
+    MainDynamic.CallBack mainDynamicCallBack = new MainDynamic.CallBack() {
+        @Override
+        public void loadingComplete() {
+            mMainDynamicLayout.setVisibility(View.VISIBLE);
 
+        }
+    };
 }

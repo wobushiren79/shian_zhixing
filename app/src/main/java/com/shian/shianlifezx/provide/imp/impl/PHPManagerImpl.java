@@ -2,10 +2,12 @@ package com.shian.shianlifezx.provide.imp.impl;
 
 import android.content.Context;
 
+import com.loopj.android.http.RequestParams;
 import com.shian.shianlifezx.provide.base.BaseHttpParams;
 import com.shian.shianlifezx.provide.base.HttpRequestExecutor;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.imp.PHPManager;
+import com.shian.shianlifezx.provide.phpresult.PHPHrGetDynamic;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetLoginAdvertisement;
 
 /**
@@ -34,5 +36,10 @@ public class PHPManagerImpl implements PHPManager {
     public void mainAdvertisement(Context context, HttpResponseHandler<PHPHrGetLoginAdvertisement> handler) {
         excutor.requestPHPPost(context, "Home/index/indexbanner", PHPHrGetLoginAdvertisement.class,
                 new BaseHttpParams(), handler);
+    }
+    @Override
+    public void getDynamicInfo(Context context, RequestParams params, HttpResponseHandler<PHPHrGetDynamic> handler) {
+        excutor.requestPHPGet(context, "Home/index/dynamic", PHPHrGetDynamic.class,
+                params, handler);
     }
 }

@@ -21,5 +21,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone"></com.shian.shianlifezx.view.customview.MainAdvertisementLayout>
+        <com.shian.shianlifezx.view.customview.MainDynamic
+            android:id="@+id/maindynamic_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/dimen_18dp"></com.shian.shianlifezx.view.customview.MainDynamic>
+
+        <com.shian.shianlifezx.view.customview.MainAPP
+            android:id="@+id/mainapp_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_18dp"
+            android:layout_marginTop="@dimen/dimen_18dp"></com.shian.shianlifezx.view.customview.MainAPP>
     </LinearLayout>
 </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
