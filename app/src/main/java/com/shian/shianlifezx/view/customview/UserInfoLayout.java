@@ -1,6 +1,7 @@
 package com.shian.shianlifezx.view.customview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
@@ -8,6 +9,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shian.shianlifezx.R;
+import com.shian.shianlifezx.activity.UserInfoIntegralActivity;
+import com.shian.shianlifezx.activity.UserInfoMoneyActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.PicassoUD;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
@@ -64,6 +67,9 @@ public class UserInfoLayout extends LinearLayout {
         mUserInfoPointLayoutIntegral.initLayout(R.drawable.zhy_userinfo_integral, "积分", "0");
         mUserInfoPointLayoutMoney.initLayout(R.drawable.zhy_userinfo_money, "钱包", "0");
         mUserInfoPointLayoutOrder.initLayout(R.drawable.zhy_userinfo_order, "服务单", "0");
+
+        mUserInfoPointLayoutIntegral.setOnClickListener(onClickListener);
+        mUserInfoPointLayoutMoney.setOnClickListener(onClickListener);
     }
 
     OnClickListener onClickListener = new OnClickListener() {
@@ -72,14 +78,28 @@ public class UserInfoLayout extends LinearLayout {
             if (v == mLLSign) {
                 sign();
             } else if (v == mUserInfoPointLayoutIntegral) {
-
+                integralActivity();
             } else if (v == mUserInfoPointLayoutMoney) {
-
+                moneyActivity();
             }
 
         }
     };
+    /**
+     * 进入积分界面
+     */
+    private void integralActivity() {
+        Intent intent = new Intent(getContext(), UserInfoIntegralActivity.class);
+        getContext().startActivity(intent);
+    }
 
+    /**
+     * 进入钱包界面
+     */
+    private void moneyActivity() {
+        Intent intent = new Intent(getContext(), UserInfoMoneyActivity.class);
+        getContext().startActivity(intent);
+    }
     /**
      * 签名
      */

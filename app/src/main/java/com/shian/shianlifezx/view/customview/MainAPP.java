@@ -88,7 +88,7 @@ public class MainAPP extends LinearLayout {
             AbsListView.LayoutParams layoutParams=new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,getResources().getDimensionPixelOffset(R.dimen.dimen_132dp));
             MainAPPItems items = new MainAPPItems(getContext());
             items.setLayoutParams(layoutParams);
-            items.setData(appNameList[position].getName(),appNameList[position].getPicId());
+            items.setData(appNameList[position].getName(),appNameList[position].getPicId(), appNameList[position].getUrl());
             return items;
         }
     };

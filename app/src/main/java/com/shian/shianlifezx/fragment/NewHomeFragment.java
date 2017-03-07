@@ -57,8 +57,6 @@ public class NewHomeFragment extends BaseFragment {
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-
-
         }
     };
 
@@ -120,7 +118,6 @@ public class NewHomeFragment extends BaseFragment {
         @Override
         public void loadingComplete() {
             mMainDynamicLayout.setVisibility(View.VISIBLE);
-
         }
     };
 }
