@@ -1,6 +1,7 @@
 package com.shian.shianlifezx.view.customview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.shian.shianlifezx.R;
+import com.shian.shianlifezx.activity.AllAppActivity;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.thisenum.APPEnum;
 import com.shian.shianlifezx.view.ScrollGridView;
@@ -62,7 +64,8 @@ public class MainAPP extends LinearLayout {
         @Override
         public void onClick(View v) {
             if (v == mIVMore) {
-                ToastUtils.show(getContext(), "更多");
+                Intent intent = new Intent(getContext(), AllAppActivity.class);
+                getContext().startActivity(intent);
             }
         }
     };

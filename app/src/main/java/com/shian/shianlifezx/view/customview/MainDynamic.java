@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
 import com.shian.shianlifezx.R;
+import com.shian.shianlifezx.activity.NoticeListActivity;
 import com.shian.shianlifezx.activity.WebActivity;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
@@ -109,7 +110,8 @@ public class MainDynamic extends LinearLayout {
         @Override
         public void onClick(View v) {
             if (v == mIVMore) {
-                ToastUtils.show(getContext(), "more");
+                Intent intent=new Intent(getContext(),NoticeListActivity.class);
+                getContext().startActivity(intent);
             }
         }
     };

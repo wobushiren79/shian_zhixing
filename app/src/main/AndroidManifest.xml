@@ -315,6 +315,22 @@
             android:name=".activity.UserInfoIntegralActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.userinfo.DetailsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NewMessageListActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.NoticeListActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.AllAppActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
