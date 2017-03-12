@@ -331,6 +331,10 @@
             android:name=".activity.AllAppActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.MyCollectionActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

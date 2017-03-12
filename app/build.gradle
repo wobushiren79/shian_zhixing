@@ -44,6 +44,7 @@ android {
 dependencies {
     compile 'com.yinglan.scrolllayout:scrolllayout:1.0.0'
     //上拉抽屉
+    compile 'com.github.zcweng:switch-button:0.0.2@aar'//滑动开关
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.0.1'

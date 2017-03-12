@@ -38,6 +38,7 @@ import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.fragment.FindFragment;
 import com.shian.shianlifezx.fragment.HomeFragment;
 import com.shian.shianlifezx.fragment.NewHomeFragment;
+import com.shian.shianlifezx.fragment.NewUserCenterFragment;
 import com.shian.shianlifezx.fragment.OrderFragment;
 import com.shian.shianlifezx.fragment.UserCenterFragment;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
@@ -68,7 +69,8 @@ public class MainActivity extends BaseActivity  {
     private NewHomeFragment homeFragment;
     private FindFragment findFragment;
     private OrderFragment orderFragment;
-    private UserCenterFragment userFragment;
+//    private UserCenterFragment userFragment;
+    private NewUserCenterFragment userFragment;
 
     List<RadioButton> listRB = new ArrayList<>();
     @Override
@@ -239,7 +241,7 @@ public class MainActivity extends BaseActivity  {
                 break;
             case R.id.rb_main_4:
                 if (userFragment == null) {
-                    userFragment = new UserCenterFragment();
+                    userFragment = new NewUserCenterFragment();
                 }
                 transcation.replace(R.id.fl_main, userFragment);
                 break;
