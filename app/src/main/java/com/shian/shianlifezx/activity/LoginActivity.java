@@ -15,6 +15,7 @@ import butterknife.OnClick;
 
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.base.BaseActivity;
+import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils.ShareLogin;
 import com.shian.shianlifezx.common.utils.ToastUtils;
@@ -95,6 +96,7 @@ public class LoginActivity extends BaseActivity {
 
 			@Override
 			public void onSuccess(HrLoginResult result) {
+				AppContansts.userLoginInfo = result;
 				lbLogin.setComplete();
 				cookie=result.getSessionId();
 				HttpRequestExecutor.setSession(cookie, LoginActivity.this);

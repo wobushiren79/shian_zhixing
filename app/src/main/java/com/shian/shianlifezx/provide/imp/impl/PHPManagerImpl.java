@@ -9,6 +9,7 @@ import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.imp.PHPManager;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetDynamic;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetLoginAdvertisement;
+import com.shian.shianlifezx.provide.phpresult.PHPHrGetSiftListData;
 
 /**
  * Created by Administrator on 2017/3/4.
@@ -46,6 +47,17 @@ public class PHPManagerImpl implements PHPManager {
     @Override
     public void getDynamicInfo(Context context, RequestParams params, HttpResponseHandler<PHPHrGetDynamic> handler) {
         excutor.requestPHPGet(context, "Home/index/dynamic", PHPHrGetDynamic.class,
+                params, handler);
+    }
+    @Override
+    public void getSiftListData(Context context, RequestParams params, HttpResponseHandler<PHPHrGetSiftListData> handler) {
+        excutor.requestPHPGet(context, "Home/index/sift", PHPHrGetSiftListData.class,
+                params, handler);
+    }
+
+    @Override
+    public void setSiftData(Context context, RequestParams params, HttpResponseHandler<Object> handler) {
+        excutor.requestPHPGet(context, "Home/index/siftuser", Object.class,
                 params, handler);
     }
 }

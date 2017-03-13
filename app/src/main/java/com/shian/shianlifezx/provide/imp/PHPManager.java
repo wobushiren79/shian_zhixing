@@ -7,6 +7,7 @@ import com.shian.shianlifezx.provide.base.HttpManager;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetDynamic;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetLoginAdvertisement;
+import com.shian.shianlifezx.provide.phpresult.PHPHrGetSiftListData;
 
 
 /**
@@ -43,4 +44,20 @@ public interface PHPManager extends HttpManager {
      * @param handler
      */
     public void getDynamicInfo(Context context, RequestParams params, HttpResponseHandler<PHPHrGetDynamic> handler);
+
+    /**
+     * 获取收藏列表
+     * @param context
+     * @param params
+     * @param handler
+     */
+    public void getSiftListData(Context context, RequestParams params, HttpResponseHandler<PHPHrGetSiftListData> handler);
+
+
+    /**
+     * 点赞与收藏接口
+     * @param context
+     * @param params
+     */
+    public void setSiftData(Context context, RequestParams params,HttpResponseHandler<Object> handler);
 }

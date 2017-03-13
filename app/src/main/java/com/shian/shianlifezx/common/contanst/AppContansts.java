@@ -1,5 +1,7 @@
 package com.shian.shianlifezx.common.contanst;
 
+import com.shian.shianlifezx.provide.result.HrLoginResult;
+
 public class AppContansts {
     public static final String BaseURL = "http://115.28.163.211:7080/shianlife-executor-1.0-SNAPSHOT";
     public static final String OSSURL = "http://shianlife123.oss-cn-qingdao.aliyuncs.com/";
@@ -18,5 +20,7 @@ public class AppContansts {
     public static String LOCAL_ADDRESS = "";
     public static double LOCAL_latitude =30.6634450000;//纬度;
     public static double LOCAL_longitude=104.0722210000;//经度;
+
+    public static HrLoginResult userLoginInfo=new HrLoginResult();
 
 }

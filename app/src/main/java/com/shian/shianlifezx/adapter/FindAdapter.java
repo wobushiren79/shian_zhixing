@@ -1,13 +1,23 @@
 package com.shian.shianlifezx.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.loopj.android.http.RequestParams;
 import com.shian.shianlifezx.R;
+import com.shian.shianlifezx.activity.WebActivity;
+import com.shian.shianlifezx.common.contanst.AppContansts;
+import com.shian.shianlifezx.common.utils.PicassoUD;
+import com.shian.shianlifezx.provide.MHttpManagerFactory;
+import com.shian.shianlifezx.provide.base.HttpResponseHandler;
+import com.shian.shianlifezx.provide.phpmodel.SiftListData;
+
+import java.util.List;
 
 
 /**
@@ -16,14 +26,21 @@ import com.shian.shianlifezx.R;
 
 public class FindAdapter extends BaseAdapter {
     Context context;
+    List<SiftListData> listDatas;
 
-    public FindAdapter(Context context) {
+    public FindAdapter(Context context, List<SiftListData> listDatas) {
         this.context = context;
+        this.listDatas = listDatas;
+    }
+
+    public void setData(List<SiftListData> listDatas) {
+        this.listDatas = listDatas;
+        this.notifyDataSetChanged();
     }
 
     @Override
     public int getCount() {
-        return 10;
+        return listDatas.size();
     }
 
     @Override
@@ -33,7 +50,7 @@ public class FindAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
@@ -53,20 +70,88 @@ public class FindAdapter extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
+        final SiftListData data = listDatas.get(position);
+        PicassoUD.loadImage(context, AppContansts.PhpURL + data.getImg(), holder.ivPic);
+        holder.tvTitle.setText(data.getTitle());
+        holder.tvTime.setText(data.getTime());
+        holder.tvCollection.setText(data.getCollectionNum() + "");
+        holder.tvPraise.setText(data.getPraiseNum() + "");
 
-        holder.ivCollection.setOnClickListener(new View.OnClickListener() {
+        holder.ivPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                   holder.ivCollection.setImageResource(R.drawable.zhy_find_collection_2);
+                Intent intent = new Intent(context, WebActivity.class);
+                intent.putExtra("url","http://www.baidu.com");
+                context.startActivity(intent);
             }
         });
-        holder.ivPraise.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                holder.ivPraise.setImageResource(R.drawable.zhy_find_praise_2);
-            }
-        });
+
+        if (data.getIsCollection() == 0) {
+            holder.ivCollection.setImageResource(R.drawable.zhy_find_collection_1);
+            holder.ivCollection.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    data.setIsCollection(1);
+                    int collectionNum = data.getCollectionNum();
+                    data.setCollectionNum(++collectionNum);
+                    holder.ivCollection.setOnClickListener(null);
+                    setData(2, data.getId());
+                    notifyDataSetChanged();
+                }
+            });
+        } else {
+            holder.ivCollection.setImageResource(R.drawable.zhy_find_collection_2);
+            holder.ivCollection.setOnClickListener(null);
+        }
+
+        if (data.getIsPraise() == 0) {
+            holder.ivPraise.setImageResource(R.drawable.zhy_find_praise_1);
+            holder.ivPraise.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    data.setIsPraise(1);
+                    holder.ivPraise.setImageResource(R.drawable.zhy_find_praise_2);
+                    int praiseNum = data.getPraiseNum();
+                    data.setPraiseNum(++praiseNum);
+                    holder.ivPraise.setOnClickListener(null);
+                    setData(1, data.getId());
+                    notifyDataSetChanged();
+                }
+            });
+        } else {
+            holder.ivPraise.setImageResource(R.drawable.zhy_find_praise_2);
+            holder.ivPraise.setOnClickListener(null);
+        }
+
+
         return convertView;
+    }
+
+
+    /**
+     * @param type （1.为点赞   2.为收藏）
+     */
+    private void setData(int type, int siftID) {
+        RequestParams params = new RequestParams();
+        params.put("type", type);
+        params.put("userid", AppContansts.userLoginInfo.getUserId());
+        params.put("siftid", siftID);
+        MHttpManagerFactory.getPHPManager().setSiftData(context, params, new HttpResponseHandler<Object>() {
+            @Override
+            public void onStart() {
+
+            }
+
+            @Override
+            public void onSuccess(Object result) {
+
+            }
+
+            @Override
+            public void onError(String message) {
+
+            }
+        });
     }
 
     class ViewHolder {
