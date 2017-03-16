@@ -225,7 +225,7 @@ public class HttpRequestExecutor {
 	 */
 	public <T> void requestPHPGet(final Context context, final String method,
 								  final Class<T> c, RequestParams params,
-								  final HttpResponseHandler<T> response) {
+								  final HttpResponseHandler<T> response, final boolean isDialog) {
 		if (!isNetworkConnected(context)) {
 			onError(response, context.getString(R.string.net_work_off), context);
 			return;
@@ -233,27 +233,39 @@ public class HttpRequestExecutor {
 		try {
 
 			Log.i("tag", "methed=" + C_sPhpUrl + "/" + method);
+
 			httpClient.get(context, C_sPhpUrl + "/" + method, params, new AsyncHttpResponseHandler() {
 
 				@Override
 				public void onStart() {
 					super.onStart();
 					if (response != null) {
-						if ( (context instanceof Activity) && !((Activity) context).isFinishing())
+						if ((context instanceof Activity) && !((Activity) context).isFinishing())
 							response.onStart();
+					}
+					if (isDialog == true) {
+						pd = new CustomDialog(context);
+						pd.setCanceledOnTouchOutside(false);
+						pd.show();
 					}
 				}
 
 				@Override
 				public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
-					if ((context instanceof Activity)&& !((Activity) context).isFinishing()|| method.contains("doLogout")) {
-						if ( (context instanceof Activity) && !((Activity) context).isFinishing())
+					if (pd != null) {
+						pd.cancel();
+					}
+					if ((context instanceof Activity) && !((Activity) context).isFinishing() || method.contains("doLogout")) {
+						if ((context instanceof Activity) && !((Activity) context).isFinishing())
 							response(context, method, c, response, responseBody);
 					}
 				}
 
 				@Override
 				public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+					if (pd != null) {
+						pd.cancel();
+					}
 					String s = error.getMessage();
 					if (s != null) {
 						Log.e("tag", s);

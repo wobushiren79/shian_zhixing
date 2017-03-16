@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
@@ -17,7 +18,7 @@ import com.shian.shianlifezx.activity.WebActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
-import com.shian.shianlifezx.provide.phpresult.PHPHrGetLoginAdvertisement;
+import com.shian.shianlifezx.provide.phpresult.PHPHrGetAdvertisement;
 
 
 /**
@@ -32,7 +33,7 @@ public class AppAdvertisementLayout extends LinearLayout {
     private MainAdvertisementLayout.CallBack callBack;
 
 
-    private PHPHrGetLoginAdvertisement result;
+    private PHPHrGetAdvertisement result;
     public AppAdvertisementLayout(Context context) {
         this(context, null);
     }
@@ -55,18 +56,22 @@ public class AppAdvertisementLayout extends LinearLayout {
      * 获取数据
      */
     private void getData() {
-        MHttpManagerFactory.getPHPManager().appAdvertisement(getContext(), new HttpResponseHandler<PHPHrGetLoginAdvertisement>() {
+        RequestParams params=new RequestParams();
+        params.put("type", 4);
+        params.put("number", 1);
+        params.put("pagerNumber", 0);
+        MHttpManagerFactory.getPHPManager().getAdvertisement(getContext(),params, new HttpResponseHandler<PHPHrGetAdvertisement>() {
             @Override
             public void onStart() {
 
             }
 
             @Override
-            public void onSuccess(PHPHrGetLoginAdvertisement result) {
+            public void onSuccess(PHPHrGetAdvertisement result) {
                 AppAdvertisementLayout.this.result=result;
                 mBTCancel.setOnClickListener(onClickListener);
                 mIVConent.setOnClickListener(onClickListener);
-                ImageLoader.getInstance().displayImage(AppContansts.PhpURL + result.getBanner(), mIVConent, new ImageLoadingListener() {
+                ImageLoader.getInstance().displayImage(AppContansts.PhpURL + result.getItems().get(0).getBanner(), mIVConent, new ImageLoadingListener() {
                     @Override
                     public void onLoadingStarted(String imageUri, View view) {
 
@@ -108,7 +113,7 @@ public class AppAdvertisementLayout extends LinearLayout {
             } else if (v == mIVConent) {
                 if(result!=null){
                     Intent intent=new Intent(getContext(), WebActivity.class);
-                    intent.putExtra("url",result.getUrl());
+                    intent.putExtra("url",result.getItems().get(0).getString());
                     getContext().startActivity(intent);
                 }
             }

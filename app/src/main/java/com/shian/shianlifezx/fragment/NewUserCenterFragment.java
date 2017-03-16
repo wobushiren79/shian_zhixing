@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 
 import com.shian.shianlifezx.R;
+import com.shian.shianlifezx.activity.CustomerHelpActivity;
+import com.shian.shianlifezx.activity.IdeaFeedbackActivity;
 import com.shian.shianlifezx.activity.MyCollectionActivity;
 import com.shian.shianlifezx.activity.SettingsActivity;
 import com.shian.shianlifezx.activity.UserInfoActivity;
@@ -19,6 +21,7 @@ import com.shian.shianlifezx.base.BaseFragment;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.JSONUtil;
 import com.shian.shianlifezx.common.utils.PicassoUD;
+import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
@@ -160,7 +163,7 @@ public class NewUserCenterFragment extends BaseFragment {
             } else if (v == mLLCollection) {
                 collection();
             } else if (v == mLLIdea) {
-
+                idea();
             } else if (v == mLLSetting) {
                 setting();
             } else if (v == mLLPlatform) {
@@ -170,11 +173,26 @@ public class NewUserCenterFragment extends BaseFragment {
             }
         }
     };
+
+    /**
+     * 意见反馈
+     */
+    private void idea() {
+        if(mHrUserInfo==null){
+            ToastUtils.show(getContext(),"数据异常，请重新登陆");
+        }else{
+            Intent intent = new Intent(getContext(), IdeaFeedbackActivity.class);
+            intent.putExtra("UserInfo",new String[]{mHrUserInfo.getName(),mHrUserInfo.getMobile()});
+            startActivity(intent);
+        }
+    }
+
     /**
      * 帮助
      */
     private void help() {
-
+        Intent intent = new Intent(getContext(), CustomerHelpActivity.class);
+        startActivity(intent);
     }
     /**
      * 收藏

@@ -7,8 +7,9 @@ import com.shian.shianlifezx.provide.base.BaseHttpParams;
 import com.shian.shianlifezx.provide.base.HttpRequestExecutor;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.imp.PHPManager;
+import com.shian.shianlifezx.provide.phpresult.PHPHrGetAdvertisement;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetDynamic;
-import com.shian.shianlifezx.provide.phpresult.PHPHrGetLoginAdvertisement;
+import com.shian.shianlifezx.provide.phpresult.PHPHrGetHotIssue;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetSiftListData;
 
 /**
@@ -27,37 +28,38 @@ public class PHPManagerImpl implements PHPManager {
         return manager;
     }
 
-
     @Override
-    public void loginAdvertisement(Context context, HttpResponseHandler<PHPHrGetLoginAdvertisement> handler) {
-        excutor.requestPHPPost(context, "Home/index/loginbanner", PHPHrGetLoginAdvertisement.class,
-                new BaseHttpParams(), handler);
-    }
-    @Override
-    public void mainAdvertisement(Context context, HttpResponseHandler<PHPHrGetLoginAdvertisement> handler) {
-        excutor.requestPHPPost(context, "Home/index/indexbanner", PHPHrGetLoginAdvertisement.class,
-                new BaseHttpParams(), handler);
+    public void getAdvertisement(Context context, RequestParams params, HttpResponseHandler<PHPHrGetAdvertisement> handler) {
+        excutor.requestPHPGet(context, "Home/index/advertising", PHPHrGetAdvertisement.class,
+                params, handler, false);
     }
 
-    @Override
-    public void appAdvertisement(Context context, HttpResponseHandler<PHPHrGetLoginAdvertisement> handler) {
-        excutor.requestPHPPost(context, "Home/index/usebanner", PHPHrGetLoginAdvertisement.class,
-                new BaseHttpParams(), handler);
-    }
     @Override
     public void getDynamicInfo(Context context, RequestParams params, HttpResponseHandler<PHPHrGetDynamic> handler) {
         excutor.requestPHPGet(context, "Home/index/dynamic", PHPHrGetDynamic.class,
-                params, handler);
+                params, handler, false);
     }
     @Override
     public void getSiftListData(Context context, RequestParams params, HttpResponseHandler<PHPHrGetSiftListData> handler) {
         excutor.requestPHPGet(context, "Home/index/sift", PHPHrGetSiftListData.class,
-                params, handler);
+                params, handler, false);
     }
 
     @Override
     public void setSiftData(Context context, RequestParams params, HttpResponseHandler<Object> handler) {
         excutor.requestPHPGet(context, "Home/index/siftuser", Object.class,
-                params, handler);
+                params, handler, false);
+    }
+
+    @Override
+    public void getHotIssue(Context context, RequestParams params, HttpResponseHandler<PHPHrGetHotIssue> handler) {
+        excutor.requestPHPGet(context, "Home/index/help", PHPHrGetHotIssue.class,
+                params, handler, false);
+    }
+
+    @Override
+    public void setOpinion(Context context, RequestParams params, HttpResponseHandler<Object> handler, boolean isDialog) {
+        excutor.requestPHPGet(context, "Home/index/opinion", Object.class,
+                params, handler, isDialog);
     }
 }

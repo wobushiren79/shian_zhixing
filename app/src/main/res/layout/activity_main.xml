@@ -74,12 +74,12 @@
         </RadioGroup>
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="@dimen/dimen_100dp"
-        android:layout_height="@dimen/dimen_100dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="@dimen/dimen_28dp"
-        android:src="@drawable/zhy_build_new_order" />
+    <!--<ImageView-->
+        <!--android:layout_width="@dimen/dimen_100dp"-->
+        <!--android:layout_height="@dimen/dimen_100dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="@dimen/dimen_28dp"-->
+        <!--android:src="@drawable/zhy_build_new_order" />-->
 
 </RelativeLayout>

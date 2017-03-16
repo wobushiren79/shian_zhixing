@@ -1,7 +1,5 @@
 package com.shian.shianlifezx.activity;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -11,11 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 
 import com.baidu.android.pushservice.PushConstants;
 import com.baidu.android.pushservice.PushManager;
+import com.loopj.android.http.RequestParams;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.base.BaseActivity;
@@ -28,7 +25,7 @@ import com.shian.shianlifezx.common.utils.SharePerfrenceUtils.ShareLogin;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpLoginParams;
-import com.shian.shianlifezx.provide.phpresult.PHPHrGetLoginAdvertisement;
+import com.shian.shianlifezx.provide.phpresult.PHPHrGetAdvertisement;
 import com.shian.shianlifezx.provide.result.HrLoginResult;
 
 import java.util.Timer;
@@ -69,15 +66,19 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
      * 获取广告图
      */
     private void initAdvertisement() {
-        MHttpManagerFactory.getPHPManager().loginAdvertisement(SplashActivity.this, new HttpResponseHandler<PHPHrGetLoginAdvertisement>() {
+        RequestParams params = new RequestParams();
+        params.put("type", 1);
+        params.put("number", 1);
+        params.put("pagerNumber", 0);
+        MHttpManagerFactory.getPHPManager().getAdvertisement(SplashActivity.this, params, new HttpResponseHandler<PHPHrGetAdvertisement>() {
             @Override
             public void onStart() {
 
             }
 
             @Override
-            public void onSuccess(final PHPHrGetLoginAdvertisement result) {
-                String picUrl = AppContansts.PhpURL + result.getBanner();
+            public void onSuccess(final PHPHrGetAdvertisement result) {
+                String picUrl = AppContansts.PhpURL + result.getItems().get(0).getBanner();
                 ImageLoader.getInstance().displayImage(picUrl, mIVAdvertising);
                 mIVAdvertising.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -87,6 +88,7 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
                     }
                 });
             }
+
 
             @Override
             public void onError(String message) {
@@ -192,12 +194,13 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
      *
      * @param result
      */
-    private void jumpWeb(PHPHrGetLoginAdvertisement result) {
+    private void jumpWeb(PHPHrGetAdvertisement result) {
         cancelTimer();
         Intent intent = new Intent(SplashActivity.this, WebActivity.class);
-        intent.putExtra("url", result.getUrl());
+        intent.putExtra("url", result.getItems().get(0).getBanner());
         startActivity(intent);
     }
+
 
     /**
      * 关闭定时器
@@ -292,5 +295,11 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
     private void advertisementSet() {
         mBTJump.setVisibility(View.VISIBLE);
         mIVAdvertising.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cancelTimer();
     }
 }
