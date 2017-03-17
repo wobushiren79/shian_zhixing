@@ -283,8 +283,6 @@ public class MainActivity extends BaseActivity  {
                 ToastUtils.show(this, "再按一次返回桌面");
             }
         }
-
-
     }
 
     private void exitApp() {

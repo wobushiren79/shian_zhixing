@@ -16,6 +16,7 @@ import com.loopj.android.http.RequestParams;
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.activity.NoticeListActivity;
 import com.shian.shianlifezx.activity.WebActivity;
+import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
@@ -99,9 +100,8 @@ public class MainDynamic extends LinearLayout {
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            int urlId = items.get(position).getId();
             Intent intent = new Intent(getContext(), WebActivity.class);
-            intent.putExtra("url", "http://www.baidu.com");
+            intent.putExtra("url", AppContansts.dynamicsPHPURL+"?id="+items.get(position).getId());
             getContext().startActivity(intent);
         }
     };

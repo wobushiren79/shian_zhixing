@@ -44,9 +44,6 @@ public class FindFragment extends BaseFragment {
         view = inflater.inflate(R.layout.fragment_find, null, false);
         listDatas.clear();
         initView();
-
-
-
         return view;
     }
 
@@ -70,6 +67,7 @@ public class FindFragment extends BaseFragment {
     @Override
     public void onResume() {
         super.onResume();
+
         // 开始就呈现下拉状态
         new Handler().postDelayed(new Runnable() {
             @Override
