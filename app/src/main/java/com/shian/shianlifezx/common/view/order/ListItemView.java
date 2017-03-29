@@ -42,6 +42,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -113,8 +114,9 @@ public class ListItemView extends BaseOrderView {
                 ImageView ivPic2 = (ImageView) paramViewGropMap.getView(R.id.btn_ht_pic_1);
                 ImageView moreInfo= (ImageView) paramViewGropMap.getView(R.id.iv_data);
                 ((TextView) paramViewGropMap.getView(R.id.tv_item_0))
-                        .setText("派单时间:" + Utils.getDateUtils(paramWaitItem.getItemApplyTime()));
+                        .setText("" + Utils.getDateUtils(paramWaitItem.getItemApplyTime()));
                 TextView localTextView00 = (TextView) paramViewGropMap.getView(R.id.tv_item_00);
+                LinearLayout localLL00= (LinearLayout) paramViewGropMap.getView(R.id.ll_item_00);
                 TextView localTextView1 = (TextView) paramViewGropMap.getView(R.id.tv_item_1);
                 TextView localTextView2 = (TextView) paramViewGropMap.getView(R.id.tv_item_2);
                 TextView localTextView3 = (TextView) paramViewGropMap.getView(R.id.tv_item_3);
@@ -325,7 +327,8 @@ public class ListItemView extends BaseOrderView {
                         localTextView11.setEnabled(false);
                         localTextView11.setBackgroundColor(getResources().getColor(R.color.gray));
                         localTextView00.setVisibility(View.VISIBLE);
-                        localTextView00.setText("完成时间:" + Utils.getDateUtils(paramWaitItem.getPassTime()));
+                        localLL00.setVisibility(VISIBLE);
+                        localTextView00.setText("" + Utils.getDateUtils(paramWaitItem.getPassTime()));
                         break;
                     case 4:
                         localTextView8.setText("申请审核时间:");
@@ -337,6 +340,7 @@ public class ListItemView extends BaseOrderView {
                         localTextView9.setVisibility(View.GONE);
                         localTextView11.setText("再次提交审核");
                         localTextView00.setVisibility(View.VISIBLE);
+                        localLL00.setVisibility(VISIBLE);
                         localTextView11.setOnClickListener(new OnClickListener() {
 
                             @Override

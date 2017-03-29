@@ -10,7 +10,7 @@
     <string name="seesionerror">访问已失效，请重新打开应用</string>
     <string name="map">地图</string>
 
-    <string name="orderid">订单编号：</string>
+    <string name="orderid">订单编号</string>
     <string name="main_1">首页</string>
     <string name="main_2">订单</string>
     <string name="main_3">发现</string>

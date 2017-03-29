@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/zhy_backgroud_1"
     android:orientation="vertical"
-    tools:context="com.shian.shianlife.activity.IdeaFeedbackActivity">
+  >
 
     <EditText
         android:layout_marginTop="@dimen/dimen_8dp"
@@ -31,7 +31,8 @@
         android:textColor="@color/dimgray"
         android:textSize="@dimen/dimen_24dp" />
 
-    <Button
+    <TextView
+        android:gravity="center"
         android:id="@+id/bt_submit"
         android:textSize="@dimen/dimen_32dp"
         android:layout_gravity="center_horizontal"

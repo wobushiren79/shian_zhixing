@@ -17,7 +17,7 @@ import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 
 public class IdeaFeedbackActivity extends BaseActivity {
     EditText mEditText;
-    Button mBTSubmit;
+    TextView mBTSubmit;
     TextView mTVTextNum;
 
 
@@ -34,7 +34,7 @@ public class IdeaFeedbackActivity extends BaseActivity {
 
     private void initView() {
         mEditText = (EditText) findViewById(R.id.edit);
-        mBTSubmit = (Button) findViewById(R.id.bt_submit);
+        mBTSubmit = (TextView) findViewById(R.id.bt_submit);
         mTVTextNum = (TextView) findViewById(R.id.tv_textnum);
 
         mBTSubmit.setOnClickListener(onClickListener);
