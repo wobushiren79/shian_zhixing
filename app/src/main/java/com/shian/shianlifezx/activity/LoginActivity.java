@@ -50,7 +50,9 @@ public class LoginActivity extends BaseActivity {
 	 * 动画
 	 */
 	private void startAnim() {
-		TranslateAnimation translateAnimation=new TranslateAnimation(Animation.RELATIVE_TO_SELF,Animation.RELATIVE_TO_SELF,1000,Animation.RELATIVE_TO_SELF);
+		TranslateAnimation translateAnimation = new TranslateAnimation
+				(Animation.RELATIVE_TO_SELF,0,Animation.RELATIVE_TO_SELF,0,
+						Animation.RELATIVE_TO_SELF,1f, Animation.RELATIVE_TO_SELF,0f);
 		translateAnimation.setDuration(1000);
 		rlContent.setAnimation(translateAnimation);
 		translateAnimation.start();

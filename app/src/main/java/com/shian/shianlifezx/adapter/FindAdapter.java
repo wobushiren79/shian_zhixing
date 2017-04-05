@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.loopj.android.http.RequestParams;
@@ -66,6 +67,8 @@ public class FindAdapter extends BaseAdapter {
             holder.tvPraise = (TextView) convertView.findViewById(R.id.tv_praise);
             holder.ivCollection = (ImageView) convertView.findViewById(R.id.iv_collection);
             holder.ivPraise = (ImageView) convertView.findViewById(R.id.iv_praise);
+            holder.llCollection= (LinearLayout) convertView.findViewById(R.id.ll_collection);
+            holder.llPraise= (LinearLayout) convertView.findViewById(R.id.ll_praise);
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder) convertView.getTag();
@@ -81,8 +84,8 @@ public class FindAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, WebActivity.class);
-                intent.putExtra("url",AppContansts.siftsPHPURL+"?id="+data.getId());
-                intent.putExtra("isShare", true);
+                intent.putExtra("url", AppContansts.siftsPHPURL + "?id=" + data.getId());
+                intent.putExtra("isCollection", true);
                 intent.putExtra("shareData",data);
                 context.startActivity(intent);
             }
@@ -90,7 +93,7 @@ public class FindAdapter extends BaseAdapter {
 
         if (data.getIsCollection() == 0) {
             holder.ivCollection.setImageResource(R.drawable.zhy_find_collection_1);
-            holder.ivCollection.setOnClickListener(new View.OnClickListener() {
+            holder.llCollection.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     data.setIsCollection(1);
@@ -103,12 +106,12 @@ public class FindAdapter extends BaseAdapter {
             });
         } else {
             holder.ivCollection.setImageResource(R.drawable.zhy_find_collection_2);
-            holder.ivCollection.setOnClickListener(null);
+            holder.llCollection.setOnClickListener(null);
         }
 
         if (data.getIsPraise() == 0) {
             holder.ivPraise.setImageResource(R.drawable.zhy_find_praise_1);
-            holder.ivPraise.setOnClickListener(new View.OnClickListener() {
+            holder.llPraise.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     data.setIsPraise(1);
@@ -122,10 +125,8 @@ public class FindAdapter extends BaseAdapter {
             });
         } else {
             holder.ivPraise.setImageResource(R.drawable.zhy_find_praise_2);
-            holder.ivPraise.setOnClickListener(null);
+            holder.llPraise.setOnClickListener(null);
         }
-
-
         return convertView;
     }
 
@@ -165,5 +166,8 @@ public class FindAdapter extends BaseAdapter {
         TextView tvPraise;
         ImageView ivCollection;
         ImageView ivPraise;
+
+        LinearLayout llCollection;
+        LinearLayout llPraise;
     }
 }

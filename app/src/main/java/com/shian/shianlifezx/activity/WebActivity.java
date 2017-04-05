@@ -2,6 +2,7 @@ package com.shian.shianlifezx.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.WebChromeClient;
@@ -26,7 +27,9 @@ import com.shian.shianlifezx.provide.phpmodel.SiftListData;
  * Created by asus on 2016/7/30.
  */
 public class WebActivity extends BaseActivity {
+
     TextView mTVBack;
+    TextView mTVTitle;
     ImageView mIVCancel;
     ImageView mIVCollection;
     ImageView mIVShare;
@@ -35,15 +38,16 @@ public class WebActivity extends BaseActivity {
     ProgressBar mPB;
     String dir;
 
+    boolean isCollection;
+    String url = "";
     SiftListData data;
-    boolean isShare;
 
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         setContentView(R.layout.activity_web);
         initView();
-        openShare();
+        openCollection();
         dir = this.getApplicationContext().getDir("database", Context.MODE_PRIVATE).getPath();
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
@@ -53,7 +57,8 @@ public class WebActivity extends BaseActivity {
         webSettings.setGeolocationDatabasePath(dir);
         webSettings.setDomStorageEnabled(true);//允许DCOM
 
-        mWebView.loadUrl(getIntent().getStringExtra("url"));
+        url = getIntent().getStringExtra("url");
+        mWebView.loadUrl(url);
         mWebView.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
@@ -68,31 +73,48 @@ public class WebActivity extends BaseActivity {
                 super.onProgressChanged(view, newProgress);
             }
 
+            @Override
+            public void onReceivedTitle(WebView view, String title) {
+                super.onReceivedTitle(view, title);
+                mTVTitle.setText(title);
+            }
+
         });
+
+
         mWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 // TODO Auto-generated method stub
+                if (url.startsWith("tel:")) {
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse(url));
+                    startActivity(intent);
+                    return true;
+                }
                 view.loadUrl(url);
                 return true;
             }
         });
+
+
     }
 
-    private void openShare() {
-        isShare = getIntent().getBooleanExtra("isShare", false);
-        if (isShare) {
+    /**
+     * 是否要开启收藏功能
+     */
+    private void openCollection() {
+        isCollection = getIntent().getBooleanExtra("isCollection", false);
+        if (isCollection) {
             mIVCollection.setVisibility(View.VISIBLE);
-            mIVShare.setVisibility(View.VISIBLE);
             data = (SiftListData) getIntent().getSerializableExtra("shareData");
             if (data.getIsCollection() == 0) {
-                mIVCollection.setImageResource(R.drawable.zhy_find_collection_details_1);
+                mIVCollection.setImageResource(R.drawable.zhy_find_collection_1);
             } else {
-                mIVCollection.setImageResource(R.drawable.zhy_find_collection_details_2);
+                mIVCollection.setImageResource(R.drawable.zhy_find_collection_2);
+                mIVCollection.setClickable(false);
             }
         } else {
             mIVCollection.setVisibility(View.GONE);
-            mIVShare.setVisibility(View.GONE);
         }
     }
 
@@ -101,9 +123,15 @@ public class WebActivity extends BaseActivity {
         mWebView = (WebView) findViewById(R.id.web);
         mTVBack = (TextView) findViewById(R.id.tv_back);
         mIVCancel = (ImageView) findViewById(R.id.iv_cancel);
+        mIVCollection = (ImageView) findViewById(R.id.iv_collection);
+        mIVShare = (ImageView) findViewById(R.id.iv_share);
+        mTVTitle = (TextView) findViewById(R.id.tv_title);
+
 
         mTVBack.setOnClickListener(onClickListener);
         mIVCancel.setOnClickListener(onClickListener);
+        mIVCollection.setOnClickListener(onClickListener);
+        mIVShare.setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -116,7 +144,7 @@ public class WebActivity extends BaseActivity {
             } else if (v == mIVShare) {
                 share();
             } else if (v == mIVCollection) {
-                setData(2,data.getId());
+                setData(2, data.getId());
             }
         }
     };
@@ -130,13 +158,13 @@ public class WebActivity extends BaseActivity {
              * Uri uri = Uri.fromFile(f); intent.putExtra(Intent.EXTRA_STREAM,
              * uri); 　
              */
-        if (data == null) {
-            return;
-        }
+//        if (data == null) {
+//            return;
+//        }
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setType("text/plain");
         intent.putExtra(Intent.EXTRA_SUBJECT, "Share");
-        intent.putExtra(Intent.EXTRA_TEXT, data.getTitle()+"\n"+ AppContansts.siftsPHPURL+"?id="+data.getId());
+        intent.putExtra(Intent.EXTRA_TEXT, url);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(Intent.createChooser(intent, getTitle()));
     }
@@ -145,9 +173,9 @@ public class WebActivity extends BaseActivity {
      * @param type （1.为点赞   2.为收藏）
      */
     private void setData(int type, int siftID) {
-        mIVCollection.setImageResource(R.drawable.zhy_find_collection_details_2);
+        mIVCollection.setImageResource(R.drawable.zhy_find_collection_2);
         mIVCollection.setClickable(false);
-        ToastUtils.show(WebActivity.this,"收藏成功");
+        ToastUtils.show(WebActivity.this, "收藏成功");
         RequestParams params = new RequestParams();
         params.put("type", type);
         params.put("userid", AppContansts.userLoginInfo.getUserId());
