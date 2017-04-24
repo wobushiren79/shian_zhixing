@@ -25,8 +25,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HotIssueListActivity extends BaseActivity {
-
-
+    String title;
+    int code = 0;
     int page = 0;
     int pageNumber = 10;
     PullToRefreshListView mListView;
@@ -37,7 +37,9 @@ public class HotIssueListActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notice_list);
-        setTitle("热门问题");
+        title = getIntent().getStringExtra("title");
+        code = getIntent().getIntExtra("code", 0);
+        setTitle(title);
 
         initView();
 
@@ -64,8 +66,8 @@ public class HotIssueListActivity extends BaseActivity {
     AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Intent intent=new Intent(HotIssueListActivity.this,WebActivity.class);
-            intent.putExtra("url", AppContansts.helpsPHPURL+"?id="+data.get(position-1).getId());
+            Intent intent = new Intent(HotIssueListActivity.this, WebActivity.class);
+            intent.putExtra("url", AppContansts.helpsPHPURL + "?id=" + data.get(position - 1).getId());
             startActivity(intent);
         }
     };
@@ -89,6 +91,7 @@ public class HotIssueListActivity extends BaseActivity {
      */
     private void getData(final boolean isClean) {
         RequestParams requestParams = new RequestParams();
+        requestParams.put("type", code);
         requestParams.put("number", pageNumber);
         requestParams.put("pagerNumber", page);
         MHttpManagerFactory.getPHPManager().getHotIssue(HotIssueListActivity.this, requestParams, new HttpResponseHandler<PHPHrGetHotIssue>() {

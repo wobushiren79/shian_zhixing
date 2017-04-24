@@ -21,6 +21,7 @@ import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.phpmodel.HotIssueData;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetHotIssue;
+import com.shian.shianlifezx.thisenum.HelpEnum;
 import com.shian.shianlifezx.view.ScrollListView;
 
 
@@ -115,6 +116,8 @@ public class HelpHotIssue extends LinearLayout {
         public void onClick(View v) {
             if (v == mIVMore) {
                 Intent intent = new Intent(getContext(), HotIssueListActivity.class);
+                intent.putExtra("title", HelpEnum.ALL.getName());
+                intent.putExtra("code", HelpEnum.ALL.getCode());
                 getContext().startActivity(intent);
             }
         }
