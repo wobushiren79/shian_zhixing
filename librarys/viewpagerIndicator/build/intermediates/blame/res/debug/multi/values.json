@@ -11,7 +11,14 @@
                     "endOffset": 95
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__attrs.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__attrs.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 1531,
+                        "endColumn": 45,
+                        "endOffset": 1572
+                    }
                 }
             },
             {
@@ -23,7 +30,14 @@
                     "endOffset": 143
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__attrs.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__attrs.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 1578,
+                        "endColumn": 48,
+                        "endOffset": 1622
+                    }
                 }
             },
             {
@@ -35,7 +49,14 @@
                     "endOffset": 193
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__attrs.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__attrs.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 1628,
+                        "endColumn": 50,
+                        "endOffset": 1674
+                    }
                 }
             },
             {
@@ -47,7 +68,14 @@
                     "endOffset": 243
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__attrs.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__attrs.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 1680,
+                        "endColumn": 50,
+                        "endOffset": 1726
+                    }
                 }
             },
             {
@@ -59,7 +87,14 @@
                     "endOffset": 306
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 685,
+                        "endColumn": 62,
+                        "endOffset": 743
+                    }
                 }
             },
             {
@@ -71,7 +106,14 @@
                     "endOffset": 366
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1028,
+                        "endColumn": 59,
+                        "endOffset": 1083
+                    }
                 }
             },
             {
@@ -83,7 +125,14 @@
                     "endOffset": 427
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 31,
+                        "startColumn": 4,
+                        "startOffset": 1584,
+                        "endColumn": 60,
+                        "endOffset": 1640
+                    }
                 }
             },
             {
@@ -95,7 +144,14 @@
                     "endOffset": 494
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 2331,
+                        "endColumn": 66,
+                        "endOffset": 2393
+                    }
                 }
             },
             {
@@ -107,7 +163,14 @@
                     "endOffset": 557
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 48,
+                        "startColumn": 4,
+                        "startOffset": 2675,
+                        "endColumn": 62,
+                        "endOffset": 2733
+                    }
                 }
             },
             {
@@ -119,7 +182,14 @@
                     "endOffset": 629
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 749,
+                        "endColumn": 71,
+                        "endOffset": 816
+                    }
                 }
             },
             {
@@ -131,7 +201,14 @@
                     "endOffset": 701
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 822,
+                        "endColumn": 71,
+                        "endOffset": 889
+                    }
                 }
             },
             {
@@ -143,7 +220,14 @@
                     "endOffset": 775
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1089,
+                        "endColumn": 73,
+                        "endOffset": 1158
+                    }
                 }
             },
             {
@@ -155,7 +239,14 @@
                     "endOffset": 849
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 29,
+                        "startColumn": 4,
+                        "startOffset": 1432,
+                        "endColumn": 73,
+                        "endOffset": 1501
+                    }
                 }
             },
             {
@@ -167,7 +258,14 @@
                     "endOffset": 925
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 1507,
+                        "endColumn": 75,
+                        "endOffset": 1578
+                    }
                 }
             },
             {
@@ -179,7 +277,14 @@
                     "endOffset": 998
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 34,
+                        "startColumn": 4,
+                        "startOffset": 1716,
+                        "endColumn": 72,
+                        "endOffset": 1784
+                    }
                 }
             },
             {
@@ -191,7 +296,14 @@
                     "endOffset": 1073
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 41,
+                        "startColumn": 4,
+                        "startOffset": 2255,
+                        "endColumn": 74,
+                        "endOffset": 2325
+                    }
                 }
             },
             {
@@ -203,7 +315,14 @@
                     "endOffset": 1144
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 43,
+                        "startColumn": 4,
+                        "startOffset": 2399,
+                        "endColumn": 70,
+                        "endOffset": 2465
+                    }
                 }
             },
             {
@@ -215,7 +334,14 @@
                     "endOffset": 1223
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 51,
+                        "startColumn": 4,
+                        "startOffset": 2888,
+                        "endColumn": 78,
+                        "endOffset": 2962
+                    }
                 }
             },
             {
@@ -227,7 +353,14 @@
                     "endOffset": 1285
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 685,
+                        "endColumn": 61,
+                        "endOffset": 742
+                    }
                 }
             },
             {
@@ -239,7 +372,14 @@
                     "endOffset": 1348
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 4,
+                        "startOffset": 748,
+                        "endColumn": 62,
+                        "endOffset": 806
+                    }
                 }
             },
             {
@@ -251,7 +391,14 @@
                     "endOffset": 1426
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 1000,
+                        "endColumn": 77,
+                        "endOffset": 1073
+                    }
                 }
             },
             {
@@ -263,7 +410,14 @@
                     "endOffset": 1505
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 1079,
+                        "endColumn": 78,
+                        "endOffset": 1153
+                    }
                 }
             },
             {
@@ -275,7 +429,14 @@
                     "endOffset": 1598
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 812,
+                        "endColumn": 92,
+                        "endOffset": 900
+                    }
                 }
             },
             {
@@ -287,7 +448,14 @@
                     "endOffset": 1691
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 906,
+                        "endColumn": 92,
+                        "endOffset": 994
+                    }
                 }
             },
             {
@@ -299,7 +467,14 @@
                     "endOffset": 1799
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml",
+                    "position": {
+                        "startLine": 23,
+                        "startColumn": 4,
+                        "startOffset": 1159,
+                        "endColumn": 107,
+                        "endOffset": 1262
+                    }
                 }
             },
             {
@@ -311,7 +486,14 @@
                     "endOffset": 1907
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__colors.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1268,
+                        "endColumn": 107,
+                        "endOffset": 1371
+                    }
                 }
             },
             {
@@ -323,7 +505,14 @@
                     "endOffset": 4274
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 21,
+                        "startColumn": 4,
+                        "startOffset": 965,
+                        "endColumn": 61,
+                        "endOffset": 1022
+                    }
                 }
             },
             {
@@ -335,7 +524,14 @@
                     "endOffset": 4342
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 24,
+                        "startColumn": 4,
+                        "startOffset": 1164,
+                        "endColumn": 67,
+                        "endOffset": 1227
+                    }
                 }
             },
             {
@@ -347,7 +543,14 @@
                     "endOffset": 4405
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 27,
+                        "startColumn": 4,
+                        "startOffset": 1301,
+                        "endColumn": 62,
+                        "endOffset": 1359
+                    }
                 }
             },
             {
@@ -359,7 +562,14 @@
                     "endOffset": 4470
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 26,
+                        "startColumn": 4,
+                        "startOffset": 1235,
+                        "endColumn": 64,
+                        "endOffset": 1295
+                    }
                 }
             },
             {
@@ -371,7 +581,14 @@
                     "endOffset": 4536
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 28,
+                        "startColumn": 4,
+                        "startOffset": 1365,
+                        "endColumn": 65,
+                        "endOffset": 1426
+                    }
                 }
             },
             {
@@ -383,7 +600,14 @@
                     "endOffset": 4603
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 33,
+                        "startColumn": 4,
+                        "startOffset": 1648,
+                        "endColumn": 66,
+                        "endOffset": 1710
+                    }
                 }
             },
             {
@@ -395,7 +619,14 @@
                     "endOffset": 4681
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 1944,
+                        "endColumn": 77,
+                        "endOffset": 2017
+                    }
                 }
             },
             {
@@ -407,7 +638,14 @@
                     "endOffset": 4771
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 38,
+                        "startColumn": 4,
+                        "startOffset": 2023,
+                        "endColumn": 89,
+                        "endOffset": 2108
+                    }
                 }
             },
             {
@@ -419,7 +657,14 @@
                     "endOffset": 4844
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 35,
+                        "startColumn": 4,
+                        "startOffset": 1790,
+                        "endColumn": 72,
+                        "endOffset": 1858
+                    }
                 }
             },
             {
@@ -431,7 +676,14 @@
                     "endOffset": 4913
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 39,
+                        "startColumn": 4,
+                        "startOffset": 2114,
+                        "endColumn": 68,
+                        "endOffset": 2178
+                    }
                 }
             },
             {
@@ -443,7 +695,14 @@
                     "endOffset": 4978
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 44,
+                        "startColumn": 4,
+                        "startOffset": 2471,
+                        "endColumn": 64,
+                        "endOffset": 2531
+                    }
                 }
             },
             {
@@ -455,7 +714,14 @@
                     "endOffset": 5046
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 45,
+                        "startColumn": 4,
+                        "startOffset": 2537,
+                        "endColumn": 67,
+                        "endOffset": 2600
+                    }
                 }
             },
             {
@@ -467,7 +733,14 @@
                     "endOffset": 5112
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 46,
+                        "startColumn": 4,
+                        "startOffset": 2606,
+                        "endColumn": 65,
+                        "endOffset": 2667
+                    }
                 }
             },
             {
@@ -479,7 +752,14 @@
                     "endOffset": 5181
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 895,
+                        "endColumn": 68,
+                        "endOffset": 959
+                    }
                 }
             },
             {
@@ -491,7 +771,14 @@
                     "endOffset": 5260
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 36,
+                        "startColumn": 4,
+                        "startOffset": 1864,
+                        "endColumn": 78,
+                        "endOffset": 1938
+                    }
                 }
             },
             {
@@ -503,7 +790,14 @@
                     "endOffset": 5330
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 40,
+                        "startColumn": 4,
+                        "startOffset": 2184,
+                        "endColumn": 69,
+                        "endOffset": 2249
+                    }
                 }
             },
             {
@@ -515,7 +809,14 @@
                     "endOffset": 5403
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 49,
+                        "startColumn": 4,
+                        "startOffset": 2739,
+                        "endColumn": 72,
+                        "endOffset": 2807
+                    }
                 }
             },
             {
@@ -527,7 +828,14 @@
                     "endOffset": 5477
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__defaults.xml",
+                    "position": {
+                        "startLine": 50,
+                        "startColumn": 4,
+                        "startOffset": 2813,
+                        "endColumn": 73,
+                        "endOffset": 2882
+                    }
                 }
             },
             {
@@ -540,7 +848,15 @@
                     "endOffset": 5677
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__styles.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__styles.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 1630,
+                        "endLine": 40,
+                        "endColumn": 12,
+                        "endOffset": 1828
+                    }
                 }
             },
             {
@@ -553,7 +869,15 @@
                     "endOffset": 5930
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__styles.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__styles.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 685,
+                        "endLine": 20,
+                        "endColumn": 12,
+                        "endOffset": 936
+                    }
                 }
             },
             {
@@ -566,7 +890,15 @@
                     "endOffset": 5969
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__styles.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__styles.xml",
+                    "position": {
+                        "startLine": 22,
+                        "startColumn": 4,
+                        "startOffset": 944,
+                        "endLine": 23,
+                        "endColumn": 12,
+                        "endOffset": 979
+                    }
                 }
             },
             {
@@ -579,7 +911,15 @@
                     "endOffset": 6159
                 },
                 "from": {
-                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__styles.xml"
+                    "file": "E:\\Android\\AndroidProjects\\shian_zhixing\\librarys\\viewpagerIndicator\\res\\values\\vpi__styles.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 4,
+                        "startOffset": 1836,
+                        "endLine": 45,
+                        "endColumn": 12,
+                        "endOffset": 2024
+                    }
                 }
             },
             {
