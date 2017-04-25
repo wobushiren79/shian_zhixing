@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class SharePerfrenceUtils {
 	private static final String C_sShare_Login_F = "Login_Share_f";
 	private static final String C_sShareLogin_username = "share_username";
@@ -14,7 +16,7 @@ public class SharePerfrenceUtils {
 
 	public static void setLoginShare(Context c, String username,
 			String password, boolean isRemeber, boolean isAuto) {
-		Editor editor = c.getSharedPreferences(C_sShare_Login_F, -1).edit();
+		Editor editor = c.getSharedPreferences(C_sShare_Login_F, MODE_PRIVATE).edit();
 		editor.putString(C_sShareLogin_username, username);
 		editor.putString(C_sShareLogin_password, password);
 		editor.putBoolean(C_sShareLogin_isRemeberPassword, isRemeber);
@@ -23,13 +25,13 @@ public class SharePerfrenceUtils {
 	}
 
 	public static void setShareAutoLogin(Context c, boolean isAuto) {
-		Editor editor = c.getSharedPreferences(C_sShare_Login_F, -1).edit();
+		Editor editor = c.getSharedPreferences(C_sShare_Login_F, MODE_PRIVATE).edit();
 		editor.putBoolean(C_sShareLogin_isAutoLogin, isAuto);
 		editor.commit();
 	}
 
 	public static ShareLogin getLoginShare(Context c) {
-		SharedPreferences share = c.getSharedPreferences(C_sShare_Login_F, -1);
+		SharedPreferences share = c.getSharedPreferences(C_sShare_Login_F, MODE_PRIVATE);
 		String username = share.getString(C_sShareLogin_username, "");
 		String password = share.getString(C_sShareLogin_password, "");
 		boolean isRember = share.getBoolean(C_sShareLogin_isRemeberPassword,
@@ -44,13 +46,13 @@ public class SharePerfrenceUtils {
 	}
 
 	public static void setShareChannelId(Context c, String channelId) {
-		Editor editor = c.getSharedPreferences(C_sShare_Login_F, -1).edit();
+		Editor editor = c.getSharedPreferences(C_sShare_Login_F, MODE_PRIVATE).edit();
 		editor.putString(C_sShareLogin_channelId, channelId);
 		editor.commit();
 	}
 
 	public static String getShareChannelId(Context c) {
-		SharedPreferences share = c.getSharedPreferences(C_sShare_Login_F, -1);
+		SharedPreferences share = c.getSharedPreferences(C_sShare_Login_F, MODE_PRIVATE);
 		return share.getString(C_sShareLogin_channelId, "1");
 	}
 
