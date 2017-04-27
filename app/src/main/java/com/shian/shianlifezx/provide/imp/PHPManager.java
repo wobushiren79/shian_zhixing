@@ -9,6 +9,7 @@ import com.shian.shianlifezx.provide.phpresult.PHPHrGetAdvertisement;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetDynamic;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetHotIssue;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetSiftListData;
+import com.shian.shianlifezx.provide.phpresult.PHPHrGetVersion;
 
 
 /**
@@ -65,4 +66,12 @@ public interface PHPManager extends HttpManager {
      * @param handler
      */
     public void setOpinion(Context context,RequestParams params,HttpResponseHandler<Object> handler,boolean isDialog);
+
+    /**
+     * 获取版本号
+     * @param context
+     * @param params
+     * @param handler
+     */
+    public void getVersion(Context context, RequestParams params, HttpResponseHandler<PHPHrGetVersion> handler, boolean isDialog);
 }

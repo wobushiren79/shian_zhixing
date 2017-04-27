@@ -35,6 +35,7 @@ import com.shian.shianlifezx.common.LocationService;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils;
 import com.shian.shianlifezx.common.utils.ToastUtils;
+import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.fragment.FindFragment;
 import com.shian.shianlifezx.fragment.HomeFragment;
 import com.shian.shianlifezx.fragment.NewHomeFragment;
@@ -82,6 +83,9 @@ public class MainActivity extends BaseActivity  {
         initIM();
         initPermission();
         startPushService();
+
+        //检测更新
+        Utils.checkUpData(this, false);
     }
     private void startPushService() {
         Intent intent=new Intent(MainActivity.this, PushService.class);
