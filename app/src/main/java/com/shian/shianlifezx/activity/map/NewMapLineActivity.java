@@ -107,7 +107,7 @@ public class NewMapLineActivity extends Activity {
     }
 
     private void initData() {
-        SearchResult result = NewRoutePlanActivity.result;
+        SearchResult result = NewRoutePlanOtherActivity.result;
         endPointStr = getIntent().getStringExtra("MapLineEndPoint");
         if (result instanceof WalkingRouteResult) {
             lineType = 1;

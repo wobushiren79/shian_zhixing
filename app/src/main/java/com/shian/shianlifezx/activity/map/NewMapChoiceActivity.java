@@ -111,9 +111,9 @@ public class NewMapChoiceActivity extends Activity implements BaiduMap.OnMapClic
      */
     private void changePoint(String location) {
         HpChangeLocation params = new HpChangeLocation();
-        params.setConsultId(NewRoutePlanActivity.consultId);
-        params.setOperationType(NewRoutePlanActivity.locationType);
-        params.setOrderItemId(NewRoutePlanActivity.orderItemId);
+        params.setConsultId(NewRoutePlanOtherActivity.consultId);
+        params.setOperationType(NewRoutePlanOtherActivity.locationType);
+        params.setOrderItemId(NewRoutePlanOtherActivity.consultId);
         params.setAddressDetail(location);
         MHttpManagerFactory.getAccountManager().changeLocation(NewMapChoiceActivity.this, params, new HttpResponseHandler<Object>() {
             @Override

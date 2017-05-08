@@ -183,7 +183,6 @@ public class MainAPPItems extends LinearLayout {
      * 导航功能
      */
     private void navigationFunction() {
-
 //        Intent intent = new Intent();
 //        if (Utils.isInstalled(getContext(), "com.baidu.BaiduMap")) {
 //            try {
