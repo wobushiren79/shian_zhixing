@@ -182,25 +182,38 @@ public class ListItemView extends BaseOrderView {
                     }
                 });
 
-                if (paramWaitItem.getZsLocation() == null) {
-                    btnMap.setVisibility(GONE);
-                }else if(paramWaitItem.getZsLocation().equals("")) {
-                    btnMap.setVisibility(GONE);
-                } else {
-                    btnMap.setVisibility(VISIBLE);
-                    btnMap.setOnClickListener(new OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            Intent intent = new Intent(getContext(), NewRoutePlanOtherActivity.class);
-                            intent.putExtra("LocationType",2);
-                            intent.putExtra("ConsultId",-1);
-                            intent.putExtra("OrderItemId",paramWaitItem.getOrderItemId());
-                            intent.putExtra("RoutePlanLocation", paramWaitItem.getZsLocation());
-                            getContext().startActivity(intent);
+//                if (paramWaitItem.getZsLocation() == null) {
+//                    btnMap.setVisibility(GONE);
+//                }else if(paramWaitItem.getZsLocation().equals("")) {
+//                    btnMap.setVisibility(GONE);
+//                } else {
+//                    btnMap.setVisibility(VISIBLE);
+//                    btnMap.setOnClickListener(new OnClickListener() {
+//                        @Override
+//                        public void onClick(View view) {
+//                            Intent intent = new Intent(getContext(), NewRoutePlanOtherActivity.class);
+//                            intent.putExtra("LocationType",2);
+//                            intent.putExtra("ConsultId",-1);
+//                            intent.putExtra("OrderItemId",paramWaitItem.getOrderItemId());
+//                            intent.putExtra("RoutePlanLocation", paramWaitItem.getZsLocation()+"");
+//                            getContext().startActivity(intent);
+//
+//                        }
+//                    });
+//                }
+                btnMap.setVisibility(VISIBLE);
+                btnMap.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getContext(), NewRoutePlanOtherActivity.class);
+                        intent.putExtra("LocationType",2);
+                        intent.putExtra("ConsultId",-1);
+                        intent.putExtra("OrderItemId",paramWaitItem.getOrderItemId());
+                        intent.putExtra("RoutePlanLocation", paramWaitItem.getZsLocation()+"");
+                        getContext().startActivity(intent);
 
-                        }
-                    });
-                }
+                    }
+                });
 
                 iv_call.setOnClickListener(new OnClickListener() {
 

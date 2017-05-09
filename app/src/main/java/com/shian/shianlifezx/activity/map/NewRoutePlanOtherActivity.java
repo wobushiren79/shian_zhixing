@@ -128,7 +128,7 @@ public class NewRoutePlanOtherActivity extends BaseActivity implements BaiduMap.
         endPointStr = "";
         endPointStr = getIntent().getStringExtra("RoutePlanLocation");
         locationType = getIntent().getIntExtra("LocationType", -1);
-        consultId = getIntent().getLongExtra("ConsultId", -1);
+        consultId = getIntent().getLongExtra("OrderItemId", -1);
     }
 
     /**
@@ -475,7 +475,7 @@ public class NewRoutePlanOtherActivity extends BaseActivity implements BaiduMap.
             mapSearchAdapter.notifyDataSetChanged();
             List<Overlay> listOverlay = new ArrayList<>();
             for (PoiInfo data : searchListData) {
-                if (!data.address.equals("当前位置")) {
+                if (!data.name.equals("当前位置")) {
                     Overlay overlay = drawLocation(data.location);
                     listOverlay.add(overlay);
                 }
@@ -502,16 +502,18 @@ public class NewRoutePlanOtherActivity extends BaseActivity implements BaiduMap.
      * @param result
      */
     private void resultDeal(SearchResult result) {
+
         this.result = result;
         if (dialog != null) {
             dialog.cancel();
         }
-
         //第一次默认搜索
         if (!isUseNumPoint) {
             LatLng latlng = new LatLng(AppContansts.LOCAL_latitude, AppContansts.LOCAL_longitude);
             searchNearBy(latlng);
+            isUseNumPoint = true;
         }
+
 
         if (result == null) {
             //没有找到地址
@@ -557,7 +559,6 @@ public class NewRoutePlanOtherActivity extends BaseActivity implements BaiduMap.
                 intent.putExtra("MapLineEndPoint", endPointStr);
             }
             startActivity(intent);
-            isUseNumPoint = true;
         }
     }
 
