@@ -26,8 +26,9 @@ import java.io.File;
  */
 
 public class UpDataService extends Service {
+
     String downloadURL = null;
-    String downloadName = APPTypeEnum.ADVISER.getName() + ".apk";
+    String downloadName = APPTypeEnum.EXECUTOR.getName() + ".apk";
 
     boolean isDown = false;
 
