@@ -20,6 +20,7 @@ import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.phpmodel.SiftListData;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetSiftListData;
+import com.shian.shianlifezx.thisenum.SystemTypeEnum;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -108,6 +109,7 @@ public class FindFragment extends BaseFragment {
         params.put("userid", (int) AppContansts.userLoginInfo.getUserId());
         params.put("number", number);
         params.put("pagerNumber", pagerNumber);
+        params.put("userType", SystemTypeEnum.funeral.getCode());
         MHttpManagerFactory.getPHPManager().getSiftListData(getContext(), params, new HttpResponseHandler<PHPHrGetSiftListData>() {
             @Override
             public void onStart() {

@@ -14,6 +14,7 @@ import com.shian.shianlifezx.base.BaseActivity;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
+import com.shian.shianlifezx.thisenum.SystemTypeEnum;
 
 public class IdeaFeedbackActivity extends BaseActivity {
     EditText mEditText;
@@ -86,6 +87,7 @@ public class IdeaFeedbackActivity extends BaseActivity {
         params.put("user", UserInfo[0]);
         params.put("tel", UserInfo[1]);
         params.put("content", mEditText.getText().toString());
+        params.put("userType", SystemTypeEnum.funeral.getCode());
         MHttpManagerFactory.getPHPManager().setOpinion(IdeaFeedbackActivity.this, params, new HttpResponseHandler<Object>() {
             @Override
             public void onStart() {

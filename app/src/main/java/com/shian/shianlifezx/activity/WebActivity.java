@@ -22,6 +22,7 @@ import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.phpmodel.SiftListData;
+import com.shian.shianlifezx.thisenum.SystemTypeEnum;
 
 /**
  * Created by asus on 2016/7/30.
@@ -180,6 +181,7 @@ public class WebActivity extends BaseActivity {
         params.put("type", type);
         params.put("userid", AppContansts.userLoginInfo.getUserId());
         params.put("siftid", siftID);
+        params.put("userType", SystemTypeEnum.funeral.getCode());
         MHttpManagerFactory.getPHPManager().setSiftData(WebActivity.this, params, new HttpResponseHandler<Object>() {
             @Override
             public void onStart() {
