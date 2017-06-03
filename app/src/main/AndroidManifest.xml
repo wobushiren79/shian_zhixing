@@ -353,6 +353,10 @@
             android:name=".activity.map.NewRoutePlanOtherActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".activity.LoginAdvertActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
 
         <service android:name=".service.UpDataService"></service>
     </application>

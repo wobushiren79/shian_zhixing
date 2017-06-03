@@ -22,6 +22,7 @@ import com.shian.shianlifezx.common.push.Utils;
 import com.shian.shianlifezx.common.utils.JSONUtil;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils.ShareLogin;
+import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpLoginParams;
@@ -33,215 +34,88 @@ import java.util.TimerTask;
 
 public class SplashActivity extends BaseActivity implements OnPushListener {
 
-    private int sleepTime = 2500;//loading时间
-    private int advertisementTime = 5000;//广告时间
+    private int SLEEPTIME = 2500;//loading时间
+    private int advertisementTime = 3000;//广告时间
+
     HrLoginResult result = null;
-
     Timer timerIntent;//定时跳转
-    Button mBTJump;
-    ImageView mIVAdvertising;
-
-
-    Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 0) {
-                advertisementSet();
-            }
-        }
-    };
-
 
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         setContentView(R.layout.activity_splash);
-        init();
         initPush();
-        initAdvertisement();
     }
 
     /**
-     * 获取广告图
+     * 休眠2秒
      */
-    private void initAdvertisement() {
-        RequestParams params = new RequestParams();
-        params.put("type", 1);
-        params.put("number", 1);
-        params.put("pagerNumber", 0);
-        MHttpManagerFactory.getPHPManager().getAdvertisement(SplashActivity.this, params, new HttpResponseHandler<PHPHrGetAdvertisement>() {
+    private void sleepActivity(final int type) {
+        timerIntent = new Timer();
+        timerIntent.schedule(new TimerTask() {
             @Override
-            public void onStart() {
-
+            public void run() {
+                jumpActivity(type);
             }
+        }, SLEEPTIME);
+    }
 
-            @Override
-            public void onSuccess(final PHPHrGetAdvertisement result) {
-                String picUrl = AppContansts.PhpURL + result.getItems().get(0).getBanner();
-                ImageLoader.getInstance().displayImage(picUrl, mIVAdvertising);
-                mIVAdvertising.setOnClickListener(new View.OnClickListener() {
+
+    private void initData(String channelId) {
+        //自动登陆
+        SharePerfrenceUtils.ShareLogin shareLogin = SharePerfrenceUtils.getLoginShare(SplashActivity.this);
+        if (shareLogin.isAutoLogin()) {
+            login(shareLogin.getUsername(), shareLogin.getPassword(), channelId);
+        } else {
+            sleepActivity(1);
+        }
+    }
+
+
+    /**
+     * 跳转界面
+     */
+    private void jumpActivity(int type) {
+        Intent intent = new Intent(SplashActivity.this, LoginAdvertActivity.class);
+        if (type == 0) {
+            intent.putExtra("advert", LoginAdvertActivity.MAIN);
+        } else {
+            intent.putExtra("advert", LoginAdvertActivity.LOGIN);
+        }
+        startActivity(intent);
+        finish();
+    }
+
+
+    private void login(final String username, final String password, String channelId) {
+
+        HpLoginParams params = new HpLoginParams();
+        params.setPassword(password);
+        params.setUsername(username);
+        params.setSystemType("3");
+        params.setChannelId(channelId);
+        MHttpManagerFactory.getAccountManager().login(this, params,
+                new HttpResponseHandler<HrLoginResult>() {
+
                     @Override
-                    public void onClick(View v) {
-                        mBTJump.setText("跳转");
-                        jumpWeb(result);
+                    public void onSuccess(HrLoginResult result) {
+                        AppContansts.userLoginInfo = result;
+                        sleepActivity(0);
+                    }
+
+                    @Override
+                    public void onStart() {
+
+                    }
+
+                    @Override
+                    public void onError(String message) {
+                        ToastUtils.show(getBaseContext(), "登陆失败");
+                        SharePerfrenceUtils.setLoginShare(SplashActivity.this, username, password, true, false);
+                        jumpActivity(1);
                     }
                 });
-            }
 
-
-            @Override
-            public void onError(String message) {
-
-            }
-        });
-    }
-
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (v == mBTJump) {
-                jumpActivity();
-            }
-        }
-    };
-
-    private void jumpActivity() {
-        ShareLogin loginS = SharePerfrenceUtils.getLoginShare(this);
-        if (loginS.isAutoLogin()) {
-            jumpMain(result);
-        } else {
-            jumpLogin();
-        }
-    }
-
-    private void init() {
-        mBTJump = (Button) findViewById(R.id.bt_jump);
-        mIVAdvertising = (ImageView) findViewById(R.id.iv_advertising);
-
-        mBTJump.setOnClickListener(onClickListener);
-    }
-
-    private void initView() {
-        new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(sleepTime);
-                    isOpenAdvertisement(true);
-                    timerIntent = new Timer();
-                    timerIntent.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            jumpLogin();
-                        }
-                    }, advertisementTime);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-
-    }
-
-    private void initView1() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(sleepTime);
-                    isOpenAdvertisement(true);
-                    timerIntent = new Timer();
-                    timerIntent.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            jumpMain(result);
-                        }
-                    }, advertisementTime);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
-
-    /**
-     * 跳转主界面
-     *
-     * @param result
-     */
-    private void jumpMain(HrLoginResult result) {
-        cancelTimer();
-        Intent in = new Intent(SplashActivity.this, MainActivity.class);
-        in.putExtra("loginData", JSONUtil.writeEntityToJSONString(result));
-        startActivity(in);
-        finish();
-    }
-
-    /**
-     * 跳转登录界面
-     */
-    private void jumpLogin() {
-        cancelTimer();
-        Intent in = new Intent(SplashActivity.this, LoginActivity.class);
-        startActivity(in);
-        finish();
-    }
-
-    /**
-     * 跳转网页界面
-     *
-     * @param result
-     */
-    private void jumpWeb(PHPHrGetAdvertisement result) {
-        cancelTimer();
-        Intent intent = new Intent(SplashActivity.this, WebActivity.class);
-        intent.putExtra("url", result.getItems().get(0).getUrl());
-        startActivity(intent);
-    }
-
-
-    /**
-     * 关闭定时器
-     */
-    private void cancelTimer() {
-        if (timerIntent != null) {
-            timerIntent.cancel();
-        }
-    }
-
-    private void initLogin(String channelId) {
-        ShareLogin loginS = SharePerfrenceUtils.getLoginShare(this);
-        if (loginS.isAutoLogin()) {
-            HpLoginParams params = new HpLoginParams();
-            params.setPassword(loginS.getPassword());
-            params.setUsername(loginS.getUsername());
-            params.setSystemType("3");
-            MHttpManagerFactory.getAccountManager().login(this, params,
-                    new HttpResponseHandler<HrLoginResult>() {
-
-                        @Override
-                        public void onSuccess(HrLoginResult result) {
-                            initView1();
-                        }
-
-                        @Override
-                        public void onStart() {
-
-                        }
-
-                        @Override
-                        public void onError(String message) {
-                            Intent in = new Intent(SplashActivity.this, LoginActivity.class);
-                            startActivity(in);
-                            finish();
-                        }
-                    });
-
-        } else {
-            initView();
-        }
     }
 
     private void initPush() {
@@ -276,30 +150,13 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
     @Override
     public void onPush(String channelId) {
         // TODO Auto-generated method stub
-        initLogin(channelId);
-    }
-
-    /**
-     * 是否开启广告
-     *
-     * @param isOpen
-     */
-    public void isOpenAdvertisement(boolean isOpen) throws InterruptedException {
-        if (isOpen == false) {
-            return;
-        } else {
-            handler.obtainMessage(0).sendToTarget();
-        }
-    }
-
-    private void advertisementSet() {
-        mBTJump.setVisibility(View.VISIBLE);
-        mIVAdvertising.setVisibility(View.VISIBLE);
+        initData(channelId);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        cancelTimer();
+        if (timerIntent != null)
+            timerIntent.cancel();
     }
 }
