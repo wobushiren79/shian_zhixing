@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.GeolocationPermissions;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -50,12 +51,13 @@ public class WebActivity extends BaseActivity {
         initView();
         openCollection();
         dir = this.getApplicationContext().getDir("database", Context.MODE_PRIVATE).getPath();
+
         WebSettings webSettings = mWebView.getSettings();
+        webSettings.setDatabaseEnabled(true);
         webSettings.setJavaScriptEnabled(true);
         webSettings.setAllowFileAccess(true);
-        webSettings.setGeolocationEnabled(true);
-        webSettings.setDatabaseEnabled(true);
         webSettings.setGeolocationDatabasePath(dir);
+        webSettings.setGeolocationEnabled(true);
         webSettings.setDomStorageEnabled(true);//允许DCOM
 
         url = getIntent().getStringExtra("url");
@@ -79,7 +81,11 @@ public class WebActivity extends BaseActivity {
                 super.onReceivedTitle(view, title);
                 mTVTitle.setText(title);
             }
-
+            @Override
+            public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
+                callback.invoke(origin, true, false);
+                super.onGeolocationPermissionsShowPrompt(origin, callback);
+            }
         });
 
 
