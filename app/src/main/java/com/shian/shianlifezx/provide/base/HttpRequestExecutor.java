@@ -24,12 +24,14 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
+import com.loopj.android.http.BinaryHttpResponseHandler;
 import com.loopj.android.http.FileAsyncHttpResponseHandler;
 import com.loopj.android.http.RequestParams;
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.activity.LoginActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.FilePathUtils;
+import com.shian.shianlifezx.common.utils.HttpUtils;
 import com.shian.shianlifezx.common.utils.ObjectMapperFactory;
 import com.shian.shianlifezx.mapapi.CustomDialog;
 
@@ -45,6 +47,7 @@ public class HttpRequestExecutor {
     private static final String C_sBaseUrl = AppContansts.BaseURL;// "http://120.25.103.60:8080/hzrapi/";
     private static final String C_sPhpUrl = AppContansts.PhpURL;
     private AsyncHttpClient httpClient = new AsyncHttpClient();
+//    private AsyncHttpClient httpsClient = new AsyncHttpClient(HttpUtils.getSchemeRegistry());//请求https的方式
     private Header[] headers;
 
     /**
@@ -57,6 +60,8 @@ public class HttpRequestExecutor {
             headers = new Header[3];
         headers[0] = new BasicHeader("systemType", "2");
         headers[1] = new BasicHeader("Content-Type", "application/json");
+
+
         httpClient.setTimeout(15000);
 
     }
@@ -236,7 +241,6 @@ public class HttpRequestExecutor {
         try {
 
             Log.i("tag", "methed=" + C_sPhpUrl + "/" + method);
-
             httpClient.get(context, C_sPhpUrl + "/" + method, params, new AsyncHttpResponseHandler() {
 
                 @Override
