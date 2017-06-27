@@ -115,7 +115,7 @@ public class ListItemView extends BaseOrderView {
                 ImageView ivPic2 = (ImageView) paramViewGropMap.getView(R.id.btn_ht_pic_1);
                 ImageView moreInfo= (ImageView) paramViewGropMap.getView(R.id.iv_data);
                 ((TextView) paramViewGropMap.getView(R.id.tv_item_0))
-                        .setText("" + Utils.getDateUtils(paramWaitItem.getItemApplyTime()));
+                        .setText("" + paramWaitItem.getItemApplyTime());
                 TextView localTextView00 = (TextView) paramViewGropMap.getView(R.id.tv_item_00);
                 LinearLayout localLL00= (LinearLayout) paramViewGropMap.getView(R.id.ll_item_00);
                 TextView localTextView1 = (TextView) paramViewGropMap.getView(R.id.tv_item_1);
@@ -136,8 +136,8 @@ public class ListItemView extends BaseOrderView {
                 localTextView4.setText(paramWaitItem.getAdviserName());
                 localTextView5.setText(paramWaitItem.getZsLocation());
                 localTextView6.setText(paramWaitItem.getNote());
-                localTextView7.setText(Utils.getDateUtils(paramWaitItem.getStartTime()));
-                localTextView9.setText(Utils.getDateUtils(paramWaitItem.getAcceptTime()));
+                localTextView7.setText(paramWaitItem.getStartTime());
+                localTextView9.setText(paramWaitItem.getAcceptTime());
                 localTextView44.setText(paramWaitItem.getSpecification());
                 TextView localTextView11 = (TextView) paramViewGropMap.getView(R.id.tv_item_send);
                 TextView localTextView12 = (TextView) paramViewGropMap.getView(R.id.accept);
@@ -308,7 +308,7 @@ public class ListItemView extends BaseOrderView {
                     case 1:
                         tlt4.setVisibility(View.GONE);
                         localTextView8.setText("开始时间:");
-                        localTextView7.setText(Utils.getDateUtils(paramWaitItem.getStartTime()));
+                        localTextView7.setText(paramWaitItem.getStartTime());
                         localTextView12.setVisibility(View.GONE);
                         localTextView13.setVisibility(View.GONE);
                         localTextView9.setVisibility(View.GONE);
@@ -331,8 +331,8 @@ public class ListItemView extends BaseOrderView {
                         localTextView8.setText("申请审核时间:");
                         localTextView10.setText("审核通过时间:");
                         localTextView10.setVisibility(View.GONE);
-                        localTextView7.setText(Utils.getDateUtils(paramWaitItem.getApplyTime()));
-                        localTextView9.setText(Utils.getDateUtils(paramWaitItem.getPassTime()));
+                        localTextView7.setText(paramWaitItem.getApplyTime());
+                        localTextView9.setText(paramWaitItem.getPassTime());
                         localTextView12.setVisibility(View.GONE);
                         localTextView13.setVisibility(View.GONE);
                         localTextView9.setVisibility(View.GONE);
@@ -342,13 +342,13 @@ public class ListItemView extends BaseOrderView {
                         localTextView11.setBackgroundColor(getResources().getColor(R.color.gray));
                         localTextView00.setVisibility(View.VISIBLE);
                         localLL00.setVisibility(VISIBLE);
-                        localTextView00.setText("" + Utils.getDateUtils(paramWaitItem.getPassTime()));
+                        localTextView00.setText("" + paramWaitItem.getPassTime());
                         break;
                     case 4:
                         localTextView8.setText("申请审核时间:");
                         localTextView10.setText("审核未通过时间:");
-                        localTextView7.setText(Utils.getDateUtils(paramWaitItem.getApplyTime()));
-                        localTextView9.setText(Utils.getDateUtils(paramWaitItem.getPassUnTime()));
+                        localTextView7.setText(paramWaitItem.getApplyTime());
+                        localTextView9.setText(paramWaitItem.getPassUnTime());
                         localTextView12.setVisibility(View.GONE);
                         localTextView13.setVisibility(View.GONE);
                         localTextView9.setVisibility(View.GONE);
