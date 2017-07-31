@@ -44,10 +44,10 @@ import com.shian.shianlifezx.mapapi.CustomDialog;
 @SuppressWarnings("deprecation")
 public class HttpRequestExecutor {
 
-    private static final String C_sBaseUrl = AppContansts.BaseURL;// "http://120.25.103.60:8080/hzrapi/";
+    //    private static final String C_sBaseUrl = AppContansts.BaseURL;// "http://120.25.103.60:8080/hzrapi/";
     private static final String C_sPhpUrl = AppContansts.PhpURL;
     private AsyncHttpClient httpClient = new AsyncHttpClient();
-//    private AsyncHttpClient httpsClient = new AsyncHttpClient(HttpUtils.getSchemeRegistry());//请求https的方式
+    //    private AsyncHttpClient httpsClient = new AsyncHttpClient(HttpUtils.getSchemeRegistry());//请求https的方式
     private Header[] headers;
 
     /**
@@ -78,9 +78,20 @@ public class HttpRequestExecutor {
      * @param params
      * @param response
      */
-    public <T> void requestPost(final Context context, final String method,
-                                final Class<T> c, BaseHttpParams params,
+    public <T> void requestPost(final Context context,
+                                final String method,
+                                final Class<T> c,
+                                BaseHttpParams params,
                                 final HttpResponseHandler<T> response) {
+        requestPost(context, method, c, params, response, false);
+    }
+
+    public <T> void requestPost(final Context context,
+                                final String method,
+                                final Class<T> c,
+                                BaseHttpParams params,
+                                final HttpResponseHandler<T> response,
+                                boolean isDialog) {
         if (!isNetworkConnected(context)) {
             onError(response, context.getString(R.string.net_work_off), context);
             return;
@@ -94,30 +105,24 @@ public class HttpRequestExecutor {
                 httpEntity = new StringEntity(httpParams, HTTP.UTF_8);
 
             }
-            if (method.contains("doLogout") || method.contains("doLogin")
-                    || method.contains("order/item/list/waitExecute") || method.contains("order/item/list/executing")
-                    || method.contains("order/item/list/waitAudit") || method.contains("order/item/list/auditSuccess")
-                    || method.contains("order/item/list/auditFailure")) {
-                pd = null;
-                getSession(context);
-            } else {
-//				pd = new ProgressDialog(context);
-//				pd.setMessage("正在载入...");
-//				pd.setIndeterminateDrawable(context.getResources().getDrawable(
-//						R.drawable.spinner));
+            if (isDialog) {
                 pd = new CustomDialog(context);
                 pd.setCanceledOnTouchOutside(false);
-                getSession(context);
+            } else {
+                pd = null;
             }
-            Log.e("tag", "methed=" + C_sBaseUrl + "/" + method);
-            httpClient.post(context, C_sBaseUrl + "/" + method, headers,
-                    httpEntity, "application/json",
+            getSession(context);
+            Log.e("tag", "methed=" + method);
+            httpClient.post(context, method, headers, httpEntity, "application/json",
                     new AsyncHttpResponseHandler() {
                         @Override
                         public void onStart() {
                             super.onStart();
                             if (response != null) {
-                                if (pd != null && (context instanceof Activity) && !((Activity) context).isFinishing())
+                                if (pd != null
+//                                        && (context instanceof Activity)
+//                                        && !((Activity) context).isFinishing()
+                                        )
                                     pd.show();
                                 response.onStart();
                             }
@@ -126,16 +131,14 @@ public class HttpRequestExecutor {
                         @Override
                         public void onSuccess(int arg0, Header[] arg1,
                                               byte[] arg2) {
-//							setSession(arg1, context);
-
-                            if ((context instanceof Activity)
-                                    && !((Activity) context).isFinishing()
-                                    || method.contains("doLogout")) {
-                                if (pd != null && (context instanceof Activity) && !((Activity) context).isFinishing())
-                                    pd.cancel();
-                                response(context, method, c, response, arg2);
-                            }
-
+//                            if ((context instanceof Activity) && !((Activity) context).isFinishing() || method.contains("doLogout")) {
+                            if (pd != null
+//                                        && (context instanceof Activity)
+//                                        && !((Activity) context).isFinishing()
+                                    )
+                                pd.cancel();
+                            response(context, method, c, response, arg2);
+//                            }
                         }
 
                         @Override
@@ -160,6 +163,7 @@ public class HttpRequestExecutor {
             onError(response, e1.getMessage(), context);
         }
     }
+
 
     /**
      * PHPPost请求

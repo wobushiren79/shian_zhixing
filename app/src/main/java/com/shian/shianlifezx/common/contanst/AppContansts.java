@@ -3,7 +3,9 @@ package com.shian.shianlifezx.common.contanst;
 import com.shian.shianlifezx.provide.result.HrLoginResult;
 
 public class AppContansts {
-    public static final String BaseURL = "http://115.28.163.211:7088/shianlife-executor-1.0-SNAPSHOT";
+    public static final String ExecutorURL = "http://115.28.163.211:7088/shianlife-executor-1.0-SNAPSHOT";
+    public static final String StoreURL = "http://192.168.0.37:8089";
+//    public static final String BaseURL = "http://192.168.0.200:8001/shianlife-adviser-1.0-SNAPSHOT";
 //    public static final String BaseURL = "http://192.168.0.37:8088/executor";
     public static final String OSSURL = "http://shianlife123.oss-cn-qingdao.aliyuncs.com/";
     //    public static final String PhpURL = "http://192.168.0.170/shian_app_mgr";

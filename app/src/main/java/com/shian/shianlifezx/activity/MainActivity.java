@@ -41,6 +41,7 @@ import com.shian.shianlifezx.fragment.HomeFragment;
 import com.shian.shianlifezx.fragment.NewHomeFragment;
 import com.shian.shianlifezx.fragment.NewUserCenterFragment;
 import com.shian.shianlifezx.fragment.OrderFragment;
+import com.shian.shianlifezx.fragment.TheOrderFragment;
 import com.shian.shianlifezx.fragment.UserCenterFragment;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
@@ -53,7 +54,7 @@ import org.support.v4.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity  {
+public class MainActivity extends BaseActivity {
     @InjectView(R.id.fl_main)
     View flMain;
     @InjectView(R.id.rb_main_1)
@@ -66,14 +67,16 @@ public class MainActivity extends BaseActivity  {
     RadioButton rbMain4;
     private FragmentManager mFragmentManager;
     private FragmentTransaction transcation;
-//    private HomeFragment homeFragment;
+    //    private HomeFragment homeFragment;
     private NewHomeFragment homeFragment;
     private FindFragment findFragment;
-    private OrderFragment orderFragment;
-//    private UserCenterFragment userFragment;
+    //    private OrderFragment orderFragment;
+    private TheOrderFragment orderFragment;
+    //    private UserCenterFragment userFragment;
     private NewUserCenterFragment userFragment;
 
     List<RadioButton> listRB = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
@@ -87,13 +90,15 @@ public class MainActivity extends BaseActivity  {
         //检测更新
         Utils.checkUpData(this, false);
     }
+
     private void startPushService() {
-        Intent intent=new Intent(MainActivity.this, PushService.class);
+        Intent intent = new Intent(MainActivity.this, PushService.class);
         startService(intent);
     }
+
     @TargetApi(23)
     private void initPermission() {
-        int hasWriteContactsPermission = PermissionChecker.checkSelfPermission(MainActivity.this,Manifest.permission.CALL_PHONE);
+        int hasWriteContactsPermission = PermissionChecker.checkSelfPermission(MainActivity.this, Manifest.permission.CALL_PHONE);
         if (hasWriteContactsPermission != PackageManager.PERMISSION_GRANTED) {
             Activity activty = this;
             ActivityCompat.requestPermissions(activty, new String[]{Manifest.permission.CALL_PHONE,},
@@ -123,11 +128,11 @@ public class MainActivity extends BaseActivity  {
 //            }
             if (permissions[0].equals(Manifest.permission.CALL_PHONE) && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 //用户同意使用write
-                Log.v("this","1");
+                Log.v("this", "1");
             } else {
                 //用户不同意，自行处理即可
                 finish();
-                Log.v("this","2");
+                Log.v("this", "2");
             }
         }
     }
@@ -148,7 +153,7 @@ public class MainActivity extends BaseActivity  {
 //            userInfo.phone = sb.toString().substring(0, 11);
 //        else
 //            userInfo.phone = sb.toString().substring(0, sb.toString().length() - 1);
-        userInfo.phone="15008420243";
+        userInfo.phone = "15008420243";
         userInfo.helpAddress = "wenshikai.kf5.com";
         userInfo.email = name + "@sina.com";
         userInfo.deviceToken = name;
@@ -234,7 +239,7 @@ public class MainActivity extends BaseActivity  {
                 break;
             case R.id.rb_main_2:
                 if (orderFragment == null) {
-                    orderFragment = new OrderFragment();
+                    orderFragment = new TheOrderFragment();
                 }
                 transcation.replace(R.id.fl_main, orderFragment);
                 break;

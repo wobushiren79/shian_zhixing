@@ -307,7 +307,7 @@
             android:name=".activity.LoginPhoneActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateHidden|adjustPan"></activity>
+            android:windowSoftInputMode="stateHidden|adjustPan" />
         <activity
             android:name=".activity.UserInfoMoneyActivity"
             android:configChanges="orientation|screenSize"
@@ -315,7 +315,7 @@
         <activity
             android:name=".activity.UserInfoIntegralActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.userinfo.DetailsActivity"
             android:configChanges="orientation|screenSize"
@@ -331,15 +331,15 @@
         <activity
             android:name=".activity.AllAppActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.MyCollectionActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.CustomerHelpActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.IdeaFeedbackActivity"
             android:configChanges="orientation|screenSize"
@@ -347,18 +347,27 @@
         <activity
             android:name=".activity.HotIssueListActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"></activity>
-
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.map.NewRoutePlanOtherActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity.LoginAdvertActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
-        <service android:name=".service.UpDataService"></service>
+        <service android:name=".service.UpDataService" />
+
+        <activity
+            android:theme="@style/StyledIndicators"
+            android:name=".activity.order.FuneralServiceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.order.StoreServiceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

@@ -54,10 +54,17 @@
     <color name="zhy_text_color_9">#6d8780</color>
     <color name="zhy_text_color_10">#ffa592</color>
     <color name="zhy_text_color_11">#6e6e6e</color>
+    <color name="zhy_text_color_12">#929191</color>
+    <color name="zhy_text_color_13">#222222</color>
+    <color name="zhy_text_color_14">#657470</color>
+    <color name="zhy_text_color_15">#979797</color>
+    <color name="zhy_text_color_16">#353535</color>
+    <color name="zhy_text_color_17">#b0b0b0</color>
     <color name="zhy_title_color_1">#3baf92</color>
     <color name="zhy_rb_check_1">#ededed</color>
     <color name="zhy_rb_uncheck_1">#dedede</color>
     <color name="zhy_backgroud_1">#F1F6F5</color>
+    <color name="zhy_backgroud_2">#e4e9e8</color>
     <!-- Dialog Color -->
     <color name="version_msg_color">#ff6699ff</color>
     <color name="message_color">#ffccccff</color>
