@@ -8,7 +8,7 @@ import java.util.List;
  * Created by zm.
  */
 
-public class StoreOrderBean extends BaseHttpParams {
+public class StoreOrderListBean extends BaseHttpParams {
     private int pageSize; //每页显示记录数
     private int pageNumber; //当前页
     private Content content;//内容

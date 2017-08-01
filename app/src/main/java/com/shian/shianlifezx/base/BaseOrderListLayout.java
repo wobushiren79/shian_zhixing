@@ -24,8 +24,4 @@ public abstract class BaseOrderListLayout extends LinearLayout {
         view = View.inflate(context, layoutId, this);
     }
 
-
-    public  abstract void refesh();
-
-    protected abstract void refeshAll();
 }

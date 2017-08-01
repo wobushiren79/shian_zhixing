@@ -2,11 +2,11 @@ package com.shian.shianlifezx.provide.imp;
 
 import android.content.Context;
 
-import com.loopj.android.http.RequestParams;
-import com.shian.shianlifezx.mvp.order.bean.StoreOrderBean;
-import com.shian.shianlifezx.mvp.order.bean.StoreOrderResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
-import com.shian.shianlifezx.provide.phpresult.PHPHrGetVersion;
 
 /**
  * Created by zm.
@@ -20,5 +20,14 @@ public interface StoreManager {
      * @param params
      * @param handler
      */
-    void getStoreListData(Context context, StoreOrderBean params, HttpResponseHandler<StoreOrderResultBean> handler);
+    void getStoreListData(Context context, StoreOrderListBean params, HttpResponseHandler<StoreOrderListResultBean> handler);
+
+
+    /**
+     * 接单
+     * @param context
+     * @param params
+     * @param handler
+     */
+    void acceptStoreOrder(Context context, StoreOrderAcceptBean params, HttpResponseHandler<StoreOrderAcceptResultBean> handler);
 }

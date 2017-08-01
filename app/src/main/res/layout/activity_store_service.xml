@@ -11,17 +11,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:background="@color/white">
+        android:background="@color/zhy_text_color_1"
+      >
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/dimen_88dp"
+
             android:layout_centerHorizontal="true"
-            app:tabIndicatorColor="@color/zhy_text_color_1"
-            app:tabSelectedTextColor="@color/zhy_text_color_1"
+            app:tabIndicatorColor="@color/white"
+            app:tabSelectedTextColor="@color/white"
             app:tabTextAppearance="@style/zhy_tablayout_textstyle"
-            app:tabTextColor="@color/zhy_text_color_17"></android.support.design.widget.TabLayout>
+            app:tabTextColor="@color/white"></android.support.design.widget.TabLayout>
     </RelativeLayout>
 
     <android.support.v4.view.ViewPager

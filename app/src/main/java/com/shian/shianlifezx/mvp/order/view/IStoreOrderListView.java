@@ -2,7 +2,7 @@ package com.shian.shianlifezx.mvp.order.view;
 
 import android.content.Context;
 
-import com.shian.shianlifezx.mvp.order.bean.StoreOrderResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
 
 import java.util.List;
 
@@ -10,14 +10,14 @@ import java.util.List;
  * Created by zm.
  */
 
-public interface IStoreOrderView {
+public interface IStoreOrderListView {
     Context getContext();
 
     int getPageSize();
 
     int getPageNumber();
 
-    void getDataSuccess(StoreOrderResultBean resultBean);
+    void getDataSuccess(StoreOrderListResultBean resultBean);
 
     void getDataFail(String msg);
 

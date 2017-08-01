@@ -2,10 +2,11 @@ package com.shian.shianlifezx.provide.imp.impl;
 
 import android.content.Context;
 
-import com.loopj.android.http.RequestParams;
 import com.shian.shianlifezx.common.contanst.AppContansts;
-import com.shian.shianlifezx.mvp.order.bean.StoreOrderBean;
-import com.shian.shianlifezx.mvp.order.bean.StoreOrderResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
 import com.shian.shianlifezx.provide.base.BaseHttpParams;
 import com.shian.shianlifezx.provide.base.HttpRequestExecutor;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
@@ -49,7 +50,12 @@ public class StoreManagerImpl implements StoreManager {
     }
 
     @Override
-    public void getStoreListData(Context context, StoreOrderBean params, HttpResponseHandler<StoreOrderResultBean> handler) {
-        requestPost(context, "api/goods/perform/list", StoreOrderResultBean.class, params, handler);
+    public void getStoreListData(Context context, StoreOrderListBean params, HttpResponseHandler<StoreOrderListResultBean> handler) {
+        requestPost(context, "api/goods/perform/list", StoreOrderListResultBean.class, params, handler);
+    }
+
+    @Override
+    public void acceptStoreOrder(Context context, StoreOrderAcceptBean params, HttpResponseHandler<StoreOrderAcceptResultBean> handler) {
+        requestPost(context, "api/goods/perform/accept", StoreOrderAcceptResultBean.class, params, handler,true);
     }
 }
