@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CustomAttr">
+        <attr name="titleName" format="string" />
+        <attr name="layoutType" format="integer" />
+        <attr name="contentText" format="string" />
+        <attr name="hintText" format="string" />
+    </declare-styleable>
+</resources>

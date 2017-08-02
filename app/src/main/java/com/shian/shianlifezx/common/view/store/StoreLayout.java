@@ -3,6 +3,7 @@ package com.shian.shianlifezx.common.view.store;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.adapter.StoreOrderListApdapter;
@@ -124,12 +125,12 @@ public class StoreLayout extends BaseOrderListLayout implements IStoreOrderListV
     @Override
     public void refreshAll() {
         if (callBack != null)
-            callBack.refreshAll();
+            callBack.refreshAll(this);
     }
 
 
     public interface CallBack {
-        void refreshAll();
+        void refreshAll(View view);
     }
 
     PtrDefaultHandler2 ptrDefaultHandler2 = new PtrDefaultHandler2() {

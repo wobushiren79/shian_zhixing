@@ -360,12 +360,16 @@
         <service android:name=".service.UpDataService" />
 
         <activity
-            android:theme="@style/StyledIndicators"
             android:name=".activity.order.FuneralServiceActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/StyledIndicators" />
+        <activity
+            android:name=".activity.order.StoreServiceActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.order.StoreServiceActivity"
+            android:name=".activity.order.StorePerformInfoActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"></activity>
     </application>

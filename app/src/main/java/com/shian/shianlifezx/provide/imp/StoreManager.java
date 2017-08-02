@@ -6,6 +6,8 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformResultBean;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 
 /**
@@ -30,4 +32,13 @@ public interface StoreManager {
      * @param handler
      */
     void acceptStoreOrder(Context context, StoreOrderAcceptBean params, HttpResponseHandler<StoreOrderAcceptResultBean> handler);
+
+
+    /**
+     * 接单
+     * @param context
+     * @param params
+     * @param handler
+     */
+    void savePerformInfo(Context context, StoreOrderSavePerformBean params, HttpResponseHandler<StoreOrderSavePerformResultBean> handler);
 }

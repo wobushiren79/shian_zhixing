@@ -20,7 +20,7 @@ import java.util.List;
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
-public class StoreServiceActivity extends BaseActivity {
+public class StoreServiceActivity extends BaseActivity implements StoreLayout.CallBack {
 
     @InjectView(R.id.tablayout)
     TabLayout tablayout;
@@ -30,6 +30,9 @@ public class StoreServiceActivity extends BaseActivity {
     private StoreOrderListEnum[] mStoreOrderListEna;
     private StoreOrderViewPagerAdapter mStoreAdapter;
     private StoreOrderPagerChangeListener mPagerListener;
+    private List<View> viewList;
+
+    public static boolean isRefresh_Change;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +53,7 @@ public class StoreServiceActivity extends BaseActivity {
                 StoreOrderListEnum.nosuccess,
                 StoreOrderListEnum.cancel
         };
-        List<View> viewList = new ArrayList<>();
+        viewList = new ArrayList<>();
 
 
         StoreLayout waitServiceLayout = new StoreLayout
@@ -91,6 +94,10 @@ public class StoreServiceActivity extends BaseActivity {
                 });
         viewList.add(cancelLayout);
 
+        for (View item : viewList) {
+            StoreLayout st = (StoreLayout) item;
+            st.setCallBack(this);
+        }
 
         mStoreAdapter = new StoreOrderViewPagerAdapter(this, viewList);
         mPagerListener = new StoreOrderPagerChangeListener();
@@ -106,5 +113,28 @@ public class StoreServiceActivity extends BaseActivity {
     private void initView() {
         tablayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tablayout.setTabGravity(TabLayout.GRAVITY_CENTER);
+    }
+
+    @Override
+    public void refreshAll(View view) {
+        for (View item : viewList) {
+            StoreLayout st = (StoreLayout) item;
+            st.refresh();
+        }
+    }
+
+    @Override
+    public void onResume() {
+        // TODO Auto-generated method stub
+        super.onResume();
+        if (viewList.size() > 0 && isRefresh_Change) {
+            refreshAll(null);
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        isRefresh_Change = false;
     }
 }

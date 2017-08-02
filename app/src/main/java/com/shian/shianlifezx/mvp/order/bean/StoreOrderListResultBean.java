@@ -242,6 +242,7 @@ public class StoreOrderListResultBean {
     }
 
     public static class GoodsPerform {
+        private Long id;
         /**
          * 执行商品ID
          */
@@ -298,6 +299,14 @@ public class StoreOrderListResultBean {
          * 执行备注
          */
         private String performComment;
+
+        public Long getId() {
+            return id;
+        }
+
+        public void setId(Long id) {
+            this.id = id;
+        }
 
         public Long getGoodsItemId() {
             return goodsItemId;

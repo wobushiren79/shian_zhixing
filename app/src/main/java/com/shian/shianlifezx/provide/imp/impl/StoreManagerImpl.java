@@ -7,6 +7,8 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformResultBean;
 import com.shian.shianlifezx.provide.base.BaseHttpParams;
 import com.shian.shianlifezx.provide.base.HttpRequestExecutor;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
@@ -57,5 +59,10 @@ public class StoreManagerImpl implements StoreManager {
     @Override
     public void acceptStoreOrder(Context context, StoreOrderAcceptBean params, HttpResponseHandler<StoreOrderAcceptResultBean> handler) {
         requestPost(context, "api/goods/perform/accept", StoreOrderAcceptResultBean.class, params, handler,true);
+    }
+
+    @Override
+    public void savePerformInfo(Context context, StoreOrderSavePerformBean params, HttpResponseHandler<StoreOrderSavePerformResultBean> handler) {
+        requestPost(context, "api/goods/perform/updatePerformInfo", StoreOrderSavePerformResultBean.class, params, handler,true);
     }
 }

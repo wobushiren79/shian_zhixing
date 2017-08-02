@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:CustomAttr="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.shian.shianlifezx.activity.order.StorePerformInfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dimen_96dp"
+            android:layout_marginLeft="@dimen/dimen_16dp"
+            android:gravity="center_vertical"
+            android:text="执行方式"
+            android:textColor="@color/black"
+            android:textSize="@dimen/dimen_28dp" />
+
+        <RadioGroup
+            android:id="@+id/rg_perform"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dimen_16dp"
+            android:layout_marginLeft="@dimen/dimen_16dp"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_perform_1"
+                android:layout_width="@dimen/dimen_160dp"
+                android:layout_height="@dimen/dimen_58dp"
+                android:layout_marginLeft="@dimen/dimen_20dp"
+                android:layout_marginRight="@dimen/dimen_20dp"
+                android:background="@drawable/radio_button_store_select"
+                android:button="@null"
+                android:gravity="center"
+                android:text="同城送达"
+                android:textColor="@color/radio_button_store_select"
+                android:textSize="@dimen/dimen_28dp" />
+
+            <RadioButton
+                android:id="@+id/rb_perform_2"
+                android:layout_width="@dimen/dimen_160dp"
+                android:layout_height="@dimen/dimen_58dp"
+                android:layout_marginLeft="@dimen/dimen_20dp"
+                android:layout_marginRight="@dimen/dimen_20dp"
+                android:background="@drawable/radio_button_store_select"
+                android:button="@null"
+                android:gravity="center"
+                android:text="上门服务"
+                android:textColor="@color/radio_button_store_select"
+                android:textSize="@dimen/dimen_28dp" />
+
+            <RadioButton
+                android:id="@+id/rb_perform_3"
+                android:layout_width="@dimen/dimen_160dp"
+                android:layout_height="@dimen/dimen_58dp"
+                android:layout_marginLeft="@dimen/dimen_20dp"
+                android:layout_marginRight="@dimen/dimen_20dp"
+                android:background="@drawable/radio_button_store_select"
+                android:button="@null"
+                android:gravity="center"
+                android:text="快递物流"
+                android:textColor="@color/radio_button_store_select"
+                android:textSize="@dimen/dimen_28dp" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/zhy_line_3" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_perform_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.shian.shianlifezx.view.show.StoreEditNormalView
+            android:id="@+id/perform_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:titleName="执行人姓名"></com.shian.shianlifezx.view.show.StoreEditNormalView>
+
+        <com.shian.shianlifezx.view.show.StoreEditNormalView
+            android:id="@+id/perform_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:titleName="执行人电话"></com.shian.shianlifezx.view.show.StoreEditNormalView>
+
+        <com.shian.shianlifezx.view.show.StoreEditNormalView
+            android:id="@+id/perform_remark"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:titleName="备注"></com.shian.shianlifezx.view.show.StoreEditNormalView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_courier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <com.shian.shianlifezx.view.show.StoreSpinnerNormalView
+            android:id="@+id/courier_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:titleName="快递公司 "></com.shian.shianlifezx.view.show.StoreSpinnerNormalView>
+
+        <com.shian.shianlifezx.view.show.StoreEditNormalView
+            android:id="@+id/courier_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            CustomAttr:titleName="快递单号"></com.shian.shianlifezx.view.show.StoreEditNormalView>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_submit"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dimen_96dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/zhy_submit_button_style_1"
+        android:gravity="center"
+        android:text="提交"
+        android:textColor="@color/white"
+        android:textSize="@dimen/dimen_32dp" />
+</LinearLayout>
