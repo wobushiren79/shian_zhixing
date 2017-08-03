@@ -3,13 +3,11 @@ apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
-    aaptOptions.cruncherEnabled = false
-    aaptOptions.useNewCruncher = false
+    buildToolsVersion '25.0.2'
     defaultConfig {
         applicationId "com.shian.shianlifezx"
         minSdkVersion 15
-        targetSdkVersion 21
+        targetSdkVersion 23
         versionCode 10
         versionName "1.6"
         multiDexEnabled true
@@ -62,7 +60,7 @@ dependencies {
     compile project(':PullToRefresh')
     compile 'com.yinglan.scrolllayout:scrolllayout:1.0.0'
     compile 'com.github.zcweng:switch-button:0.0.2@aar'
-    compile 'com.android.support:appcompat-v7:23.0.1'
+    compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.loopj.android:android-async-http:1.4.6'
     compile 'com.google.code.gson:gson:2.3.1'
     compile 'org.codehaus.jackson:jackson-core-asl:1.9.11'

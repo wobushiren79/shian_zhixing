@@ -23,6 +23,14 @@
     <string name="my_4">意见留言</string>
     <string name="my_5">设置</string>
     <string name="store_order_base_title">单项订单</string>
+
+    <string name="fileupload_change">修改</string>
+    <string name="fileupload_delete">删除</string>
+
+    <string name="base_permissions_1">已获取权限请重新选择</string>
+    <string name="base_permissions_2">没有权限打开相册</string>
+
+    <string name="fileupload_permissions">读取相册照片需要相应权限</string>
     <string-array name="ywlx">
         <item>紧急</item>
         <item>不紧急</item>

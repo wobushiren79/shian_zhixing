@@ -9,6 +9,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shian.shianlifezx.R;
+import com.shian.shianlifezx.activity.order.StorePerformCompleteActivity;
 import com.shian.shianlifezx.activity.order.StorePerformInfoActivity;
 import com.shian.shianlifezx.adapter.base.BaseRCAdapter;
 import com.shian.shianlifezx.adapter.base.BaseViewHolder;
@@ -17,19 +18,30 @@ import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.common.view.TipsDialog;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
 import com.shian.shianlifezx.mvp.order.presenter.IStoreOrderAcceptPresenter;
+import com.shian.shianlifezx.mvp.order.presenter.IStoreOrderGetPerformPresenter;
 import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderAcceptPresenterImpl;
+import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderGetPerformPresenterImpl;
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderAcceptView;
+import com.shian.shianlifezx.mvp.order.view.IStoreOrderGetPerformView;
 import com.shian.shianlifezx.thisenum.GoodsPerformStatusEnum;
 import com.shian.shianlifezx.thisenum.GoodsServiceWayEnum;
+import com.shian.shianlifezx.view.dialog.DataShowDialog;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by zm.
  */
 
-public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBean.Content> implements IStoreOrderAcceptView {
+public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBean.Content> implements IStoreOrderAcceptView, IStoreOrderGetPerformView {
     private IStoreOrderAcceptPresenter storeOrderAcceptPresenter;
+    private IStoreOrderGetPerformPresenter storeOrderGetPerformPresenter;
     private CallBack callBack;
 
     /**
@@ -40,6 +52,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
     public StoreOrderListApdapter(Context context) {
         super(context, R.layout.layout_store_order_list_item);
         storeOrderAcceptPresenter = new StoreOrderAcceptPresenterImpl(this);
+        storeOrderGetPerformPresenter = new StoreOrderGetPerformPresenterImpl(this);
     }
 
     public void setCallBack(CallBack callBack) {
@@ -162,9 +175,9 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
                 } else if (v == llContent) {
                     orderMore(data);
                 } else if (v == tvOrderDetails) {
-
+                    storeOrderGetPerformPresenter.getPerformInfo(index);
                 } else if (v == tvOrderComplete) {
-
+                    orderComplete(data);
                 }
             }
 
@@ -176,6 +189,15 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         llContent.setOnClickListener(onClickListener);
         tvOrderDetails.setOnClickListener(onClickListener);
         tvOrderComplete.setOnClickListener(onClickListener);
+    }
+
+    //完成
+    private void orderComplete(StoreOrderListResultBean.Content data) {
+        Intent intent = new Intent(mContext, StorePerformCompleteActivity.class);
+        intent.putExtra(IntentAction.ORDER_ID, data.getGoodsPerform().getOrderId());
+        intent.putExtra(IntentAction.PERFORM_ID, data.getGoodsPerform().getId());
+        intent.putExtra(IntentAction.GOODS_ITEM_ID, data.getGoodsPerform().getGoodsItemId());
+        mContext.startActivity(intent);
     }
 
     //开始执行
@@ -208,6 +230,44 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
     @Override
     public Context getContent() {
         return mContext;
+    }
+
+    @Override
+    public Long getPerformId(int index) {
+        return mDatas.get(index).getGoodsPerform().getId();
+    }
+
+    @Override
+    public void getPerformInfoSuccess(StoreOrderGetPerformResultBean resultBean) {
+        List<DataShowDialog.DataShowDialogResultBean> listData = new ArrayList<>();
+        if (resultBean.getGoodsPerform() != null) {
+            StoreOrderGetPerformResultBean.GoodsPerform goodsPerform = resultBean.getGoodsPerform();
+            listData.add(new DataShowDialog.DataShowDialogResultBean("执行方式", GoodsServiceWayEnum.getValueText(goodsPerform.getPerformWay())));
+            listData.add(new DataShowDialog.DataShowDialogResultBean("执行人姓名", goodsPerform.getPerformUserName()));
+            listData.add(new DataShowDialog.DataShowDialogResultBean("执行人电话", goodsPerform.getPerformUserPhone()));
+            listData.add(new DataShowDialog.DataShowDialogResultBean("备注", goodsPerform.getPerformComment()));
+        }
+        if (resultBean.getGoodsExpress() != null) {
+            StoreOrderGetPerformResultBean.GoodsExpress goodsExpress = resultBean.getGoodsExpress();
+            listData.add(new DataShowDialog.DataShowDialogResultBean("快递公司", goodsExpress.getExpressName()));
+            listData.add(new DataShowDialog.DataShowDialogResultBean("快递单号", goodsExpress.getDeliveryNumber()));
+        }
+
+        DataShowDialog dataShowDialog = new DataShowDialog(getContent());
+        dataShowDialog.setTitle("执行信息");
+        dataShowDialog.setData(listData);
+        dataShowDialog.setCancelOnClick(new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dataShowDialog.show();
+    }
+
+    @Override
+    public void getPerformInfoFail(String msg) {
+
     }
 
     @Override

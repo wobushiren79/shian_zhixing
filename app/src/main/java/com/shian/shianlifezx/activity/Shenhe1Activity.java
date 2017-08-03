@@ -16,6 +16,7 @@ import com.shian.shianlifezx.base.BaseActivity;
 import com.shian.shianlifezx.common.utils.JSONUtil;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.view.TipsDialog;
+import com.shian.shianlifezx.mvp.fileup.bean.FileUpLoadResultBean;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.FileHttpResponseHandler;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
@@ -115,10 +116,10 @@ public class Shenhe1Activity extends BaseActivity {
 	
 	private void uploadFile(final ImageView ib, final String file, String path) {
 		final ProgressBar pbVIew = (ProgressBar) ((ViewGroup) ib.getParent()).getChildAt(1);
-		MHttpManagerFactory.getFileManager().upLoadFile(this, file, path, new FileHttpResponseHandler<HrUploadFile>() {
+		MHttpManagerFactory.getFileManager().upLoadFile(this, file, path, new FileHttpResponseHandler<FileUpLoadResultBean>() {
 
 			@Override
-			public void onSuccess(HrUploadFile t) {
+			public void onSuccess(FileUpLoadResultBean t) {
 				ToastUtils.show(getBaseContext(), "上传成功");
 				AddAddition add = new HpSubmit4AuditParams.AddAddition();
 				add.setFileName(file);

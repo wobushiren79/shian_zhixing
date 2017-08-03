@@ -6,18 +6,22 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.adapter.DataShowDialogListAdapter;
-import com.shian.shianlifezx.mvp.dialog.bean.DataShowDialogResultBean;
+import com.shian.shianlifezx.common.view.TipsDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
@@ -37,6 +41,7 @@ public class DataShowDialog extends Dialog {
     private OnClickListener cancelClickListener;
     private DataShowDialogListAdapter listAdapter;
     private List<DataShowDialogResultBean> listData;
+    private DisplayMetrics outMetrics;
 
     public DataShowDialog(@NonNull Context context) {
         super(context, R.style.tipsDialogStyle);
@@ -48,6 +53,7 @@ public class DataShowDialog extends Dialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog_data_show_layout);
+        ButterKnife.inject(this);
         initView();
         initData();
     }
@@ -83,4 +89,30 @@ public class DataShowDialog extends Dialog {
         }
     }
 
+
+    public static class DataShowDialogResultBean {
+        public DataShowDialogResultBean(String title, String content) {
+            this.title = title;
+            this.content = content;
+        }
+
+        private String title;
+        private String content;
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
+        }
+
+        public String getContent() {
+            return content;
+        }
+
+        public void setContent(String content) {
+            this.content = content;
+        }
+    }
 }

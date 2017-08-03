@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="zhy_progressBar_1" parent="Base.Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminateTint">@color/zhy_text_color_1</item>
+        <item name="android:indeterminateTintMode">src_atop</item>
+    </style>
+</resources>

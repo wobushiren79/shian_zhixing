@@ -7,8 +7,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -30,6 +32,7 @@ import com.shian.shianlifezx.activity.MessageListActivity;
 import com.shian.shianlifezx.activity.NewMessageListActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.FilePathUtils;
+import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.utils.Utils;
 import com.yongchun.library.view.ImageSelectorActivity;
 
@@ -38,6 +41,10 @@ public class BaseActivity extends FragmentActivity {
     protected View v;
     protected Context mContext = this;
     public static DisplayMetrics metrics = new DisplayMetrics();
+
+    //定义权限请求返回CODE
+    public static final int READ_PHOTO = 1;
+
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
@@ -46,7 +53,7 @@ public class BaseActivity extends FragmentActivity {
         flContent = (FrameLayout) findViewById(R.id.fl_base);
         ((SaBaseApplication) getApplicationContext()).addActivity(this);
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        Utils.setWindowStatusBarColor(this,R.color.zhy_title_color_1);//设置状态栏颜色
+        Utils.setWindowStatusBarColor(this, R.color.zhy_title_color_1);//设置状态栏颜色
     }
 
     @Override
@@ -264,4 +271,45 @@ public class BaseActivity extends FragmentActivity {
     public interface OnPushListener {
         public void onPush(String channelId);
     }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        //获取照片
+        if (requestCode == READ_PHOTO) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                ToastUtils.show(BaseActivity.this, getString(R.string.base_permissions_1));
+            } else if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                ToastUtils.show(BaseActivity.this, getString(R.string.base_permissions_2));
+            }
+        }
+//        else if (requestCode == READ_LOCATION) {
+//            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                ToastUtils.showShortToast(BaseActivity.this, "已获取权限请重新选择");
+//            } else if (grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+//                ToastUtils.showShortToast(BaseActivity.this, "没有权限获取地址");
+//            }
+//        }
+        else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    /**
+     * 獲取照片
+     *
+     * @param context
+     */
+    public void getPhoto(Context context) {
+        if (Utils.checkPhotoPermission(context, BaseActivity.READ_PHOTO, context.getString(R.string.fileupload_permissions))) {
+            Intent intent = new Intent(context, ImageSelectorActivity.class);
+            intent.putExtra(ImageSelectorActivity.EXTRA_MAX_SELECT_NUM, 1);
+            intent.putExtra(ImageSelectorActivity.EXTRA_SELECT_MODE, 2);
+            intent.putExtra(ImageSelectorActivity.EXTRA_SHOW_CAMERA, true);
+            intent.putExtra(ImageSelectorActivity.EXTRA_ENABLE_PREVIEW, true);
+            intent.putExtra(ImageSelectorActivity.EXTRA_ENABLE_CROP, false);
+            startActivityForResult(intent, PICK_PHOTO);
+        }
+    }
+
 }

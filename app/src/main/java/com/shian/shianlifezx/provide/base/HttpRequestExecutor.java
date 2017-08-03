@@ -35,6 +35,8 @@ import com.shian.shianlifezx.common.utils.HttpUtils;
 import com.shian.shianlifezx.common.utils.ObjectMapperFactory;
 import com.shian.shianlifezx.mapapi.CustomDialog;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * 数据传输底层封装
  *
@@ -442,7 +444,7 @@ public class HttpRequestExecutor {
         for (Header h : arg1) {
             if (h.getName().equals("Set-Cookie")) {
 
-                Editor editor = ctx.getSharedPreferences(C_sSession_Share, -1)
+                Editor editor = ctx.getSharedPreferences(C_sSession_Share, MODE_PRIVATE)
                         .edit();
                 editor.putString(C_sSession_Key, h.getValue());
                 editor.commit();
@@ -452,7 +454,7 @@ public class HttpRequestExecutor {
     }
 
     public static void setSession(String sessionId, Context ctx) {
-        Editor editor = ctx.getSharedPreferences(C_sSession_Share, -1)
+        Editor editor = ctx.getSharedPreferences(C_sSession_Share, MODE_PRIVATE)
                 .edit();
         editor.putString(C_sSession_Key, sessionId);
         editor.commit();
@@ -460,7 +462,7 @@ public class HttpRequestExecutor {
 
     private void getSession(Context ctx) {
         SharedPreferences share = ctx
-                .getSharedPreferences(C_sSession_Share, -1);
+                .getSharedPreferences(C_sSession_Share, MODE_PRIVATE);
         String sesseion = share.getString(C_sSession_Key, "");
         Log.e("tag", "sessionID=" + sesseion);
         headers[2] = new BasicHeader("Cookie", sesseion);

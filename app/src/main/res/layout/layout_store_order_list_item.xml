@@ -179,7 +179,7 @@
 
                 <TextView
                     android:id="@+id/tv_order_complete"
-                    style="@style/order_button_level_2"
+                    style="@style/order_button_level_1"
                     android:layout_width="@dimen/dimen_132dp"
                     android:layout_height="@dimen/dimen_50dp"
                     android:layout_gravity="center_vertical"

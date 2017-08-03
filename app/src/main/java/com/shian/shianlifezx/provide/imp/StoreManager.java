@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
@@ -27,6 +29,7 @@ public interface StoreManager {
 
     /**
      * 接单
+     *
      * @param context
      * @param params
      * @param handler
@@ -35,10 +38,20 @@ public interface StoreManager {
 
 
     /**
-     * 接单
+     * 提交执行信息
+     *
      * @param context
      * @param params
      * @param handler
      */
     void savePerformInfo(Context context, StoreOrderSavePerformBean params, HttpResponseHandler<StoreOrderSavePerformResultBean> handler);
+
+    /**
+     * 获取执行信息
+     *
+     * @param context
+     * @param params
+     * @param handler
+     */
+    void getPerformInfo(Context context, StoreOrderGetPerformBean params, HttpResponseHandler<StoreOrderGetPerformResultBean> handler);
 }

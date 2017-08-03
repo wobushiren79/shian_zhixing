@@ -4,22 +4,33 @@ import java.util.Date;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.content.PermissionChecker;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
 import com.loopj.android.http.RequestParams;
+import com.shian.shianlifezx.base.BaseActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.view.TipsDialog;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
@@ -30,6 +41,27 @@ import com.shian.shianlifezx.thisenum.APPTypeEnum;
 import com.shian.shianlifezx.thisenum.UpDataImportantEnum;
 
 public class Utils {
+
+    /**
+     * 加载图片
+     *
+     * @param context
+     * @param imageView
+     * @param imgPath
+     */
+    public static void loadPic(Context context, ImageView imageView, String imgPath) {
+        Glide.with(context).load(imgPath).crossFade().into(imageView);
+    }
+
+    public static void loadPic(Context context, ImageView imageView, String imgPath, int placeholderId) {
+        Glide.with(context).load(imgPath).crossFade().placeholder(placeholderId).into(imageView);
+    }
+
+    public static void loadPic(Context context, ImageView imageView, String imgPath, RequestListener<String, GlideDrawable> listener) {
+        Glide.with(context).load(imgPath).crossFade().listener(listener).into(imageView);
+    }
+
+
     public static String getDateUtils(long paramLong) {
         return TransitionDate.DateToStr(new Date(paramLong), "yyyy-MM-dd HH:mm");
     }
@@ -42,6 +74,16 @@ public class Utils {
                 public void onClick(View vv) {
                     // TODO Auto-generated method stub
                     Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" + phone));
+                    if (ActivityCompat.checkSelfPermission(v.getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                        // TODO: Consider calling
+                        //    ActivityCompat#requestPermissions
+                        // here to request the missing permissions, and then overriding
+                        //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                        //                                          int[] grantResults)
+                        // to handle the case where the user grants the permission. See the documentation
+                        // for ActivityCompat#requestPermissions for more details.
+                        return;
+                    }
                     v.getContext().startActivity(intent);
                 }
             });
@@ -200,5 +242,68 @@ public class Utils {
             }
         }, isToast);
     }
+
+    /**
+     * 判断能否转为Activity
+     *
+     * @param cont
+     * @return
+     */
+    public static BaseActivity scanForActivity(Context cont) {
+        if (cont == null)
+            return null;
+        else if (cont instanceof BaseActivity)
+            return (BaseActivity) cont;
+        else if (cont instanceof ContextWrapper)
+            return scanForActivity(((ContextWrapper) cont).getBaseContext());
+        return null;
+    }
+
+
+    /**
+     * 檢測是否有獲取照片權限
+     *
+     * @param context
+     * @param resultCode
+     */
+    public static boolean checkPhotoPermission(Context context, int resultCode, String whyText) {
+        boolean hasPermission = Utils.getPermissionToReadUserContacts(
+                context,
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                whyText,
+                resultCode);
+        return hasPermission;
+    }
+
+    /**
+     * 权限检测
+     */
+    public static boolean getPermissionToReadUserContacts(Context context, String[] permissions, String toastContent, int requestCode) {
+        /**
+         * 1)使用ContextCompat.chefkSelfPermission(),因为Context.permission
+         * 只在棒棒糖系统中使用
+         * 2）总是检查权限（即使权限被授予）因为用户可能会在设置中移除你的权限*/
+        boolean isPermission = true;
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                //权限为获取，检查用户是否被询问过并且拒绝了，如果是这样的话，给予更多
+                //解释
+
+                if (ActivityCompat.shouldShowRequestPermissionRationale(scanForActivity(context), permission)) {
+                    //在界面上展示为什么需要該權限
+                    Toast.makeText(context, toastContent, Toast.LENGTH_SHORT).show();
+                }
+                //发起请求获得用户许可,可以在此请求多个权限
+                isPermission = false;
+            }
+        }
+        if (isPermission) {
+            return isPermission;
+        } else {
+            ActivityCompat.requestPermissions(scanForActivity(context), permissions, requestCode);
+            return isPermission;
+        }
+    }
+
 }
 
