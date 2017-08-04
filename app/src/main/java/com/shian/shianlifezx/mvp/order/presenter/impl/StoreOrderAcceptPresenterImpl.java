@@ -27,7 +27,7 @@ public class StoreOrderAcceptPresenterImpl implements IStoreOrderAcceptPresenter
         StoreOrderAcceptBean params = new StoreOrderAcceptBean();
         params.setOrderId(storeOrderAcceptView.getOrderId(index));
         params.setGoodsItemId(storeOrderAcceptView.getGoodsItemId(index));
-        storeOrderAcceptModel.acceptOrder(storeOrderAcceptView.getContent(), params, new OnGetDataListener<StoreOrderAcceptResultBean>() {
+        storeOrderAcceptModel.acceptOrder(storeOrderAcceptView.getContext(), params, new OnGetDataListener<StoreOrderAcceptResultBean>() {
             @Override
             public void getDataSuccess(StoreOrderAcceptResultBean result) {
                 storeOrderAcceptView.acceptSuccess(result);

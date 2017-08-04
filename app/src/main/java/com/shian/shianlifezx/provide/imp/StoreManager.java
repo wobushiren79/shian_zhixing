@@ -8,6 +8,8 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderPerformCompleteBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderPerformCompleteResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformResultBean;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
@@ -54,4 +56,13 @@ public interface StoreManager {
      * @param handler
      */
     void getPerformInfo(Context context, StoreOrderGetPerformBean params, HttpResponseHandler<StoreOrderGetPerformResultBean> handler);
+
+    /**
+     * 提交完成信息
+     *
+     * @param context
+     * @param params
+     * @param handler
+     */
+    void savePerformComplete(Context context, StoreOrderPerformCompleteBean params, HttpResponseHandler<StoreOrderPerformCompleteResultBean> handler);
 }

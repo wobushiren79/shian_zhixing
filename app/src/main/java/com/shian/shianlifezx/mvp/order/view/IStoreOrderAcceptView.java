@@ -9,7 +9,7 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
  */
 
 public interface IStoreOrderAcceptView {
-    Context getContent();
+    Context getContext();
 
     Long getOrderId(int position);
 

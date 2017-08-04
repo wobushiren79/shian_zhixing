@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context="com.shian.shianlifezx.activity.order.StorePerformCompleteActivity">
 
@@ -27,11 +28,11 @@
             android:textSize="@dimen/dimen_28dp" />
 
         <LinearLayout
-            android:layout_marginLeft="@dimen/dimen_32dp"
             android:id="@+id/ll_pic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dimen_34dp"
+            android:layout_marginLeft="@dimen/dimen_32dp"
             android:orientation="horizontal"></LinearLayout>
 
         <TextView
@@ -40,6 +41,7 @@
             android:background="@color/zhy_line_3" />
 
         <com.shian.shianlifezx.view.show.StoreEditNormalView
+            android:id="@+id/complete_content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             CustomAttr:titleName="完成说明"></com.shian.shianlifezx.view.show.StoreEditNormalView>

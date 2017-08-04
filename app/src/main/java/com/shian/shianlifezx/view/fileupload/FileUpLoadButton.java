@@ -91,7 +91,7 @@ public class FileUpLoadButton extends BaseLayout implements IFileUpLoadView {
     public void fileUpLoadSuccess(FileUpLoadResultBean result) {
         isLoading = false;
         pbLoading.setVisibility(GONE);
-        mFileData.setFileUrl((String) result.getNameMap().get(mFileData.getFileClass()));
+        mFileData.setFileUrl((String) result.getNameMap().get(mFileData.getFilePath()));
         if (callBack != null)
             callBack.fileUpLoadSuccess(this);
     }

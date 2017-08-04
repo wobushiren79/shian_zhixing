@@ -228,7 +228,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
     }
 
     @Override
-    public Context getContent() {
+    public Context getContext() {
         return mContext;
     }
 
@@ -253,7 +253,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
             listData.add(new DataShowDialog.DataShowDialogResultBean("快递单号", goodsExpress.getDeliveryNumber()));
         }
 
-        DataShowDialog dataShowDialog = new DataShowDialog(getContent());
+        DataShowDialog dataShowDialog = new DataShowDialog(getContext());
         dataShowDialog.setTitle("执行信息");
         dataShowDialog.setData(listData);
         dataShowDialog.setCancelOnClick(new DialogInterface.OnClickListener() {

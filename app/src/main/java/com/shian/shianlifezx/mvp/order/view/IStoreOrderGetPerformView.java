@@ -9,7 +9,7 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
  */
 
 public interface IStoreOrderGetPerformView {
-    Context getContent();
+    Context getContext();
 
     void getPerformInfoSuccess(StoreOrderGetPerformResultBean resultBean);
 

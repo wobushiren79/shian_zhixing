@@ -26,7 +26,7 @@ public class StoreOrderGetPerformPresenterImpl implements IStoreOrderGetPerformP
     public void getPerformInfo(int index) {
         StoreOrderGetPerformBean params = new StoreOrderGetPerformBean();
         params.setPerformId(storeOrderGetPerformView.getPerformId(index));
-        storeOrderGetPerformModel.getPerformInfo(storeOrderGetPerformView.getContent(), params, new OnGetDataListener<StoreOrderGetPerformResultBean>() {
+        storeOrderGetPerformModel.getPerformInfo(storeOrderGetPerformView.getContext(), params, new OnGetDataListener<StoreOrderGetPerformResultBean>() {
             @Override
             public void getDataSuccess(StoreOrderGetPerformResultBean result) {
                 storeOrderGetPerformView.getPerformInfoSuccess(result);
