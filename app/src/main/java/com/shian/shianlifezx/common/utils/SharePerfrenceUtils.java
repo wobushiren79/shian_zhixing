@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
+import com.shian.shianlifezx.mvp.login.bean.UserLoginConfig;
+
 import static android.content.Context.MODE_PRIVATE;
 
 public class SharePerfrenceUtils {
@@ -41,6 +43,27 @@ public class SharePerfrenceUtils {
 		loginS.setUsername(username);
 		loginS.setPassword(password);
 		loginS.setRemeberPassword(isRember);
+		loginS.setAutoLogin(isAuto);
+		return loginS;
+	}
+
+	/**
+	 * 获取账号信息
+	 *
+	 * @param content
+	 * @return
+	 */
+	public static UserLoginConfig getLoginShareSys(Context content) {
+		SharedPreferences share = content.getSharedPreferences(C_sShare_Login_F, MODE_PRIVATE);
+		String username = share.getString(C_sShareLogin_username, "");
+		String password = share.getString(C_sShareLogin_password, "");
+		boolean isRember = share.getBoolean(C_sShareLogin_isRemeberPassword,
+				false);
+		boolean isAuto = share.getBoolean(C_sShareLogin_isAutoLogin, false);
+		UserLoginConfig loginS = new UserLoginConfig();
+		loginS.setUserName(username);
+		loginS.setPassWord(password);
+		loginS.setKeepAccount(isRember);
 		loginS.setAutoLogin(isAuto);
 		return loginS;
 	}
