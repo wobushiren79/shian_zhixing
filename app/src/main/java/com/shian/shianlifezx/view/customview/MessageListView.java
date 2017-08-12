@@ -28,6 +28,8 @@ import com.shian.shianlifezx.provide.result.HrMessageList;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Request;
+
 /**
  * Created by Administrator on 2017/3/10.
  */
@@ -90,8 +92,13 @@ public class MessageListView extends LinearLayout {
         params.setPageNum(page);
         params.setPageSize(pageSize);
         params.setCtgId(type + 1);//1.全部 2.服务。3 通知
-        MHttpManagerFactory.getAccountManager().getMessageList(getContext(),
+        MHttpManagerFactory.getFuneralExecutorManager().getMessageList(getContext(),
                 params, new HttpResponseHandler<HrMessageList>() {
+
+                    @Override
+                    public void onStart(Request request, int id) {
+
+                    }
 
                     @Override
                     public void onSuccess(HrMessageList result) {
@@ -109,10 +116,6 @@ public class MessageListView extends LinearLayout {
                         listView.onRefreshComplete();
                     }
 
-                    @Override
-                    public void onStart() {
-
-                    }
 
                     @Override
                     public void onError(String message) {

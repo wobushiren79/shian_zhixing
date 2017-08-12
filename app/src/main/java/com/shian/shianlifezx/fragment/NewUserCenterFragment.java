@@ -31,6 +31,8 @@ import com.shian.shianlifezx.thisenum.UserCenterEnum;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Request;
+
 /**
  * Created by Administrator on 2017/3/12.
  */
@@ -126,9 +128,11 @@ public class NewUserCenterFragment extends BaseFragment {
 
 
     private void getUserInfo() {
-        MHttpManagerFactory.getAccountManager().getUserInfo(getActivity(), new HttpResponseHandler<HrUserInfo>() {
+        MHttpManagerFactory.getFuneralExecutorManager().getUserInfo(getActivity(), new HttpResponseHandler<HrUserInfo>() {
+
+
             @Override
-            public void onStart() {
+            public void onStart(Request request, int id) {
 
             }
 

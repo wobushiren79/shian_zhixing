@@ -10,6 +10,8 @@ import com.shian.shianlifezx.mvp.order.model.IStoreOrderSavePerformModel;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 
+import okhttp3.Request;
+
 /**
  * Created by zm.
  */
@@ -19,7 +21,7 @@ public class StoreOrderSavePerformModelImpl implements IStoreOrderSavePerformMod
     public void savePerformInfo(Context context, StoreOrderSavePerformBean params, final OnGetDataListener<StoreOrderSavePerformResultBean> listener) {
         MHttpManagerFactory.getStoreManager().savePerformInfo(context, params, new HttpResponseHandler<StoreOrderSavePerformResultBean>() {
             @Override
-            public void onStart() {
+            public void onStart(Request request, int id) {
 
             }
 

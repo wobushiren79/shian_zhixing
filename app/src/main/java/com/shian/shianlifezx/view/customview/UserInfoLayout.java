@@ -17,6 +17,8 @@ import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.result.HrUserInfo;
 
+import okhttp3.Request;
+
 
 /**
  * Created by Administrator
@@ -66,7 +68,7 @@ public class UserInfoLayout extends LinearLayout {
 
         mUserInfoPointLayoutIntegral.initLayout(R.drawable.zhy_userinfo_integral, "积分", "0");
         mUserInfoPointLayoutMoney.initLayout(R.drawable.zhy_userinfo_money, "钱包", "0");
-        mUserInfoPointLayoutOrder.initLayout(R.drawable.zhy_userinfo_order, "服务单", "0");
+        mUserInfoPointLayoutOrder.initLayout(R.drawable.zhy_userinfo_order, "服务劵", "0");
 
         mUserInfoPointLayoutIntegral.setOnClickListener(onClickListener);
         mUserInfoPointLayoutMoney.setOnClickListener(onClickListener);
@@ -113,9 +115,10 @@ public class UserInfoLayout extends LinearLayout {
      * 获取用户信息
      */
     private void getUserInfo() {
-        MHttpManagerFactory.getAccountManager().getUserInfo(getContext(), new HttpResponseHandler<HrUserInfo>() {
+        MHttpManagerFactory.getFuneralExecutorManager().getUserInfo(getContext(), new HttpResponseHandler<HrUserInfo>() {
+
             @Override
-            public void onStart() {
+            public void onStart(Request request, int id) {
 
             }
 
@@ -129,7 +132,9 @@ public class UserInfoLayout extends LinearLayout {
                     mTVStatus.append(result.getRoles().get(i).getName() + " \n");
                 }
                 mTVScore.setText(result.getAvgSatis() + "");
-                mUserInfoPointLayoutOrder.setPoint(result.getServiceSuccessSum() + "");
+//                mUserInfoPointLayoutOrder.setPoint(result.getServiceSuccessSum() + "");
+                mUserInfoPointLayoutOrder.setPoint("0");
+
                 mLLSign.setOnClickListener(onClickListener);
             }
 

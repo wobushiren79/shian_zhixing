@@ -32,6 +32,8 @@ import com.shian.shianlifezx.provide.result.HrLoginResult;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import okhttp3.Request;
+
 public class SplashActivity extends BaseActivity implements OnPushListener {
 
     private int SLEEPTIME = 2500;//loading时间
@@ -94,8 +96,13 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
         params.setUsername(username);
         params.setSystemType("3");
         params.setChannelId(channelId);
-        MHttpManagerFactory.getAccountManager().login(this, params,
+        MHttpManagerFactory.getFuneralExecutorManager().login(this, params,
                 new HttpResponseHandler<HrLoginResult>() {
+
+                    @Override
+                    public void onStart(Request request, int id) {
+
+                    }
 
                     @Override
                     public void onSuccess(HrLoginResult result) {
@@ -103,10 +110,6 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
                         sleepActivity(0);
                     }
 
-                    @Override
-                    public void onStart() {
-
-                    }
 
                     @Override
                     public void onError(String message) {

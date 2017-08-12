@@ -12,6 +12,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
 import android.support.v4.app.ActivityCompat;
@@ -35,10 +37,13 @@ import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.view.TipsDialog;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
+import com.shian.shianlifezx.provide.phpparams.PHPHpAppVersionParams;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetVersion;
 import com.shian.shianlifezx.service.UpDataService;
 import com.shian.shianlifezx.thisenum.APPTypeEnum;
 import com.shian.shianlifezx.thisenum.UpDataImportantEnum;
+
+import okhttp3.Request;
 
 public class Utils {
 
@@ -188,11 +193,13 @@ public class Utils {
      * 检测是否有更新 并执行下载
      */
     public static void checkUpData(final Context context, final boolean isToast) {
-        RequestParams params = new RequestParams();
-        params.put("appId", APPTypeEnum.EXECUTOR.getCode());
+        PHPHpAppVersionParams params = new PHPHpAppVersionParams();
+        params.setAppId(APPTypeEnum.EXECUTOR.getCode());
         MHttpManagerFactory.getPHPManager().getVersion(context, params, new HttpResponseHandler<PHPHrGetVersion>() {
+
+
             @Override
-            public void onStart() {
+            public void onStart(Request request, int id) {
 
             }
 
@@ -209,7 +216,7 @@ public class Utils {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent intent = new Intent(context, UpDataService.class);
-                                intent.putExtra("updataUrl", AppContansts.PhpURL + result.getItems().get(0).getAppDownLoadUrl());
+                                intent.putExtra("updataUrl", AppContansts.PHP_BaseUrl + result.getItems().get(0).getAppDownLoadUrl());
                                 context.startService(intent);
                                 dialog.cancel();
                             }
@@ -305,5 +312,22 @@ public class Utils {
         }
     }
 
+    /**
+     * 判断是否有网络
+     *
+     * @param context
+     * @return
+     */
+    public static boolean isNetworkConnected(Context context) {
+        if (context != null) {
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) context
+                    .getSystemService(Context.CONNECTIVITY_SERVICE);
+            NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
+            if (mNetworkInfo != null) {
+                return mNetworkInfo.isAvailable();
+            }
+        }
+        return false;
+    }
 }
 

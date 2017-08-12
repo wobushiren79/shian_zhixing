@@ -13,11 +13,14 @@ import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.phpmodel.SiftListData;
+import com.shian.shianlifezx.provide.phpparams.PHPHpSiftListParams;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetSiftListData;
 import com.shian.shianlifezx.thisenum.SystemTypeEnum;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Request;
 
 
 public class MyCollectionActivity extends BaseActivity {
@@ -42,7 +45,7 @@ public class MyCollectionActivity extends BaseActivity {
             @Override
             public void run() {
                 mListView.setRefreshing(true);
-                pagerNumber=0;
+                pagerNumber = 0;
                 getData(true);
             }
         }, 500);
@@ -60,7 +63,7 @@ public class MyCollectionActivity extends BaseActivity {
     PullToRefreshBase.OnRefreshListener2 onRefreshListener2 = new PullToRefreshBase.OnRefreshListener2() {
         @Override
         public void onPullDownToRefresh(PullToRefreshBase refreshView) {
-            pagerNumber=0;
+            pagerNumber = 0;
             getData(true);
         }
 
@@ -72,15 +75,16 @@ public class MyCollectionActivity extends BaseActivity {
     };
 
     private void getData(final boolean isClean) {
-        RequestParams params = new RequestParams();
-        params.put("type", "2");
-        params.put("userid", (int) AppContansts.userLoginInfo.getUserId());
-        params.put("number", number);
-        params.put("pagerNumber", pagerNumber);
-        params.put("userType", SystemTypeEnum.funeral.getCode());
+        PHPHpSiftListParams params = new PHPHpSiftListParams();
+        params.setType(2);
+        params.setUserid(AppContansts.userLoginInfo.getUserId());
+        params.setNumber(number);
+        params.setPagerNumber(pagerNumber);
+        params.setUserType(SystemTypeEnum.funeral.getCode());
         MHttpManagerFactory.getPHPManager().getSiftListData(MyCollectionActivity.this, params, new HttpResponseHandler<PHPHrGetSiftListData>() {
+
             @Override
-            public void onStart() {
+            public void onStart(Request request, int id) {
 
             }
 

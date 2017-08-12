@@ -15,6 +15,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.InjectViews;
 import butterknife.OnClick;
+import okhttp3.Request;
 
 import com.kf5sdk.init.KF5SDKConfig;
 import com.shian.shianlifezx.R;
@@ -96,10 +97,11 @@ public class UserCenterFragment extends BaseFragment {
 	}
 	private HrUserInfo mHrUserInfo;
 	private void getUserInfo(){
-		MHttpManagerFactory.getAccountManager().getUserInfo(getActivity(), new HttpResponseHandler<HrUserInfo>() {
-			@Override
-			public void onStart() {
+		MHttpManagerFactory.getFuneralExecutorManager().getUserInfo(getActivity(), new HttpResponseHandler<HrUserInfo>() {
 
+
+			@Override
+			public void onStart(Request request, int id) {
 
 			}
 

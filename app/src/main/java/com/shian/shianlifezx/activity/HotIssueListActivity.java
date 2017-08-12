@@ -19,10 +19,13 @@ import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.phpmodel.HotIssueData;
+import com.shian.shianlifezx.provide.phpparams.PHPHpHotIssuseParams;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetHotIssue;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import okhttp3.Request;
 
 public class HotIssueListActivity extends BaseActivity {
     String title;
@@ -90,13 +93,15 @@ public class HotIssueListActivity extends BaseActivity {
      * 获取数据
      */
     private void getData(final boolean isClean) {
-        RequestParams requestParams = new RequestParams();
-        requestParams.put("type", code);
-        requestParams.put("number", pageNumber);
-        requestParams.put("pagerNumber", page);
-        MHttpManagerFactory.getPHPManager().getHotIssue(HotIssueListActivity.this, requestParams, new HttpResponseHandler<PHPHrGetHotIssue>() {
+        PHPHpHotIssuseParams params = new PHPHpHotIssuseParams();
+        params.setNumber(pageNumber);
+        params.setPagerNumber(page);
+        params.setType(code);
+        MHttpManagerFactory.getPHPManager().getHotIssue(HotIssueListActivity.this, params, new HttpResponseHandler<PHPHrGetHotIssue>() {
+
+
             @Override
-            public void onStart() {
+            public void onStart(Request request, int id) {
 
             }
 

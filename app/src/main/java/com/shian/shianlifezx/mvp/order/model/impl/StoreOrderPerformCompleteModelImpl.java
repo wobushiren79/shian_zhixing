@@ -9,6 +9,8 @@ import com.shian.shianlifezx.mvp.order.model.IStoreOrderPerformCompleteModel;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 
+import okhttp3.Request;
+
 /**
  * Created by zm.
  */
@@ -18,7 +20,7 @@ public class StoreOrderPerformCompleteModelImpl implements IStoreOrderPerformCom
     public void savePerformComplete(Context context, StoreOrderPerformCompleteBean params, final OnGetDataListener<StoreOrderPerformCompleteResultBean> listener) {
         MHttpManagerFactory.getStoreManager().savePerformComplete(context, params, new HttpResponseHandler<StoreOrderPerformCompleteResultBean>() {
             @Override
-            public void onStart() {
+            public void onStart(Request request, int id) {
 
             }
 

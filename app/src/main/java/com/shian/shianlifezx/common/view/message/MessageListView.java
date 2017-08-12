@@ -27,6 +27,8 @@ import com.shian.shianlifezx.provide.params.HpPageParams;
 import com.shian.shianlifezx.provide.result.HrMessageList;
 import com.shian.shianlifezx.provide.result.HrMessageList.MessageList;
 
+import okhttp3.Request;
+
 public class MessageListView extends FrameLayout {
 
     private SwipeRefreshLayout mSryt;
@@ -96,8 +98,13 @@ public class MessageListView extends FrameLayout {
         params.setPageNum(page);
         params.setPageSize(pageSize);
         params.setCtgId(type);
-        MHttpManagerFactory.getAccountManager().getMessageList(getContext(),
+        MHttpManagerFactory.getFuneralExecutorManager().getMessageList(getContext(),
                 params, new HttpResponseHandler<HrMessageList>() {
+
+                    @Override
+                    public void onStart(Request request, int id) {
+
+                    }
 
                     @Override
                     public void onSuccess(HrMessageList result) {
@@ -108,10 +115,6 @@ public class MessageListView extends FrameLayout {
 
                     }
 
-                    @Override
-                    public void onStart() {
-
-                    }
 
                     @Override
                     public void onError(String message) {

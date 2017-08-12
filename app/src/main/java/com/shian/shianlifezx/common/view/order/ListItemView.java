@@ -29,13 +29,16 @@ import com.shian.shianlifezx.provide.result.HrGetSKUDetails;
 import com.shian.shianlifezx.provide.result.HrWaitExecuteList;
 import com.shian.shianlifezx.provide.result.WaitItem;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Handler;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.util.AttributeSet;
@@ -46,6 +49,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import okhttp3.Request;
 
 public class ListItemView extends BaseOrderView {
     private TArrayListAdapter<WaitItem> adapter;
@@ -113,11 +118,11 @@ public class ListItemView extends BaseOrderView {
                 View rlPic = paramViewGropMap.getView(R.id.rl_pic);
                 ImageView ivPic1 = (ImageView) paramViewGropMap.getView(R.id.btn_ht_pic_0);
                 ImageView ivPic2 = (ImageView) paramViewGropMap.getView(R.id.btn_ht_pic_1);
-                ImageView moreInfo= (ImageView) paramViewGropMap.getView(R.id.iv_data);
+                ImageView moreInfo = (ImageView) paramViewGropMap.getView(R.id.iv_data);
                 ((TextView) paramViewGropMap.getView(R.id.tv_item_0))
                         .setText("" + paramWaitItem.getItemApplyTime());
                 TextView localTextView00 = (TextView) paramViewGropMap.getView(R.id.tv_item_00);
-                LinearLayout localLL00= (LinearLayout) paramViewGropMap.getView(R.id.ll_item_00);
+                LinearLayout localLL00 = (LinearLayout) paramViewGropMap.getView(R.id.ll_item_00);
                 TextView localTextView1 = (TextView) paramViewGropMap.getView(R.id.tv_item_1);
                 TextView localTextView2 = (TextView) paramViewGropMap.getView(R.id.tv_item_2);
                 TextView localTextView3 = (TextView) paramViewGropMap.getView(R.id.tv_item_3);
@@ -152,9 +157,9 @@ public class ListItemView extends BaseOrderView {
                         //获取商品详情
                         HpSkuIdParams params = new HpSkuIdParams();
                         params.setSkuId(paramWaitItem.getSkuId());
-                        MHttpManagerFactory.getAccountManager().getSKUDetails(getContext(), params, new HttpResponseHandler<HrGetSKUDetails>() {
+                        MHttpManagerFactory.getFuneralExecutorManager().getSKUDetails(getContext(), params, new HttpResponseHandler<HrGetSKUDetails>() {
                             @Override
-                            public void onStart() {
+                            public void onStart(Request request, int id) {
 
                             }
 
@@ -206,10 +211,10 @@ public class ListItemView extends BaseOrderView {
                     @Override
                     public void onClick(View view) {
                         Intent intent = new Intent(getContext(), NewRoutePlanOtherActivity.class);
-                        intent.putExtra("LocationType",2);
-                        intent.putExtra("ConsultId",-1);
-                        intent.putExtra("OrderItemId",paramWaitItem.getOrderItemId());
-                        intent.putExtra("RoutePlanLocation", paramWaitItem.getZsLocation()+"");
+                        intent.putExtra("LocationType", 2);
+                        intent.putExtra("ConsultId", -1);
+                        intent.putExtra("OrderItemId", paramWaitItem.getOrderItemId());
+                        intent.putExtra("RoutePlanLocation", paramWaitItem.getZsLocation() + "");
                         getContext().startActivity(intent);
 
                     }
@@ -221,6 +226,16 @@ public class ListItemView extends BaseOrderView {
                     public void onClick(View v) {
                         Intent intent = new Intent(Intent.ACTION_CALL,
                                 Uri.parse("tel:" + paramWaitItem.getAdviserMobile()));
+                        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                            // TODO: Consider calling
+                            //    ActivityCompat#requestPermissions
+                            // here to request the missing permissions, and then overriding
+                            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                            //                                          int[] grantResults)
+                            // to handle the case where the user grants the permission. See the documentation
+                            // for ActivityCompat#requestPermissions for more details.
+                            return;
+                        }
                         v.getContext().startActivity(intent);
 
                     }
@@ -376,56 +391,54 @@ public class ListItemView extends BaseOrderView {
         HpAcceptParams localHpAcceptParams = new HpAcceptParams();
         localHpAcceptParams.setId(paramLong1);
         localHpAcceptParams.setOrderItemId(paramLong2);
-        MHttpManagerFactory.getAccountManager().accept(getContext(), localHpAcceptParams,
-                new HttpResponseHandler<String>() {
+        MHttpManagerFactory.getFuneralExecutorManager().accept(getContext(), localHpAcceptParams, new HttpResponseHandler<String>() {
 
-                    @Override
-                    public void onSuccess(String result) {
-                        // TODO Auto-generated method stub
-                        ToastUtils.show(getContext(), "操作成功");
-                        refresh(mType);
-                    }
+            @Override
+            public void onStart(Request request, int id) {
 
-                    @Override
-                    public void onStart() {
-                        // TODO Auto-generated method stub
+            }
 
-                    }
+            @Override
+            public void onSuccess(String result) {
+                // TODO Auto-generated method stub
+                ToastUtils.show(getContext(), "操作成功");
+                refresh(mType);
+            }
 
-                    @Override
-                    public void onError(String message) {
-                        // TODO Auto-generated method stub
 
-                    }
-                });
+            @Override
+            public void onError(String message) {
+                // TODO Auto-generated method stub
+
+            }
+        });
     }
 
     private void reject(long paramLong1, long paramLong2) {
         HpRejectParams localHpAcceptParams = new HpRejectParams();
         localHpAcceptParams.setId(paramLong1);
         localHpAcceptParams.setOrderItemId(paramLong2);
-        MHttpManagerFactory.getAccountManager().reject(getContext(), localHpAcceptParams,
-                new HttpResponseHandler<String>() {
+        MHttpManagerFactory.getFuneralExecutorManager().reject(getContext(), localHpAcceptParams, new HttpResponseHandler<String>() {
 
-                    @Override
-                    public void onSuccess(String result) {
-                        // TODO Auto-generated method stub
-                        ToastUtils.show(getContext(), "操作成功");
-                        refresh(mType);
-                    }
+            @Override
+            public void onStart(Request request, int id) {
 
-                    @Override
-                    public void onStart() {
-                        // TODO Auto-generated method stub
+            }
 
-                    }
+            @Override
+            public void onSuccess(String result) {
+                // TODO Auto-generated method stub
+                ToastUtils.show(getContext(), "操作成功");
+                refresh(mType);
+            }
 
-                    @Override
-                    public void onError(String message) {
-                        // TODO Auto-generated method stub
 
-                    }
-                });
+            @Override
+            public void onError(String message) {
+                // TODO Auto-generated method stub
+
+            }
+        });
     }
 
     private void refreshDate(final boolean paramBoolean) {
@@ -434,35 +447,34 @@ public class ListItemView extends BaseOrderView {
         else
             this.params.setPageNum(20 + this.params.getPageNum());
         this.params.setPageSize(20);
-        MHttpManagerFactory.getAccountManager().getWaitExecuteList((Activity) getContext(), this.mType, this.params,
-                new HttpResponseHandler<HrWaitExecuteList>() {
+        MHttpManagerFactory.getFuneralExecutorManager().getWaitExecuteList(getContext(), this.mType, this.params, new HttpResponseHandler<HrWaitExecuteList>() {
 
-                    @Override
-                    public void onSuccess(HrWaitExecuteList result) {
-                        // TODO Auto-generated method stub
-                        if (paramBoolean) {
-                            adapter.clear();
-                            params.setPageNum(0);
-                        }
-                        adapter.addListData(result.getItems());
-                        adapter.notifyDataSetChanged();
-                        mSwipeRefreshHelper.refreshComplete();
-                        mSwipeRefreshHelper.loadMoreComplete(true);
-                        mSwipeRefreshHelper.setLoadMoreEnable(true);
-                    }
+            @Override
+            public void onStart(Request request, int id) {
 
-                    @Override
-                    public void onStart() {
-                        // TODO Auto-generated method stub
+            }
 
-                    }
+            @Override
+            public void onSuccess(HrWaitExecuteList result) {
+                // TODO Auto-generated method stub
+                if (paramBoolean) {
+                    adapter.clear();
+                    params.setPageNum(0);
+                }
+                adapter.addListData(result.getItems());
+                adapter.notifyDataSetChanged();
+                mSwipeRefreshHelper.refreshComplete();
+                mSwipeRefreshHelper.loadMoreComplete(true);
+                mSwipeRefreshHelper.setLoadMoreEnable(true);
+            }
 
-                    @Override
-                    public void onError(String message) {
-                        // TODO Auto-generated method stub
 
-                    }
-                });
+            @Override
+            public void onError(String message) {
+                // TODO Auto-generated method stub
+
+            }
+        });
 
     }
 
@@ -476,28 +488,27 @@ public class ListItemView extends BaseOrderView {
             public void onClick(DialogInterface dialog, int which) {
                 HpStartServiceParams localHpStartServiceParams = new HpStartServiceParams();
                 localHpStartServiceParams.setOrderItemId(paramLong);
-                MHttpManagerFactory.getAccountManager().startService(getContext(), localHpStartServiceParams,
-                        new HttpResponseHandler<String>() {
+                MHttpManagerFactory.getFuneralExecutorManager().startService(getContext(), localHpStartServiceParams, new HttpResponseHandler<String>() {
 
-                            @Override
-                            public void onSuccess(String result) {
-                                // TODO Auto-generated method stub
-                                ToastUtils.show(getContext(), "操作成功");
-                                refresh(mType);
-                            }
+                    @Override
+                    public void onStart(Request request, int id) {
 
-                            @Override
-                            public void onStart() {
-                                // TODO Auto-generated method stub
+                    }
 
-                            }
+                    @Override
+                    public void onSuccess(String result) {
+                        // TODO Auto-generated method stub
+                        ToastUtils.show(getContext(), "操作成功");
+                        refresh(mType);
+                    }
 
-                            @Override
-                            public void onError(String message) {
-                                // TODO Auto-generated method stub
 
-                            }
-                        });
+                    @Override
+                    public void onError(String message) {
+                        // TODO Auto-generated method stub
+
+                    }
+                });
             }
         });
         dialog.show();

@@ -8,5 +8,16 @@ import com.shian.shianlifezx.provide.base.HttpManager;
 import com.shian.shianlifezx.provide.result.HrUploadFile;
 
 public interface FileManager extends HttpManager {
-    public void upLoadFile(Context context, String file, String path, FileHttpResponseHandler<FileUpLoadResultBean> handler);
+
+    /**
+     * 文件上传
+     *
+     * @param context
+     * @param fileClass 文件分类
+     * @param fileName  文件名字
+     * @param path      文件路径
+     * @param handler
+     */
+    public void upLoadFile(Context context, String fileClass, String fileName, String path, FileHttpResponseHandler<FileUpLoadResultBean> handler);
+
 }

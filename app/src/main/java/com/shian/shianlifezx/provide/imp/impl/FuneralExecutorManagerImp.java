@@ -4,9 +4,9 @@ import android.content.Context;
 
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.provide.base.BaseHttpParams;
-import com.shian.shianlifezx.provide.base.HttpRequestExecutor;
+import com.shian.shianlifezx.provide.base.BaseManagerImpl;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
-import com.shian.shianlifezx.provide.imp.MAccountManager;
+import com.shian.shianlifezx.provide.imp.FuneralExecutorManager;
 import com.shian.shianlifezx.provide.params.HpAcceptParams;
 import com.shian.shianlifezx.provide.params.HpChangeLocation;
 import com.shian.shianlifezx.provide.params.HpConsultIdParams;
@@ -25,40 +25,24 @@ import com.shian.shianlifezx.provide.result.HrUserInfo;
 import com.shian.shianlifezx.provide.result.HrWaitExecuteList;
 
 /**
- * 账户接口实现
- *
- * @author Administrator
+ * Created by zm.
  */
-public class MAccountManagerImpl implements MAccountManager {
-    public HttpRequestExecutor excutor = new HttpRequestExecutor();
-    private static MAccountManager manager;
-    private String BaseUrl = AppContansts.ExecutorURL;
 
-    private MAccountManagerImpl() {
+public class FuneralExecutorManagerImp extends BaseManagerImpl implements FuneralExecutorManager {
+
+    private static FuneralExecutorManagerImp manager;
+
+    private FuneralExecutorManagerImp() {
+        super();
+        baseUrl = AppContansts.Funeral_Executor_BaseUrl;
     }
 
-    public static MAccountManager getInstance() {
+
+    public static FuneralExecutorManagerImp getInstance() {
         if (manager == null) {
-            manager = new MAccountManagerImpl();
+            manager = new FuneralExecutorManagerImp();
         }
         return manager;
-    }
-
-    private <T> void requestPost(Context context,
-                                 String method,
-                                 Class<T> cls,
-                                 BaseHttpParams params,
-                                 HttpResponseHandler<T> response) {
-        excutor.requestPost(context, BaseUrl + "/" + method, cls, params, response);
-    }
-
-    private <T> void requestPost(Context context,
-                                 String method,
-                                 Class<T> cls,
-                                 BaseHttpParams params,
-                                 HttpResponseHandler<T> response,
-                                 boolean isDialog) {
-        excutor.requestPost(context, BaseUrl + "/" + method, cls, params, response, isDialog);
     }
 
     @Override

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import butterknife.InjectViews;
+import okhttp3.Request;
 
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.base.BaseActivity;
@@ -49,9 +50,11 @@ public class UserInfoActivity extends BaseActivity {
                 params.setAppStatus(getSharedPreferences("settings",-1).getBoolean("rb",true)?1:2);
                 params.setEmail(etList.get(0).getText().toString());
                 params.setIntroduce(etList.get(1).getText().toString());
-                MHttpManagerFactory.getAccountManager().changeInfo(UserInfoActivity.this, params, new HttpResponseHandler<Object>() {
+                MHttpManagerFactory.getFuneralExecutorManager().changeInfo(UserInfoActivity.this, params, new HttpResponseHandler<Object>() {
+
+
                     @Override
-                    public void onStart() {
+                    public void onStart(Request request, int id) {
 
                     }
 

@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
+import okhttp3.Request;
 
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.base.BaseActivity;
@@ -78,7 +79,7 @@ public class LoginActivity extends BaseActivity {
 
 		login(username, password);
 	}
-	public static String cookie;
+
 	private void login(final String username, final String password) {
 
 		if (!isCanLogin(username, password)) {
@@ -94,25 +95,24 @@ public class LoginActivity extends BaseActivity {
 		params.setUsername(etUserName.getText().toString());
 		params.setSystemType("3");
 		params.setChannelId(SharePerfrenceUtils.getShareChannelId(this));
-		MHttpManagerFactory.getAccountManager().login(this, params, new HttpResponseHandler<HrLoginResult>() {
+		MHttpManagerFactory.getFuneralExecutorManager().login(this, params, new HttpResponseHandler<HrLoginResult>() {
+
+			@Override
+			public void onStart(Request request, int id) {
+
+			}
 
 			@Override
 			public void onSuccess(HrLoginResult result) {
 				AppContansts.userLoginInfo = result;
 				lbLogin.setComplete();
-				cookie=result.getSessionId();
-				HttpRequestExecutor.setSession(cookie, LoginActivity.this);
+
 				SharePerfrenceUtils.setLoginShare(LoginActivity.this, username, password, cbRe.isChecked(),
 						cbAuto.isChecked());
 				ToastUtils.show(getBaseContext(), "登陆成功");
 				Intent in = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(in);
 				finish();
-			}
-
-			@Override
-			public void onStart() {
-
 			}
 
 			@Override

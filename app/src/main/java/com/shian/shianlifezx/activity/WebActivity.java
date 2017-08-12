@@ -23,7 +23,11 @@ import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.phpmodel.SiftListData;
+import com.shian.shianlifezx.provide.phpparams.PHPHpSiftDataParams;
+import com.shian.shianlifezx.provide.phpparams.PHPHpSiftListParams;
 import com.shian.shianlifezx.thisenum.SystemTypeEnum;
+
+import okhttp3.Request;
 
 /**
  * Created by asus on 2016/7/30.
@@ -183,14 +187,16 @@ public class WebActivity extends BaseActivity {
         mIVCollection.setImageResource(R.drawable.zhy_find_collection_2);
         mIVCollection.setClickable(false);
         ToastUtils.show(WebActivity.this, "收藏成功");
-        RequestParams params = new RequestParams();
-        params.put("type", type);
-        params.put("userid", AppContansts.userLoginInfo.getUserId());
-        params.put("siftid", siftID);
-        params.put("userType", SystemTypeEnum.funeral.getCode());
+
+        PHPHpSiftDataParams params=new PHPHpSiftDataParams();
+        params.setType(type);
+        params.setUserid( AppContansts.userLoginInfo.getUserId());
+        params.setSiftID(siftID);
+        params.setUserType( SystemTypeEnum.funeral.getCode());
         MHttpManagerFactory.getPHPManager().setSiftData(WebActivity.this, params, new HttpResponseHandler<Object>() {
+
             @Override
-            public void onStart() {
+            public void onStart(Request request, int id) {
 
             }
 

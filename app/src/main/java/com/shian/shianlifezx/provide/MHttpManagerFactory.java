@@ -1,15 +1,15 @@
 package com.shian.shianlifezx.provide;
 
 import com.shian.shianlifezx.provide.imp.FileManager;
-import com.shian.shianlifezx.provide.imp.MAccountManager;
-import com.shian.shianlifezx.provide.imp.MUserManager;
+import com.shian.shianlifezx.provide.imp.FuneralExecutorManager;
 import com.shian.shianlifezx.provide.imp.PHPManager;
 import com.shian.shianlifezx.provide.imp.StoreManager;
+import com.shian.shianlifezx.provide.imp.SystemManager;
 import com.shian.shianlifezx.provide.imp.impl.FileManagerImpl;
-import com.shian.shianlifezx.provide.imp.impl.MAccountManagerImpl;
-import com.shian.shianlifezx.provide.imp.impl.MUserManagerImpl;
+import com.shian.shianlifezx.provide.imp.impl.FuneralExecutorManagerImp;
 import com.shian.shianlifezx.provide.imp.impl.PHPManagerImpl;
 import com.shian.shianlifezx.provide.imp.impl.StoreManagerImpl;
+import com.shian.shianlifezx.provide.imp.impl.SystemManagerImpl;
 
 /**
  * 接口工厂
@@ -22,13 +22,6 @@ public class MHttpManagerFactory {
      *
      * @return
      */
-    public static MAccountManager getAccountManager() {
-        return MAccountManagerImpl.getInstance();
-    }
-
-    public static MUserManager getMUserManager() {
-        return MUserManagerImpl.getInstance();
-    }
 
     public static FileManager getFileManager() {
         return FileManagerImpl.getInstance();
@@ -41,5 +34,14 @@ public class MHttpManagerFactory {
     //单项
     public static StoreManager getStoreManager() {
         return StoreManagerImpl.getInstance();
+    }
+
+    //殡仪执行
+    public static FuneralExecutorManager getFuneralExecutorManager() {
+        return FuneralExecutorManagerImp.getInstance();
+    }
+    //登陆
+    public static SystemManager getSystemManager() {
+        return SystemManagerImpl.getInstance();
     }
 }

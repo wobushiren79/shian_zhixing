@@ -7,10 +7,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.security.cert.CertificateException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 import com.baidu.mapapi.SDKInitializer;
 import com.kf5sdk.init.KF5SDKInitializer;
@@ -18,7 +22,10 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 import com.shian.shianlifezx.common.LocationService;
+import com.shian.shianlifezx.common.contanst.AppContansts;
+import com.shian.shianlifezx.provide.base.SSLSocketFactoryCompat;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.zhy.http.okhttp.OkHttpUtils;
 
 import android.app.Activity;
 import android.app.Application;
@@ -26,7 +33,15 @@ import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-public class SaBaseApplication extends Application{
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.X509TrustManager;
+
+import okhttp3.Cookie;
+import okhttp3.CookieJar;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+
+public class SaBaseApplication extends Application {
     public static final String DIR = Environment.getExternalStorageDirectory()
             .getAbsolutePath() + "/Victor/log/";
     public static final String NAME = getCurrentDateString() + ".txt";
@@ -35,13 +50,12 @@ public class SaBaseApplication extends Application{
     public LocationService locationService;
 
     @Override
-    public void onCreate()
-    {
+    public void onCreate() {
         super.onCreate();
         mDefaultHandler = Thread.getDefaultUncaughtExceptionHandler();
         Thread.setDefaultUncaughtExceptionHandler(uncaughtExceptionHandler);
         locationService = new LocationService(getApplicationContext());
-        SDKInitializer.initialize(getApplicationContext());  
+        SDKInitializer.initialize(getApplicationContext());
         ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(
                 this).memoryCacheExtraOptions(480, 800).threadPoolSize(3)
                 .threadPriority(Thread.NORM_PRIORITY - 2)
@@ -52,68 +66,132 @@ public class SaBaseApplication extends Application{
         KF5SDKInitializer.initialize(this);
         CrashReport.initCrashReport(getApplicationContext(), "cf39b7e700", false);
 //        calculatedDispdpi();
+        initOkHttp();
+    }
+
+    /**
+     * 初始化Okhttp
+     */
+    private void initOkHttp() {
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+//                .addInterceptor(new LoggerInterceptor("TAG"));
+        try {
+            // 自定义一个信任所有证书的TrustManager，添加SSLSocketFactory的时候要用到
+            final X509TrustManager trustAllCert =
+                    new X509TrustManager() {
+                        @Override
+                        public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                        }
+
+                        @Override
+                        public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
+                        }
+
+                        @Override
+                        public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                            return new java.security.cert.X509Certificate[]{};
+                        }
+                    };
+            final SSLSocketFactory sslSocketFactory = new SSLSocketFactoryCompat(trustAllCert);
+            builder.sslSocketFactory(sslSocketFactory, trustAllCert);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+//        CookieJarImpl cookieJar = new CookieJarImpl(new PersistentCookieStore(getApplicationContext()));
+        OkHttpClient okHttpClient = builder.connectTimeout(10000L, TimeUnit.MILLISECONDS)
+                .readTimeout(10000L, TimeUnit.MILLISECONDS)
+                //其他配置
+                .followRedirects(true)
+                .followSslRedirects(true)
+                .cookieJar(new LocalCookieJar())
+                .build();
+        OkHttpUtils.initClient(okHttpClient);
+    }
+
+    //CookieJar是用于保存Cookie的
+    class LocalCookieJar implements CookieJar {
+        private final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
+
+        @Override
+        public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
+            String tempUrl = getBaseUrl(url.toString());
+            cookieStore.put(tempUrl, cookies);
+            //新增添加子系统KEY
+            if (tempUrl.contains(AppContansts.Login_BaseUrl) && cookies.size() >= 2) {
+                String setCookies = cookies.get(1).toString();
+                String[] cookiesList = setCookies.split(";");
+                for (String cookie : cookiesList) {
+                    if (cookie.contains("KI4SO_SERVER_EC")) {
+                        AppContansts.System_Ki4so_Client_Ec = cookie;
+                    }
+                }
+            }
+        }
+
+        @Override
+        public List<Cookie> loadForRequest(HttpUrl url) {
+            String tempUrl = getBaseUrl(url.toString());
+            List<Cookie> cookies = cookieStore.get(tempUrl);
+            return cookies != null ? cookies : new ArrayList<Cookie>();
+        }
+
+        private String getBaseUrl(String url) {
+            int hostLocation = url.indexOf("/", 8);
+            int urlLocation = url.indexOf("/", hostLocation + 1);
+            String temp = url.substring(0, urlLocation);
+            return temp;
+        }
     }
 
     /**
      * acitivity关闭时候，删除activity列表中的activity对象
      */
-    public void removeActivity(Activity a)
-    {
+    public void removeActivity(Activity a) {
         list.remove(a);
     }
 
     /**
      * 向activiy列表中添加对象
      */
-    public void addActivity(Activity a)
-    {
+    public void addActivity(Activity a) {
         list.add(a);
     }
 
     /**
      * 捕获错误信息的handler
      */
-    private UncaughtExceptionHandler uncaughtExceptionHandler = new UncaughtExceptionHandler()
-    {
+    private UncaughtExceptionHandler uncaughtExceptionHandler = new UncaughtExceptionHandler() {
 
         @Override
-        public void uncaughtException(Thread thread, Throwable ex)
-        {
+        public void uncaughtException(Thread thread, Throwable ex) {
             writeErrorLogToTxt(ex);
             mDefaultHandler.uncaughtException(thread, ex);
         }
     };
 
-    private void writeErrorLogToTxt(Throwable ex)
-    {
+    private void writeErrorLogToTxt(Throwable ex) {
         String info = null;
         ByteArrayOutputStream baos = null;
         PrintStream printStream = null;
-        try
-        {
+        try {
             baos = new ByteArrayOutputStream();
             printStream = new PrintStream(baos);
             ex.printStackTrace(printStream);
             byte[] data = baos.toByteArray();
             info = new String(data);
             data = null;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
-        } finally
-        {
-            try
-            {
-                if (printStream != null)
-                {
+        } finally {
+            try {
+                if (printStream != null) {
                     printStream.close();
                 }
-                if (baos != null)
-                {
+                if (baos != null) {
                     baos.close();
                 }
-            } catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
@@ -122,27 +200,22 @@ public class SaBaseApplication extends Application{
 
     /**
      * 向文件中写入错误信息
-     * 
+     *
      * @param info
      */
-    protected void writeErrorLog(String info)
-    {
+    protected void writeErrorLog(String info) {
         File dir = new File(DIR);
-        if (!dir.exists())
-        {
+        if (!dir.exists()) {
             dir.mkdirs();
         }
         File file = new File(dir, NAME);
-        try
-        {
+        try {
             FileOutputStream fileOutputStream = new FileOutputStream(file, true);
             fileOutputStream.write(info.getBytes());
             fileOutputStream.close();
-        } catch (FileNotFoundException e)
-        {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e)
-        {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
@@ -150,11 +223,10 @@ public class SaBaseApplication extends Application{
 
     /**
      * 获取当前日期
-     * 
+     *
      * @return
      */
-    private static String getCurrentDateString()
-    {
+    private static String getCurrentDateString() {
         String result = null;
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd",
                 Locale.getDefault());
@@ -163,12 +235,9 @@ public class SaBaseApplication extends Application{
         return result;
     }
 
-    public void finishActivity()
-    {
-        for (Activity activity : list)
-        {
-            if (null != activity)
-            {
+    public void finishActivity() {
+        for (Activity activity : list) {
+            if (null != activity) {
                 activity.finish();
             }
         }
@@ -176,8 +245,7 @@ public class SaBaseApplication extends Application{
 
     }
 
-    private void calculatedDispdpi()
-    {
+    private void calculatedDispdpi() {
         String str = "";
         DisplayMetrics dm = new DisplayMetrics();
         dm = this.getApplicationContext().getResources().getDisplayMetrics();

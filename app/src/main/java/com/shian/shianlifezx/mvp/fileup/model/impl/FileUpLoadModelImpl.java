@@ -19,7 +19,7 @@ public class FileUpLoadModelImpl implements IFileUpLoadModel {
 
     @Override
     public void fileUpLoad(Context context, FileUpLoadBean params, final OnGetDataListener listener, final OnFileUpLoadProgressListener progressListener) {
-        MHttpManagerFactory.getFileManager().upLoadFile(context, params.getFileName(), params.getFilePath(), new FileHttpResponseHandler<FileUpLoadResultBean>() {
+        MHttpManagerFactory.getFileManager().upLoadFile(context, params.getFileName(),params.getFileName(), params.getFilePath(), new FileHttpResponseHandler<FileUpLoadResultBean>() {
                     @Override
                     public void onStart() {
 
@@ -36,8 +36,8 @@ public class FileUpLoadModelImpl implements IFileUpLoadModel {
                     }
 
                     @Override
-                    public void onProgress(long total, long current, boolean isUploading) {
-                        progressListener.onProgress(total, current);
+                    public void onProgress(long total, float progress) {
+                        progressListener.onProgress(total, progress);
                     }
                 }
         );

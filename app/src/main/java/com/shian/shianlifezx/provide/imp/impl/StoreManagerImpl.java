@@ -14,6 +14,7 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderPerformCompleteResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformResultBean;
 import com.shian.shianlifezx.provide.base.BaseHttpParams;
+import com.shian.shianlifezx.provide.base.BaseManagerImpl;
 import com.shian.shianlifezx.provide.base.HttpRequestExecutor;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.imp.StoreManager;
@@ -22,12 +23,12 @@ import com.shian.shianlifezx.provide.imp.StoreManager;
  * Created by zm.
  */
 
-public class StoreManagerImpl implements StoreManager {
-    public HttpRequestExecutor excutor = new HttpRequestExecutor();
+public class StoreManagerImpl extends BaseManagerImpl implements StoreManager {
     private static StoreManagerImpl manager;
-    private String BaseUrl = AppContansts.StoreURL;
 
     private StoreManagerImpl() {
+        super();
+        baseUrl = AppContansts.Store_BaseUrl;
     }
 
 
@@ -38,22 +39,6 @@ public class StoreManagerImpl implements StoreManager {
         return manager;
     }
 
-    private <T> void requestPost(Context context,
-                                 String method,
-                                 Class<T> cls,
-                                 BaseHttpParams params,
-                                 HttpResponseHandler<T> response) {
-        excutor.requestPost(context, BaseUrl + "/" + method, cls, params, response);
-    }
-
-    private <T> void requestPost(Context context,
-                                 String method,
-                                 Class<T> cls,
-                                 BaseHttpParams params,
-                                 HttpResponseHandler<T> response,
-                                 boolean isDialog) {
-        excutor.requestPost(context, BaseUrl + "/" + method, cls, params, response, isDialog);
-    }
 
     @Override
     public void getStoreListData(Context context, StoreOrderListBean params, HttpResponseHandler<StoreOrderListResultBean> handler) {

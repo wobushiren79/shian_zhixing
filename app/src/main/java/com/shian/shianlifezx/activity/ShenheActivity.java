@@ -9,6 +9,7 @@ import android.widget.TextView;
 import butterknife.InjectView;
 import butterknife.InjectViews;
 import butterknife.OnClick;
+import okhttp3.Request;
 
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.base.BaseActivity;
@@ -56,8 +57,13 @@ public class ShenheActivity extends BaseActivity {
 		localHpSubmit4AuditParams
 				.setExecutorNote(etShenhe.getText().toString());
 		localHpSubmit4AuditParams.setOrderItemId(mData.getOrderItemId());
-		MHttpManagerFactory.getAccountManager().submit4Audit(this,
+		MHttpManagerFactory.getFuneralExecutorManager().submit4Audit(this,
 				localHpSubmit4AuditParams, new HttpResponseHandler<String>() {
+
+					@Override
+					public void onStart(Request request, int id) {
+
+					}
 
 					@Override
 					public void onSuccess(String result) {
@@ -67,11 +73,6 @@ public class ShenheActivity extends BaseActivity {
 
 					}
 
-					@Override
-					public void onStart() {
-						// TODO Auto-generated method stub
-
-					}
 
 					@Override
 					public void onError(String message) {

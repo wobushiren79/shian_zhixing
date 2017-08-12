@@ -22,6 +22,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import butterknife.InjectView;
+import okhttp3.Request;
 
 import com.baidu.location.BDLocation;
 import com.baidu.location.BDLocationListener;
@@ -181,32 +182,31 @@ public class MainActivity extends BaseActivity {
         rbMain3.setOnCheckedChangeListener(new RBCheckListener());
         rbMain4.setOnCheckedChangeListener(new RBCheckListener());
         showFragment(R.id.rb_main_1);
-        MHttpManagerFactory.getAccountManager().getMessageCount(this,
-                new HttpResponseHandler<HrCommentResult>() {
+        MHttpManagerFactory.getFuneralExecutorManager().getMessageCount(this, new HttpResponseHandler<HrCommentResult>() {
 
-                    @Override
-                    public void onSuccess(HrCommentResult result) {
-                        // TODO Auto-generated method stub
-                        AppContansts.MessageCount = result.getCount();
-                        if (result.getCount() == 0) {
-                            setMessageIconVisible(View.GONE);
-                        } else {
-                            setMessageIconVisible(View.VISIBLE);
-                        }
-                    }
+            @Override
+            public void onStart(Request request, int id) {
 
-                    @Override
-                    public void onStart() {
-                        // TODO Auto-generated method stub
+            }
 
-                    }
+            @Override
+            public void onSuccess(HrCommentResult result) {
+                // TODO Auto-generated method stub
+                AppContansts.MessageCount = result.getCount();
+                if (result.getCount() == 0) {
+                    setMessageIconVisible(View.GONE);
+                } else {
+                    setMessageIconVisible(View.VISIBLE);
+                }
+            }
 
-                    @Override
-                    public void onError(String message) {
-                        // TODO Auto-generated method stub
 
-                    }
-                });
+            @Override
+            public void onError(String message) {
+                // TODO Auto-generated method stub
+
+            }
+        });
         initRB();
     }
 
@@ -297,18 +297,19 @@ public class MainActivity extends BaseActivity {
 
     private void exitApp() {
         finish();
-        MHttpManagerFactory.getAccountManager().loginout(this,
+        MHttpManagerFactory.getFuneralExecutorManager().loginout(this,
                 new HttpResponseHandler<Object>() {
+
+                    @Override
+                    public void onStart(Request request, int id) {
+
+                    }
 
                     @Override
                     public void onSuccess(Object result) {
 
                     }
 
-                    @Override
-                    public void onStart() {
-
-                    }
 
                     @Override
                     public void onError(String message) {
@@ -403,14 +404,15 @@ public class MainActivity extends BaseActivity {
         if (!curAddress.equals(AppContansts.LocalString)) {
             HpConsultIdParams params = new HpConsultIdParams();
             params.setCurAddress(curAddress);
-            MHttpManagerFactory.getAccountManager().changeCurAddress(this, params, new HttpResponseHandler<Object>() {
+            MHttpManagerFactory.getFuneralExecutorManager().changeCurAddress(this, params, new HttpResponseHandler<Object>() {
+
                 @Override
-                public void onStart() {
+                public void onError(String message) {
 
                 }
 
                 @Override
-                public void onError(String message) {
+                public void onStart(Request request, int id) {
 
                 }
 

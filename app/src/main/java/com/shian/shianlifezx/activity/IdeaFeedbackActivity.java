@@ -14,7 +14,10 @@ import com.shian.shianlifezx.base.BaseActivity;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
+import com.shian.shianlifezx.provide.phpparams.PHPHpOpinionParams;
 import com.shian.shianlifezx.thisenum.SystemTypeEnum;
+
+import okhttp3.Request;
 
 public class IdeaFeedbackActivity extends BaseActivity {
     EditText mEditText;
@@ -83,14 +86,16 @@ public class IdeaFeedbackActivity extends BaseActivity {
             ToastUtils.show(IdeaFeedbackActivity.this,"还没有填写反馈信息");
             return;
         }
-        RequestParams params = new RequestParams();
-        params.put("user", UserInfo[0]);
-        params.put("tel", UserInfo[1]);
-        params.put("content", mEditText.getText().toString());
-        params.put("userType", SystemTypeEnum.funeral.getCode());
+        PHPHpOpinionParams params=new PHPHpOpinionParams();
+        params.setUser(UserInfo[0]);
+        params.setTel(UserInfo[1]);
+        params.setContent(mEditText.getText().toString());
+        params.setUserType(SystemTypeEnum.funeral.getCode());
         MHttpManagerFactory.getPHPManager().setOpinion(IdeaFeedbackActivity.this, params, new HttpResponseHandler<Object>() {
+
+
             @Override
-            public void onStart() {
+            public void onStart(Request request, int id) {
 
             }
 
