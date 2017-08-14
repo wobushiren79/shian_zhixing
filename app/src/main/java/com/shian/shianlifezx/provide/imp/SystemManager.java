@@ -3,6 +3,8 @@ package com.shian.shianlifezx.provide.imp;
 import android.content.Context;
 
 import com.shian.shianlifezx.mvp.login.bean.SystemLoginBean;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginOutBean;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginOutResultBean;
 import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 
@@ -21,6 +23,15 @@ public interface SystemManager {
      * @param handler
      */
     void loginSystem(Context context, SystemLoginBean params, HttpResponseHandler<SystemLoginResultBean> handler);
+
+    /**
+     * 退出登陆
+     *
+     * @param context
+     * @param params
+     * @param handler
+     */
+    void loginOutSystem(Context context, SystemLoginOutBean params, HttpResponseHandler<SystemLoginOutResultBean> handler);
 
     /**
      * 单项系统登陆

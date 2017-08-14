@@ -3,6 +3,7 @@ package com.shian.shianlifezx.activity;
 import java.util.List;
 
 import android.app.Notification;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -26,6 +27,10 @@ import com.shian.shianlifezx.common.utils.SharePerfrenceUtils;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.common.view.TipsDialog;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginOutResultBean;
+import com.shian.shianlifezx.mvp.login.presenter.IUserLoginPresenter;
+import com.shian.shianlifezx.mvp.login.presenter.impl.UserLoginPresenterImpl;
+import com.shian.shianlifezx.mvp.login.view.IUserLoginOutView;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpConsultIdParams;
@@ -46,6 +51,7 @@ public class SettingsActivity extends BaseActivity {
         super.onCreate(arg0);
         setContentView(R.layout.activity_settings);
         setTitle("设置");
+        initData();
         share = getSharedPreferences("settings", -1);
         if (getIntent().getIntExtra("state", 1) == 1) {
             switchButton.setChecked(true);
@@ -68,6 +74,9 @@ public class SettingsActivity extends BaseActivity {
                 }
             }
         });
+    }
+
+    private void initData() {
     }
 
     private void setSwitchState(final boolean isCheck) {
@@ -119,13 +128,9 @@ public class SettingsActivity extends BaseActivity {
                             @Override
                             public void onSuccess(Object result) {
                                 // TODO Auto-generated method stub
-                                SharePerfrenceUtils.setShareAutoLogin(
-                                        getBaseContext(), false);
-
-                                setResult(1010);
-                                finish();
+                                SharePerfrenceUtils.setShareAutoLogin(getBaseContext(), false);
+                                Utils.jumpLogin(SettingsActivity.this);
                             }
-
 
 
                             @Override

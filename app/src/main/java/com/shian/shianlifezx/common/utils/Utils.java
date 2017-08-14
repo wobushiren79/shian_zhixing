@@ -32,6 +32,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.RequestListener;
 import com.loopj.android.http.RequestParams;
+import com.shian.shianlifezx.activity.LoginActivity;
 import com.shian.shianlifezx.base.BaseActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.view.TipsDialog;
@@ -328,6 +329,16 @@ public class Utils {
             }
         }
         return false;
+    }
+
+    /**
+     * 跳转到登陆界面
+     * @param context
+     */
+    public static void jumpLogin(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
     }
 }
 

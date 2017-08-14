@@ -3,6 +3,7 @@ package com.shian.shianlifezx.activity;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Rect;
@@ -44,6 +45,10 @@ import com.shian.shianlifezx.fragment.NewUserCenterFragment;
 import com.shian.shianlifezx.fragment.OrderFragment;
 import com.shian.shianlifezx.fragment.TheOrderFragment;
 import com.shian.shianlifezx.fragment.UserCenterFragment;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginOutResultBean;
+import com.shian.shianlifezx.mvp.login.presenter.IUserLoginPresenter;
+import com.shian.shianlifezx.mvp.login.presenter.impl.UserLoginPresenterImpl;
+import com.shian.shianlifezx.mvp.login.view.IUserLoginOutView;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpConsultIdParams;
@@ -55,7 +60,7 @@ import org.support.v4.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements IUserLoginOutView {
     @InjectView(R.id.fl_main)
     View flMain;
     @InjectView(R.id.rb_main_1)
@@ -77,6 +82,7 @@ public class MainActivity extends BaseActivity {
     private NewUserCenterFragment userFragment;
 
     List<RadioButton> listRB = new ArrayList<>();
+    private IUserLoginPresenter userLoginPresenter;
 
     @Override
     protected void onCreate(Bundle arg0) {
@@ -173,6 +179,8 @@ public class MainActivity extends BaseActivity {
 
     private void initDate() {
         mFragmentManager = getSupportFragmentManager();
+        userLoginPresenter = new UserLoginPresenterImpl(null, this);
+
     }
 
     private void initView() {
@@ -262,6 +270,7 @@ public class MainActivity extends BaseActivity {
         transcation.commit();
     }
 
+
     class RBCheckListener implements OnCheckedChangeListener {
 
         @Override
@@ -330,6 +339,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
+        userLoginPresenter.loginOutSystem();
         locationService.unregisterListener(mListener); // 注销掉监听
         locationService.stop(); // 停止定位服务
         super.onDestroy();
@@ -422,5 +432,20 @@ public class MainActivity extends BaseActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public void loginOutSystemSuccess(SystemLoginOutResultBean result) {
+
+    }
+
+    @Override
+    public void loginOutSystemFail(String message) {
+
     }
 }

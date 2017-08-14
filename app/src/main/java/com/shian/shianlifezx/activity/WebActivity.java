@@ -3,6 +3,7 @@ package com.shian.shianlifezx.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.GeolocationPermissions;
@@ -63,7 +64,10 @@ public class WebActivity extends BaseActivity {
         webSettings.setGeolocationDatabasePath(dir);
         webSettings.setGeolocationEnabled(true);
         webSettings.setDomStorageEnabled(true);//允许DCOM
-
+        //允许视频播放
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+            webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
         url = getIntent().getStringExtra("url");
         mWebView.loadUrl(url);
         mWebView.setWebChromeClient(new WebChromeClient() {

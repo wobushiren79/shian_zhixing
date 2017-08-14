@@ -6,6 +6,8 @@ import android.content.Context;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.mvp.login.bean.SystemLoginBean;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginOutBean;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginOutResultBean;
 import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
 import com.shian.shianlifezx.provide.base.BaseManagerImpl;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
@@ -41,6 +43,11 @@ public class SystemManagerImpl extends BaseManagerImpl implements SystemManager 
     @Override
     public void loginSystem(Context context, SystemLoginBean params, HttpResponseHandler<SystemLoginResultBean> handler) {
         requestPost(context, "applogin", SystemLoginResultBean.class, params, handler);
+    }
+
+    @Override
+    public void loginOutSystem(Context context, SystemLoginOutBean params, HttpResponseHandler<SystemLoginOutResultBean> handler) {
+        requestPost(context, "app_logout", SystemLoginOutResultBean.class, params, handler);
     }
 
     @Override

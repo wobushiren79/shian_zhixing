@@ -1,5 +1,6 @@
 package com.shian.shianlifezx.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -23,6 +24,10 @@ import com.shian.shianlifezx.common.utils.JSONUtil;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils.ShareLogin;
 import com.shian.shianlifezx.common.utils.ToastUtils;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
+import com.shian.shianlifezx.mvp.login.presenter.IUserLoginPresenter;
+import com.shian.shianlifezx.mvp.login.presenter.impl.UserLoginPresenterImpl;
+import com.shian.shianlifezx.mvp.login.view.IUserLoginView;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpLoginParams;
@@ -34,13 +39,16 @@ import java.util.TimerTask;
 
 import okhttp3.Request;
 
-public class SplashActivity extends BaseActivity implements OnPushListener {
+public class SplashActivity extends BaseActivity implements OnPushListener, IUserLoginView {
 
     private int SLEEPTIME = 2500;//loading时间
-    private int advertisementTime = 3000;//广告时间
-
-    HrLoginResult result = null;
     Timer timerIntent;//定时跳转
+
+    private IUserLoginPresenter userLoginPresenter;
+    private Boolean isAutoLogin = false;
+    private String userName;
+    private String passWord;
+    private String channelId;
 
     @Override
     protected void onCreate(Bundle arg0) {
@@ -63,14 +71,10 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
     }
 
 
-    private void initData(String channelId) {
-        //自动登陆
-        SharePerfrenceUtils.ShareLogin shareLogin = SharePerfrenceUtils.getLoginShare(SplashActivity.this);
-        if (shareLogin.isAutoLogin()) {
-            login(shareLogin.getUsername(), shareLogin.getPassword(), channelId);
-        } else {
-            sleepActivity(1);
-        }
+    private void initData() {
+        userLoginPresenter = new UserLoginPresenterImpl(this, null);
+        userLoginPresenter.getLoginConfig();
+        userLoginPresenter.loginSystem();
     }
 
 
@@ -89,11 +93,10 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
     }
 
 
-    private void login(final String username, final String password, String channelId) {
-
+    private void login() {
         HpLoginParams params = new HpLoginParams();
-        params.setPassword(password);
-        params.setUsername(username);
+        params.setPassword(passWord);
+        params.setUsername(userName);
         params.setSystemType("3");
         params.setChannelId(channelId);
         MHttpManagerFactory.getFuneralExecutorManager().login(this, params,
@@ -114,7 +117,7 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
                     @Override
                     public void onError(String message) {
                         ToastUtils.show(getBaseContext(), "登陆失败");
-                        SharePerfrenceUtils.setLoginShare(SplashActivity.this, username, password, true, false);
+                        SharePerfrenceUtils.setLoginShare(SplashActivity.this, userName, passWord, true, false);
                         jumpActivity(1);
                     }
                 });
@@ -122,8 +125,8 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
     }
 
     private void initPush() {
-        Resources resource = this.getResources();
-        String pkgName = this.getPackageName();
+//        Resources resource = this.getResources();
+//        String pkgName = this.getPackageName();
         PushManager.startWork(getApplicationContext(), PushConstants.LOGIN_TYPE_API_KEY, Utils.getMetaValue(this, "api_key"));
         Log.v("this", "api_key:" + Utils.getMetaValue(this, "api_key"));
         // Push: 如果想基于地理位置推送，可以打开支持地理位置的推送的开关
@@ -153,7 +156,8 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
     @Override
     public void onPush(String channelId) {
         // TODO Auto-generated method stub
-        initData(channelId);
+        this.channelId = channelId;
+        initData();
     }
 
     @Override
@@ -161,5 +165,71 @@ public class SplashActivity extends BaseActivity implements OnPushListener {
         super.onDestroy();
         if (timerIntent != null)
             timerIntent.cancel();
+    }
+
+    @Override
+    public String getUserName() {
+        return userName;
+    }
+
+    @Override
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    @Override
+    public String getPassWord() {
+        return passWord;
+    }
+
+    @Override
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    @Override
+    public boolean getIsAutoLogin() {
+        return isAutoLogin;
+    }
+
+    @Override
+    public void setIsAutoLogin(boolean isAutoLogin) {
+        this.isAutoLogin = isAutoLogin;
+    }
+
+    @Override
+    public boolean getIsKeepAccount() {
+        return false;
+    }
+
+    @Override
+    public void setIsKeepAccount(boolean isKeepAccount) {
+
+    }
+
+    @Override
+    public void setLoginConfig() {
+
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    @Override
+    public void loginSystemSuccess(SystemLoginResultBean result) {
+        if (isAutoLogin) {
+            login();
+        } else {
+            sleepActivity(1);
+        }
+
+    }
+
+    @Override
+    public void loginSystemFail(String message) {
+        ToastUtils.show(getBaseContext(), "登陆失败");
+        jumpActivity(1);
     }
 }

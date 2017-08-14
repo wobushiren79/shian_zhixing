@@ -6,6 +6,8 @@ import android.content.Context;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils;
 import com.shian.shianlifezx.mvp.base.OnGetDataListener;
 import com.shian.shianlifezx.mvp.login.bean.SystemLoginBean;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginOutBean;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginOutResultBean;
 import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
 import com.shian.shianlifezx.mvp.login.bean.UserLoginConfig;
 import com.shian.shianlifezx.mvp.login.model.IUserLoginModel;
@@ -31,6 +33,26 @@ public class UserLoginModelImpl implements IUserLoginModel {
 
             @Override
             public void onSuccess(SystemLoginResultBean result) {
+                listener.getDataSuccess(result);
+            }
+
+            @Override
+            public void onError(String message) {
+                listener.getDataFail(message);
+            }
+        });
+    }
+
+    @Override
+    public void loginOutSystem(Context context, SystemLoginOutBean params, final OnGetDataListener<SystemLoginOutResultBean> listener) {
+        MHttpManagerFactory.getSystemManager().loginOutSystem(context, params, new HttpResponseHandler<SystemLoginOutResultBean>() {
+            @Override
+            public void onStart(Request request, int id) {
+
+            }
+
+            @Override
+            public void onSuccess(SystemLoginOutResultBean result) {
                 listener.getDataSuccess(result);
             }
 

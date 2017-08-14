@@ -1,5 +1,6 @@
 package com.shian.shianlifezx.common.contanst;
 
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
 import com.shian.shianlifezx.provide.result.HrLoginResult;
 
 public class AppContansts {
@@ -28,7 +29,7 @@ public class AppContansts {
 
 
     //登陆系统KEY
-    public  static String System_Ki4so_Client_Ec;
+    public static String System_Ki4so_Client_Ec;
     //子系统-单项  登陆地址
     public static final String Login_Store_Url = "http://192.168.0.199:8299/goods/login_sys_api";
 
@@ -46,5 +47,6 @@ public class AppContansts {
     public static double LOCAL_longitude = 104.0722210000;//经度;
 
     public static HrLoginResult userLoginInfo = new HrLoginResult();
+    public static SystemLoginResultBean systemLoginInfo;
 
 }
