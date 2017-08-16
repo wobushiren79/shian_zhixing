@@ -46,8 +46,11 @@ import com.shian.shianlifezx.fragment.OrderFragment;
 import com.shian.shianlifezx.fragment.TheOrderFragment;
 import com.shian.shianlifezx.fragment.UserCenterFragment;
 import com.shian.shianlifezx.mvp.login.bean.SystemLoginOutResultBean;
+import com.shian.shianlifezx.mvp.login.presenter.ISubSystemLoginPresenter;
 import com.shian.shianlifezx.mvp.login.presenter.IUserLoginPresenter;
+import com.shian.shianlifezx.mvp.login.presenter.impl.SubSystemLoginPresenterImpl;
 import com.shian.shianlifezx.mvp.login.presenter.impl.UserLoginPresenterImpl;
+import com.shian.shianlifezx.mvp.login.view.ISubSystemLoginView;
 import com.shian.shianlifezx.mvp.login.view.IUserLoginOutView;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
@@ -60,7 +63,9 @@ import org.support.v4.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends BaseActivity implements IUserLoginOutView {
+import static com.shian.shianlifezx.common.utils.Utils.startForegroundService;
+
+public class MainActivity extends BaseActivity implements IUserLoginOutView, ISubSystemLoginView {
     @InjectView(R.id.fl_main)
     View flMain;
     @InjectView(R.id.rb_main_1)
@@ -82,7 +87,9 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView {
     private NewUserCenterFragment userFragment;
 
     List<RadioButton> listRB = new ArrayList<>();
+
     private IUserLoginPresenter userLoginPresenter;
+    private ISubSystemLoginPresenter subSystemLoginPresenter;
 
     @Override
     protected void onCreate(Bundle arg0) {
@@ -178,9 +185,13 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView {
 
 
     private void initDate() {
+        startForegroundService(this);
+
         mFragmentManager = getSupportFragmentManager();
         userLoginPresenter = new UserLoginPresenterImpl(null, this);
-
+        //登陆子系统
+        subSystemLoginPresenter = new SubSystemLoginPresenterImpl(this);
+        subSystemLoginPresenter.loginStoreSystem();
     }
 
     private void initView() {

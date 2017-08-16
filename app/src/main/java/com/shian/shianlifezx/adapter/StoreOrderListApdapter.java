@@ -17,6 +17,8 @@ import com.shian.shianlifezx.common.contanst.IntentAction;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.common.view.TipsDialog;
+import com.shian.shianlifezx.mvp.order.bean.GoodsExpress;
+import com.shian.shianlifezx.mvp.order.bean.GoodsPerform;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
@@ -29,6 +31,7 @@ import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderGetPerformPresen
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderAcceptView;
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderGetPerformView;
 import com.shian.shianlifezx.thisenum.GoodsPerformStatusEnum;
+import com.shian.shianlifezx.thisenum.GoodsPerformWayEnum;
 import com.shian.shianlifezx.thisenum.GoodsServiceWayEnum;
 import com.shian.shianlifezx.view.dialog.DataShowDialog;
 
@@ -108,7 +111,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         tvOrderNum.setText("订单编号 : " + data.getGoodsOrder().getOrderNumber());
         //商品名称 规格 及数量
         tvGoodsDetails.setText(data.getGoodsOrderItem().getSpecOrderedVolume()
-                + "(" + data.getGoodsOrderItem().getSpecAlias() + ")"
+                + "(" + data.getGoodsOrderItem().getSpecName() + ")"
                 + " x" + data.getGoodsOrderItem().getSpecOrderedNum());
         //及时服务或预约服务时间
         int serviceType = data.getGoodsServiceInfo().getServiceWay();
@@ -178,6 +181,8 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
                     storeOrderGetPerformPresenter.getPerformInfo(index);
                 } else if (v == tvOrderComplete) {
                     orderComplete(data);
+                } else if (v == tvOrderCompleteMore) {
+                    orderComplete(data);
                 }
             }
 
@@ -189,6 +194,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         llContent.setOnClickListener(onClickListener);
         tvOrderDetails.setOnClickListener(onClickListener);
         tvOrderComplete.setOnClickListener(onClickListener);
+        tvOrderCompleteMore.setOnClickListener(onClickListener);
     }
 
     //完成
@@ -241,14 +247,14 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
     public void getPerformInfoSuccess(StoreOrderGetPerformResultBean resultBean) {
         List<DataShowDialog.DataShowDialogResultBean> listData = new ArrayList<>();
         if (resultBean.getGoodsPerform() != null) {
-            StoreOrderGetPerformResultBean.GoodsPerform goodsPerform = resultBean.getGoodsPerform();
-            listData.add(new DataShowDialog.DataShowDialogResultBean("执行方式", GoodsServiceWayEnum.getValueText(goodsPerform.getPerformWay())));
+            GoodsPerform goodsPerform = resultBean.getGoodsPerform();
+            listData.add(new DataShowDialog.DataShowDialogResultBean("执行方式", GoodsPerformWayEnum.getValueText(goodsPerform.getPerformWay())));
             listData.add(new DataShowDialog.DataShowDialogResultBean("执行人姓名", goodsPerform.getPerformUserName()));
             listData.add(new DataShowDialog.DataShowDialogResultBean("执行人电话", goodsPerform.getPerformUserPhone()));
             listData.add(new DataShowDialog.DataShowDialogResultBean("备注", goodsPerform.getPerformComment()));
         }
         if (resultBean.getGoodsExpress() != null) {
-            StoreOrderGetPerformResultBean.GoodsExpress goodsExpress = resultBean.getGoodsExpress();
+            GoodsExpress goodsExpress = resultBean.getGoodsExpress();
             listData.add(new DataShowDialog.DataShowDialogResultBean("快递公司", goodsExpress.getExpressName()));
             listData.add(new DataShowDialog.DataShowDialogResultBean("快递单号", goodsExpress.getDeliveryNumber()));
         }

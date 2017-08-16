@@ -352,9 +352,6 @@
             android:name=".activity.LoginAdvertActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
-
-        <service android:name=".service.UpDataService" />
-
         <activity
             android:name=".activity.order.FuneralServiceActivity"
             android:configChanges="orientation|screenSize"
@@ -372,6 +369,9 @@
             android:name=".activity.order.StorePerformCompleteActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait"></activity>
+
+        <service android:name=".service.UpDataService" />
+        <service android:name=".service.PushService" />
     </application>
 
 </manifest>

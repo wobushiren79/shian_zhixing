@@ -24,9 +24,9 @@ public class OrderShowModelImpl implements IOrderShowModel {
 
         if (AppContansts.systemLoginInfo != null) {
             for (String role : AppContansts.systemLoginInfo.getResourceCodes()) {
-                if (role.equals(RoleEnum.Goods_Excutor.getCode())) {
+                if (role.equals(RoleEnum.Goods_Executor.getCode())) {
                     listData.add(getItem(OrderItemShowEnum.store));
-                } else if (role.equals(RoleEnum.Funeral_Excutor.getCode())) {
+                } else if (role.equals(RoleEnum.Funeral_Executor.getCode())) {
                     listData.add(getItem(OrderItemShowEnum.funeral));
                 }
             }

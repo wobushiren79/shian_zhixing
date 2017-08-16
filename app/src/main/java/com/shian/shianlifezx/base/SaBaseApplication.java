@@ -49,6 +49,7 @@ public class SaBaseApplication extends Application {
     private ArrayList<Activity> list = new ArrayList<Activity>();
     public LocationService locationService;
 
+
     @Override
     public void onCreate() {
         super.onCreate();
@@ -111,12 +112,11 @@ public class SaBaseApplication extends Application {
 
     //CookieJar是用于保存Cookie的
     class LocalCookieJar implements CookieJar {
-        private final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
 
         @Override
         public void saveFromResponse(HttpUrl url, List<Cookie> cookies) {
             String tempUrl = getBaseUrl(url.toString());
-            cookieStore.put(tempUrl, cookies);
+            AppContansts.cookieStore.put(tempUrl, cookies);
             //新增添加子系统KEY
             if (tempUrl.contains(AppContansts.Login_BaseUrl) && cookies.size() >= 2) {
                 String setCookies = cookies.get(1).toString();
@@ -132,7 +132,7 @@ public class SaBaseApplication extends Application {
         @Override
         public List<Cookie> loadForRequest(HttpUrl url) {
             String tempUrl = getBaseUrl(url.toString());
-            List<Cookie> cookies = cookieStore.get(tempUrl);
+            List<Cookie> cookies = AppContansts.cookieStore.get(tempUrl);
             return cookies != null ? cookies : new ArrayList<Cookie>();
         }
 

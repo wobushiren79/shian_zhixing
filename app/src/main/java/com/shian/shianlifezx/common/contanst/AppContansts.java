@@ -3,14 +3,19 @@ package com.shian.shianlifezx.common.contanst;
 import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
 import com.shian.shianlifezx.provide.result.HrLoginResult;
 
+import java.util.HashMap;
+import java.util.List;
+
+import okhttp3.Cookie;
+
 public class AppContansts {
     //殡仪执行地址
     public static final String Funeral_Executor_BaseUrl = "http://115.28.163.211:7088/shianlife-executor-1.0-SNAPSHOT";
 
     //登陆地址
-    public static final String Login_BaseUrl = "http://192.168.0.199:8080/ki4so-web";
+    public static final String Login_BaseUrl = "http://192.168.0.37:8080/ki4so-web";
     //单项地址
-    public static final String Store_BaseUrl = "http://192.168.0.199:8299/goods";
+    public static final String Store_BaseUrl = "http://192.168.0.37:8089/goods";
     //    public static final String BaseURL = "http://192.168.0.200:8001/shianlife-adviser-1.0-SNAPSHOT";
 //    public static final String BaseURL = "http://192.168.0.37:8088/executor";
     //PHP地址
@@ -31,8 +36,7 @@ public class AppContansts {
     //登陆系统KEY
     public static String System_Ki4so_Client_Ec;
     //子系统-单项  登陆地址
-    public static final String Login_Store_Url = "http://192.168.0.199:8299/goods/login_sys_api";
-
+    public static final String Login_Store_Url = Store_BaseUrl + "/login_sys_api";
 
     public static int MessageCount = 0;
     public static String LOCAL_PROVINCE = "";
@@ -46,7 +50,10 @@ public class AppContansts {
     public static double LOCAL_latitude = 30.6634450000;//纬度;
     public static double LOCAL_longitude = 104.0722210000;//经度;
 
-    public static HrLoginResult userLoginInfo = new HrLoginResult();
+    public static HrLoginResult userLoginInfo;
+    //平台用户数据
     public static SystemLoginResultBean systemLoginInfo;
 
+    //cookie保存
+    public static final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
 }

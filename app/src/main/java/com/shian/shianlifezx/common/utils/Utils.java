@@ -40,6 +40,7 @@ import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.phpparams.PHPHpAppVersionParams;
 import com.shian.shianlifezx.provide.phpresult.PHPHrGetVersion;
+import com.shian.shianlifezx.service.PushService;
 import com.shian.shianlifezx.service.UpDataService;
 import com.shian.shianlifezx.thisenum.APPTypeEnum;
 import com.shian.shianlifezx.thisenum.UpDataImportantEnum;
@@ -339,6 +340,15 @@ public class Utils {
         Intent intent = new Intent(context, LoginActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+    }
+
+    /**
+     * 开始前台服务
+     * @param context
+     */
+    public static void startForegroundService(Context context) {
+        Intent intent = new Intent(context, PushService.class);
+        context.startService(intent);
     }
 }
 

@@ -111,7 +111,7 @@ public class StorePerformCompleteActivity extends BaseActivity implements IStore
         for (int i = 0; i < llPic.getChildCount(); i++) {
             FileUpLoadButton fileUpLoadButton = (FileUpLoadButton) llPic.getChildAt(i);
             if (fileUpLoadButton.getFileUrl() != null && !fileUpLoadButton.getFileUrl().isEmpty()) {
-                if (i != 0)
+                if (pic.length() != 0)
                     pic.append(",");
                 pic.append(fileUpLoadButton.getFileUrl());
             }

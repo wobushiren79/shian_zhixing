@@ -1,6 +1,8 @@
 package com.shian.shianlifezx.mvp.order.presenter.impl;
 
 import com.shian.shianlifezx.mvp.base.OnGetDataListener;
+import com.shian.shianlifezx.mvp.order.bean.GoodsExpress;
+import com.shian.shianlifezx.mvp.order.bean.GoodsPerform;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformResultBean;
 import com.shian.shianlifezx.mvp.order.model.IStoreOrderSavePerformModel;
@@ -26,7 +28,7 @@ public class StoreOrderSavePerformPresenterImpl implements IStoreOrderSavePerfor
     public void savePerformInfo() {
         StoreOrderSavePerformBean params = new StoreOrderSavePerformBean();
 
-        StoreOrderSavePerformBean.GoodsPerform goodsPerform = new StoreOrderSavePerformBean.GoodsPerform();
+        GoodsPerform goodsPerform = new GoodsPerform();
         if (storeOrderSavePerformView.getOrderId() == null
                 || storeOrderSavePerformView.getOrderId() == -1
                 || storeOrderSavePerformView.getPerformId() == null
@@ -48,7 +50,7 @@ public class StoreOrderSavePerformPresenterImpl implements IStoreOrderSavePerfor
         goodsPerform.setPerformUserPhone(storeOrderSavePerformView.getPerformUserPhone());
         goodsPerform.setPerformComment(storeOrderSavePerformView.getPerformComment());
 
-        StoreOrderSavePerformBean.GoodsExpress goodsExpress = new StoreOrderSavePerformBean.GoodsExpress();
+        GoodsExpress goodsExpress = new GoodsExpress();
         goodsExpress.setExpressName(storeOrderSavePerformView.getCourierCompany());
         goodsExpress.setDeliveryNumber(storeOrderSavePerformView.getCourierNumber());
 

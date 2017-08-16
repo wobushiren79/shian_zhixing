@@ -6,9 +6,9 @@ package com.shian.shianlifezx.thisenum;
 
 public enum RoleEnum {
     Car_Driver("car.driver", "派车司机"),
-    Goods_Audit("goods.audit", "单项审核员"),
-    Goods_Excutor("goods.excutor","单项执行者"),
-    Funeral_Excutor("funeral.excutor","殡仪执行者");
+    Goods_Audit("goods.auditor", "单项审核员"),
+    Goods_Executor("goods.executor","单项执行者"),
+    Funeral_Executor("funeral.executor","殡仪执行者");
 
     private String code;
     private String name;
