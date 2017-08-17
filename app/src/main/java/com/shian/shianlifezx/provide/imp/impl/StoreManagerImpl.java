@@ -9,6 +9,8 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderNotPassReasonBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderNotPassReasonResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderPerformCompleteBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderPerformCompleteResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
@@ -63,5 +65,10 @@ public class StoreManagerImpl extends BaseManagerImpl implements StoreManager {
     @Override
     public void savePerformComplete(Context context, StoreOrderPerformCompleteBean params, HttpResponseHandler<StoreOrderPerformCompleteResultBean> handler) {
         requestPost(context, "api/goods/perform/savePerformFinishInfo", StoreOrderPerformCompleteResultBean.class, params, handler, true);
+    }
+
+    @Override
+    public void getNotPassReason(Context context, StoreOrderNotPassReasonBean params, HttpResponseHandler<StoreOrderNotPassReasonResultBean> handler) {
+        requestPost(context, "api/goods/perform/getNotPassAuditReason", StoreOrderNotPassReasonResultBean.class, params, handler, true);
     }
 }

@@ -23,13 +23,17 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderNotPassReasonResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
 import com.shian.shianlifezx.mvp.order.presenter.IStoreOrderAcceptPresenter;
 import com.shian.shianlifezx.mvp.order.presenter.IStoreOrderGetPerformPresenter;
+import com.shian.shianlifezx.mvp.order.presenter.IStoreOrderNotPassReasonPresenter;
 import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderAcceptPresenterImpl;
 import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderGetPerformPresenterImpl;
+import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderNotPassReasonPresenterImpl;
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderAcceptView;
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderGetPerformView;
+import com.shian.shianlifezx.mvp.order.view.IStoreOrderNotPassReasonView;
 import com.shian.shianlifezx.thisenum.GoodsPerformStatusEnum;
 import com.shian.shianlifezx.thisenum.GoodsPerformWayEnum;
 import com.shian.shianlifezx.thisenum.GoodsServiceWayEnum;
@@ -42,9 +46,10 @@ import java.util.List;
  * Created by zm.
  */
 
-public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBean.Content> implements IStoreOrderAcceptView, IStoreOrderGetPerformView {
+public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBean.Content> implements IStoreOrderAcceptView, IStoreOrderGetPerformView, IStoreOrderNotPassReasonView {
     private IStoreOrderAcceptPresenter storeOrderAcceptPresenter;
     private IStoreOrderGetPerformPresenter storeOrderGetPerformPresenter;
+    private IStoreOrderNotPassReasonPresenter storeOrderNotPassReasonPresenter;
     private CallBack callBack;
 
     /**
@@ -56,6 +61,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         super(context, R.layout.layout_store_order_list_item);
         storeOrderAcceptPresenter = new StoreOrderAcceptPresenterImpl(this);
         storeOrderGetPerformPresenter = new StoreOrderGetPerformPresenterImpl(this);
+        storeOrderNotPassReasonPresenter = new StoreOrderNotPassReasonPresenterImpl(this);
     }
 
     public void setCallBack(CallBack callBack) {
@@ -70,6 +76,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         TextView tvCustomerName = holder.getView(R.id.tv_customer_name);
         TextView tvServiceTime = holder.getView(R.id.tv_service_time);
         TextView tvServiceLocation = holder.getView(R.id.tv_service_location);
+        final TextView tvOrderNopassReason = holder.getView(R.id.tv_order_nopass_reason);
 
         final TextView tvOrderCompleteMore = holder.getView(R.id.tv_order_complete_more);
         final TextView tvOrderDetails = holder.getView(R.id.tv_order_details);
@@ -105,6 +112,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         tvOrderComplete.setVisibility(View.GONE);
         tvOrderDetails.setVisibility(View.GONE);
         tvOrderCompleteMore.setVisibility(View.GONE);
+        tvOrderNopassReason.setVisibility(View.GONE);
         //商品属性名称
         tvGoodsName.setText(data.getGoodsOrderItem().getSpecOrderedAttr());
         //订单编号
@@ -152,6 +160,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         } else if (performStatus == GoodsPerformStatusEnum.auditfail.getCode()) {
             tvOrderDetails.setVisibility(View.VISIBLE);
             tvOrderCompleteMore.setVisibility(View.VISIBLE);
+            tvOrderNopassReason.setVisibility(View.VISIBLE);
         } else if (performStatus == GoodsPerformStatusEnum.cancel.getCode()) {
 
 
@@ -183,10 +192,10 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
                     orderComplete(data);
                 } else if (v == tvOrderCompleteMore) {
                     orderComplete(data);
+                } else if (v == tvOrderNopassReason) {
+                    storeOrderNotPassReasonPresenter.getNotPassReason(data.getGoodsPerform().getId());
                 }
             }
-
-
         };
         tvOrderAccept.setOnClickListener(onClickListener);
         tvOrderReject.setOnClickListener(onClickListener);
@@ -195,6 +204,23 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         tvOrderDetails.setOnClickListener(onClickListener);
         tvOrderComplete.setOnClickListener(onClickListener);
         tvOrderCompleteMore.setOnClickListener(onClickListener);
+        tvOrderNopassReason.setOnClickListener(onClickListener);
+    }
+
+    /**
+     * 审核失败原因
+     */
+    private void orderNoPassReason(String resaon) {
+        TipsDialog dialog = new TipsDialog(mContext);
+        dialog.setTitle(resaon);
+        dialog.setTop("审核失败原因");
+        dialog.setBottomButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dialog.show();
     }
 
     //完成
@@ -239,6 +265,11 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
     }
 
     @Override
+    public void showToast(String msg) {
+        ToastUtils.show(mContext, msg);
+    }
+
+    @Override
     public Long getPerformId(int index) {
         return mDatas.get(index).getGoodsPerform().getId();
     }
@@ -273,7 +304,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
 
     @Override
     public void getPerformInfoFail(String msg) {
-
+        ToastUtils.show(mContext, msg);
     }
 
     @Override
@@ -296,6 +327,21 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
     @Override
     public void acceptFail(String msg) {
         ToastUtils.show(mContext, "接单失败");
+    }
+
+
+    @Override
+    public void getPassReasonSuccess(StoreOrderNotPassReasonResultBean resultBean) {
+        if (resultBean.getAuditInfo() != null)
+            orderNoPassReason(resultBean.getAuditInfo());
+        else {
+            orderNoPassReason("暂无审核信息");
+        }
+    }
+
+    @Override
+    public void getPassReasonFail(String msg) {
+        ToastUtils.show(mContext, msg);
     }
 
     public interface CallBack {

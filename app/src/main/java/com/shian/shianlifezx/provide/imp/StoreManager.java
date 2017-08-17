@@ -8,6 +8,8 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderNotPassReasonBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderNotPassReasonResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderPerformCompleteBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderPerformCompleteResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
@@ -65,4 +67,13 @@ public interface StoreManager {
      * @param handler
      */
     void savePerformComplete(Context context, StoreOrderPerformCompleteBean params, HttpResponseHandler<StoreOrderPerformCompleteResultBean> handler);
+
+    /**
+     * 获取审核未通过原因
+     *
+     * @param context
+     * @param params
+     * @param handler
+     */
+    void getNotPassReason(Context context, StoreOrderNotPassReasonBean params, HttpResponseHandler<StoreOrderNotPassReasonResultBean> handler);
 }

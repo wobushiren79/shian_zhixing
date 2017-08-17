@@ -9,6 +9,7 @@ import com.shian.shianlifezx.mvp.order.model.IStoreOrderSavePerformModel;
 import com.shian.shianlifezx.mvp.order.model.impl.StoreOrderSavePerformModelImpl;
 import com.shian.shianlifezx.mvp.order.presenter.IStoreOrderSavePerformPresenter;
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderSavePerformView;
+import com.shian.shianlifezx.thisenum.GoodsPerformWayEnum;
 
 /**
  * Created by zm.
@@ -42,20 +43,36 @@ public class StoreOrderSavePerformPresenterImpl implements IStoreOrderSavePerfor
             storeOrderSavePerformView.getDataFail("还没有填写执行方式");
             return;
         }
+        if (storeOrderSavePerformView.getPerformWay() == GoodsPerformWayEnum.home_send.getCode()
+                || storeOrderSavePerformView.getPerformWay() == GoodsPerformWayEnum.local_send.getCode()) {
+            if (storeOrderSavePerformView.getPerformUserName().isEmpty()) {
+                storeOrderSavePerformView.getDataFail("还没有填写执行人姓名");
+                return;
+            }
+            if (storeOrderSavePerformView.getPerformUserPhone().isEmpty()) {
+                storeOrderSavePerformView.getDataFail("还没有填写执行人电话");
+                return;
+            }
+            goodsPerform.setPerformUserName(storeOrderSavePerformView.getPerformUserName());
+            goodsPerform.setPerformUserPhone(storeOrderSavePerformView.getPerformUserPhone());
+            goodsPerform.setPerformComment(storeOrderSavePerformView.getPerformComment());
+        } else {
+            if (storeOrderSavePerformView.getCourierNumber().isEmpty()) {
+                storeOrderSavePerformView.getDataFail("还没有填写快递单号");
+                return;
+            }
+            GoodsExpress goodsExpress = new GoodsExpress();
+            goodsExpress.setExpressName(storeOrderSavePerformView.getCourierCompany());
+            goodsExpress.setDeliveryNumber(storeOrderSavePerformView.getCourierNumber());
+            params.setGoodsExpress(goodsExpress);
+        }
         goodsPerform.setPerformWay(storeOrderSavePerformView.getPerformWay());
         goodsPerform.setId(storeOrderSavePerformView.getPerformId());
         goodsPerform.setOrderId(storeOrderSavePerformView.getOrderId());
         goodsPerform.setGoodsItemId(storeOrderSavePerformView.getGoodsItemId());
-        goodsPerform.setPerformUserName(storeOrderSavePerformView.getPerformUserName());
-        goodsPerform.setPerformUserPhone(storeOrderSavePerformView.getPerformUserPhone());
-        goodsPerform.setPerformComment(storeOrderSavePerformView.getPerformComment());
-
-        GoodsExpress goodsExpress = new GoodsExpress();
-        goodsExpress.setExpressName(storeOrderSavePerformView.getCourierCompany());
-        goodsExpress.setDeliveryNumber(storeOrderSavePerformView.getCourierNumber());
 
         params.setGoodsPerform(goodsPerform);
-        params.setGoodsExpress(goodsExpress);
+
         storeOrderSavePerformModel.savePerformInfo(storeOrderSavePerformView.getContext(), params, new OnGetDataListener<StoreOrderSavePerformResultBean>() {
             @Override
             public void getDataSuccess(StoreOrderSavePerformResultBean result) {

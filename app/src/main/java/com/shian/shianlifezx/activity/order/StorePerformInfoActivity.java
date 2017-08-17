@@ -20,6 +20,9 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformResultBean;
 import com.shian.shianlifezx.mvp.order.presenter.IStoreOrderSavePerformPresenter;
 import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderSavePerformPresenterImpl;
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderSavePerformView;
+import com.shian.shianlifezx.mvp.shared.presenter.ISharedGoodsPerformPresenter;
+import com.shian.shianlifezx.mvp.shared.presenter.impl.SharedGoodsPerformPresenterImpl;
+import com.shian.shianlifezx.mvp.shared.view.ISharedGoodsPerformExecuteView;
 import com.shian.shianlifezx.thisenum.GoodsPerformWayEnum;
 import com.shian.shianlifezx.view.show.StoreEditNormalView;
 import com.shian.shianlifezx.view.show.StoreSpinnerNormalView;
@@ -28,7 +31,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class StorePerformInfoActivity extends BaseActivity implements IStoreOrderSavePerformView, RadioGroup.OnCheckedChangeListener {
+public class StorePerformInfoActivity extends BaseActivity implements IStoreOrderSavePerformView, RadioGroup.OnCheckedChangeListener, ISharedGoodsPerformExecuteView {
     @InjectView(R.id.perform_name)
     StoreEditNormalView performName;
     @InjectView(R.id.perform_phone)
@@ -57,6 +60,7 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
     TextView tvSubmit;
 
     private IStoreOrderSavePerformPresenter storeOrderSavePerformPresenter;
+    private ISharedGoodsPerformPresenter sharedGoodsPerformPresenter;
     private Integer performWay = null;
     private Intent intent;
 
@@ -80,7 +84,10 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
     private void initData() {
         intent = getIntent();
         storeOrderSavePerformPresenter = new StoreOrderSavePerformPresenterImpl(this);
+        sharedGoodsPerformPresenter = new SharedGoodsPerformPresenterImpl(this);
+        sharedGoodsPerformPresenter.getExecuteData();
         courierCompany.initSpinner(R.array.courier_company);
+
     }
 
     @Override
@@ -89,8 +96,14 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
     }
 
     @Override
+    public void showToast(String msg) {
+        ToastUtils.show(this, msg);
+    }
+
+    @Override
     public void savePerformInfoSuccess(StoreOrderSavePerformResultBean resultBean) {
         ToastUtils.show(this, "提交成功");
+        sharedGoodsPerformPresenter.setExecuteData();
         finish();
         StoreServiceActivity.isRefresh_Change = true;
     }
@@ -190,5 +203,25 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
             }
         });
         dialog.show();
+    }
+
+    @Override
+    public String getExecutorName() {
+        return performName.getData();
+    }
+
+    @Override
+    public String getExecutorPhone() {
+        return performPhone.getData();
+    }
+
+    @Override
+    public void setExecutorName(String name) {
+        performName.setData(name);
+    }
+
+    @Override
+    public void setExecutorPhone(String phone) {
+        performName.setData(phone);
     }
 }
