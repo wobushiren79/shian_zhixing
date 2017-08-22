@@ -58,6 +58,8 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
     RadioGroup rgPerform;
     @InjectView(R.id.tv_submit)
     TextView tvSubmit;
+    @InjectView(R.id.tv_clear)
+    TextView tvClear;
 
     private IStoreOrderSavePerformPresenter storeOrderSavePerformPresenter;
     private ISharedGoodsPerformPresenter sharedGoodsPerformPresenter;
@@ -79,6 +81,7 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
         llPerformInfo.setVisibility(View.GONE);
         llCourier.setVisibility(View.GONE);
         tvSubmit.setVisibility(View.GONE);
+        tvClear.setVisibility(View.GONE);
     }
 
     private void initData() {
@@ -167,6 +170,7 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
     @Override
     public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
         tvSubmit.setVisibility(View.VISIBLE);
+        tvClear.setVisibility(View.VISIBLE);
         if (rbPerform1.getId() == checkedId) {
             performWay = GoodsPerformWayEnum.local_send.getCode();
             llPerformInfo.setVisibility(View.VISIBLE);
@@ -185,25 +189,6 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
         }
     }
 
-    @OnClick(R.id.tv_submit)
-    public void onViewClicked() {
-        TipsDialog dialog = new TipsDialog(this);
-        dialog.setTop("提醒");
-        dialog.setTitle("请确认本表缩填写的服务人员信息和线下服务人员匹配，提交后将不可撤销");
-        dialog.setBottomButton("提交", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                storeOrderSavePerformPresenter.savePerformInfo();
-            }
-        });
-        dialog.setTopButton("重新填写", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-            }
-        });
-        dialog.show();
-    }
 
     @Override
     public String getExecutorName() {
@@ -222,6 +207,46 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
 
     @Override
     public void setExecutorPhone(String phone) {
-        performName.setData(phone);
+        performPhone.setData(phone);
     }
+
+    @OnClick({R.id.tv_clear, R.id.tv_submit})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.tv_clear:
+                clear();
+                break;
+            case R.id.tv_submit:
+                submit();
+                break;
+        }
+    }
+
+    private void clear() {
+        performPhone.setData("");
+        performName.setData("");
+        performRemark.setData("");
+        courierNumber.setData("");
+    }
+
+    private void submit() {
+        TipsDialog dialog = new TipsDialog(this);
+        dialog.setTop("提醒");
+        dialog.setTitle("请确认本表缩填写的服务人员信息和线下服务人员匹配，提交后将不可撤销");
+        dialog.setBottomButton("提交", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                storeOrderSavePerformPresenter.savePerformInfo();
+            }
+        });
+        dialog.setTopButton("重新填写", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dialog.show();
+    }
+
+
 }

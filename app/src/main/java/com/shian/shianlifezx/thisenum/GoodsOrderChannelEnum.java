@@ -2,18 +2,17 @@ package com.shian.shianlifezx.thisenum;
 
 /**
  * Created by zm
- * 执行方式:0同城送达 1上门服务 2快递物流
+ * 订单来源
  */
-public enum  GoodsPerformWayEnum {
-    local_send(0, "同城送达"),
-    home_send(1, "上门服务"),
-    express_send(2, "快递物流");
-
+public enum GoodsOrderChannelEnum{
+    app(0, "顾问APP"),
+    wechat(1, "客户小程序"),
+    counselor_wechat(2,"顾问小程序");
 
     private int code;
     private String name;
 
-    GoodsPerformWayEnum(int code, String name) {
+    GoodsOrderChannelEnum(int code, String name) {
         this.code = code;
         this.name = name;
     }
@@ -37,7 +36,7 @@ public enum  GoodsPerformWayEnum {
     public static String getValueText(Integer status) {
         if (status == null)
             return null;
-        for (GoodsPerformWayEnum e : GoodsPerformWayEnum.values()) {
+        for (GoodsOrderChannelEnum e : GoodsOrderChannelEnum.values()) {
             if (e.getCode() == status) {
                 return e.getName();
             }

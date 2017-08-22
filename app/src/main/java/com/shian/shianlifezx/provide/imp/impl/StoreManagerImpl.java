@@ -69,6 +69,6 @@ public class StoreManagerImpl extends BaseManagerImpl implements StoreManager {
 
     @Override
     public void getNotPassReason(Context context, StoreOrderNotPassReasonBean params, HttpResponseHandler<StoreOrderNotPassReasonResultBean> handler) {
-        requestPost(context, "api/goods/perform/getNotPassAuditReason", StoreOrderNotPassReasonResultBean.class, params, handler, true);
+        requestPost(context, "api/goods/aduit/getNotPassAuditReason", StoreOrderNotPassReasonResultBean.class, params, handler, true);
     }
 }

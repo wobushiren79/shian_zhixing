@@ -18,7 +18,10 @@ import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.common.view.TipsDialog;
 import com.shian.shianlifezx.mvp.order.bean.GoodsExpress;
+import com.shian.shianlifezx.mvp.order.bean.GoodsOrder;
+import com.shian.shianlifezx.mvp.order.bean.GoodsOrderItem;
 import com.shian.shianlifezx.mvp.order.bean.GoodsPerform;
+import com.shian.shianlifezx.mvp.order.bean.GoodsServiceInfo;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
@@ -34,6 +37,7 @@ import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderNotPassReasonPre
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderAcceptView;
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderGetPerformView;
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderNotPassReasonView;
+import com.shian.shianlifezx.thisenum.GoodsOrderChannelEnum;
 import com.shian.shianlifezx.thisenum.GoodsPerformStatusEnum;
 import com.shian.shianlifezx.thisenum.GoodsPerformWayEnum;
 import com.shian.shianlifezx.thisenum.GoodsServiceWayEnum;
@@ -76,7 +80,6 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         TextView tvCustomerName = holder.getView(R.id.tv_customer_name);
         TextView tvServiceTime = holder.getView(R.id.tv_service_time);
         TextView tvServiceLocation = holder.getView(R.id.tv_service_location);
-        final TextView tvOrderNopassReason = holder.getView(R.id.tv_order_nopass_reason);
 
         final TextView tvOrderCompleteMore = holder.getView(R.id.tv_order_complete_more);
         final TextView tvOrderDetails = holder.getView(R.id.tv_order_details);
@@ -89,6 +92,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         final LinearLayout llContent = holder.getView(R.id.ll_content);
         final LinearLayout llCustomerPhone = holder.getView(R.id.ll_customer_phone);
         final LinearLayout llCustomerLocation = holder.getView(R.id.ll_customer_location);
+        final LinearLayout llCounselorPhone = holder.getView(R.id.ll_counselor_phone);
         if (data.getGoodsPerform() == null) {
             return;
         }
@@ -101,6 +105,11 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         if (data.getGoodsServiceInfo() == null) {
             return;
         }
+        final GoodsPerform goodsPerform = data.getGoodsPerform();
+        GoodsOrderItem goodsOrderItem = data.getGoodsOrderItem();
+        GoodsOrder goodsOrder = data.getGoodsOrder();
+        GoodsServiceInfo goodsServiceInfo = data.getGoodsServiceInfo();
+
         tvOrderNum.setVisibility(View.VISIBLE);
         tvCustomerName.setVisibility(View.VISIBLE);
         ivOrderMore.setVisibility(View.VISIBLE);
@@ -108,37 +117,41 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         tvOrderReject.setVisibility(View.GONE);
         llCustomerPhone.setVisibility(View.VISIBLE);
         llCustomerLocation.setVisibility(View.VISIBLE);
+        llCounselorPhone.setVisibility(View.VISIBLE);
         tvOrderStart.setVisibility(View.GONE);
         tvOrderComplete.setVisibility(View.GONE);
         tvOrderDetails.setVisibility(View.GONE);
         tvOrderCompleteMore.setVisibility(View.GONE);
-        tvOrderNopassReason.setVisibility(View.GONE);
         //商品属性名称
-        tvGoodsName.setText(data.getGoodsOrderItem().getSpecOrderedAttr());
+        tvGoodsName.setText(goodsOrderItem.getSpecOrderedAttr());
         //订单编号
-        tvOrderNum.setText("订单编号 : " + data.getGoodsOrder().getOrderNumber());
+        tvOrderNum.setText("订单编号 : " + goodsOrder.getOrderNumber());
         //商品名称 规格 及数量
-        tvGoodsDetails.setText(data.getGoodsOrderItem().getSpecOrderedVolume()
-                + "(" + data.getGoodsOrderItem().getSpecName() + ")"
-                + " x" + data.getGoodsOrderItem().getSpecOrderedNum());
+        tvGoodsDetails.setText(goodsOrderItem.getSpecOrderedVolume()
+                + "(" + goodsOrderItem.getSpecName() + ")"
+                + " x" + goodsOrderItem.getSpecOrderedNum());
         //及时服务或预约服务时间
-        int serviceType = data.getGoodsServiceInfo().getServiceWay();
+        int serviceType = goodsServiceInfo.getServiceWay();
         String serviceTime = "";
         if (serviceType == GoodsServiceWayEnum.now_service.getCode()) {
-            serviceTime = data.getGoodsServiceInfo().getCreatedAt();
+            serviceTime = goodsServiceInfo.getCreatedAt();
         } else if (serviceType == GoodsServiceWayEnum.plan_service.getCode()) {
-            serviceTime = data.getGoodsServiceInfo().getBookTime();
+            serviceTime = goodsServiceInfo.getBookTime();
         }
         String serviceTypeName = GoodsServiceWayEnum.getValueText(serviceType);
         tvServiceTime.setText(serviceTypeName + " : " + serviceTime);
         //客户姓名
-        tvCustomerName.setText("客戶姓名 : " + data.getGoodsOrder().getCustomerName());
+        tvCustomerName.setText("客戶姓名 : " + goodsOrder.getCustomerName());
         //服务地址
-        tvServiceLocation.setText("服务地址 : " + data.getGoodsServiceInfo().getServiceLocation());
+        tvServiceLocation.setText("服务地址 : " + goodsServiceInfo.getServiceLocation());
         //电话设置
-        Utils.call(llCustomerPhone, data.getGoodsOrder().getCustomerPhone());
+        Utils.call(llCustomerPhone, goodsOrder.getCustomerPhone());
+        Utils.call(llCounselorPhone, data.getCreatedPhone());
+        if (goodsOrder.getOrderChannel() == GoodsOrderChannelEnum.wechat.getCode()) {
+            llCounselorPhone.setVisibility(View.GONE);
+        }
         //根据订单状态变化
-        int performStatus = data.getGoodsPerform().getPerformStatus();
+        final int performStatus = goodsPerform.getPerformStatus();
         if (performStatus == GoodsPerformStatusEnum.hasassign.getCode()) {
             tvOrderNum.setVisibility(View.GONE);
             tvCustomerName.setVisibility(View.GONE);
@@ -160,7 +173,6 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         } else if (performStatus == GoodsPerformStatusEnum.auditfail.getCode()) {
             tvOrderDetails.setVisibility(View.VISIBLE);
             tvOrderCompleteMore.setVisibility(View.VISIBLE);
-            tvOrderNopassReason.setVisibility(View.VISIBLE);
         } else if (performStatus == GoodsPerformStatusEnum.cancel.getCode()) {
 
 
@@ -192,8 +204,6 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
                     orderComplete(data);
                 } else if (v == tvOrderCompleteMore) {
                     orderComplete(data);
-                } else if (v == tvOrderNopassReason) {
-                    storeOrderNotPassReasonPresenter.getNotPassReason(data.getGoodsPerform().getId());
                 }
             }
         };
@@ -204,7 +214,6 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         tvOrderDetails.setOnClickListener(onClickListener);
         tvOrderComplete.setOnClickListener(onClickListener);
         tvOrderCompleteMore.setOnClickListener(onClickListener);
-        tvOrderNopassReason.setOnClickListener(onClickListener);
     }
 
     /**
@@ -243,20 +252,24 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
 
     //更多信息
     private void orderMore(StoreOrderListResultBean.Content data) {
-        if (data.getGoodsOrder().getOrderComment() == null) {
-            ToastUtils.show(mContext, "暂无订单备注");
-            return;
-        }
-        TipsDialog dialog = new TipsDialog(mContext);
-        dialog.setTitle(data.getGoodsOrder().getOrderComment());
-        dialog.setTop("订单备注");
-        dialog.setBottomButton("确定", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
+        if (data.getGoodsPerform().getPerformStatus() == GoodsPerformStatusEnum.auditfail.getCode()) {
+            storeOrderNotPassReasonPresenter.getNotPassReason(data.getGoodsPerform().getId());
+        } else {
+            if (data.getGoodsOrder().getOrderComment() == null) {
+                ToastUtils.show(mContext, "暂无订单备注");
+                return;
             }
-        });
-        dialog.show();
+            TipsDialog dialog = new TipsDialog(mContext);
+            dialog.setTitle(data.getGoodsOrder().getOrderComment());
+            dialog.setTop("订单备注");
+            dialog.setBottomButton("确定", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            });
+            dialog.show();
+        }
     }
 
     @Override

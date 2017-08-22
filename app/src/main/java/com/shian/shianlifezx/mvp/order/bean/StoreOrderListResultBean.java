@@ -42,6 +42,24 @@ public class StoreOrderListResultBean {
         private GoodsPerform goodsPerform; //执行详情
         private GoodsOrder goodsOrder;//订单详情
         private GoodsServiceInfo goodsServiceInfo;//服务信息
+        private String CreatedName;
+        private String CreatedPhone;
+
+        public String getCreatedName() {
+            return CreatedName;
+        }
+
+        public void setCreatedName(String createdName) {
+            CreatedName = createdName;
+        }
+
+        public String getCreatedPhone() {
+            return CreatedPhone;
+        }
+
+        public void setCreatedPhone(String createdPhone) {
+            CreatedPhone = createdPhone;
+        }
 
         public GoodsServiceInfo getGoodsServiceInfo() {
             return goodsServiceInfo;
