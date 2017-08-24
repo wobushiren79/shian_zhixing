@@ -54,11 +54,6 @@ public class NewHomeFragment extends BaseFragment {
         mMainDynamicLayout.setCallBack(mainDynamicCallBack);
     }
 
-    View.OnClickListener onClickListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-        }
-    };
 
     /**
      * 广告加载完毕与取消动画

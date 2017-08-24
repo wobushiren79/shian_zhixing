@@ -172,15 +172,21 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
         userInfo.email = name + "@sina.com";
         userInfo.deviceToken = name;
         userInfo.appId = "001577de0e0afa0ab1ff154110f0fc731dcee382d3b6b8b8";
-        KF5SDKConfig.INSTANCE.init(this, userInfo, new CallBack() {
-            @Override
-            public void onSuccess(String result) {
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            try {
+                KF5SDKConfig.INSTANCE.init(this, userInfo, new CallBack() {
+                    @Override
+                    public void onSuccess(String result) {
+                    }
 
-            @Override
-            public void onFailure(String result) {
+                    @Override
+                    public void onFailure(String result) {
+                    }
+                });
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        });
+        }
     }
 
 

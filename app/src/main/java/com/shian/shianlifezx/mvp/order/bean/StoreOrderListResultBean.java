@@ -42,8 +42,27 @@ public class StoreOrderListResultBean {
         private GoodsPerform goodsPerform; //执行详情
         private GoodsOrder goodsOrder;//订单详情
         private GoodsServiceInfo goodsServiceInfo;//服务信息
+        private GoodsPerformCancel goodsPerformCancel;//执行单取消记录
+        private GoodsOrderCancel goodsOrderCancel;//订单取消记录
+
         private String CreatedName;
         private String CreatedPhone;
+
+        public GoodsPerformCancel getGoodsPerformCancel() {
+            return goodsPerformCancel;
+        }
+
+        public void setGoodsPerformCancel(GoodsPerformCancel goodsPerformCancel) {
+            this.goodsPerformCancel = goodsPerformCancel;
+        }
+
+        public GoodsOrderCancel getGoodsOrderCancel() {
+            return goodsOrderCancel;
+        }
+
+        public void setGoodsOrderCancel(GoodsOrderCancel goodsOrderCancel) {
+            this.goodsOrderCancel = goodsOrderCancel;
+        }
 
         public String getCreatedName() {
             return CreatedName;

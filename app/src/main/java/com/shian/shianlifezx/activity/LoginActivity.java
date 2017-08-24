@@ -205,6 +205,6 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void loginSystemFail(String message) {
-        ToastUtils.show(this, "登陆失败");
+        ToastUtils.show(this, message);
     }
 }

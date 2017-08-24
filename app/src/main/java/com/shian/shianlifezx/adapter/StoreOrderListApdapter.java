@@ -21,6 +21,7 @@ import com.shian.shianlifezx.mvp.order.bean.GoodsExpress;
 import com.shian.shianlifezx.mvp.order.bean.GoodsOrder;
 import com.shian.shianlifezx.mvp.order.bean.GoodsOrderItem;
 import com.shian.shianlifezx.mvp.order.bean.GoodsPerform;
+import com.shian.shianlifezx.mvp.order.bean.GoodsPerformCancel;
 import com.shian.shianlifezx.mvp.order.bean.GoodsServiceInfo;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
@@ -87,6 +88,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         final TextView tvOrderStart = holder.getView(R.id.tv_order_start);
         final TextView tvOrderReject = holder.getView(R.id.tv_order_reject);
         final TextView tvOrderAccept = holder.getView(R.id.tv_order_accept);
+        final TextView tvOrderCancel = holder.getView(R.id.tv_order_cancel);
 
         final ImageView ivOrderMore = holder.getView(R.id.iv_order_more);
         final LinearLayout llContent = holder.getView(R.id.ll_content);
@@ -122,6 +124,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         tvOrderComplete.setVisibility(View.GONE);
         tvOrderDetails.setVisibility(View.GONE);
         tvOrderCompleteMore.setVisibility(View.GONE);
+        tvOrderCancel.setVisibility(View.GONE);
         //商品属性名称
         tvGoodsName.setText(goodsOrderItem.getSpecOrderedAttr());
         //订单编号
@@ -174,7 +177,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
             tvOrderDetails.setVisibility(View.VISIBLE);
             tvOrderCompleteMore.setVisibility(View.VISIBLE);
         } else if (performStatus == GoodsPerformStatusEnum.cancel.getCode()) {
-
+            tvOrderCancel.setVisibility(View.VISIBLE);
 
         } else {
             tvGoodsName.setText("数据错误");
@@ -204,8 +207,12 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
                     orderComplete(data);
                 } else if (v == tvOrderCompleteMore) {
                     orderComplete(data);
+                } else if (v == tvOrderCancel) {
+                    cancelResaon(data);
                 }
             }
+
+
         };
         tvOrderAccept.setOnClickListener(onClickListener);
         tvOrderReject.setOnClickListener(onClickListener);
@@ -214,6 +221,34 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         tvOrderDetails.setOnClickListener(onClickListener);
         tvOrderComplete.setOnClickListener(onClickListener);
         tvOrderCompleteMore.setOnClickListener(onClickListener);
+        tvOrderCancel.setOnClickListener(onClickListener);
+    }
+
+    /**
+     * 交易关闭原因
+     *
+     * @param data
+     */
+    private void cancelResaon(StoreOrderListResultBean.Content data) {
+        GoodsPerformCancel goodsPerformCancel = data.getGoodsPerformCancel();
+        if (goodsPerformCancel == null) {
+            ToastUtils.show(getContext(), "没有关闭原因");
+            return;
+        }
+        String reason = "无";
+        if (goodsPerformCancel.getCancelReason() != null && !goodsPerformCancel.getCancelReason().isEmpty()) {
+            reason = goodsPerformCancel.getCancelReason();
+        }
+        TipsDialog dialog = new TipsDialog(mContext);
+        dialog.setTitle(reason);
+        dialog.setTop("交易关闭原因");
+        dialog.setBottomButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        dialog.show();
     }
 
     /**
