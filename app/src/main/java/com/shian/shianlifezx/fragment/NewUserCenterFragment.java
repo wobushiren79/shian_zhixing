@@ -23,9 +23,11 @@ import com.shian.shianlifezx.common.utils.JSONUtil;
 import com.shian.shianlifezx.common.utils.PicassoUD;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.utils.Utils;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.result.HrUserInfo;
+import com.shian.shianlifezx.thisenum.RoleEnum;
 import com.shian.shianlifezx.thisenum.UserCenterEnum;
 
 import java.util.ArrayList;
@@ -43,8 +45,6 @@ public class NewUserCenterFragment extends BaseFragment {
     TextView mTVPhone;
     ImageView mIVInfoIn;
     ImageView mIVIcon;
-
-    HrUserInfo mHrUserInfo;
 
     LinearLayout mLLEdit;
     LinearLayout mLLHelp;
@@ -128,33 +128,20 @@ public class NewUserCenterFragment extends BaseFragment {
 
 
     private void getUserInfo() {
-        MHttpManagerFactory.getFuneralExecutorManager().getUserInfo(getActivity(), new HttpResponseHandler<HrUserInfo>() {
+        if (AppContansts.systemLoginInfo == null)
+            return;
+        SystemLoginResultBean.UserObject userObject = AppContansts.systemLoginInfo.getUserObj();
+        List<String> roleCodeList = AppContansts.systemLoginInfo.getResourceCodes();
+        List<String> roleNameList = RoleEnum.getRoleNameList(roleCodeList);
 
-
+//        PicassoUD.loadImage(getActivity(), AppContansts.OSSURL + result.getHeadImg(), mIVIcon);
+        mTVName.setText(userObject.getName());
+        mTVPhone.setText(userObject.getPhone());
+        mLLEdit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onStart(Request request, int id) {
-
-            }
-
-            @Override
-            public void onSuccess(final HrUserInfo result) {
-                mHrUserInfo = result;
-                PicassoUD.loadImage(getActivity(), AppContansts.OSSURL + result.getHeadImg(), mIVIcon);
-                mTVName.setText(result.getName());
-                mTVPhone.setText(result.getMobile());
-                mLLEdit.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Intent in = new Intent(getActivity(), UserInfoActivity.class);
-                        in.putExtra("data", JSONUtil.writeEntityToJSONString(result));
-                        getActivity().startActivity(in);
-                    }
-                });
-            }
-
-            @Override
-            public void onError(String message) {
-
+            public void onClick(View v) {
+                Intent in = new Intent(getActivity(), UserInfoActivity.class);
+                getActivity().startActivity(in);
             }
         });
     }
@@ -183,11 +170,14 @@ public class NewUserCenterFragment extends BaseFragment {
      * 意见反馈
      */
     private void idea() {
-        if(mHrUserInfo==null){
+        if(AppContansts.systemLoginInfo==null){
             ToastUtils.show(getContext(),"数据异常，请重新登陆");
         }else{
+            if (AppContansts.systemLoginInfo == null)
+                return;
+            SystemLoginResultBean.UserObject userObject = AppContansts.systemLoginInfo.getUserObj();
             Intent intent = new Intent(getContext(), IdeaFeedbackActivity.class);
-            intent.putExtra("UserInfo",new String[]{mHrUserInfo.getName(),mHrUserInfo.getMobile()});
+            intent.putExtra("UserInfo",new String[]{userObject.getName(),userObject.getPhone()});
             startActivity(intent);
         }
     }
@@ -212,7 +202,6 @@ public class NewUserCenterFragment extends BaseFragment {
      */
     private void setting() {
         Intent in = new Intent(getContext(), SettingsActivity.class);
-        in.putExtra("state", mHrUserInfo.getAppStatus());
         startActivityForResult(in, 101);
     }
 }

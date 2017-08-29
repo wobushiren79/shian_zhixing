@@ -74,7 +74,6 @@ public class SplashActivity extends BaseActivity implements OnPushListener, IUse
     private void initData() {
         userLoginPresenter = new UserLoginPresenterImpl(this, null);
         userLoginPresenter.getLoginConfig();
-        userLoginPresenter.loginSystem();
     }
 
 
@@ -98,7 +97,6 @@ public class SplashActivity extends BaseActivity implements OnPushListener, IUse
         params.setPassword(passWord);
         params.setUsername(userName);
         params.setSystemType("3");
-        params.setChannelId(channelId);
         MHttpManagerFactory.getFuneralExecutorManager().login(this, params,
                 new HttpResponseHandler<HrLoginResult>() {
 
@@ -109,7 +107,6 @@ public class SplashActivity extends BaseActivity implements OnPushListener, IUse
 
                     @Override
                     public void onSuccess(HrLoginResult result) {
-                        AppContansts.userLoginInfo = result;
                         sleepActivity(0);
                     }
 
@@ -195,6 +192,11 @@ public class SplashActivity extends BaseActivity implements OnPushListener, IUse
     @Override
     public void setIsAutoLogin(boolean isAutoLogin) {
         this.isAutoLogin = isAutoLogin;
+        if (isAutoLogin)
+            userLoginPresenter.loginSystem();
+        else
+            sleepActivity(1);
+
     }
 
     @Override
@@ -207,10 +209,6 @@ public class SplashActivity extends BaseActivity implements OnPushListener, IUse
 
     }
 
-    @Override
-    public void setLoginConfig() {
-
-    }
 
     @Override
     public Context getContext() {
@@ -219,12 +217,7 @@ public class SplashActivity extends BaseActivity implements OnPushListener, IUse
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
-        if (isAutoLogin) {
-            login();
-        } else {
-            sleepActivity(1);
-        }
-
+        login();
     }
 
     @Override

@@ -11,8 +11,10 @@ import okhttp3.Request;
 
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.base.BaseActivity;
+import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.JSONUtil;
 import com.shian.shianlifezx.common.utils.ToastUtils;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.params.HpConsultIdParams;
@@ -36,41 +38,44 @@ public class UserInfoActivity extends BaseActivity {
     }
 
     private void initData() {
-        final HrUserInfo userInfo = JSONUtil.parseJSONString(getIntent().getStringExtra("data"), HrUserInfo.class);
-        tvList.get(0).append(userInfo.getName()==null?"":userInfo.getName());
-        tvList.get(1).append(userInfo.getMobile()==null?"":userInfo.getMobile());
-        tvList.get(2).append(userInfo.getServiceArea()==null?"":userInfo.getServiceArea());
-        tvList.get(3).append(userInfo.getJobNo()==null?"":userInfo.getJobNo());
-        etList.get(0).setText(userInfo.getEmail()==null?"":userInfo.getEmail());
-        etList.get(1).setText(userInfo.getIntroduce());
-        findViewById(R.id.tv_editorder).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                HpConsultIdParams params = new HpConsultIdParams();
-                params.setAppStatus(getSharedPreferences("settings",-1).getBoolean("rb",true)?1:2);
-                params.setEmail(etList.get(0).getText().toString());
-                params.setIntroduce(etList.get(1).getText().toString());
-                MHttpManagerFactory.getFuneralExecutorManager().changeInfo(UserInfoActivity.this, params, new HttpResponseHandler<Object>() {
+        if (AppContansts.systemLoginInfo == null)
+            return;
+        SystemLoginResultBean.UserObject userObject = AppContansts.systemLoginInfo.getUserObj();
 
-
-                    @Override
-                    public void onStart(Request request, int id) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(Object result) {
-                        ToastUtils.show(UserInfoActivity.this, "保存成功");
-                        finish();
-                    }
-
-                    @Override
-                    public void onError(String message) {
-
-                    }
-                });
-            }
-        });
+        tvList.get(0).append(userObject.getName()==null?"":userObject.getName());
+        tvList.get(1).append(userObject.getPhone()==null?"":userObject.getPhone());
+//        tvList.get(2).append(userInfo.getServiceArea()==null?"":userInfo.getServiceArea());
+//        tvList.get(3).append(userInfo.getJobNo()==null?"":userInfo.getJobNo());
+        etList.get(0).setText(userObject.getEmail()==null?"":userObject.getEmail());
+//        etList.get(1).setText(userInfo.getIntroduce());
+//        findViewById(R.id.tv_editorder).setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                HpConsultIdParams params = new HpConsultIdParams();
+//                params.setAppStatus(getSharedPreferences("settings",-1).getBoolean("rb",true)?1:2);
+//                params.setEmail(etList.get(0).getText().toString());
+//                params.setIntroduce(etList.get(1).getText().toString());
+//                MHttpManagerFactory.getFuneralExecutorManager().changeInfo(UserInfoActivity.this, params, new HttpResponseHandler<Object>() {
+//
+//
+//                    @Override
+//                    public void onStart(Request request, int id) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(Object result) {
+//                        ToastUtils.show(UserInfoActivity.this, "保存成功");
+//                        finish();
+//                    }
+//
+//                    @Override
+//                    public void onError(String message) {
+//
+//                    }
+//                });
+//            }
+//        });
 
     }
 }

@@ -119,7 +119,6 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
             @Override
             public void onSuccess(HrLoginResult result) {
-                AppContansts.userLoginInfo = result;
                 lbLogin.setComplete();
 
                 SharePerfrenceUtils.setLoginShare(LoginActivity.this, username, password, cbRe.isChecked(),
@@ -132,7 +131,11 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
             @Override
             public void onError(String message) {
-                lbLogin.setNormal();
+                lbLogin.setComplete();
+
+                Intent in = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(in);
+                finish();
             }
         });
 
@@ -155,7 +158,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void setUserName(String userName) {
-
+        etUserName.setText(userName);
     }
 
     @Override
@@ -165,33 +168,37 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void setPassWord(String passWord) {
-
+        etUserPassword.setText(passWord);
     }
 
     @Override
     public boolean getIsAutoLogin() {
-        return false;
+        if (cbAuto.isChecked()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void setIsAutoLogin(boolean isAutoLogin) {
-
+        cbAuto.setChecked(isAutoLogin);
     }
 
     @Override
     public boolean getIsKeepAccount() {
-        return false;
+        if (cbRe.isChecked()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
     public void setIsKeepAccount(boolean isKeepAccount) {
-
+        cbRe.setChecked(isKeepAccount);
     }
 
-    @Override
-    public void setLoginConfig() {
-
-    }
 
     @Override
     public Context getContext() {
@@ -200,6 +207,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
+        userLoginPresenter.saveLoginConfig();
         login(etUserName.getText().toString(), etUserPassword.getText().toString());
     }
 

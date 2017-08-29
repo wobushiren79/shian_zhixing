@@ -77,7 +77,7 @@ public class MyCollectionActivity extends BaseActivity {
     private void getData(final boolean isClean) {
         PHPHpSiftListParams params = new PHPHpSiftListParams();
         params.setType(2);
-        params.setUserid(AppContansts.userLoginInfo.getUserId());
+        params.setUserid(AppContansts.systemLoginInfo.getUserId());
         params.setNumber(number);
         params.setPagerNumber(pagerNumber);
         params.setUserType(SystemTypeEnum.funeral.getCode());

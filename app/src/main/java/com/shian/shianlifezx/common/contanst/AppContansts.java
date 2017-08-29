@@ -12,13 +12,14 @@ public class AppContansts {
     //殡仪执行地址
     public static final String Funeral_Executor_BaseUrl = "http://115.28.163.211:7088/shianlife-executor-1.0-SNAPSHOT";
     //登陆地址
-    public static final String Login_BaseUrl = "http://192.168.0.37:8080/ki4so-web";
-    //    public static final String Login_BaseUrl = "http://192.168.0.200:8012/kiso-platform-1.0.1-SNAPSHOT";
+    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
+    //public static final String Login_BaseUrl = "http://192.168.0.73:8080/ki4so-web";
+    //public static final String Login_BaseUrl = "http://192.168.0.200:8012/kiso-platform-1.0.1-SNAPSHOT";
 
     //单项地址
-    public static final String Store_BaseUrl = "http://192.168.0.37:8089/goods";
-    //    public static final String BaseURL = "http://192.168.0.200:8001/shianlife-adviser-1.0-SNAPSHOT";
-//    public static final String BaseURL = "http://192.168.0.37:8088/executor";
+    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
+    //public static final String Store_BaseUrl = "http://192.168.0.37:8089/goods";
+
     //PHP地址
     public static final String PHP_BaseUrl = "http://app.e-funeral.cn";
 
@@ -51,7 +52,6 @@ public class AppContansts {
     public static double LOCAL_latitude = 30.6634450000;//纬度;
     public static double LOCAL_longitude = 104.0722210000;//经度;
 
-    public static HrLoginResult userLoginInfo;
     //平台用户数据
     public static SystemLoginResultBean systemLoginInfo;
 

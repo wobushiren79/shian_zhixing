@@ -269,7 +269,7 @@ public class HttpRequestExecutor {
      */
     private <T> boolean checkNetWorkAndDialog(Context context, HttpResponseHandler<T> responseHandler, boolean isShowDialog) {
         if (!Utils.isNetworkConnected(context)) {
-            onErrorCallBack(responseHandler, context.getString(R.string.net_work_off), context);
+            onErrorCallBack(responseHandler, "网络未连接", context);
             return true;
         }
         if (isShowDialog && dialog == null) {

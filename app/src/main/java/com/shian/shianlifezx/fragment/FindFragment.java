@@ -109,7 +109,7 @@ public class FindFragment extends BaseFragment {
     private void getData(final boolean isClean) {
         PHPHpSiftListParams params = new PHPHpSiftListParams();
         params.setType(1);
-        params.setUserid(AppContansts.userLoginInfo.getUserId());
+        params.setUserid(AppContansts.systemLoginInfo.getUserId());
         params.setNumber(number);
         params.setPagerNumber(pagerNumber);
         params.setUserType(SystemTypeEnum.funeral.getCode());

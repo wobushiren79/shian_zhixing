@@ -138,17 +138,18 @@ public class LoginAdvertActivity extends BaseActivity implements View.OnClickLis
         } else if (type == MAIN) {
             jumpMain();
         }
-        finish();
     }
 
     private void jumpMain() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
 
     private void jumpLogin() {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
+        finish();
     }
 
 

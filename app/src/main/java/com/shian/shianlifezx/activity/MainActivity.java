@@ -207,31 +207,31 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
         rbMain3.setOnCheckedChangeListener(new RBCheckListener());
         rbMain4.setOnCheckedChangeListener(new RBCheckListener());
         showFragment(R.id.rb_main_1);
-        MHttpManagerFactory.getFuneralExecutorManager().getMessageCount(this, new HttpResponseHandler<HrCommentResult>() {
-
-            @Override
-            public void onStart(Request request, int id) {
-
-            }
-
-            @Override
-            public void onSuccess(HrCommentResult result) {
-                // TODO Auto-generated method stub
-                AppContansts.MessageCount = result.getCount();
-                if (result.getCount() == 0) {
-                    setMessageIconVisible(View.GONE);
-                } else {
-                    setMessageIconVisible(View.VISIBLE);
-                }
-            }
-
-
-            @Override
-            public void onError(String message) {
-                // TODO Auto-generated method stub
-
-            }
-        });
+//            MHttpManagerFactory.getFuneralExecutorManager().getMessageCount(this, new HttpResponseHandler<HrCommentResult>() {
+//
+//                @Override
+//                public void onStart(Request request, int id) {
+//
+//                }
+//
+//                @Override
+//                public void onSuccess(HrCommentResult result) {
+//                    // TODO Auto-generated method stub
+//                    AppContansts.MessageCount = result.getCount();
+//                    if (result.getCount() == 0) {
+//                        setMessageIconVisible(View.GONE);
+//                    } else {
+//                        setMessageIconVisible(View.VISIBLE);
+//                    }
+//                }
+//
+//
+//                @Override
+//                public void onError(String message) {
+//                    // TODO Auto-generated method stub
+//
+//                }
+//            });
         initRB();
     }
 
@@ -428,27 +428,28 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
     };
 
     private void location(final String curAddress) {
-        if (!curAddress.equals(AppContansts.LocalString)) {
-            HpConsultIdParams params = new HpConsultIdParams();
-            params.setCurAddress(curAddress);
-            MHttpManagerFactory.getFuneralExecutorManager().changeCurAddress(this, params, new HttpResponseHandler<Object>() {
 
-                @Override
-                public void onError(String message) {
-
-                }
-
-                @Override
-                public void onStart(Request request, int id) {
-
-                }
-
-                @Override
-                public void onSuccess(Object result) {
-                    Log.i("tag", "changeInfo" + curAddress);
-                }
-            });
-        }
+            if (!curAddress.equals(AppContansts.LocalString)) {
+                HpConsultIdParams params = new HpConsultIdParams();
+                params.setCurAddress(curAddress);
+//                MHttpManagerFactory.getFuneralExecutorManager().changeCurAddress(this, params, new HttpResponseHandler<Object>() {
+//
+//                    @Override
+//                    public void onError(String message) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onStart(Request request, int id) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onSuccess(Object result) {
+//                        Log.i("tag", "changeInfo" + curAddress);
+//                    }
+//                });
+            }
     }
 
     @Override

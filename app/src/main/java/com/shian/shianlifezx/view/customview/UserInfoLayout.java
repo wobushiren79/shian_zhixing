@@ -14,9 +14,13 @@ import com.shian.shianlifezx.activity.UserInfoMoneyActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.PicassoUD;
 import com.shian.shianlifezx.common.utils.ToastUtils;
+import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
 import com.shian.shianlifezx.provide.MHttpManagerFactory;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.result.HrUserInfo;
+import com.shian.shianlifezx.thisenum.RoleEnum;
+
+import java.util.List;
 
 import okhttp3.Request;
 
@@ -41,7 +45,6 @@ public class UserInfoLayout extends LinearLayout {
     UserInfoPointLayout mUserInfoPointLayoutMoney;
     UserInfoPointLayout mUserInfoPointLayoutOrder;
 
-    private HrUserInfo mHrUserInfo;
 
     public UserInfoLayout(Context context) {
         this(context, null);
@@ -121,34 +124,22 @@ public class UserInfoLayout extends LinearLayout {
      * 获取用户信息
      */
     private void getUserInfo() {
-        MHttpManagerFactory.getFuneralExecutorManager().getUserInfo(getContext(), new HttpResponseHandler<HrUserInfo>() {
-
-            @Override
-            public void onStart(Request request, int id) {
-
-            }
-
-            @Override
-            public void onSuccess(final HrUserInfo result) {
-                mHrUserInfo = result;
-                PicassoUD.loadImage(getContext(), AppContansts.OSSURL + result.getHeadImg(), mIVUserPic);
-                mTVName.setText(result.getName());
-                mTVStatus.setText("");
-                for (int i = 0; i < result.getRoles().size(); i++) {
-                    mTVStatus.append(result.getRoles().get(i).getName() + " \n");
-                }
-                mTVScore.setText(result.getAvgSatis() + "");
+//        PicassoUD.loadImage(getContext(), AppContansts.OSSURL + AppContansts.systemLoginInfo.getHeadImg(), mIVUserPic);
+        if (AppContansts.systemLoginInfo == null)
+            return;
+        SystemLoginResultBean.UserObject userObject = AppContansts.systemLoginInfo.getUserObj();
+        List<String> roleCodeList = AppContansts.systemLoginInfo.getResourceCodes();
+        List<String> roleNameList = RoleEnum.getRoleNameList(roleCodeList);
+        String name = userObject.getName();
+        mTVName.setText(name);
+        mTVStatus.setText("");
+        for (String roleName : roleNameList) {
+            mTVStatus.append(roleName + "\n");
+        }
+        mTVScore.setText("");
 //                mUserInfoPointLayoutOrder.setPoint(result.getServiceSuccessSum() + "");
-                mUserInfoPointLayoutOrder.setPoint("0");
-
-                mLLSign.setOnClickListener(onClickListener);
-            }
-
-            @Override
-            public void onError(String message) {
-
-            }
-        });
+        mUserInfoPointLayoutOrder.setPoint("0");
+        mLLSign.setOnClickListener(onClickListener);
     }
 
 

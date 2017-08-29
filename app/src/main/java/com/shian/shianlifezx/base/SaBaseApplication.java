@@ -7,6 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.lang.Thread.UncaughtExceptionHandler;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -33,7 +35,12 @@ import android.os.Environment;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
 import okhttp3.Cookie;
@@ -94,6 +101,12 @@ public class SaBaseApplication extends Application {
                         }
                     };
             final SSLSocketFactory sslSocketFactory = new SSLSocketFactoryCompat(trustAllCert);
+            builder.hostnameVerifier(new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    return true;
+                }
+            });
             builder.sslSocketFactory(sslSocketFactory, trustAllCert);
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -137,9 +150,16 @@ public class SaBaseApplication extends Application {
         }
 
         private String getBaseUrl(String url) {
-            int hostLocation = url.indexOf("/", 8);
-            int urlLocation = url.indexOf("/", hostLocation + 1);
-            String temp = url.substring(0, urlLocation);
+            String temp = "";
+            if (!url.contains("https")) {
+                int hostLocation = url.indexOf("/", 8);
+                int urlLocation = url.indexOf("/", hostLocation + 1);
+                if (urlLocation != -1)
+                    temp = url.substring(0, urlLocation);
+            } else {
+                int hostLocation = url.indexOf("/", 8);
+                temp = url.substring(0, hostLocation);
+            }
             return temp;
         }
     }

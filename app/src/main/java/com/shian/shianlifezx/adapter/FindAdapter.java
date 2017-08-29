@@ -141,7 +141,7 @@ public class FindAdapter extends BaseAdapter {
     private void setData(int type, int siftID) {
         PHPHpSiftDataParams params = new PHPHpSiftDataParams();
         params.setType(type);
-        params.setUserid(AppContansts.userLoginInfo.getUserId());
+        params.setUserid(AppContansts.systemLoginInfo.getUserId());
         params.setUserType(siftID);
         params.setUserType(SystemTypeEnum.funeral.getCode());
         MHttpManagerFactory.getPHPManager().setSiftData(context, params, new HttpResponseHandler<Object>() {

@@ -65,7 +65,7 @@ public class WebActivity extends BaseActivity {
         webSettings.setGeolocationEnabled(true);
         webSettings.setDomStorageEnabled(true);//允许DCOM
         //允许视频播放
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
         }
         url = getIntent().getStringExtra("url");
@@ -89,6 +89,7 @@ public class WebActivity extends BaseActivity {
                 super.onReceivedTitle(view, title);
                 mTVTitle.setText(title);
             }
+
             @Override
             public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
                 callback.invoke(origin, true, false);
@@ -192,11 +193,11 @@ public class WebActivity extends BaseActivity {
         mIVCollection.setClickable(false);
         ToastUtils.show(WebActivity.this, "收藏成功");
 
-        PHPHpSiftDataParams params=new PHPHpSiftDataParams();
+        PHPHpSiftDataParams params = new PHPHpSiftDataParams();
         params.setType(type);
-        params.setUserid( AppContansts.userLoginInfo.getUserId());
+        params.setUserid(AppContansts.systemLoginInfo.getUserId());
         params.setSiftID(siftID);
-        params.setUserType( SystemTypeEnum.funeral.getCode());
+        params.setUserType(SystemTypeEnum.funeral.getCode());
         MHttpManagerFactory.getPHPManager().setSiftData(WebActivity.this, params, new HttpResponseHandler<Object>() {
 
             @Override
