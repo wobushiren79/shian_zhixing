@@ -96,6 +96,7 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
             ToastUtils.show(this, "账号或密码不能为空");
             return;
         }
+        lbLogin.setLoading();
         userLoginPresenter.loginSystem();
     }
 
@@ -104,7 +105,6 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
             ToastUtils.show(this, "消息推送正在初始化，请稍后。。。");
             return;
         }
-        lbLogin.setLoading();
         HpLoginParams params = new HpLoginParams();
         params.setPassword(password);
         params.setUsername(username);
