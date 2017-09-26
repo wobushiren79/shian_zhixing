@@ -198,6 +198,11 @@ public class HttpRequestExecutor {
         if (response != null) {
             try {
                 JsonNode node = ObjectMapperFactory.getInstance().readTree(new String(response));
+                if (node.findValue("code") == null) {
+                    onErrorCallBack(responseHandler, "会话失效，请重新登陆", context);
+                    jumpLogin(context);
+                    return;
+                }
                 String code = node.findValue("code").toString();
                 String errorMsg = node.findValue("message").toString();
                 if ("1000".equals(code)) {
