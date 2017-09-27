@@ -21,6 +21,7 @@ import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils.ShareLogin;
 import com.shian.shianlifezx.common.utils.ToastUtils;
+import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
 import com.shian.shianlifezx.mvp.login.presenter.IUserLoginPresenter;
 import com.shian.shianlifezx.mvp.login.presenter.impl.UserLoginPresenterImpl;
@@ -55,6 +56,8 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
         initView();
         initData();
         startAnim();
+        //检测更新
+        Utils.checkUpData(this, false);
     }
 
 

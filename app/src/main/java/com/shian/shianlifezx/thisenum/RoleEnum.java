@@ -11,7 +11,15 @@ public enum RoleEnum {
     Car_Driver("car.driver", "派车司机"),
     Goods_Audit("goods.auditor", "单项审核员"),
     Goods_Executor("goods.executor", "单项执行者"),
-    Funeral_Executor("funeral.executor", "殡仪执行者");
+    Goods_Advisor("goods.advisor", "单项顾问"),
+    Funeral_Executor("funeral.executor", "殡仪执行者"),
+    Funeral_Advisor("funeral.advisor", "殡仪顾问"),
+    Cemetery_Advisor("cemetery.advisor", "公墓-顾问"),
+    Cemetery_Talker("cemetery.talker", "公墓-洽谈"),
+    Cemetery_Reception("cemetery.reception", "公墓-前台"),
+    Cemetery_Service("cemetery.service", "公墓-平台客服"),
+    Cemetery_Burier_Stone("cemetery.burier.stone", "公墓-安葬工-立碑"),
+    Cemetery_Burier_Bury("cemetery.burier.bury", "公墓-安葬工-安葬");
 
     private String code;
     private String name;
