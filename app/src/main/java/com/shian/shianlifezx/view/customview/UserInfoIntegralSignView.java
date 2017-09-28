@@ -10,16 +10,26 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shian.shianlifezx.R;
+import com.shian.shianlifezx.common.utils.AnimUtils;
+import com.shian.shianlifezx.common.utils.ToastUtils;
+import com.shian.shianlifezx.mvp.userinfo.bean.UserInfoSignResultBean;
+import com.shian.shianlifezx.mvp.userinfo.presenter.IUserInfoSignPresenter;
+import com.shian.shianlifezx.mvp.userinfo.presenter.impl.UserInfoSignPresenterImpl;
+import com.shian.shianlifezx.mvp.userinfo.view.IUserInfoSignView;
 
 
 /**
  * Created by Administrator on 2017/3/7.
  */
 
-public class UserInfoIntegralSignView extends LinearLayout {
+public class UserInfoIntegralSignView extends LinearLayout implements IUserInfoSignView, View.OnClickListener{
     View view;
     ImageView mIVSign;
     TextView mTVSign;
+
+    private boolean signStatus = false;
+    private IUserInfoSignPresenter userInfoSignPresenter;
+    private CallBack callBack;
 
     public UserInfoIntegralSignView(Context context) {
         this(context, null);
@@ -30,34 +40,46 @@ public class UserInfoIntegralSignView extends LinearLayout {
         view = View.inflate(context, R.layout.view_userinfo_integral_sign, this);
 
         initView();
+        initData();
     }
+
 
     private void initView() {
         mIVSign = (ImageView) view.findViewById(R.id.iv_sign);
         mTVSign = (TextView) view.findViewById(R.id.tv_sign);
 
-        view.setOnClickListener(onClickListener);
+        view.setOnClickListener(this);
     }
 
-    OnClickListener onClickListener = new OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            if (v == view) {
-                sign();
-            }
-        }
-    };
+    private void initData() {
+        userInfoSignPresenter = new UserInfoSignPresenterImpl(this);
+    }
+
+
+    public void setCallBack(CallBack callBack) {
+        this.callBack = callBack;
+    }
+
 
     /**
      * 签到
      */
     private void sign() {
+        if (!signStatus)
+            userInfoSignPresenter.userInfoSign();
+    }
+
+    @Override
+    public void showToast(String msg) {
+        ToastUtils.show(getContext(), msg);
+    }
+
+    @Override
+    public void userInfoSignSuccess(UserInfoSignResultBean resultBean) {
+        if (callBack != null)
+            callBack.signSuccess(this);
         mIVSign.setImageResource(R.drawable.zhy_userinfo_integral_unsign);
-        ScaleAnimation animation = new ScaleAnimation(Animation.RELATIVE_TO_SELF, 0, Animation.RELATIVE_TO_SELF, Animation.RELATIVE_TO_SELF);
-        animation.setRepeatMode(Animation.REVERSE);
-        animation.setRepeatCount(1);
-        animation.setDuration(200);
-        animation.setAnimationListener(new Animation.AnimationListener() {
+        AnimUtils.userinfoSignAnim(mTVSign, new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
 
@@ -73,6 +95,32 @@ public class UserInfoIntegralSignView extends LinearLayout {
                 mTVSign.setText("已签到");
             }
         });
-        mTVSign.startAnimation(animation);
+    }
+
+    public void setSignStatus(final boolean isSign) {
+        signStatus = isSign;
+        if (isSign) {
+            mIVSign.setImageResource(R.drawable.zhy_userinfo_integral_unsign);
+            mTVSign.setText("已签到");
+        } else {
+            mIVSign.setImageResource(R.drawable.zhy_userinfo_integral_sign);
+            mTVSign.setText("未签到");
+        }
+    }
+
+    @Override
+    public void userInfoSignFail(String msg) {
+        ToastUtils.show(getContext(), msg);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == view) {
+            sign();
+        }
+    }
+
+    public interface CallBack {
+        void signSuccess(View view);
     }
 }

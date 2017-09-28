@@ -33,7 +33,6 @@ public class NewHomeFragment extends BaseFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_newhome, null, false);
         initView();
-
         return view;
     }
 
@@ -53,7 +52,12 @@ public class NewHomeFragment extends BaseFragment {
         mMainAdvertisementLayout.setCallBack(advertisermentlayout);
         mMainDynamicLayout.setCallBack(mainDynamicCallBack);
     }
-
+    /**
+     * 开始
+     */
+    public void startFindUserInfoData() {
+        mUserInfoLayout.startFindData();
+    }
 
     /**
      * 广告加载完毕与取消动画

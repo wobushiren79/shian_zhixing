@@ -10,6 +10,7 @@ import android.view.animation.TranslateAnimation;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import butterknife.InjectView;
 import butterknife.OnClick;
@@ -18,6 +19,7 @@ import okhttp3.Request;
 import com.shian.shianlifezx.R;
 import com.shian.shianlifezx.base.BaseActivity;
 import com.shian.shianlifezx.common.contanst.AppContansts;
+import com.shian.shianlifezx.common.utils.IntentName;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils;
 import com.shian.shianlifezx.common.utils.SharePerfrenceUtils.ShareLogin;
 import com.shian.shianlifezx.common.utils.ToastUtils;
@@ -33,7 +35,9 @@ import com.shian.shianlifezx.provide.params.HpLoginParams;
 import com.shian.shianlifezx.provide.result.HrLoginResult;
 import com.shian.shianlifezx.view.customview.LoadingButton;
 
-public class LoginActivity extends BaseActivity implements IUserLoginView {
+import java.util.ArrayList;
+
+public class LoginActivity extends BaseActivity implements IUserLoginView, View.OnClickListener {
     @InjectView(R.id.et_login_username)
     EditText etUserName;
     @InjectView(R.id.et_login_password)
@@ -47,13 +51,18 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
     @InjectView(R.id.rl_content)
     RelativeLayout rlContent;
 
+    @InjectView(R.id.tv_forget_password)
+    TextView tvForgetPassword;
+    @InjectView(R.id.tv_no_password)
+    TextView tvNoPassword;
+
     private IUserLoginPresenter userLoginPresenter;
 
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
         setContentView(R.layout.activity_login);
-        initView();
+//        initView();
         initData();
         startAnim();
         //检测更新
@@ -73,22 +82,35 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
         translateAnimation.start();
     }
 
-    private void initView() {
-        ShareLogin loginS = SharePerfrenceUtils.getLoginShare(this);
-        etUserName.setText(loginS.getUsername());
-        if (loginS.isRemeberPassword()) {
-            cbRe.setChecked(true);
-            etUserPassword.setText(loginS.getPassword());
-        }
-
-        if (loginS.isAutoLogin()) {
-            cbAuto.setChecked(true);
-            login(loginS.getUsername(), loginS.getPassword());
-        }
-    }
+//    private void initView() {
+//        ShareLogin loginS = SharePerfrenceUtils.getLoginShare(this);
+//        etUserName.setText(loginS.getUsername());
+//        if (loginS.isRemeberPassword()) {
+//            cbRe.setChecked(true);
+//            etUserPassword.setText(loginS.getPassword());
+//        }
+//
+//        if (loginS.isAutoLogin()) {
+//            cbAuto.setChecked(true);
+//            login(loginS.getUsername(), loginS.getPassword());
+//        }
+//    }
 
     private void initData() {
+        tvNoPassword.setOnClickListener(this);
+        tvForgetPassword.setOnClickListener(this);
+
         userLoginPresenter = new UserLoginPresenterImpl(this, null);
+        userLoginPresenter.getLoginConfig();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v == tvForgetPassword) {
+            forgetPassWord();
+        } else if (v == tvNoPassword) {
+            noPassWord();
+        }
     }
 
     @OnClick(R.id.btn_login)
@@ -216,6 +238,29 @@ public class LoginActivity extends BaseActivity implements IUserLoginView {
 
     @Override
     public void loginSystemFail(String message) {
+        lbLogin.setNormal();
         ToastUtils.show(this, message);
+    }
+
+    /**
+     * 忘记密码
+     */
+    private void forgetPassWord() {
+        Intent intent = new Intent(this, LoginPhoneActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * 没有密码
+     */
+    private void noPassWord() {
+        Intent intent = new Intent(this, PicShowActivity.class);
+        ArrayList<String> listData = new ArrayList<>();
+        listData.add(AppContansts.Cooperation_Pic_1);
+        listData.add(AppContansts.Cooperation_Pic_2);
+        listData.add(AppContansts.Cooperation_Pic_3);
+        intent.putExtra(IntentName.INTENT_LIST_DATA, listData);
+        intent.putExtra(IntentName.INTENT_DATA, "招商");
+        startActivity(intent);
     }
 }

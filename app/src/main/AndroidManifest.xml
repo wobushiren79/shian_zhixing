@@ -309,7 +309,7 @@
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".activity.UserInfoIntegralActivity"
+            android:name=".activity.userinfo.UserInfoIntegralActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" />
         <activity
@@ -368,10 +368,19 @@
         <activity
             android:name=".activity.order.StorePerformCompleteActivity"
             android:configChanges="orientation|screenSize"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
 
         <service android:name=".service.UpDataService" />
         <service android:name=".service.PushService" />
+
+        <activity
+            android:name=".activity.userinfo.UserInfoIntegralDetailsActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.PicShowActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

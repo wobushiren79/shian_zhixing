@@ -6,6 +6,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.shian.shianlifezx.common.utils.JSONUtil;
 import com.shian.shianlifezx.provide.params.ContentParams;
+import com.zhy.http.okhttp.builder.PostFormBuilder;
 
 import java.lang.reflect.Field;
 import java.util.Collections;
@@ -81,5 +82,19 @@ public class BaseHttpParams
 		baseData.setContent(this);
 		return baseData.getJsonParams();
 	}
-
+	/**
+	 * 装上form
+	 *
+	 * @param postFormBuilder
+	 */
+	public void setFormParams(PostFormBuilder postFormBuilder) throws Exception {
+		Class baseClass = this.getClass();
+		Field[] fields = baseClass.getDeclaredFields();
+		for (Field field : fields) {
+			field.setAccessible(true);
+			Object obj = field.get(this);
+			String value = String.valueOf(obj);
+			postFormBuilder.addParams(field.getName(), value);
+		}
+	}
 }

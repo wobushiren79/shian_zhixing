@@ -13,20 +13,22 @@
         <com.shian.shianlifezx.view.customview.UserInfoLayout
             android:id="@+id/userinfo_layout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"></com.shian.shianlifezx.view.customview.UserInfoLayout>
+            android:layout_height="wrap_content"
+            android:visibility="gone"></com.shian.shianlifezx.view.customview.UserInfoLayout>
 
         <com.shian.shianlifezx.view.customview.MainAdvertisementLayout
-            android:layout_marginTop="@dimen/dimen_18dp"
             android:id="@+id/mainadvertisement_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dimen_18dp"
             android:visibility="gone"></com.shian.shianlifezx.view.customview.MainAdvertisementLayout>
+
         <com.shian.shianlifezx.view.customview.MainDynamic
             android:id="@+id/maindynamic_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone"
-            android:layout_marginTop="@dimen/dimen_18dp"></com.shian.shianlifezx.view.customview.MainDynamic>
+            android:layout_marginTop="@dimen/dimen_18dp"
+            android:visibility="gone"></com.shian.shianlifezx.view.customview.MainDynamic>
 
         <com.shian.shianlifezx.view.customview.MainAPP
             android:id="@+id/mainapp_layout"

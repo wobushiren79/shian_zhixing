@@ -12,17 +12,19 @@ public class AppContansts {
     //殡仪执行地址
     public static final String Funeral_Executor_BaseUrl = "http://115.28.163.211:7088/shianlife-executor-1.0-SNAPSHOT";
     //登陆地址
-//    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
+    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
 //    public static final String Login_BaseUrl = "http://192.168.0.57:8099/ki4so-web";
-    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
+//    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
 
     //单项地址
-//    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
+    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
 //    public static final String Store_BaseUrl = "http://192.168.0.57:8080/goods";
-    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
+//    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
 
     //PHP地址
     public static final String PHP_BaseUrl = "http://app.e-funeral.cn";
+    public static final String PHP_Web_BaseUrl = "http://m.e-funeral.cn";
+    public static final String PHP_WeChat_BaseUrl = "http://wechat.e-funeral.cn";
 
     public static final String siftsPHPURL = PHP_BaseUrl + "/home/index/sifts";//精选
     public static final String helpsPHPURL = PHP_BaseUrl + "/home/index/helps";//帮助
@@ -58,4 +60,9 @@ public class AppContansts {
 
     //cookie保存
     public static final HashMap<String, List<Cookie>> cookieStore = new HashMap<>();
+
+    //招商图片
+    public static final String Cooperation_Pic_1 = "http://ovjs2f1iz.bkt.clouddn.com/index1.png";
+    public static final String Cooperation_Pic_2 = "http://ovjs2f1iz.bkt.clouddn.com/index2.png";
+    public static final String Cooperation_Pic_3 = "http://ovjs2f1iz.bkt.clouddn.com/index3.png";
 }

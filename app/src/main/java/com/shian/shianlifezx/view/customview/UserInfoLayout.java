@@ -9,27 +9,27 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shian.shianlifezx.R;
-import com.shian.shianlifezx.activity.UserInfoIntegralActivity;
+import com.shian.shianlifezx.activity.userinfo.UserInfoIntegralActivity;
 import com.shian.shianlifezx.activity.UserInfoMoneyActivity;
-import com.shian.shianlifezx.common.contanst.AppContansts;
-import com.shian.shianlifezx.common.utils.PicassoUD;
 import com.shian.shianlifezx.common.utils.ToastUtils;
-import com.shian.shianlifezx.mvp.login.bean.SystemLoginResultBean;
-import com.shian.shianlifezx.provide.MHttpManagerFactory;
-import com.shian.shianlifezx.provide.base.HttpResponseHandler;
-import com.shian.shianlifezx.provide.result.HrUserInfo;
-import com.shian.shianlifezx.thisenum.RoleEnum;
-
-import java.util.List;
-
-import okhttp3.Request;
+import com.shian.shianlifezx.mvp.userinfo.bean.UserInfoIntegralResultBean;
+import com.shian.shianlifezx.mvp.userinfo.bean.UserInfoSignResultBean;
+import com.shian.shianlifezx.mvp.userinfo.presenter.IUserInfoIntegralPresenter;
+import com.shian.shianlifezx.mvp.userinfo.presenter.IUserInfoPresenter;
+import com.shian.shianlifezx.mvp.userinfo.presenter.IUserInfoSignPresenter;
+import com.shian.shianlifezx.mvp.userinfo.presenter.impl.UserInfoIntegralPresenterImpl;
+import com.shian.shianlifezx.mvp.userinfo.presenter.impl.UserInfoPresenterImpl;
+import com.shian.shianlifezx.mvp.userinfo.presenter.impl.UserInfoSignPresenterImpl;
+import com.shian.shianlifezx.mvp.userinfo.view.IUserInfoIntegralView;
+import com.shian.shianlifezx.mvp.userinfo.view.IUserInfoSignView;
+import com.shian.shianlifezx.mvp.userinfo.view.IUserInfoView;
 
 
 /**
  * Created by Administrator
  */
 
-public class UserInfoLayout extends LinearLayout {
+public class UserInfoLayout extends LinearLayout implements IUserInfoView, IUserInfoIntegralView, IUserInfoSignView {
     View view;
     TextView mTVName;
     TextView mTVStatus;
@@ -41,10 +41,23 @@ public class UserInfoLayout extends LinearLayout {
 
     LinearLayout mLLSign;
 
-    UserInfoPointLayout mUserInfoPointLayoutIntegral;
-    UserInfoPointLayout mUserInfoPointLayoutMoney;
-    UserInfoPointLayout mUserInfoPointLayoutOrder;
+//    UserInfoPointLayout mUserInfoPointLayoutIntegral;
+//    UserInfoPointLayout mUserInfoPointLayoutMoney;
+//    UserInfoPointLayout mUserInfoPointLayoutOrder;
 
+    TextView tvMoney;
+    TextView tvIntegral;
+    TextView tvOrderNum;
+
+    LinearLayout llMoney;
+    LinearLayout llIntegral;
+    LinearLayout llOrderNum;
+
+    private IUserInfoPresenter userInfoPresenter;
+    private IUserInfoIntegralPresenter userInfoIntegralPresenter;
+    private IUserInfoSignPresenter userInfoSignPresenter;
+
+    private boolean canSign = false;
 
     public UserInfoLayout(Context context) {
         this(context, null);
@@ -54,7 +67,6 @@ public class UserInfoLayout extends LinearLayout {
         super(context, attrs);
         view = View.inflate(context, R.layout.view_userinfo_layout, this);
         initView();
-        getUserInfo();
     }
 
     private void initView() {
@@ -66,32 +78,59 @@ public class UserInfoLayout extends LinearLayout {
         mIVSignIcon = (ImageView) view.findViewById(R.id.iv_sign_icon);
         mLLSign = (LinearLayout) view.findViewById(R.id.ll_sign);
 
-        mUserInfoPointLayoutIntegral = (UserInfoPointLayout) view.findViewById(R.id.pointlayout_integral);
-        mUserInfoPointLayoutMoney = (UserInfoPointLayout) view.findViewById(R.id.pointlayout_money);
-        mUserInfoPointLayoutOrder = (UserInfoPointLayout) view.findViewById(R.id.pointlayout_order);
+        tvMoney = (TextView) view.findViewById(R.id.tv_money);
+        tvIntegral = (TextView) view.findViewById(R.id.tv_integral);
+        tvOrderNum = (TextView) view.findViewById(R.id.tv_order_num);
 
-        mUserInfoPointLayoutIntegral.initLayout(R.drawable.zhy_userinfo_integral, "积分", "0");
-        mUserInfoPointLayoutMoney.initLayout(R.drawable.zhy_userinfo_money, "钱包", "0");
-        mUserInfoPointLayoutOrder.initLayout(R.drawable.zhy_userinfo_order, "优惠劵", "0");
+        llMoney = (LinearLayout) view.findViewById(R.id.ll_money);
+        llIntegral = (LinearLayout) view.findViewById(R.id.ll_integral);
+        llOrderNum = (LinearLayout) view.findViewById(R.id.ll_order_num);
+//        mUserInfoPointLayoutIntegral = (UserInfoPointLayout) view.findViewById(R.id.pointlayout_integral);
+//        mUserInfoPointLayoutMoney = (UserInfoPointLayout) view.findViewById(R.id.pointlayout_money);
+//        mUserInfoPointLayoutOrder = (UserInfoPointLayout) view.findViewById(R.id.pointlayout_order);
+//
+//        mUserInfoPointLayoutIntegral.initLayout(R.drawable.zhy_userinfo_integral, "积分", "0");
+//        mUserInfoPointLayoutMoney.initLayout(R.drawable.zhy_userinfo_money, "钱包", "0");
+//        mUserInfoPointLayoutOrder.initLayout(R.drawable.zhy_userinfo_order, "服务单", "0");
+//
+//        mUserInfoPointLayoutIntegral.setOnClickListener(onClickListener);
+//        mUserInfoPointLayoutMoney.setOnClickListener(onClickListener);
+        mLLSign.setOnClickListener(onClickListener);
+        llMoney.setOnClickListener(onClickListener);
+        llIntegral.setOnClickListener(onClickListener);
+        llOrderNum.setOnClickListener(onClickListener);
 
-        mUserInfoPointLayoutIntegral.setOnClickListener(onClickListener);
-        mUserInfoPointLayoutMoney.setOnClickListener(onClickListener);
-        mUserInfoPointLayoutOrder.setOnClickListener(onClickListener);
+        userInfoPresenter = new UserInfoPresenterImpl(this);
+        userInfoIntegralPresenter = new UserInfoIntegralPresenterImpl(this);
+        userInfoSignPresenter = new UserInfoSignPresenterImpl(this);
+        startFindData();
     }
 
-    OnClickListener onClickListener = new OnClickListener() {
+    /**
+     * 开始查询数据
+     */
+    public void startFindData() {
+        userInfoPresenter.getUserInfoData();
+        userInfoIntegralPresenter.getUserInfoIntegral();
+    }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             if (v == mLLSign) {
                 sign();
-            } else if (v == mUserInfoPointLayoutIntegral) {
-                integralActivity();
-            } else if (v == mUserInfoPointLayoutMoney) {
+            } else if (v == llMoney) {
                 moneyActivity();
-            } else if (v == mUserInfoPointLayoutOrder) {
+            } else if (v == llIntegral) {
+                integralActivity();
+            } else if (v == llOrderNum) {
                 ToastUtils.show(getContext(), "敬请期待！");
             }
-
+//            else if (v == mUserInfoPointLayoutIntegral) {
+//                integralActivity();
+//            } else if (v == mUserInfoPointLayoutMoney) {
+//                moneyActivity();
+//            }
         }
     };
 
@@ -115,32 +154,122 @@ public class UserInfoLayout extends LinearLayout {
      * 签名
      */
     private void sign() {
-        mIVSignIcon.setImageResource(R.drawable.zhy_main_sign_check);
-        mTVSignName.setTextColor(getResources().getColor(R.color.zhy_text_color_5));
+        if (canSign) {
+            userInfoSignPresenter.userInfoSign();
+        } else {
+            ToastUtils.show(getContext(), "今日已签到");
+        }
+    }
+
+    /**
+     * 更改名字
+     *
+     * @param name
+     */
+    public void setName(String name) {
+        mTVName.setText(name);
+    }
+
+    /**
+     * 改变分数
+     *
+     * @param point
+     */
+    public void setPoint(String point) {
+        mTVStatus.setText("评分：" + point);
     }
 
 
     /**
-     * 获取用户信息
+     * 改变订单数量
+     *
+     * @param orderNum
      */
-    private void getUserInfo() {
-//        PicassoUD.loadImage(getContext(), AppContansts.OSSURL + AppContansts.systemLoginInfo.getHeadImg(), mIVUserPic);
-        if (AppContansts.systemLoginInfo == null)
-            return;
-        SystemLoginResultBean.UserObject userObject = AppContansts.systemLoginInfo.getUserObj();
-        List<String> roleCodeList = AppContansts.systemLoginInfo.getResourceCodes();
-        List<String> roleNameList = RoleEnum.getRoleNameList(roleCodeList);
-        String name = userObject.getName();
-        mTVName.setText(name);
-        mTVStatus.setText("");
-        for (String roleName : roleNameList) {
-            mTVStatus.append(roleName + "\n");
-        }
-        mTVScore.setText("");
-//                mUserInfoPointLayoutOrder.setPoint(result.getServiceSuccessSum() + "");
-        mUserInfoPointLayoutOrder.setPoint("0");
-        mLLSign.setOnClickListener(onClickListener);
+    public void setOrderNum(String orderNum) {
+        tvOrderNum.setText(orderNum);
     }
 
 
+    @Override
+    public void ChangeHeadImage(String imageUrl) {
+
+    }
+
+    @Override
+    public void ChangeName(String name) {
+        setName(name);
+    }
+
+    @Override
+    public void ChangePhone(String phone) {
+
+    }
+
+    @Override
+    public void ChangePoint(String point) {
+        setPoint(point);
+    }
+
+    @Override
+    public void ChangeOrderNum(String num) {
+        setOrderNum(num);
+    }
+
+    @Override
+    public void showToast(String msg) {
+        ToastUtils.show(getContext(), msg);
+    }
+
+    @Override
+    public void getUserInfoIntegralSuccess(UserInfoIntegralResultBean resultBean) {
+    }
+
+    @Override
+    public void getUserInfoIntegralFail(String msg) {
+
+    }
+
+    @Override
+    public void setUserInfoIntegral(Integer integral) {
+        tvIntegral.setText(integral + "");
+    }
+
+    @Override
+    public void setUserInfoContinuousDay(Integer day) {
+
+    }
+
+    @Override
+    public void setUserInfoCanSign(boolean canSign) {
+        setCanSign(canSign);
+    }
+
+    @Override
+    public void userInfoSignSuccess(UserInfoSignResultBean resultBean) {
+        startFindData();
+        ToastUtils.show(getContext(),"签到成功");
+    }
+
+    @Override
+    public void userInfoSignFail(String msg) {
+        ToastUtils.show(getContext(),msg);
+    }
+
+    /**
+     * 设置是否能签到
+     *
+     * @param canSign
+     */
+    public void setCanSign(boolean canSign) {
+        this.canSign = canSign;
+        if (canSign) {
+            mIVSignIcon.setImageResource(R.drawable.zhy_main_sign_white);
+            mTVSignName.setTextColor(getResources().getColor(R.color.white));
+            mTVSignName.setText("未签到");
+        } else {
+            mIVSignIcon.setImageResource(R.drawable.zhy_main_sign_check);
+            mTVSignName.setTextColor(getResources().getColor(R.color.zhy_text_color_27));
+            mTVSignName.setText("已签到");
+        }
+    }
 }

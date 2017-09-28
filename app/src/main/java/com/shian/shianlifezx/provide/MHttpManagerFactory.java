@@ -5,11 +5,13 @@ import com.shian.shianlifezx.provide.imp.FuneralExecutorManager;
 import com.shian.shianlifezx.provide.imp.PHPManager;
 import com.shian.shianlifezx.provide.imp.StoreManager;
 import com.shian.shianlifezx.provide.imp.SystemManager;
+import com.shian.shianlifezx.provide.imp.WeChatManager;
 import com.shian.shianlifezx.provide.imp.impl.FileManagerImpl;
 import com.shian.shianlifezx.provide.imp.impl.FuneralExecutorManagerImp;
 import com.shian.shianlifezx.provide.imp.impl.PHPManagerImpl;
 import com.shian.shianlifezx.provide.imp.impl.StoreManagerImpl;
 import com.shian.shianlifezx.provide.imp.impl.SystemManagerImpl;
+import com.shian.shianlifezx.provide.imp.impl.WeChatManagerImpl;
 
 /**
  * 接口工厂
@@ -43,5 +45,10 @@ public class MHttpManagerFactory {
     //登陆
     public static SystemManager getSystemManager() {
         return SystemManagerImpl.getInstance();
+    }
+
+    //积分管理
+    public static WeChatManager getWeChatManager() {
+        return WeChatManagerImpl.getInstance();
     }
 }

@@ -91,6 +91,7 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
 
     private IUserLoginPresenter userLoginPresenter;
     private ISubSystemLoginPresenter subSystemLoginPresenter;
+    public static boolean isRefreshUserInfo = false;
 
     @Override
     protected void onCreate(Bundle arg0) {
@@ -104,6 +105,15 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
 
         //检测更新
         Utils.checkUpData(this, false);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        if (isRefreshUserInfo) {
+            homeFragment.startFindUserInfoData();
+            isRefreshUserInfo = false;
+        }
     }
 
     private void startPushService() {
@@ -302,6 +312,7 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
     }
 
     private long firstTime = 0;
+
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
@@ -433,9 +444,9 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
 
     private void location(final String curAddress) {
 
-            if (!curAddress.equals(AppContansts.LocalString)) {
-                HpConsultIdParams params = new HpConsultIdParams();
-                params.setCurAddress(curAddress);
+        if (!curAddress.equals(AppContansts.LocalString)) {
+            HpConsultIdParams params = new HpConsultIdParams();
+            params.setCurAddress(curAddress);
 //                MHttpManagerFactory.getFuneralExecutorManager().changeCurAddress(this, params, new HttpResponseHandler<Object>() {
 //
 //                    @Override
@@ -453,7 +464,7 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
 //                        Log.i("tag", "changeInfo" + curAddress);
 //                    }
 //                });
-            }
+        }
     }
 
     @Override
