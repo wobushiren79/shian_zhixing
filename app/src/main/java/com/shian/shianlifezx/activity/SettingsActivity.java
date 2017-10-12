@@ -128,8 +128,7 @@ public class SettingsActivity extends BaseActivity {
                             @Override
                             public void onSuccess(Object result) {
                                 // TODO Auto-generated method stub
-                                SharePerfrenceUtils.setShareAutoLogin(getBaseContext(), false);
-                                Utils.jumpLogin(SettingsActivity.this);
+
                             }
 
 
@@ -139,6 +138,8 @@ public class SettingsActivity extends BaseActivity {
 
                             }
                         });
+                SharePerfrenceUtils.setShareAutoLogin(getApplicationContext(), false);
+                Utils.jumpLogin(SettingsActivity.this);
             }
         });
         mDialog.setTopButton("否", new DialogInterface.OnClickListener() {

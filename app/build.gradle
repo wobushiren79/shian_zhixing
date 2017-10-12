@@ -1,8 +1,15 @@
 apply plugin: 'com.android.application'
 apply plugin: 'android-apt'
-
+//定义时间
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+//设置发布的名称
+def getAppName() {
+    return "圆满商家"
+}
 android {
-    compileSdkVersion 23
+    compileSdkVersion 25
     buildToolsVersion '25.0.2'
     defaultConfig {
         applicationId "com.shian.shianlifezx"
@@ -37,7 +44,20 @@ android {
         }
     }
     useLibrary 'org.apache.http.legacy'
+    android.applicationVariants.all {
+        variant ->
+            variant.outputs.each {
+                output ->
+                    def outputFile = output.outputFile
+                    if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                        //这里修改apk文件名
+                        def fileName = outputFile.name.replace("app-release", getAppName() + "_" + releaseTime() + "_VersionCode${defaultConfig.versionCode}_VersionName${defaultConfig.versionName}")
+                        output.outputFile = new File(outputFile.parent, fileName)
+                    }
+            }
+    }
 }
+
 
 dependencies {
     //上拉抽屉
