@@ -9,11 +9,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shian.shianlifezx.R;
+import com.shian.shianlifezx.activity.ImagePreviewActivity;
 import com.shian.shianlifezx.activity.order.StorePerformCompleteActivity;
 import com.shian.shianlifezx.activity.order.StorePerformInfoActivity;
 import com.shian.shianlifezx.adapter.base.BaseRCAdapter;
 import com.shian.shianlifezx.adapter.base.BaseViewHolder;
+import com.shian.shianlifezx.common.contanst.AppContansts;
 import com.shian.shianlifezx.common.contanst.IntentAction;
+import com.shian.shianlifezx.common.utils.IntentName;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.utils.Utils;
 import com.shian.shianlifezx.common.view.TipsDialog;
@@ -95,6 +98,8 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         final LinearLayout llCustomerPhone = holder.getView(R.id.ll_customer_phone);
         final LinearLayout llCustomerLocation = holder.getView(R.id.ll_customer_location);
         final LinearLayout llCounselorPhone = holder.getView(R.id.ll_counselor_phone);
+        final LinearLayout llGoodsPic = holder.getView(R.id.ll_goods_pic);
+
         if (data.getGoodsPerform() == null) {
             return;
         }
@@ -118,13 +123,15 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         tvOrderAccept.setVisibility(View.GONE);
         tvOrderReject.setVisibility(View.GONE);
         llCustomerPhone.setVisibility(View.VISIBLE);
-        llCustomerLocation.setVisibility(View.VISIBLE);
+        llCustomerLocation.setVisibility(View.GONE);
         llCounselorPhone.setVisibility(View.VISIBLE);
+        llGoodsPic.setVisibility(View.VISIBLE);
         tvOrderStart.setVisibility(View.GONE);
         tvOrderComplete.setVisibility(View.GONE);
         tvOrderDetails.setVisibility(View.GONE);
         tvOrderCompleteMore.setVisibility(View.GONE);
         tvOrderCancel.setVisibility(View.GONE);
+
         //商品属性名称
         tvGoodsName.setText(goodsOrderItem.getSpecOrderedAttr());
         //订单编号
@@ -161,8 +168,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
             ivOrderMore.setVisibility(View.GONE);
             tvOrderAccept.setVisibility(View.VISIBLE);
             tvOrderReject.setVisibility(View.VISIBLE);
-            llCustomerPhone.setVisibility(View.INVISIBLE);
-            llCustomerLocation.setVisibility(View.INVISIBLE);
+            llCustomerPhone.setVisibility(View.GONE);
         } else if (performStatus == GoodsPerformStatusEnum.waitexecute.getCode()) {
             tvOrderStart.setVisibility(View.VISIBLE);
         } else if (performStatus == GoodsPerformStatusEnum.executeing.getCode()) {
@@ -209,11 +215,14 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
                     orderComplete(data);
                 } else if (v == tvOrderCancel) {
                     cancelResaon(data);
+                } else if (v == llGoodsPic) {
+                    showPic(data);
                 }
             }
 
 
         };
+
         tvOrderAccept.setOnClickListener(onClickListener);
         tvOrderReject.setOnClickListener(onClickListener);
         tvOrderStart.setOnClickListener(onClickListener);
@@ -222,6 +231,16 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         tvOrderComplete.setOnClickListener(onClickListener);
         tvOrderCompleteMore.setOnClickListener(onClickListener);
         tvOrderCancel.setOnClickListener(onClickListener);
+        llGoodsPic.setOnClickListener(onClickListener);
+    }
+
+    /**
+     * 展示图片
+     */
+    private void showPic(StoreOrderListResultBean.Content data) {
+        Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
+        intent.putExtra(IntentName.INTENT_URL, AppContansts.Goods_PicUrl + "/" + data.getGoodsOrderItem().getTitleImg());
+        getContext().startActivity(intent);
     }
 
     /**

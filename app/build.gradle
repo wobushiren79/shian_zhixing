@@ -6,7 +6,7 @@ def releaseTime() {
 }
 //设置发布的名称
 def getAppName() {
-    return "圆满商家"
+    return "ZhiXing"
 }
 android {
     compileSdkVersion 25
@@ -15,8 +15,8 @@ android {
         applicationId "com.shian.shianlifezx"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 11
-        versionName "1.7"
+        versionCode 12
+        versionName "1.8"
         multiDexEnabled true
     }
     buildTypes {
