@@ -66,7 +66,7 @@ import java.util.List;
 
 import static com.shian.shianlifezx.common.utils.Utils.startForegroundService;
 
-public class MainActivity extends BaseActivity implements IUserLoginOutView, ISubSystemLoginView {
+public class MainActivity extends BaseActivity implements IUserLoginOutView{
     @InjectView(R.id.fl_main)
     View flMain;
     @InjectView(R.id.rb_main_1)
@@ -90,7 +90,6 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
     List<RadioButton> listRB = new ArrayList<>();
 
     private IUserLoginPresenter userLoginPresenter;
-    private ISubSystemLoginPresenter subSystemLoginPresenter;
     public static boolean isRefreshUserInfo = false;
 
     @Override
@@ -206,9 +205,6 @@ public class MainActivity extends BaseActivity implements IUserLoginOutView, ISu
 
         mFragmentManager = getSupportFragmentManager();
         userLoginPresenter = new UserLoginPresenterImpl(null, this);
-        //登陆子系统
-        subSystemLoginPresenter = new SubSystemLoginPresenterImpl(this);
-        subSystemLoginPresenter.loginStoreSystem();
     }
 
     private void initView() {

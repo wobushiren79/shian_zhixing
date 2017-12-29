@@ -131,7 +131,7 @@ public class SaBaseApplication extends Application {
             String tempUrl = getBaseUrl(url.toString());
             AppContansts.cookieStore.put(tempUrl, cookies);
             //新增添加子系统KEY
-            if (tempUrl.contains(AppContansts.Login_BaseUrl) && cookies.size() >= 2) {
+            if (AppContansts.Login_BaseUrl.contains(tempUrl) && cookies.size() >= 2) {
                 String setCookies = cookies.get(1).toString();
                 String[] cookiesList = setCookies.split(";");
                 for (String cookie : cookiesList) {

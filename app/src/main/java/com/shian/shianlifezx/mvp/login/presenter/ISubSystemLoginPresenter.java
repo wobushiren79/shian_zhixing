@@ -6,4 +6,8 @@ package com.shian.shianlifezx.mvp.login.presenter;
 
 public interface ISubSystemLoginPresenter {
     void loginStoreSystem();
+
+    void loginOrderCenterSystem();
+
+    void loginCemeterySystem();
 }

@@ -118,7 +118,7 @@ public class FileManagerImpl implements FileManager {
                                 jn, data);
                         responseHandler.onSuccess(result);
                     }
-                } else if ("1009".equals(code)) {
+                } else if ("1009".equals(code)||"9999".equals(code)) {
                     jumpLogin(context);
                 } else {
                     onErrorCallBack(responseHandler, errorMsg, context);
