@@ -6,6 +6,9 @@ import com.shian.shianlifezx.mvp.fileup.bean.FileUpLoadResultBean;
 import com.shian.shianlifezx.provide.base.FileHttpResponseHandler;
 import com.shian.shianlifezx.provide.base.HttpManager;
 import com.shian.shianlifezx.provide.result.HrUploadFile;
+import com.zhy.http.okhttp.request.RequestCall;
+
+import java.io.File;
 
 public interface FileManager extends HttpManager {
 
@@ -19,5 +22,11 @@ public interface FileManager extends HttpManager {
      * @param handler
      */
     public void upLoadFile(Context context, String fileClass, String fileName, String path, FileHttpResponseHandler<FileUpLoadResultBean> handler);
-
+    /**
+     * 文件下载
+     * @param context
+     * @param downloadUrl
+     * @param responseHandler
+     */
+    public RequestCall downloadFile(Context context, String downloadUrl, String fileName, final FileHttpResponseHandler<File> responseHandler);
 }

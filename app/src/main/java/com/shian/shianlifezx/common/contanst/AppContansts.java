@@ -12,13 +12,13 @@ public class AppContansts {
     //殡仪执行地址
     public static final String Funeral_Executor_BaseUrl = "http://115.28.163.211:7088/shianlife-executor-1.0-SNAPSHOT";
     //登陆地址
-//    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
-    public static final String Login_BaseUrl = "http://192.168.0.57:8080/ki4so-web";
+    public static final String Login_BaseUrl = "https://platform.shianlife.cn";
+//    public static final String Login_BaseUrl = "http://192.168.0.57:8080/ki4so-web";
 //    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
 
     //单项地址
-//    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
-        public static final String Store_BaseUrl = "http://192.168.0.57:8089/goods";
+    public static final String Store_BaseUrl = "https://goods.shianlife.cn";
+//        public static final String Store_BaseUrl = "http://192.168.0.57:8089/goods";
 //    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
     //公墓地址
     public static final String Cemetery_BaseUrl = "http://120.76.246.249:8000";
