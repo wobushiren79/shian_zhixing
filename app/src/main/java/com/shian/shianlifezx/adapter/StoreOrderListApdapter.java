@@ -239,7 +239,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
      */
     private void showPic(StoreOrderListResultBean.Content data) {
         Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
-        intent.putExtra(IntentName.INTENT_URL, AppContansts.Goods_PicUrl + "/" + data.getGoodsOrderItem().getTitleImg());
+        intent.putExtra(IntentName.INTENT_URL,data.getGoodsOrderItem().getTitleImg());
         getContext().startActivity(intent);
     }
 

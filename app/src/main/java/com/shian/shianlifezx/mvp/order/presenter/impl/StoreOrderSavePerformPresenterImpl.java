@@ -36,7 +36,7 @@ public class StoreOrderSavePerformPresenterImpl implements IStoreOrderSavePerfor
                 || storeOrderSavePerformView.getPerformId() == -1
                 || storeOrderSavePerformView.getGoodsItemId() == null
                 || storeOrderSavePerformView.getGoodsItemId() == -1) {
-            storeOrderSavePerformView.getDataFail("提交数据异常，请退出重新登陆");
+            storeOrderSavePerformView.getDataFail("提交数据异常，请退出重新登录");
             return;
         }
         if (storeOrderSavePerformView.getPerformWay() == null) {

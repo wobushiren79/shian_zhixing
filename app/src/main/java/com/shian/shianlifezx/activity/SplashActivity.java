@@ -92,35 +92,6 @@ public class SplashActivity extends BaseActivity implements OnPushListener, IUse
     }
 
 
-    private void login() {
-        HpLoginParams params = new HpLoginParams();
-        params.setPassword(passWord);
-        params.setUsername(userName);
-        params.setSystemType("3");
-        MHttpManagerFactory.getFuneralExecutorManager().login(this, params,
-                new HttpResponseHandler<HrLoginResult>() {
-
-                    @Override
-                    public void onStart(Request request, int id) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(HrLoginResult result) {
-                        sleepActivity(0);
-                    }
-
-
-                    @Override
-                    public void onError(String message) {
-                        ToastUtils.show(getBaseContext(), "登陆失败");
-                        SharePerfrenceUtils.setLoginShare(SplashActivity.this, userName, passWord, true, false);
-                        jumpActivity(1);
-                    }
-                });
-
-    }
-
     private void initPush() {
 //        Resources resource = this.getResources();
 //        String pkgName = this.getPackageName();
@@ -217,12 +188,12 @@ public class SplashActivity extends BaseActivity implements OnPushListener, IUse
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
-        login();
+        sleepActivity(0);
     }
 
     @Override
     public void loginSystemFail(String message) {
-        ToastUtils.show(getBaseContext(), "登陆失败");
+        ToastUtils.show(getBaseContext(), "登录失败");
         jumpActivity(1);
     }
 }

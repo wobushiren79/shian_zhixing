@@ -125,47 +125,6 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, View.
         userLoginPresenter.loginSystem();
     }
 
-    private void login(final String username, final String password) {
-        if (TextUtils.isEmpty(SharePerfrenceUtils.getShareChannelId(this))) {
-            ToastUtils.show(this, "消息推送正在初始化，请稍后。。。");
-            return;
-        }
-        HpLoginParams params = new HpLoginParams();
-        params.setPassword(password);
-        params.setUsername(username);
-        params.setSystemType("3");
-        params.setChannelId(SharePerfrenceUtils.getShareChannelId(this));
-        MHttpManagerFactory.getFuneralExecutorManager().login(this, params, new HttpResponseHandler<HrLoginResult>() {
-
-            @Override
-            public void onStart(Request request, int id) {
-
-            }
-
-            @Override
-            public void onSuccess(HrLoginResult result) {
-                lbLogin.setComplete();
-
-                SharePerfrenceUtils.setLoginShare(LoginActivity.this, username, password, cbRe.isChecked(),
-                        cbAuto.isChecked());
-                ToastUtils.show(getBaseContext(), "登陆成功");
-                Intent in = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(in);
-                finish();
-            }
-
-            @Override
-            public void onError(String message) {
-                lbLogin.setComplete();
-
-                Intent in = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(in);
-                finish();
-            }
-        });
-
-    }
-
 
     @OnClick(R.id.btn_login_web)
     void loginWeb(View v) {
@@ -232,8 +191,14 @@ public class LoginActivity extends BaseActivity implements IUserLoginView, View.
 
     @Override
     public void loginSystemSuccess(SystemLoginResultBean result) {
+        lbLogin.setComplete();
         userLoginPresenter.saveLoginConfig();
-        login(etUserName.getText().toString(), etUserPassword.getText().toString());
+        SharePerfrenceUtils.setLoginShare(LoginActivity.this, etUserName.getText().toString(),
+                etUserPassword.getText().toString(), cbRe.isChecked(), cbAuto.isChecked());
+        ToastUtils.show(getBaseContext(), "登录成功");
+        Intent in = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(in);
+        finish();
     }
 
     @Override

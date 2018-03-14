@@ -11,22 +11,26 @@ import okhttp3.Cookie;
 public class AppContansts {
     //殡仪执行地址
     public static final String Funeral_Executor_BaseUrl = "http://115.28.163.211:7088/shianlife-executor-1.0-SNAPSHOT";
-    //登陆地址
+    //登录地址
     public static final String Login_BaseUrl = "https://platform.shianlife.cn";
-//    public static final String Login_BaseUrl = "http://192.168.0.57:8080/ki4so-web";
+//    public static final String Login_BaseUrl = "http://192.168.0.57:8099/ki4so-web";
+//    public static final String Login_BaseUrl = "http://192.168.0.66:8080/ki4so-web";
 //    public static final String Login_BaseUrl = "http://prd-platform.xicp.cn";
 
     //单项地址
     public static final String Store_BaseUrl = "https://goods.shianlife.cn";
-//        public static final String Store_BaseUrl = "http://192.168.0.57:8089/goods";
+//    public static final String Store_BaseUrl = "http://192.168.0.57:8080/goods";
+//        public static final String Store_BaseUrl = "http://192.168.0.66:8089/goods";
 //    public static final String Store_BaseUrl = "http://prd-goods.xicp.cn";
     //公墓地址
     public static final String Cemetery_BaseUrl = "http://120.76.246.249:8000";
 
     //分单地址
     public static final String OrderCenter_BaseUrl = "https://order.shianlife.cn";
+//    public static final String OrderCenter_BaseUrl = "http://192.168.0.57:8090/order";
     //商品地址
-//    public static final String Goods_BaseUrl = "http://192.168.0.64/shian_goods";
+
+    //    public static final String Goods_BaseUrl = "http://192.168.0.64/shian_goods";
     public static final String Goods_BaseUrl = "http://goodsmgr.e-funeral.cn";
     //商品图片地址
     public static final String Goods_PicUrl = Goods_BaseUrl + "/Public/Uploads";
@@ -42,18 +46,18 @@ public class AppContansts {
     public static final String DiDichannel = "";//滴滴渠道号
 
     //阿里云文件上传
-    public static final String FILE_ALIYUN_UPDATA = Funeral_Executor_BaseUrl + "/file/upload";
+    public static final String FILE_ALIYUN_UPDATA = Login_BaseUrl + "/file/upload";
     //阿里云文件查看地址
     public static final String OSSURL = "http://shianlife123.oss-cn-qingdao.aliyuncs.com/";
 
 
-    //登陆系统KEY
+    //登录系统KEY
     public static String System_Ki4so_Client_Ec;
-    //子系统-单项  登陆地址
+    //子系统-单项  登录地址
     public static final String Login_Store_Url = Store_BaseUrl + "/login_sys_api";
-    //子系统-分单  登陆地址
+    //子系统-分单  登录地址
     public static final String Login_OrderCenter_Url = OrderCenter_BaseUrl + "/login_subsystem_api";
-    //子系统-公墓  登陆地址
+    //子系统-公墓  登录地址
     public static final String Login_Cemetery_Url = Cemetery_BaseUrl + "/login_subsystem_api";
 
     public static int MessageCount = 0;

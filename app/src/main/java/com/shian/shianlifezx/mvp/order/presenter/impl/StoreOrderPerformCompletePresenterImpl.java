@@ -24,7 +24,7 @@ public class StoreOrderPerformCompletePresenterImpl implements IStoreOrderPerfor
     @Override
     public void saveStorePerformComplete() {
         if (storeOrderPerformCompleteView.getPerformId() == null || storeOrderPerformCompleteView.getPerformId() == -1) {
-            storeOrderPerformCompleteView.getDataFail("数据错误，请重新登陆");
+            storeOrderPerformCompleteView.getDataFail("数据错误，请重新登录");
             return;
         }
         if (storeOrderPerformCompleteView.getPerformCompletePic().isEmpty()) {

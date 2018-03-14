@@ -50,11 +50,10 @@ public class UserLoginModelImpl implements IUserLoginModel , ISubSystemLoginView
 
             @Override
             public void onSuccess(SystemLoginResultBean result) {
-                //登陆子系统
+                //登录子系统
                 UserLoginModelImpl.this.result = result;
                 subSystemLoginPresenter = new SubSystemLoginPresenterImpl(UserLoginModelImpl.this);
                 subSystemLoginPresenter.loginStoreSystem();
-                listener.getDataSuccess(result);
             }
 
             @Override
@@ -137,7 +136,7 @@ public class UserLoginModelImpl implements IUserLoginModel , ISubSystemLoginView
     }
 
     private synchronized boolean checkLoginAllSystem() {
-        if (isLoginCemetery && isLoginOrderCenter && isLoginGoods) {
+        if ( isLoginGoods) {
             listener.getDataSuccess(result);
             return true;
         } else {

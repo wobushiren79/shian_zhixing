@@ -171,7 +171,7 @@ public class NewUserCenterFragment extends BaseFragment {
      */
     private void idea() {
         if(AppContansts.systemLoginInfo==null){
-            ToastUtils.show(getContext(),"数据异常，请重新登陆");
+            ToastUtils.show(getContext(),"数据异常，请重新登录");
         }else{
             if (AppContansts.systemLoginInfo == null)
                 return;

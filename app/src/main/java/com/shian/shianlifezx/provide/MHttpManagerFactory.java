@@ -42,7 +42,7 @@ public class MHttpManagerFactory {
     public static FuneralExecutorManager getFuneralExecutorManager() {
         return FuneralExecutorManagerImp.getInstance();
     }
-    //登陆
+    //登录
     public static SystemManager getSystemManager() {
         return SystemManagerImpl.getInstance();
     }
