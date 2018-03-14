@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.shian.shianlifezx.R;
@@ -239,7 +240,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
      */
     private void showPic(StoreOrderListResultBean.Content data) {
         Intent intent = new Intent(getContext(), ImagePreviewActivity.class);
-        intent.putExtra(IntentName.INTENT_URL,data.getGoodsOrderItem().getTitleImg());
+        intent.putExtra(IntentName.INTENT_URL, data.getGoodsOrderItem().getTitleImg());
         getContext().startActivity(intent);
     }
 
@@ -301,6 +302,7 @@ public class StoreOrderListApdapter extends BaseRCAdapter<StoreOrderListResultBe
         intent.putExtra(IntentAction.ORDER_ID, data.getGoodsPerform().getOrderId());
         intent.putExtra(IntentAction.PERFORM_ID, data.getGoodsPerform().getId());
         intent.putExtra(IntentAction.GOODS_ITEM_ID, data.getGoodsPerform().getGoodsItemId());
+        intent.putExtra(IntentAction.PERFORM_USER_ID, data.getGoodsPerform().getPerformUserId());
         mContext.startActivity(intent);
     }
 

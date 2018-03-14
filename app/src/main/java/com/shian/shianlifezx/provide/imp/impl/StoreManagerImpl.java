@@ -3,8 +3,11 @@ package com.shian.shianlifezx.provide.imp.impl;
 import android.content.Context;
 
 import com.shian.shianlifezx.common.contanst.AppContansts;
+import com.shian.shianlifezx.mvp.order.bean.GoodsPerform;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetExecutorBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetExecutorResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
@@ -20,6 +23,8 @@ import com.shian.shianlifezx.provide.base.BaseManagerImpl;
 import com.shian.shianlifezx.provide.base.HttpRequestExecutor;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
 import com.shian.shianlifezx.provide.imp.StoreManager;
+
+import java.util.List;
 
 /**
  * Created by zm.
@@ -70,5 +75,10 @@ public class StoreManagerImpl extends BaseManagerImpl implements StoreManager {
     @Override
     public void getNotPassReason(Context context, StoreOrderNotPassReasonBean params, HttpResponseHandler<StoreOrderNotPassReasonResultBean> handler) {
         requestPost(context, "api/goods/aduit/getNotPassAuditReason", StoreOrderNotPassReasonResultBean.class, params, handler, true);
+    }
+
+    @Override
+    public void getListExecutor(Context context, StoreOrderGetExecutorBean params, HttpResponseHandler<StoreOrderGetExecutorResultBean> handler) {
+        requestPost(context, "api/goods/perform/listExecutor", StoreOrderGetExecutorResultBean.class, params, handler, true);
     }
 }

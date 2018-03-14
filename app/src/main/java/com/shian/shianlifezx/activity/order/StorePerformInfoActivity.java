@@ -6,9 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.shian.shianlifezx.R;
@@ -16,9 +20,14 @@ import com.shian.shianlifezx.base.BaseActivity;
 import com.shian.shianlifezx.common.contanst.IntentAction;
 import com.shian.shianlifezx.common.utils.ToastUtils;
 import com.shian.shianlifezx.common.view.TipsDialog;
+import com.shian.shianlifezx.mvp.order.bean.GoodsPerform;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetExecutorResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformResultBean;
+import com.shian.shianlifezx.mvp.order.presenter.IStoreOrderGetExecutorPresenter;
 import com.shian.shianlifezx.mvp.order.presenter.IStoreOrderSavePerformPresenter;
+import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderGetExecutorPresenterImpl;
 import com.shian.shianlifezx.mvp.order.presenter.impl.StoreOrderSavePerformPresenterImpl;
+import com.shian.shianlifezx.mvp.order.view.IStoreOrderGetExecutorView;
 import com.shian.shianlifezx.mvp.order.view.IStoreOrderSavePerformView;
 import com.shian.shianlifezx.mvp.shared.presenter.ISharedGoodsPerformPresenter;
 import com.shian.shianlifezx.mvp.shared.presenter.impl.SharedGoodsPerformPresenterImpl;
@@ -31,7 +40,7 @@ import butterknife.ButterKnife;
 import butterknife.InjectView;
 import butterknife.OnClick;
 
-public class StorePerformInfoActivity extends BaseActivity implements IStoreOrderSavePerformView, RadioGroup.OnCheckedChangeListener, ISharedGoodsPerformExecuteView {
+public class StorePerformInfoActivity extends BaseActivity implements IStoreOrderSavePerformView, RadioGroup.OnCheckedChangeListener, ISharedGoodsPerformExecuteView, IStoreOrderGetExecutorView {
     @InjectView(R.id.perform_name)
     StoreEditNormalView performName;
     @InjectView(R.id.perform_phone)
@@ -41,6 +50,8 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
     @InjectView(R.id.ll_perform_info)
     LinearLayout llPerformInfo;
 
+    @InjectView(R.id.name_spinner)
+    Spinner nameSpinner;
     @InjectView(R.id.courier_company)
     StoreSpinnerNormalView courierCompany;
     @InjectView(R.id.courier_number)
@@ -63,6 +74,7 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
 
     private IStoreOrderSavePerformPresenter storeOrderSavePerformPresenter;
     private ISharedGoodsPerformPresenter sharedGoodsPerformPresenter;
+    private IStoreOrderGetExecutorPresenter storeOrderGetExecutorPresenter;
     private Integer performWay = null;
     private Intent intent;
 
@@ -88,9 +100,10 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
         intent = getIntent();
         storeOrderSavePerformPresenter = new StoreOrderSavePerformPresenterImpl(this);
         sharedGoodsPerformPresenter = new SharedGoodsPerformPresenterImpl(this);
+        storeOrderGetExecutorPresenter = new StoreOrderGetExecutorPresenterImpl(this);
         sharedGoodsPerformPresenter.getExecuteData();
         courierCompany.initSpinner(R.array.courier_company);
-
+        storeOrderGetExecutorPresenter.getListExecutor();
     }
 
     @Override
@@ -249,4 +262,45 @@ public class StorePerformInfoActivity extends BaseActivity implements IStoreOrde
     }
 
 
+    @Override
+    public Long getPerformUserId() {
+        return intent.getLongExtra(IntentAction.PERFORM_USER_ID, -1);
+    }
+
+    @Override
+    public void getExecutorSuccess(final StoreOrderGetExecutorResultBean resultBean) {
+
+        if (resultBean == null || resultBean.getListData() == null || resultBean.getListData().size() == 0) {
+            nameSpinner.setVisibility(View.GONE);
+            return;
+        }
+        String[] nameList = new String[resultBean.getListData().size() + 1];
+        nameList[0] = "选择执行人员";
+        for (int i = 0; i < resultBean.getListData().size(); i++) {
+            nameList[i + 1] = resultBean.getListData().get(i).getPerformUserName();
+        }
+        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, nameList);
+        nameSpinner.setAdapter(adapter);
+        nameSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0){
+                    clear();
+                }else{
+                    setExecutorName(resultBean.getListData().get(position-1).getPerformUserName());
+                    setExecutorPhone(resultBean.getListData().get(position-1).getPerformUserPhone());
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+    }
+
+    @Override
+    public void getExecutorFail(String msg) {
+        nameSpinner.setVisibility(View.GONE);
+    }
 }

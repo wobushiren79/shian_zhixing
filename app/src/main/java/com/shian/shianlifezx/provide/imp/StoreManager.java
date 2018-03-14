@@ -2,8 +2,11 @@ package com.shian.shianlifezx.provide.imp;
 
 import android.content.Context;
 
+import com.shian.shianlifezx.mvp.order.bean.GoodsPerform;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderAcceptResultBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetExecutorBean;
+import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetExecutorResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderGetPerformResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderListBean;
@@ -15,6 +18,8 @@ import com.shian.shianlifezx.mvp.order.bean.StoreOrderPerformCompleteResultBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformBean;
 import com.shian.shianlifezx.mvp.order.bean.StoreOrderSavePerformResultBean;
 import com.shian.shianlifezx.provide.base.HttpResponseHandler;
+
+import java.util.List;
 
 /**
  * Created by zm.
@@ -76,4 +81,12 @@ public interface StoreManager {
      * @param handler
      */
     void getNotPassReason(Context context, StoreOrderNotPassReasonBean params, HttpResponseHandler<StoreOrderNotPassReasonResultBean> handler);
+    /**
+     * 获取执行人员列表
+     *
+     * @param context
+     * @param params
+     * @param handler
+     */
+    void getListExecutor(Context context, StoreOrderGetExecutorBean params, HttpResponseHandler<StoreOrderGetExecutorResultBean> handler);
 }

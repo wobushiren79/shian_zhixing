@@ -83,11 +83,22 @@
         android:layout_weight="1"
         android:orientation="vertical">
 
+        <Spinner
+            android:id="@+id/name_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_80dp"></Spinner>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_1dp"
+            android:background="@color/zhy_line_3" />
         <com.shian.shianlifezx.view.show.StoreEditNormalView
             android:id="@+id/perform_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            CustomAttr:titleName="执行人姓名"></com.shian.shianlifezx.view.show.StoreEditNormalView>
+            CustomAttr:titleName="执行人姓名">
+
+        </com.shian.shianlifezx.view.show.StoreEditNormalView>
 
         <com.shian.shianlifezx.view.show.StoreEditNormalView
             android:id="@+id/perform_phone"
